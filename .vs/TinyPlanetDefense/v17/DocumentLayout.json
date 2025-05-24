@@ -3,6 +3,29 @@
   "WorkspaceRootPath": "E:\\Projects\\TinyPlanetDefense\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|e:\\projects\\tinyplanetdefense\\assets\\scripts\\upgrademenuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrademenuui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|e:\\projects\\tinyplanetdefense\\assets\\scripts\\autocannoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\autocannoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|e:\\projects\\tinyplanetdefense\\assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|e:\\projects\\tinyplanetdefense\\assets\\scripts\\wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wavemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|e:\\projects\\tinyplanetdefense\\assets\\scripts\\enemybehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemybehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Projects\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +42,82 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UpgradeMenuUI.cs",
+              "DocumentMoniker": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\UpgradeMenuUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradeMenuUI.cs",
+              "ToolTip": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\UpgradeMenuUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UpgradeMenuUI.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:56:11.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AutoCannonController.cs",
+              "DocumentMoniker": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\AutoCannonController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AutoCannonController.cs",
+              "ToolTip": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\AutoCannonController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AutoCannonController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:50:48.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnemyBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
+              "ToolTip": "C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs [Read Only]",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:37:49.66Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EnemySpawner.cs",
+              "DocumentMoniker": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\EnemySpawner.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemySpawner.cs",
+              "ToolTip": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\EnemySpawner.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemySpawner.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAvwCIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:24:28.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WaveManager.cs",
+              "DocumentMoniker": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\WaveManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\WaveManager.cs",
+              "ToolTip": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\WaveManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\WaveManager.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwBYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:09:49.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnemyBehavior.cs",
+              "DocumentMoniker": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\EnemyBehavior.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyBehavior.cs",
+              "ToolTip": "E:\\Projects\\TinyPlanetDefense\\Assets\\Scripts\\EnemyBehavior.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyBehavior.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:08:07.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "GraphicEditor.cs",
               "DocumentMoniker": "E:\\Projects\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",

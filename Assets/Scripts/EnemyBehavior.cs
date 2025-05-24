@@ -1,38 +1,42 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyBehavior : MonoBehaviour
 {
-    public EnemyType enemyType = EnemyType.Normal;
-    public float baseSpeed = 2f;
-    public float zigzagAmplitude = 1f;
-    public float zigzagFrequency = 2f;
+    public EnemyType enemyType;
     public Transform planetCenter;
+    public float baseSpeed = 1f;
 
-    private Rigidbody2D rb;
-    private Vector2 directionToPlanet;
-    private float timeAlive;
+    [Header("ZigZag Settings")]
+    public float zigzagAmplitude = 0.5f;
+    public float zigzagFrequency = 2f;
+
+    private float zigzagOffset;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        directionToPlanet = ((Vector2)planetCenter.position - rb.position).normalized;
-        timeAlive = 0f;
+        zigzagOffset = Random.Range(0f, 2f * Mathf.PI); // Desync zigzag motion
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        timeAlive += Time.fixedDeltaTime;
+        if (planetCenter == null) return;
 
-        Vector2 finalDirection = directionToPlanet;
+        Vector2 direction = (planetCenter.position - transform.position).normalized;
 
+        // Zigzag movement only for ZigZag type
         if (enemyType == EnemyType.ZigZag)
         {
-            Vector2 perpendicular = Vector2.Perpendicular(directionToPlanet);
-            finalDirection += perpendicular * Mathf.Sin(timeAlive * zigzagFrequency) * zigzagAmplitude;
-            finalDirection.Normalize();
+            Vector2 perpendicular = new Vector2(-direction.y, direction.x);
+            float offset = Mathf.Sin(Time.time * zigzagFrequency + zigzagOffset) * zigzagAmplitude;
+            direction += perpendicular * offset;
+            direction.Normalize();
         }
 
-        rb.linearVelocity = finalDirection * baseSpeed;
+        // Apply movement
+        transform.position += (Vector3)(direction * baseSpeed * Time.deltaTime);
+
+        // Face the planet
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 }

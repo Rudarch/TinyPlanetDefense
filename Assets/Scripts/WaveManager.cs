@@ -3,17 +3,22 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using System;
 
 public class WaveManager : MonoBehaviour
 {
+    [Header("Enemy Type Values")]
+    public int normalEnemyValue = 1;
+    public int fastEnemyValue = 2;
+    public int tankEnemyValue = 3;
+    public int zigzagEnemyValue = 2;
+
     public EnemySpawner spawner;
     public List<WaveConfig> waveConfigs = new List<WaveConfig>();
     private int currentWaveIndex = 0;
     private float timer = 0f;
     private bool waveInProgress = false;
 
-    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI  waveText;
     public TextMeshProUGUI enemiesAliveText;
     public TextMeshProUGUI countdownText;
 
@@ -60,21 +65,23 @@ public class WaveManager : MonoBehaviour
         {
             delayBeforeNextWave = original.delayBeforeNextWave,
             totalValue = original.totalValue * currentWaveLoop,
-            enemyValues = new List<EnemyTypeValue>()
+            enemyTypes = new List<EnemyType>(original.enemyTypes)
         };
 
-        foreach (var pair in original.enemyValues)
-        {
-            scaled.enemyValues.Add(new EnemyTypeValue
-            {
-                type = pair.type,
-                value = pair.value
-            });
-        }
-
-        spawner.SpawnConfiguredWave(scaled);
+        spawner.SpawnConfiguredWave(scaled, GetValueMap());
         currentWaveIndex++;
         waveInProgress = true;
+    }
+
+    Dictionary<EnemyType, int> GetValueMap()
+    {
+        return new Dictionary<EnemyType, int>
+        {
+            { EnemyType.Normal, normalEnemyValue },
+            { EnemyType.Fast, fastEnemyValue },
+            { EnemyType.Tank, tankEnemyValue },
+            { EnemyType.ZigZag, zigzagEnemyValue }
+        };
     }
 
     void UpdateUI()
@@ -86,7 +93,7 @@ public class WaveManager : MonoBehaviour
 
         if (enemiesAliveText != null)
         {
-            enemiesAliveText.text = $"Enemies: {CountAliveEnemies().ToString()}";
+            enemiesAliveText.text = "Enemies: " + CountAliveEnemies().ToString();
         }
 
         if (countdownText != null)

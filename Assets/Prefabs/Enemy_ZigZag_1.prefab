@@ -101,13 +101,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175429221016022370}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: 0.0156, y: 0.0741, z: 0}
   m_LocalScale: {x: 0.30990002, y: 0.26466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2849131982936025356}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!212 &9041278697380891981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 4036623019666475516, guid: 846aa84a408f6a0478508107e9d51c6a, type: 3}
-  m_Color: {r: 0.8037735, g: 0.78415555, b: 0.07734423, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -407,10 +407,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 3
-  baseSpeed: 0.25
-  zigzagAmplitude: 6
-  zigzagFrequency: 4
   planetCenter: {fileID: 0}
+  baseSpeed: 0.1
+  zigzagAmplitude: 4
+  zigzagFrequency: 1
 --- !u!114 &5438842058742320834
 MonoBehaviour:
   m_ObjectHideFlags: 0

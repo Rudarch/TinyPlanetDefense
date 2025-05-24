@@ -142,10 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
-  baseSpeed: 0.6
-  zigzagAmplitude: 1
-  zigzagFrequency: 2
   planetCenter: {fileID: 0}
+  baseSpeed: 0.2
 --- !u!114 &-1479389334764980642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 7741249257252857272}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

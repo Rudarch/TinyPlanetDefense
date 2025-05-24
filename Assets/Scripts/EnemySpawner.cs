@@ -22,10 +22,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnConfiguredWave(WaveConfig config)
+    public void SpawnConfiguredWave(WaveConfig config, Dictionary<EnemyType, int> valueMap)
     {
-        Dictionary<EnemyType, int> enemyValueMap = config.ToDictionary();
-        List<EnemyType> types = new List<EnemyType>(enemyValueMap.Keys);
+        Dictionary<EnemyType, int> enemyValueMap = valueMap;
+        List<EnemyType> types = new List<EnemyType>();
+        foreach (var type in config.enemyTypes)
+        {
+            if (enemyValueMap.ContainsKey(type))
+            {
+                types.Add(type);
+            }
+        }
 
         float spawnDistance = CalculateSpawnDistance();
 

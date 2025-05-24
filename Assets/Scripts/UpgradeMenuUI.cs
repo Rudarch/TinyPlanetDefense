@@ -57,6 +57,7 @@ public class UpgradeMenuUI : MonoBehaviour
             colors.normalColor = gradeColor;
             colors.highlightedColor = gradeColor;
             colors.pressedColor = gradeColor;
+            colors.selectedColor = gradeColor;
             button.colors = colors;
 
             button.onClick.RemoveAllListeners();
