@@ -19,6 +19,11 @@ public class EnemyHealth : MonoBehaviour
         {
             AwardTechPoints();
             AwardExperience();
+
+            var fx = GetComponent<EnemyAudioController>();
+            if (fx != null)
+                fx.PlayDeathEffects();
+
             Destroy(gameObject);
         }
     }

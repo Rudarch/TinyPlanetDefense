@@ -4,6 +4,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    public AudioClip hitSound;
+
     private GameOverManager gameOverManager;
 
     void Awake()
@@ -16,6 +18,9 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= amount;
 
+        if (hitSound != null)
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -27,13 +32,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public float GetHealthPercentage()
-    {
-        return (float)currentHealth / maxHealth;
-    }
-
     private int CalculateScore()
     {
         return Time.frameCount;
+    }
+
+    public float GetHealthPercentage()
+    {
+        return (float)currentHealth / maxHealth;
     }
 }
