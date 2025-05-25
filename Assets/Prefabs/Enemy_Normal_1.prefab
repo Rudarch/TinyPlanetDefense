@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2878831226417335083}
   - component: {fileID: 6521609105962020209}
   - component: {fileID: -4263950965352886859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Normal_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -143,7 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   planetCenter: {fileID: 0}
-  baseSpeed: 0.1
+  movementSpeed: 0.2
+  zigzagAmplitude: 0.5
+  zigzagFrequency: 2
 --- !u!114 &2878831226417335083
 MonoBehaviour:
   m_ObjectHideFlags: 0

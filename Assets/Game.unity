@@ -716,6 +716,7 @@ MonoBehaviour:
   - {fileID: 862971096225000048, guid: 6a73263472bcd184dbebe03fc87f2626, type: 3}
   - {fileID: 3719887966007763411, guid: d848950136dde4c4aa6cc4e0207d2034, type: 3}
   - {fileID: 9003680778077030153, guid: 2563297bfc0c1ac46b8b1803e570fbcc, type: 3}
+  - {fileID: 6762029240795979588, guid: 10c6be9912ad37440a44b0e0083a7614, type: 3}
   planetCenter: {fileID: 6671393143994966655}
   spawnBufferDistance: 0.2
 --- !u!114 &150644102
@@ -734,11 +735,12 @@ MonoBehaviour:
   fastEnemyValue: 2
   tankEnemyValue: 3
   zigzagEnemyValue: 2
+  rangedEnemyValue: 3
   spawner: {fileID: 150644101}
   waveConfigs:
-  - totalValue: 2
+  - totalValue: 3
     delayBeforeNextWave: 0
-    enemyTypes: 03000000
+    enemyTypes: 04000000
   - totalValue: 4
     delayBeforeNextWave: 0
     enemyTypes: 0100000000000000
@@ -750,7 +752,7 @@ MonoBehaviour:
     enemyTypes: 02000000
   - totalValue: 8
     delayBeforeNextWave: 0
-    enemyTypes: 00000000010000000200000003000000
+    enemyTypes: 0000000001000000020000000300000004000000
   waveText: {fileID: 83563306}
   enemiesAliveText: {fileID: 638148008}
   countdownText: {fileID: 145129661}

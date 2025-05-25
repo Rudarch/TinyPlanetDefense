@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour
     public int fastEnemyValue = 2;
     public int tankEnemyValue = 3;
     public int zigzagEnemyValue = 2;
+    public int rangedEnemyValue = 3;
 
     public EnemySpawner spawner;
     public List<WaveConfig> waveConfigs = new List<WaveConfig>();
@@ -80,7 +81,8 @@ public class WaveManager : MonoBehaviour
             { EnemyType.Normal, normalEnemyValue },
             { EnemyType.Fast, fastEnemyValue },
             { EnemyType.Tank, tankEnemyValue },
-            { EnemyType.ZigZag, zigzagEnemyValue }
+            { EnemyType.ZigZag, zigzagEnemyValue },
+            { EnemyType.Ranged, rangedEnemyValue },
         };
     }
 

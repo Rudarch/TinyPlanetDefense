@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7683439231695593492}
   - component: {fileID: -4705882652966117613}
   - component: {fileID: 7499531811002624719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_Tank_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -143,7 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 2
   planetCenter: {fileID: 0}
-  baseSpeed: 0.08
+  movementSpeed: 0.15
+  zigzagAmplitude: 0.5
+  zigzagFrequency: 2
 --- !u!114 &-7683439231695593492
 MonoBehaviour:
   m_ObjectHideFlags: 0

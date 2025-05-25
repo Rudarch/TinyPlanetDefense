@@ -83,6 +83,7 @@ public class AutoCannonController : MonoBehaviour
         if (projectilePrefab != null && shootPoint != null)
         {
             GameObject proj = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            proj.layer = 8;
             Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

@@ -65,12 +65,18 @@ public class EnemySpawner : MonoBehaviour
             behavior.planetCenter = planetCenter;
         }
 
+        EnemyRangedShooter shooterBehavior = enemy.GetComponent<EnemyRangedShooter>();
+        if (shooterBehavior != null)
+        {
+            shooterBehavior.planetCenter = planetCenter;
+        }
+
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.gravityScale = 0;
             Vector2 directionToPlanet = (planetCenter.position - spawnPosition).normalized;
-            rb.linearVelocity = directionToPlanet * behavior.baseSpeed;
+            rb.linearVelocity = directionToPlanet * behavior.movementSpeed;
         }
     }
 
