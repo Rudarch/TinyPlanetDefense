@@ -89,6 +89,9 @@ public class AutoCannonController : MonoBehaviour
             {
                 rb.linearVelocity = shootPoint.up * shootForce;
             }
+
+            Animator anim = GetComponent<Animator>();
+            anim.Play("Cannon_Recoil", -1, 0f); // Play from start
         }
     }
 

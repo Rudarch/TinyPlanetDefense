@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3ba8fec5f3fc73f4cab373cbb3206d03
+guid: f8930f43c859e984c81838c1b7aacc5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8618663976898325987
-    second: projectiles_0
+      213: -5216639428461053460
+    second: Cannon_Scifi_1 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: projectiles_0
+      name: Cannon_Scifi_1 (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1024
+        width: 200
+        height: 379
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3edea7d2935ab9770800000000000000
-      internalID: 8618663976898325987
+      spriteID: ce938492416ca97b0800000000000000
+      internalID: -5216639428461053460
       vertices: []
       indices: 
       edges: []
