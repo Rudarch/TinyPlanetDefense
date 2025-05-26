@@ -14,7 +14,7 @@ public class EnemyRangedShooter : MonoBehaviour
     void Start()
     {
         var cannon = FindFirstObjectByType<AutoCannonController>();
-        shootingRange = (cannon != null) ? cannon.firingRange - 0.1f : 2f;
+        shootingRange = (cannon != null) ? cannon.baseFiringRange - 0.1f : 2f;
         behavior = GetComponent<EnemyBehavior>();
     }
 

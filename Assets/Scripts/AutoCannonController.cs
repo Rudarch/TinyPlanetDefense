@@ -1,106 +1,150 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 [ExecuteAlways]
 public class AutoCannonController : MonoBehaviour
 {
-    public float maxRotationSpeed = 200f;
-    public float rotationAcceleration = 500f;
+    public float baseMaxRotationSpeed = 200f;
+    public float baseRotationAcceleration = 500f;
+    public float baseFireCooldown = 1f;
+    public float baseFiringRange = 8f;
 
-    public float fireCooldown = 1f;
     public Transform shootPoint;
     public GameObject projectilePrefab;
     public float shootForce = 10f;
     public Transform planetCenter;
     public float aimThresholdAngle = 5f;
 
-    public float firingRange = 8f;
     public Color rangeGizmoColor = Color.green;
 
     private float fireTimer;
     private float currentAngularVelocity = 0f;
     private Transform currentTarget;
+    private float currentAngle; // degrees
+
+    private float firingRange;
+    private float fireCooldown;
+    private float maxRotationSpeed;
+    private float rotationAcceleration;
+
+    private float orbitRadius;
+
+    void Start()
+    {
+        if (planetCenter != null)
+        {
+            orbitRadius = Vector2.Distance(transform.position, planetCenter.position);
+            currentAngle = Mathf.Atan2(transform.position.y - planetCenter.position.y, transform.position.x - planetCenter.position.x) * Mathf.Rad2Deg;
+        }
+    }
 
     void Update()
     {
-        if (planetCenter == null)
-            return;
+        if (planetCenter == null) return;
+
+        ApplyUpgradeModifiers();
 
         if (currentTarget == null || !currentTarget.gameObject.activeInHierarchy ||
             Vector2.Distance(currentTarget.position, planetCenter.position) > firingRange)
         {
             GameObject newTarget = FindClosestEnemyInRange();
-            currentTarget = newTarget ? newTarget.transform : null;
+            currentTarget = newTarget != null ? newTarget.transform : null;
         }
 
         if (currentTarget != null)
         {
-            Vector3 directionToTarget = (currentTarget.position - planetCenter.position).normalized;
-            Vector3 cannonDirection = (transform.position - planetCenter.position).normalized;
+            Vector2 dirToTarget = currentTarget.position - planetCenter.position;
+            float targetAngle = Mathf.Atan2(dirToTarget.y, dirToTarget.x) * Mathf.Rad2Deg;
+            float angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-            float angleToTarget = Vector3.SignedAngle(cannonDirection, directionToTarget, Vector3.forward);
+            float accel = Mathf.Sign(angleDiff) * rotationAcceleration * Time.deltaTime;
+            currentAngularVelocity += accel;
+            currentAngularVelocity = Mathf.Clamp(currentAngularVelocity, -maxRotationSpeed, maxRotationSpeed);
 
-            if (Mathf.Abs(angleToTarget) > aimThresholdAngle)
-            {
-                float desiredAngularVelocity = Mathf.Sign(angleToTarget) * maxRotationSpeed;
-                currentAngularVelocity = Mathf.MoveTowards(currentAngularVelocity, desiredAngularVelocity, rotationAcceleration * Time.deltaTime);
-            }
-            else
+            if (Mathf.Abs(angleDiff) < aimThresholdAngle)
             {
                 currentAngularVelocity = 0f;
+
+                fireTimer -= Time.deltaTime;
+                if (fireTimer <= 0f)
+                {
+                    Shoot();
+                    fireTimer = fireCooldown;
+                }
             }
 
-            transform.RotateAround(planetCenter.position, Vector3.forward, currentAngularVelocity * Time.deltaTime);
+            currentAngle += currentAngularVelocity * Time.deltaTime;
 
-            fireTimer -= Time.deltaTime;
-            if (Mathf.Abs(angleToTarget) < aimThresholdAngle && fireTimer <= 0f)
-            {
-                Shoot();
-                fireTimer = fireCooldown;
-            }
+            // Clamp angle to [0, 360)
+            if (currentAngle < 0f) currentAngle += 360f;
+            if (currentAngle >= 360f) currentAngle -= 360f;
+
+            Vector3 offset = new Vector3(Mathf.Cos(currentAngle * Mathf.Deg2Rad), Mathf.Sin(currentAngle * Mathf.Deg2Rad), 0f) * orbitRadius;
+            transform.position = planetCenter.position + offset;
+
+            transform.rotation = Quaternion.Euler(0f, 0f, currentAngle - 90f); // face outward
         }
-        else
+    }
+
+    void Shoot()
+    {
+        GameObject proj = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+        Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            currentAngularVelocity = 0f;
+            rb.linearVelocity = shootPoint.up * shootForce;
         }
+
+        Projectile p = proj.GetComponent<Projectile>();
+        if (p != null)
+        {
+            p.damage = Mathf.RoundToInt(p.damage * UpgradeManager.Instance.damageMultiplier);
+        }
+
+        Animator anim = GetComponent<Animator>();
+        anim.Play("Cannon_Recoil", -1, 0f); // Play from start
+    }
+
+    void ApplyUpgradeModifiers()
+    {
+        if (UpgradeManager.Instance == null) return;
+
+        fireCooldown = baseFireCooldown * UpgradeManager.Instance.fireCooldownMultiplier;
+        firingRange = baseFiringRange * UpgradeManager.Instance.firingRangeMultiplier;
+        maxRotationSpeed = baseMaxRotationSpeed * UpgradeManager.Instance.rotationSpeedMultiplier;
+        rotationAcceleration = baseRotationAcceleration * UpgradeManager.Instance.rotationSpeedMultiplier;
     }
 
     GameObject FindClosestEnemyInRange()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0)
-            return null;
+        GameObject closest = null;
+        float minDist = float.MaxValue;
 
-        return enemies
-            .Where(e => Vector2.Distance(e.transform.position, planetCenter.position) <= firingRange)
-            .OrderBy(e => Vector2.Distance(planetCenter.position, e.transform.position))
-            .FirstOrDefault();
-    }
-
-    void Shoot()
-    {
-        if (projectilePrefab != null && shootPoint != null)
+        foreach (GameObject enemy in enemies)
         {
-            GameObject proj = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
-            proj.layer = 8;
-            Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            float dist = Vector2.Distance(enemy.transform.position, planetCenter.position);
+            if (dist <= firingRange && dist < minDist)
             {
-                rb.linearVelocity = shootPoint.up * shootForce;
+                closest = enemy;
+                minDist = dist;
             }
-
-            Animator anim = GetComponent<Animator>();
-            anim.Play("Cannon_Recoil", -1, 0f); // Play from start
         }
+
+        return closest;
     }
 
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         if (planetCenter != null)
         {
             Gizmos.color = rangeGizmoColor;
             Gizmos.DrawWireSphere(planetCenter.position, firingRange);
         }
+    }
+
+    public float GetFiringRange()
+    {
+        return firingRange;
     }
 }

@@ -83,6 +83,6 @@ public class EnemySpawner : MonoBehaviour
     float CalculateSpawnDistance()
     {
         var cannon = FindFirstObjectByType<AutoCannonController>();
-        return (cannon != null) ? cannon.firingRange + spawnBufferDistance : 10f;
+        return (cannon != null) ? cannon.GetFiringRange() + spawnBufferDistance : 10f;
     }
 }

@@ -36,7 +36,7 @@ public class UpgradeManager : MonoBehaviour
                 var cannon = Object.FindFirstObjectByType<AutoCannonController>();
                 if (cannon != null)
                 {
-                    cannon.firingRange *= firingRangeMultiplier;
+                    cannon.baseFiringRange *= firingRangeMultiplier;
                 }
                 break;
             case UpgradeType.MaxHealth:

@@ -34,7 +34,7 @@ public class RuntimeRangeVisualizer : MonoBehaviour
     {
         if (centerPoint == null || cannon == null) return;
 
-        float radius = cannon.firingRange;
+        float radius = cannon.GetFiringRange();
         float angle = 0f;
         for (int i = 0; i <= segments; i++)
         {
