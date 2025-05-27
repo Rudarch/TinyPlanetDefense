@@ -1,12 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[ExecuteAlways]
 public class AutoCannonController : MonoBehaviour
 {
     public float baseMaxRotationSpeed = 200f;
     public float baseRotationAcceleration = 500f;
-    public float baseFireCooldown = 1f;
     public float baseFiringRange = 8f;
 
     public Transform shootPoint;
@@ -15,18 +13,18 @@ public class AutoCannonController : MonoBehaviour
     public Transform planetCenter;
     public float aimThresholdAngle = 5f;
 
-    public Color rangeGizmoColor = Color.green;
+    [Range(0f, 1f)] public float autoRotationFactor = 0.2f; // 20% base auto rotation
+    public float playerBoostFactor = 0f; // dynamic from spin wheel
+    public bool isReloaded = false; // set when ammo is manually loaded
+    public bool fireRequested = false; // set when fire button is pressed
 
-    private float fireTimer;
     private float currentAngularVelocity = 0f;
     private Transform currentTarget;
-    private float currentAngle; // degrees
-
     private float firingRange;
-    private float fireCooldown;
     private float maxRotationSpeed;
     private float rotationAcceleration;
 
+    private float currentAngle;
     private float orbitRadius;
 
     void Start()
@@ -57,25 +55,23 @@ public class AutoCannonController : MonoBehaviour
             float targetAngle = Mathf.Atan2(dirToTarget.y, dirToTarget.x) * Mathf.Rad2Deg;
             float angleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-            float accel = Mathf.Sign(angleDiff) * rotationAcceleration * Time.deltaTime;
+            float totalBoost = Mathf.Clamp(autoRotationFactor + playerBoostFactor, 0f, 1f);
+            float effMaxSpeed = maxRotationSpeed * totalBoost;
+            float effAcceleration = rotationAcceleration * totalBoost;
+
+            float accel = Mathf.Sign(angleDiff) * effAcceleration * Time.deltaTime;
             currentAngularVelocity += accel;
-            currentAngularVelocity = Mathf.Clamp(currentAngularVelocity, -maxRotationSpeed, maxRotationSpeed);
+            currentAngularVelocity = Mathf.Clamp(currentAngularVelocity, -effMaxSpeed, effMaxSpeed);
 
-            if (Mathf.Abs(angleDiff) < aimThresholdAngle)
+            if (Mathf.Abs(angleDiff) < aimThresholdAngle && fireRequested && isReloaded)
             {
-                currentAngularVelocity = 0f;
-
-                fireTimer -= Time.deltaTime;
-                if (fireTimer <= 0f)
-                {
-                    Shoot();
-                    fireTimer = fireCooldown;
-                }
+                fireRequested = false;
+                isReloaded = false;
+                Shoot();
             }
 
             currentAngle += currentAngularVelocity * Time.deltaTime;
 
-            // Clamp angle to [0, 360)
             if (currentAngle < 0f) currentAngle += 360f;
             if (currentAngle >= 360f) currentAngle -= 360f;
 
@@ -84,6 +80,21 @@ public class AutoCannonController : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0f, 0f, currentAngle - 90f); // face outward
         }
+    }
+
+    public void FireButtonPressed()
+    {
+        fireRequested = true;
+    }
+
+    public void Reload()
+    {
+        isReloaded = true;
+    }
+
+    public void SetRotationBoost(float boost)
+    {
+        playerBoostFactor = Mathf.Clamp01(boost); // 0 to 1
     }
 
     void Shoot()
@@ -100,16 +111,12 @@ public class AutoCannonController : MonoBehaviour
         {
             p.damage = Mathf.RoundToInt(p.damage * UpgradeManager.Instance.damageMultiplier);
         }
-
-        Animator anim = GetComponent<Animator>();
-        anim.Play("Cannon_Recoil", -1, 0f); // Play from start
     }
 
     void ApplyUpgradeModifiers()
     {
         if (UpgradeManager.Instance == null) return;
 
-        fireCooldown = baseFireCooldown * UpgradeManager.Instance.fireCooldownMultiplier;
         firingRange = baseFiringRange * UpgradeManager.Instance.firingRangeMultiplier;
         maxRotationSpeed = baseMaxRotationSpeed * UpgradeManager.Instance.rotationSpeedMultiplier;
         rotationAcceleration = baseRotationAcceleration * UpgradeManager.Instance.rotationSpeedMultiplier;
@@ -138,7 +145,7 @@ public class AutoCannonController : MonoBehaviour
     {
         if (planetCenter != null)
         {
-            Gizmos.color = rangeGizmoColor;
+            Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(planetCenter.position, firingRange);
         }
     }
