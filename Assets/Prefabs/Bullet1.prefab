@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eba54d5083134144b97823a329744d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  lifeTime: 5
+  damage: 3
+  isEnemyProjectile: 0
 --- !u!82 &2547260387813971645
 AudioSource:
   m_ObjectHideFlags: 0

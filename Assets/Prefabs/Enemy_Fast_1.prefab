@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   planetCenter: {fileID: 0}
-  movementSpeed: 0.1
+  movementSpeed: 0.15
   zigzagAmplitude: 0.5
   zigzagFrequency: 2
 --- !u!114 &-1479389334764980642
