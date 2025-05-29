@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     private Vector3 jumpStart;
     private Vector3 jumpEnd;
     private float jumpProgress;
+    [SerializeField] private int xpReward = 1;
 
     void Start()
     {
@@ -80,11 +81,18 @@ public class Enemy : MonoBehaviour
         if (health <= 0f)
             Die();
     }
-
     void Die()
     {
-        if (healthBar != null)
-            Destroy(healthBar.gameObject);
+        // Award XP to cannon
+        GameObject cannon = GameObject.FindWithTag("Cannon");
+        if (cannon != null)
+        {
+            var xpSystem = cannon.GetComponent<CannonXPSystem>();
+            if (xpSystem != null)
+            {
+                xpSystem.AddXP(xpReward);
+            }
+        }
 
         Destroy(gameObject);
     }
@@ -93,7 +101,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Planet"))
         {
-            // Damage planet logic can go here
+            GameObject.FindWithTag("Planet").GetComponent<Planet>().TakeDamage(damage);
             Debug.Log($"Enemy dealt {damage} damage to the planet.");
             Destroy(gameObject);
         }

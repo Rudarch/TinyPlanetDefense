@@ -522,8 +522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  damage: 1
+  damage: 10
   jumpDistance: 0.1
   jumpInterval: 1
   jumpHeight: 0.01
   planetTarget: {fileID: 0}
+  xpReward: 5

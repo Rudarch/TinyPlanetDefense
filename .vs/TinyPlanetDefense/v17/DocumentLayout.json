@@ -3,26 +3,18 @@
   "WorkspaceRootPath": "C:\\Repos\\TinyPlanetDefense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\cannoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cannoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Repos\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Repos\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:1:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Repos\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,76 +24,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CannonController.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CannonController.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CannonController.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAUwFkAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T08:10:58.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Enemy.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Enemy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Enemy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAASwEMAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T08:08:52.316Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HealthBar.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\HealthBar.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HealthBar.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\HealthBar.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HealthBar.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T08:08:34.235Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "EnemyBehavior.cs",
-              "DocumentMoniker": "C:\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
-              "RelativeDocumentMoniker": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
-              "ToolTip": "C:\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
-              "RelativeToolTip": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T00:14:57.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "EnemyBehavior.cs",
-              "DocumentMoniker": "C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
-              "RelativeDocumentMoniker": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
-              "ToolTip": "C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
-              "RelativeToolTip": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T22:37:49.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "GraphicEditor.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
@@ -110,6 +37,43 @@
               "ViewState": "AgIAABwAAAAAAAAAAAAlwDEAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T09:56:10.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnemyBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
+              "RelativeDocumentMoniker": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
+              "ToolTip": "C:\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
+              "RelativeToolTip": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\588e10bd-9c84-49b9-81b8-23404dc85d6b_TinyPlanetDefense_2D_EnemyTypes.zip.d6b\\Assets\\Scripts\\EnemyBehavior.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T22:37:49.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GraphicEditor.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.ugui@5c9fd4989cdd\\Editor\\UGUI\\UI\\GraphicEditor.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAlwDEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T09:56:10.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
+              "RelativeDocumentMoniker": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
+              "ToolTip": "C:\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
+              "RelativeToolTip": "..\\..\\Users\\yurii\\AppData\\Local\\Temp\\cebd67ec-be4c-467d-b33b-56099f09794b_Game_EnemyUnifiedMovement.zip.94b\\EnemyBehavior.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T00:14:57.302Z",
               "EditorCaption": ""
             }
           ]
