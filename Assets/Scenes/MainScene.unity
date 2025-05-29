@@ -920,7 +920,7 @@ MonoBehaviour:
   - enemyCount: 7
     spawnDuration: 5
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-  spawnRadius: 4
+  spawnRadius: 3
   planetCenter: {fileID: 6671393143994966655}
   enemyParent: {fileID: 150644103}
 --- !u!1 &196912375
@@ -3326,7 +3326,7 @@ MonoBehaviour:
   rotationSpeed: 30
   maxAimAngle: 5
   planetCenter: {fileID: 6671393143994966655}
-  detectionRadius: 10
+  detectionRadius: 3
   obstructionMask:
     serializedVersion: 2
     m_Bits: 8

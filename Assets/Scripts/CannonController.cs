@@ -16,7 +16,12 @@ public class CannonController : MonoBehaviour
 
     void Update()
     {
-        currentTarget = FindNearestVisibleEnemy();
+        // Check if current target is still valid
+        if (currentTarget == null || !IsTargetValid(currentTarget))
+        {
+            currentTarget = FindNearestVisibleEnemy();
+        }
+
         if (currentTarget != null)
         {
             Vector3 dir = (currentTarget.transform.position - turretHead.position).normalized;
@@ -35,6 +40,7 @@ public class CannonController : MonoBehaviour
             }
         }
     }
+
 
     private bool IsAimingAt(Transform target)
     {
@@ -67,5 +73,45 @@ public class CannonController : MonoBehaviour
         }
 
         return closestEnemy;
+    }
+    private bool IsTargetValid(Enemy target)
+    {
+        if (target == null)
+            return false;
+
+        // Check if within detection range
+        float dist = Vector3.Distance(turretHead.position, target.transform.position);
+        if (dist > detectionRadius)
+            return false;
+
+        // Check if obstructed by planet or other object
+        Vector3 dir = (target.transform.position - turretHead.position);
+        RaycastHit2D hit = Physics2D.Raycast(turretHead.position, dir.normalized, dir.magnitude, obstructionMask);
+        return hit.collider == null; // null means no obstruction
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (turretHead == null)
+            return;
+
+        // Draw the detection/attack radius
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(turretHead.position, detectionRadius);
+
+        // Draw aim cone
+        Vector3 forward = turretHead.up;
+        float halfAngle = maxAimAngle;
+
+        Gizmos.color = Color.red;
+        Quaternion leftRot = Quaternion.AngleAxis(-halfAngle, Vector3.forward);
+        Quaternion rightRot = Quaternion.AngleAxis(halfAngle, Vector3.forward);
+
+        Vector3 leftDir = leftRot * forward;
+        Vector3 rightDir = rightRot * forward;
+
+        float arcLength = detectionRadius;
+        Gizmos.DrawLine(turretHead.position, turretHead.position + leftDir * arcLength);
+        Gizmos.DrawLine(turretHead.position, turretHead.position + rightDir * arcLength);
     }
 }
