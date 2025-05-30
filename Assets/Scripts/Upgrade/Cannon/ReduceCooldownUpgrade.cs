@@ -9,13 +9,11 @@ public class ReduceCooldownUpgrade : CannonUpgrade
     public override void ApplyUpgrade(GameObject cannon)
     {
         base.ApplyUpgrade(cannon);
-
         var weapon = cannon.GetComponentInChildren<KineticCannon>();
         if (weapon != null)
         {
-            float original = weapon.cooldown;
-            float reduction = original * cooldownReductionPercent;
-            weapon.cooldown = Mathf.Max(0.05f, original - reduction);
+            weapon.cooldown = Mathf.Max(0.1f, weapon.cooldown * 0.75f);
+            weapon.shotInterval = Mathf.Max(0.05f, weapon.shotInterval * 0.75f); // Faster bursts
         }
     }
 

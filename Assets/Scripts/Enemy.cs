@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
 
     [Header("References")]
     public Transform planetTarget;
+    public System.Action OnDeath;
+
+    [SerializeField] private int xpReward = 1;
 
     private float maxHealth;
     private HealthBar healthBar;
@@ -21,8 +24,12 @@ public class Enemy : MonoBehaviour
     private Vector3 jumpStart;
     private Vector3 jumpEnd;
     private float jumpProgress;
-    [SerializeField] private int xpReward = 1;
-    public System.Action OnDeath;
+    private Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -43,6 +50,24 @@ public class Enemy : MonoBehaviour
         }
 
         StartCoroutine(JumpTowardPlanet());
+    }
+
+    public void ApplyKnockback(Vector2 force)
+    {
+        if (rb != null)
+        {
+            StopCoroutine("KnockbackRoutine"); // Prevent stacking
+            StartCoroutine(KnockbackRoutine(force));
+        }
+    }
+    private IEnumerator KnockbackRoutine(Vector2 force)
+    {
+        rb.linearVelocity = Vector2.zero; // Stop current movement
+        rb.AddForce(force, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.1f); // Duration of knockback
+
+        rb.linearVelocity = Vector2.zero; // Stop enemy again
     }
 
     IEnumerator JumpTowardPlanet()

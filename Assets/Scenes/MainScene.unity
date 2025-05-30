@@ -2010,8 +2010,8 @@ MonoBehaviour:
   popupRoot: {fileID: 1139739808}
   allUpgrades:
   - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
-  - {fileID: 11400000, guid: d7a905de42f78d54b9ebbae314503927, type: 2}
-  - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
+  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
+  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
 --- !u!1 &1200549708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2938,6 +2938,10 @@ MonoBehaviour:
   extraPierce: 0
   explosiveEnabled: 0
   explosionRadius: 0
+  extraShots: 0
+  shotInterval: 0.15
+  knockbackEnabled: 0
+  knockbackForce: 5
 --- !u!1 &1960933079
 GameObject:
   m_ObjectHideFlags: 0

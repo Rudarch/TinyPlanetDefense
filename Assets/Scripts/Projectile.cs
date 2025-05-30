@@ -15,6 +15,10 @@ public class Projectile : MonoBehaviour
     public float explosionRadius = 0f;
     public GameObject explosionEffectPrefab;
 
+    [Header("Knockback")]
+    public bool knockbackEnabled = false;
+    public float knockbackForce = 5f;
+
     private Vector2 direction;
 
     void Start()
@@ -65,13 +69,20 @@ public class Projectile : MonoBehaviour
         if (enemy == null) return;
 
         enemy.TakeDamage(damage);
+
+        if (knockbackEnabled)
+        {
+            Vector2 knockDir = (enemy.transform.position - transform.position).normalized;
+            enemy.ApplyKnockback(knockDir * knockbackForce);
+        }
+
         enemiesHit++;
 
         if (enemiesHit > pierceCount)
         {
             if (isExplosive && explosionRadius > 0f)
             {
-                Explode(); // Only explode on final hit
+                Explode();
             }
 
             Destroy(gameObject);
