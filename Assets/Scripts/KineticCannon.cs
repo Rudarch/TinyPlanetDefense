@@ -23,6 +23,10 @@ public class KineticCannon : WeaponSystem
     public bool knockbackEnabled = false;
     public float knockbackForce = 5f;
 
+    [Header("Ricochet")]
+    public bool ricochetEnabled = false;
+    public int ricochetCount = 1;
+    public float ricochetRange = 5f;
 
     private bool isFiring = false;
 
@@ -31,6 +35,7 @@ public class KineticCannon : WeaponSystem
         if (isFiring) return; // Prevent overlapping bursts
         StartCoroutine(FireBurst(target));
     }
+
     private IEnumerator FireBurst(Transform target)
     {
         isFiring = true;
@@ -57,12 +62,18 @@ public class KineticCannon : WeaponSystem
         if (projectile != null)
         {
             projectile.damage = baseDamage + bonusDamage;
+
             projectile.pierceCount = extraPierce;
+
             projectile.isExplosive = explosiveEnabled;
             projectile.explosionRadius = explosionRadius;
 
             projectile.knockbackEnabled = knockbackEnabled;
             projectile.knockbackForce = knockbackForce;
+
+            projectile.enableRicochet = ricochetEnabled;
+            projectile.maxRicochets = ricochetCount;
+            projectile.ricochetRange = ricochetRange;
 
             projectile.SetDirection(dir);
         }

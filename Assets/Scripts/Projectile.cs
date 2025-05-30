@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -5,6 +6,9 @@ public class Projectile : MonoBehaviour
     public float speed = 10f;
     public float lifetime = 5f;
     public float damage = 10f;
+
+    [Header("Visuals")]
+    public GameObject ricochetLinePrefab;
 
     [Header("Pierceing")]
     public int pierceCount = 0; 
@@ -19,7 +23,15 @@ public class Projectile : MonoBehaviour
     public bool knockbackEnabled = false;
     public float knockbackForce = 5f;
 
+    [Header("Ricochet")]
+    public bool enableRicochet = false;
+    public int maxRicochets = 1;
+    public float ricochetRange = 5f;
+
+    private int ricochetsDone = 0;
+    private List<Enemy> hitEnemies = new();
     private Vector2 direction;
+    private bool hasHitThisFrame = false;
 
     void Start()
     {
@@ -29,6 +41,10 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
+    }
+    void LateUpdate()
+    {
+        hasHitThisFrame = false; // reset every frame
     }
 
     public void SetDirection(Vector2 dir)
@@ -65,9 +81,13 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        var enemy = other.GetComponent<Enemy>();
-        if (enemy == null) return;
+        if (hasHitThisFrame) return;
+        hasHitThisFrame = true;
 
+        var enemy = other.GetComponent<Enemy>();
+        if (enemy == null || hitEnemies.Contains(enemy)) return;
+
+        hitEnemies.Add(enemy);
         enemy.TakeDamage(damage);
 
         if (knockbackEnabled)
@@ -76,16 +96,56 @@ public class Projectile : MonoBehaviour
             enemy.ApplyKnockback(knockDir * knockbackForce);
         }
 
-        enemiesHit++;
+        if (enableRicochet && ricochetsDone < maxRicochets)
+        {
+            ricochetsDone++;
+            Enemy next = FindNextEnemy(enemy.transform.position);
+            if (next != null)
+            {
+                if (ricochetLinePrefab != null)
+                {
+                    var lineObj = Instantiate(ricochetLinePrefab);
+                    var line = lineObj.GetComponent<RicochetLine>();
+                    if (line != null)
+                        line.SetPoints(transform.position, next.transform.position);
+                }
 
+                SetDirection((next.transform.position - (Vector3)transform.position).normalized);
+                return; // don't destroy yet
+            }
+        }
+
+        enemiesHit++;
         if (enemiesHit > pierceCount)
         {
             if (isExplosive && explosionRadius > 0f)
-            {
                 Explode();
-            }
 
             Destroy(gameObject);
         }
+    }
+
+
+    private Enemy FindNextEnemy(Vector3 fromPosition)
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, ricochetRange);
+        Enemy closest = null;
+        float minDist = float.MaxValue;
+
+        foreach (var col in hits)
+        {
+            var candidate = col.GetComponent<Enemy>();
+            if (candidate != null && !hitEnemies.Contains(candidate))
+            {
+                float dist = Vector3.Distance(candidate.transform.position, fromPosition);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    closest = candidate;
+                }
+            }
+        }
+
+        return closest;
     }
 }

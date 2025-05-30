@@ -2011,7 +2011,7 @@ MonoBehaviour:
   allUpgrades:
   - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
   - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
-  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
+  - {fileID: 11400000, guid: 468595302bb263440958209d0ff89761, type: 2}
 --- !u!1 &1200549708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,6 +2942,9 @@ MonoBehaviour:
   shotInterval: 0.15
   knockbackEnabled: 0
   knockbackForce: 5
+  ricochetEnabled: 0
+  ricochetCount: 1
+  ricochetRange: 5
 --- !u!1 &1960933079
 GameObject:
   m_ObjectHideFlags: 0
