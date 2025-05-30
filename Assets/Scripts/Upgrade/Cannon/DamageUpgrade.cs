@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IncreaseDamageUpgrade", menuName = "Upgrades/IncreaseDamage")]
@@ -11,7 +12,13 @@ public class IncreaseDamageUpgrade : CannonUpgrade
         var weapon = cannon.GetComponentInChildren<KineticCannon>();
         if (weapon != null)
         {
-            weapon.damage += bonusDamage;
+            weapon.bonusDamage += bonusDamage;
         }
     }
+
+    public override string GetEffectText()
+    {
+        return $"+{bonusDamage} Damage";
+    }
+
 }

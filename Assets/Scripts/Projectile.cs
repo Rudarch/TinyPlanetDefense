@@ -4,7 +4,7 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifetime = 5f;
-    public float damage = 10f;
+    public float damage = 10f; 
 
     private Vector2 direction;
 
@@ -27,11 +27,12 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        var enemy = other.GetComponent<Enemy>();
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
     }
+
 }

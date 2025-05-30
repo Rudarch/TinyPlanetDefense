@@ -7,9 +7,16 @@ public class CannonUpgrade : ScriptableObject
     [TextArea] public string description;
     public Sprite icon;
 
+    protected string effect;
     public virtual void ApplyUpgrade(GameObject cannon)
     {
         Debug.Log($"Applied upgrade: {upgradeName}");
         // Override this method in inherited upgrade types if needed
     }
+
+    public virtual string GetEffectText()
+    {
+        return string.Empty;
+    }
+
 }

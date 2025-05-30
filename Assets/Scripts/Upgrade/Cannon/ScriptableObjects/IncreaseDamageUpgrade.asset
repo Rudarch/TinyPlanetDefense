@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeName: Heavy Shells
   description: Each shot deals more damage
   icon: {fileID: 21300000, guid: 30c6932af4bfccd47ad80578b085df10, type: 3}
-  bonusDamage: 5
+  bonusDamage: 2

@@ -14,4 +14,9 @@ public class IncreaseRotationSpeedUpgrade : CannonUpgrade
             controller.rotationSpeed += speedBoost;
         }
     }
+
+    public override string GetEffectText()
+    {
+        return $"+{speedBoost}°/s Rotation Speed";
+    }
 }

@@ -12,7 +12,6 @@ public class UpgradeOptionUI : MonoBehaviour
     private CannonUpgrade upgrade;
     private GameObject cannon;
     private UpgradePopup popup;
-
     public void Setup(CannonUpgrade upgrade, GameObject cannon, UpgradePopup popup)
     {
         this.upgrade = upgrade;
@@ -21,11 +20,12 @@ public class UpgradeOptionUI : MonoBehaviour
 
         icon.sprite = upgrade.icon;
         nameText.text = upgrade.upgradeName;
-        descriptionText.text = upgrade.description;
+        descriptionText.text = $"{upgrade.description}\n<size=80%><color=yellow>{upgrade.GetEffectText()}</color></size>";
 
         selectButton.onClick.RemoveAllListeners();
         selectButton.onClick.AddListener(OnSelected);
     }
+
 
     private void OnSelected()
     {

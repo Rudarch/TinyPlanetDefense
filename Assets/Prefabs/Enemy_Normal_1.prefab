@@ -521,10 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4bfa199fe3b2d4cbe5597bc57c16e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 10
   damage: 10
   jumpDistance: 0.1
-  jumpInterval: 1
+  jumpInterval: 2
   jumpHeight: 0.01
   planetTarget: {fileID: 0}
   xpReward: 5

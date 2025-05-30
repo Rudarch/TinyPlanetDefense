@@ -16,7 +16,12 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRadius = 8f;
     public Transform planetCenter;
     public Transform enemyParent;
+    public WaveProgressUI waveUI; 
+    
+    [Header("Wave Timing")]
+    public float extraDelayBetweenWaves = 3f;
 
+    private int enemiesAlive;
     private int currentWave = 0;
 
     void Start()
@@ -32,17 +37,35 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnWaveRoutine()
     {
+        waveUI.SetNextWaveTimer(0);
+        yield return new WaitForSeconds(0);
+
         while (currentWave < waves.Count)
         {
+            waveUI.SetWave(currentWave);
             yield return StartCoroutine(SpawnWave(waves[currentWave]));
+
             currentWave++;
-            yield return new WaitForSeconds(5f); // Optional delay between waves
+
+            if (currentWave < waves.Count)
+            {
+                float timeToNextWave = waves[currentWave].spawnDuration + extraDelayBetweenWaves;
+                waveUI.SetNextWaveTimer(timeToNextWave);
+                yield return new WaitForSeconds(timeToNextWave);
+            }
+            else
+            {
+                waveUI.SetNextWaveTimer(0f);
+            }
         }
     }
 
+
     IEnumerator SpawnWave(Wave wave)
     {
-        float interval = wave.spawnDuration / wave.enemyCount;
+        enemiesAlive = wave.enemyCount;
+        waveUI.SetEnemiesRemaining(enemiesAlive);
+        float interval = wave.enemyCount > 0 ? wave.spawnDuration / wave.enemyCount : 0.5f;
 
         for (int i = 0; i < wave.enemyCount; i++)
         {
@@ -56,5 +79,12 @@ public class EnemySpawner : MonoBehaviour
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         Vector3 spawnPos = planetCenter.position + (Vector3)(randomDirection * spawnRadius);
         GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity, enemyParent);
+        enemy.GetComponent<Enemy>().OnDeath += HandleEnemyDeath;
+    }
+
+    private void HandleEnemyDeath()
+    {
+        enemiesAlive--;
+        waveUI.SetEnemiesRemaining(enemiesAlive);
     }
 }

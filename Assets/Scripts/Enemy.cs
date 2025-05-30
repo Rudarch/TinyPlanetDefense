@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     private Vector3 jumpEnd;
     private float jumpProgress;
     [SerializeField] private int xpReward = 1;
+    public System.Action OnDeath;
 
     void Start()
     {
@@ -94,6 +95,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 
