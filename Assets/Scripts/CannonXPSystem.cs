@@ -10,10 +10,12 @@ public class CannonXPSystem : MonoBehaviour
     public float levelMultiplier = 1.5f;
 
     public UnityEvent<int> OnLevelUp; // Passes new level
-    public UnityEvent<int, int> OnXPChanged; // Passes current XP, XP required
+    public UnityEvent<int, int> OnXPChanged;
     public UpgradePopup upgradePopup;
-    public GameObject cannonGameObject; // Optional, assign self or main cannon root
+    public GameObject cannonGameObject;
 
+    private int pendingLevelUps = 0;
+    private bool isChoosingUpgrade = false;
     private int xpToNextLevel;
 
     void Start()

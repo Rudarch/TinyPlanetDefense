@@ -4,7 +4,16 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifetime = 5f;
-    public float damage = 10f; 
+    public float damage = 10f;
+
+    [Header("Pierceing")]
+    public int pierceCount = 0; 
+    private int enemiesHit = 0;
+
+    [Header("Explosive")]
+    public bool isExplosive = false;
+    public float explosionRadius = 0f;
+    public GameObject explosionEffectPrefab;
 
     private Vector2 direction;
 
@@ -25,14 +34,47 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); // Face forward
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Explode()
     {
-        var enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (var hit in hits)
         {
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
+            var enemy = hit.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+        }
+
+        if (explosionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            ShockwaveEffect shock = effect.GetComponent<ShockwaveEffect>();
+            if (shock != null)
+            {
+                shock.maxRadius = explosionRadius;
+            }
+            Debug.DrawLine(transform.position, transform.position + Vector3.right * explosionRadius, Color.green, 2f);
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        var enemy = other.GetComponent<Enemy>();
+        if (enemy == null) return;
+
+        enemy.TakeDamage(damage);
+        enemiesHit++;
+
+        if (enemiesHit > pierceCount)
+        {
+            if (isExplosive && explosionRadius > 0f)
+            {
+                Explode(); // Only explode on final hit
+            }
+
+            Destroy(gameObject);
+        }
+    }
 }

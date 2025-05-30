@@ -916,10 +916,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 25
+  - enemyCount: 500
+    spawnDuration: 100
+  - enemyCount: 500
     spawnDuration: 10
-  - enemyCount: 25
-    spawnDuration: 5
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
   spawnRadius: 3
   planetCenter: {fileID: 6671393143994966655}
@@ -1929,7 +1929,7 @@ GameObject:
   - component: {fileID: 1139739810}
   - component: {fileID: 1139739812}
   m_Layer: 5
-  m_Name: LevelUpPanel
+  m_Name: UpgradePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2009,9 +2009,9 @@ MonoBehaviour:
   optionParent: {fileID: 1200549709}
   popupRoot: {fileID: 1139739808}
   allUpgrades:
-  - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
+  - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
+  - {fileID: 11400000, guid: d7a905de42f78d54b9ebbae314503927, type: 2}
   - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
-  - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
 --- !u!1 &1200549708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,6 +2935,9 @@ MonoBehaviour:
   baseDamage: 3
   bonusDamage: 0
   cooldown: 1
+  extraPierce: 0
+  explosiveEnabled: 0
+  explosionRadius: 0
 --- !u!1 &1960933079
 GameObject:
   m_ObjectHideFlags: 0

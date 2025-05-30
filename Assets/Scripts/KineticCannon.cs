@@ -6,6 +6,9 @@ public class KineticCannon : WeaponSystem
     public float baseDamage = 10f;
     public float bonusDamage = 0f;
     public float cooldown = 2f;
+    public int extraPierce = 0;
+    public bool explosiveEnabled = false;
+    public float explosionRadius = 0f;
 
     private float lastFireTime = -Mathf.Infinity;
 
@@ -21,6 +24,11 @@ public class KineticCannon : WeaponSystem
         if (projectile != null)
         {
             projectile.damage = baseDamage + bonusDamage;
+            projectile.pierceCount = extraPierce;
+
+            projectile.isExplosive = explosiveEnabled;
+            projectile.explosionRadius = explosionRadius;
+
             projectile.SetDirection(dir);
         }
     }
