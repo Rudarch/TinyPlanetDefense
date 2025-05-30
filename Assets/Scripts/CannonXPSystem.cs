@@ -8,8 +8,7 @@ public class CannonXPSystem : MonoBehaviour
     public int currentLevel = 1;
     public int baseXPToLevel = 5;
     public float levelMultiplier = 1.5f;
-
-    public UnityEvent<int> OnLevelUp; // Passes new level
+    public UnityEvent<int> OnLevelUp;
     public UnityEvent<int, int> OnXPChanged;
     public UpgradePopup upgradePopup;
     public GameObject cannonGameObject;
@@ -27,34 +26,49 @@ public class CannonXPSystem : MonoBehaviour
     public void AddXP(int amount)
     {
         currentXP += amount;
-        if (currentXP >= xpToNextLevel)
+
+        // Queue all level-ups that can happen with this XP
+        while (currentXP >= xpToNextLevel)
         {
-            LevelUp();
+            currentXP -= xpToNextLevel;
+            currentLevel++;
+            pendingLevelUps++;
+
+            OnLevelUp?.Invoke(currentLevel);
+
+            xpToNextLevel = GetXPRequirementForLevel(currentLevel);
+        }
+
+        OnXPChanged?.Invoke(currentXP, xpToNextLevel);
+
+        TryShowUpgradePopup();
+    }
+
+    private void TryShowUpgradePopup()
+    {
+        if (isChoosingUpgrade || pendingLevelUps <= 0 || upgradePopup == null)
+            return;
+
+        isChoosingUpgrade = true;
+        Time.timeScale = 0f; // Pause game
+        upgradePopup.Show(cannonGameObject != null ? cannonGameObject : gameObject);
+    }
+
+    public void OnUpgradeSelected()
+    {
+        pendingLevelUps--;
+
+        if (pendingLevelUps > 0)
+        {
+            // Show next upgrade choice
+            upgradePopup.Show(this.gameObject);
         }
         else
         {
-            OnXPChanged?.Invoke(currentXP, xpToNextLevel);
+            isChoosingUpgrade = false;
+            Time.timeScale = 1f;
         }
     }
-
-    private void LevelUp()
-    {
-        currentLevel++;
-        currentXP -= xpToNextLevel;
-        xpToNextLevel = GetXPRequirementForLevel(currentLevel);
-
-        OnLevelUp?.Invoke(currentLevel);
-        OnXPChanged?.Invoke(currentXP, xpToNextLevel);
-
-        Debug.Log($"Cannon leveled up! Now level {currentLevel}");
-
-        if (upgradePopup != null)
-        {
-            upgradePopup.Show(cannonGameObject != null ? cannonGameObject : gameObject);
-            Time.timeScale = 0f; // Pause while selecting upgrade (optional)
-        }
-    }
-
 
     private int GetXPRequirementForLevel(int level)
     {

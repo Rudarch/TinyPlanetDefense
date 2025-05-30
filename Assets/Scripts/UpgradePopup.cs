@@ -42,6 +42,11 @@ public class UpgradePopup : MonoBehaviour
     public void Hide()
     {
         popupRoot.SetActive(false);
-        Time.timeScale = 1f; // Resume game
+
+        var xpSystem = cannon.GetComponent<CannonXPSystem>();
+        if (xpSystem != null)
+        {
+            xpSystem.OnUpgradeSelected();
+        }
     }
 }
