@@ -15,4 +15,5 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  isUnique: 0
   extraRadius: 0.2

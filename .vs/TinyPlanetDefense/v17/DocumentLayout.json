@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Repos\\TinyPlanetDefense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgradepopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgradepopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\effects\\ricochetline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\ricochetline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\cannonxpsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cannonxpsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Projectile.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Projectile.cs",
-              "ViewState": "AgIAAF8AAAAAAAAAAAAAAGwAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CannonXPSystem.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonXPSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CannonXPSystem.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonXPSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CannonXPSystem.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAhwEIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T21:53:13.764Z",
+              "WhenOpened": "2025-05-31T08:09:48.058Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RicochetLine.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\RicochetLine.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\RicochetLine.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\RicochetLine.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Effects\\RicochetLine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UpgradePopup.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UpgradePopup.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UpgradePopup.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UpgradePopup.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UpgradePopup.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAhwCAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-30T21:50:58.465Z",
+              "WhenOpened": "2025-05-31T08:03:55.578Z",
               "EditorCaption": ""
             }
           ]

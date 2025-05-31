@@ -60,7 +60,6 @@ public class CannonXPSystem : MonoBehaviour
 
         if (pendingLevelUps > 0)
         {
-            // Show next upgrade choice
             upgradePopup.Show(this.gameObject);
         }
         else
@@ -69,6 +68,7 @@ public class CannonXPSystem : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
+
 
     private int GetXPRequirementForLevel(int level)
     {

@@ -30,6 +30,9 @@ public class UpgradeOptionUI : MonoBehaviour
     private void OnSelected()
     {
         upgrade.ApplyUpgrade(cannon);
+
+        UpgradeManager.Instance?.MarkUniqueUpgradeTaken(upgrade);
+
         popup.Hide();
     }
 }
