@@ -14,10 +14,11 @@ public class KineticCannon : WeaponSystem
     [Header("Explosive Shots")]
     public bool explosiveEnabled = false;
     public float explosionRadius = 0f;
+    public float splashDamageMultiplier = 0.3f;
 
     [Header("Extra Shots")]
-    public int extraShots = 0; // Number of additional shots per fire
-    public float shotInterval = 0.15f; // Delay between burst shots
+    public int extraShots = 0;
+    public float shotInterval = 0.15f;
 
     [Header("High Caliber")]
     public bool knockbackEnabled = false;
@@ -149,6 +150,7 @@ public class KineticCannon : WeaponSystem
 
             projectile.isExplosive = explosiveEnabled;
             projectile.explosionRadius = explosionRadius;
+            projectile.splashDamageMultiplier = splashDamageMultiplier;
 
             projectile.knockbackEnabled = knockbackEnabled;
             projectile.knockbackForce = knockbackForce;

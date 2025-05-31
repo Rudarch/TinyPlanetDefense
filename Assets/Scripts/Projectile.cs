@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour
     [Header("Explosive")]
     public bool isExplosive = false;
     public float explosionRadius = 0f;
+    public float splashDamageMultiplier = 0.3f;
     public GameObject explosionEffectPrefab;
 
     [Header("Knockback")]
@@ -43,6 +44,7 @@ public class Projectile : MonoBehaviour
     private List<Enemy> hitEnemies = new();
     private Vector2 direction;
     private bool hasHitThisFrame = false;
+    private Enemy directHitEnemy = null;
 
     void Start()
     {
@@ -72,9 +74,11 @@ public class Projectile : MonoBehaviour
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
-            if (enemy != null)
+            if (enemy != null && enemy != directHitEnemy) // Skip direct hit enemy
             {
-                enemy.TakeDamage(damage);
+                // Apply reduced AOE damage (30%)
+                float aoeDamage = damage * splashDamageMultiplier;
+                enemy.TakeDamage(aoeDamage);
 
                 if (knockbackEnabled)
                 {
@@ -106,7 +110,6 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        // Visual shockwave
         if (explosionEffectPrefab != null)
         {
             GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
@@ -118,7 +121,6 @@ public class Projectile : MonoBehaviour
         }
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (hasHitThisFrame) return;
@@ -126,6 +128,9 @@ public class Projectile : MonoBehaviour
 
         var enemy = other.GetComponent<Enemy>();
         if (enemy == null || hitEnemies.Contains(enemy)) return;
+
+        if (directHitEnemy == null)
+            directHitEnemy = enemy;
 
         hitEnemies.Add(enemy);
         enemy.TakeDamage(damage);

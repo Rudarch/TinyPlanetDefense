@@ -4,6 +4,7 @@ using UnityEngine;
 public class ExplosiveRoundsUpgrade : CannonUpgrade
 {
     public float extraRadius = 0.5f;
+    public float splashDamageMultiplier = 0.3f;
 
     public override void ApplyUpgrade(GameObject cannon)
     {
@@ -14,6 +15,7 @@ public class ExplosiveRoundsUpgrade : CannonUpgrade
         {
             weapon.explosiveEnabled = true;
             weapon.explosionRadius += extraRadius;
+            weapon.splashDamageMultiplier = splashDamageMultiplier;
         }
     }
 
