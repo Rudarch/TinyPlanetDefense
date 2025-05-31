@@ -28,6 +28,11 @@ public class Projectile : MonoBehaviour
     public int maxRicochets = 1;
     public float ricochetRange = 5f;
 
+    [Header("Cryo Effect")]
+    public bool applyCryo = false;
+    public float cryoSlowAmount = 0.3f;
+    public float cryoSlowDuration = 2f;
+
     private int ricochetsDone = 0;
     private List<Enemy> hitEnemies = new();
     private Vector2 direction;
@@ -94,6 +99,15 @@ public class Projectile : MonoBehaviour
         {
             Vector2 knockDir = (enemy.transform.position - transform.position).normalized;
             enemy.ApplyKnockback(knockDir * knockbackForce);
+        }
+
+        if (applyCryo)
+        {
+            var slowable = enemy.GetComponent<EnemySlow>();
+            if (slowable != null)
+            {
+                slowable.ApplySlow(cryoSlowAmount, cryoSlowDuration);
+            }
         }
 
         if (enableRicochet && ricochetsDone < maxRicochets)

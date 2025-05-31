@@ -28,54 +28,129 @@ public class KineticCannon : WeaponSystem
     public int ricochetCount = 1;
     public float ricochetRange = 5f;
 
-    private bool isFiring = false;
+    [Header("Cryo Shells")]
+    public bool cryoEnabled = false;
+    public float cryoSlowAmount = 0.3f;
+    public float cryoSlowDuration = 2f;
+
+    [Header("Twin Barrel")]
+    public bool twinBarrelEnabled = false;
+    public float twinBarrelDelay = 0.05f; 
+    [Header("Muzzles")]
+    public Transform muzzleCenter;
+    public Transform muzzleLeft;
+    public Transform muzzleRight;
+    public GameObject twinMuzzlesGroup;
+    public GameObject singleMuzzleGroup;
+
+    [Header("Aiming")]
+    public float allowedDeviationAngle = 5f;
+    public Transform rotatingPart;
+
+    //private bool isFiring = false;
+    private float lastFireTime = -Mathf.Infinity;
+
+    void Start()
+    {
+        if (twinBarrelEnabled)
+        {
+            EnableTwinMuzzles();
+        }
+        else
+        {
+            EnableSingleMuzzle();
+        }
+    }
+
+    public void EnableTwinMuzzles()
+    {
+        if (twinMuzzlesGroup != null) 
+            twinMuzzlesGroup.SetActive(true);
+        if (singleMuzzleGroup != null) 
+            singleMuzzleGroup.SetActive(false);
+    }
+
+    private void EnableSingleMuzzle()
+    {
+        if (twinMuzzlesGroup != null) 
+            twinMuzzlesGroup.SetActive(false);
+        if (singleMuzzleGroup != null) 
+            singleMuzzleGroup.SetActive(true);
+    }
 
     public override void TryFireAt(Transform target)
     {
-        if (isFiring) return; // Prevent overlapping bursts
-        StartCoroutine(FireBurst(target));
+        if (Time.time - lastFireTime < cooldown) 
+            return;
+        if (!IsLookingAtTarget(target)) 
+            return;
+
+        lastFireTime = Time.time;
+        Vector2 dir = (target.position - transform.position).normalized;
+
+        StartCoroutine(FireBurst(dir));
     }
 
-    private IEnumerator FireBurst(Transform target)
+    public bool IsLookingAtTarget(Transform target)
     {
-        isFiring = true;
+        if (target == null || rotatingPart == null)
+            return false;
 
-        for (int i = 0; i <= extraShots; i++) // First + extras
+        Vector2 toTarget = (target.position - rotatingPart.position).normalized;
+        float angleToTarget = Vector2.SignedAngle(rotatingPart.up, toTarget);
+
+        return Mathf.Abs(angleToTarget) <= allowedDeviationAngle;
+    }
+
+    IEnumerator FireBurst(Vector2 direction)
+    {
+        for (int i = 0; i <= extraShots; i++)
         {
-            FireSingleShot(target);
-            if (i < extraShots) // Wait only between shots, not after last
+            if (twinBarrelEnabled)
+            {
+                // Fire from left barrel first
+                FireFromMuzzle(muzzleLeft, direction);
+
+                // Small delay before firing from right barrel
+                if (twinBarrelDelay > 0f)
+                    yield return new WaitForSeconds(twinBarrelDelay);
+
+                FireFromMuzzle(muzzleRight, direction);
+            }
+            else
+            {
+                FireFromMuzzle(muzzleCenter, direction);
+            }
+
+            if (i < extraShots)
                 yield return new WaitForSeconds(shotInterval);
         }
-
-        yield return new WaitForSeconds(cooldown); // Full cooldown after burst
-        isFiring = false;
     }
 
-    private void FireSingleShot(Transform target)
+    void FireFromMuzzle(Transform muzzle, Vector2 dir)
     {
-        if (projectilePrefab == null || target == null) return;
+        if (muzzle == null) return;
 
-        Vector2 dir = (target.position - transform.position).normalized;
-        GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-
+        GameObject proj = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
         var projectile = proj.GetComponent<Projectile>();
         if (projectile != null)
         {
             projectile.damage = baseDamage + bonusDamage;
-
             projectile.pierceCount = extraPierce;
-
             projectile.isExplosive = explosiveEnabled;
             projectile.explosionRadius = explosionRadius;
-
             projectile.knockbackEnabled = knockbackEnabled;
             projectile.knockbackForce = knockbackForce;
-
             projectile.enableRicochet = ricochetEnabled;
-            projectile.maxRicochets = ricochetCount;
             projectile.ricochetRange = ricochetRange;
+            projectile.maxRicochets = ricochetCount;
+
+            projectile.applyCryo = cryoEnabled;
+            projectile.cryoSlowAmount = cryoSlowAmount;
+            projectile.cryoSlowDuration = cryoSlowDuration;
 
             projectile.SetDirection(dir);
         }
     }
+
 }

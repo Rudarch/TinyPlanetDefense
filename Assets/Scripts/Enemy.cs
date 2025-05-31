@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
     private Vector3 jumpEnd;
     private float jumpProgress;
     private Rigidbody2D rb;
+    public float moveSpeed = 2f;
 
     void Awake()
     {
@@ -79,7 +81,8 @@ public class Enemy : MonoBehaviour
 
             Vector3 dir = (planetTarget.position - transform.position).normalized;
             jumpStart = transform.position;
-            jumpEnd = jumpStart + dir * jumpDistance;
+            float effectiveJumpDistance = jumpDistance * (moveSpeed / 2f); // 2f is base moveSpeed
+            jumpEnd = jumpStart + dir * effectiveJumpDistance;
             jumpProgress = 0f;
 
             while (jumpProgress < 1f)
