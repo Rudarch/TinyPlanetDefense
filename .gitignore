@@ -90,3 +90,7 @@ TestResults/
 *.rar
 
 *.vsidx
+
+*.db-wal
+
+*.db-shm

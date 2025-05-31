@@ -6,7 +6,7 @@ public class LockCanvasRotation : MonoBehaviour
 
     void Awake()
     {
-        initialRotation = Quaternion.identity; // Always face up
+        initialRotation = Quaternion.identity;
     }
 
     void LateUpdate()

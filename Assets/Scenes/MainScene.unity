@@ -917,7 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyCount: 500
-    spawnDuration: 300
+    spawnDuration: 120
   - enemyCount: 500
     spawnDuration: 60
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
@@ -2171,9 +2171,16 @@ MonoBehaviour:
   popupRoot: {fileID: 1139739808}
   allUpgrades:
   - {fileID: 11400000, guid: cb119603d06a7d541b02a6069bffa0db, type: 2}
-  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
-  - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
   - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
+  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
+  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
+  - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
+  - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
+  - {fileID: 11400000, guid: d7a905de42f78d54b9ebbae314503927, type: 2}
+  - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
+  - {fileID: 11400000, guid: 468595302bb263440958209d0ff89761, type: 2}
+  - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
+  - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
 --- !u!1 &1181037105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,15 +3206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5c4cf3aa6bf2b4d8158fda3c59a9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretHead: {fileID: 1920778747}
+  rotatingPart: {fileID: 1920778747}
+  weaponSystem: {fileID: 1920778749}
   rotationSpeed: 30
-  maxAimAngle: 5
-  planetCenter: {fileID: 6671393143994966655}
-  detectionRadius: 3
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 8
-  currentWeapon: {fileID: 1920778749}
+  allowedDeviationAngle: 5
+  planetTransform: {fileID: 2895315123865355977}
 --- !u!114 &1871424266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3353,6 +3356,7 @@ MonoBehaviour:
   extraPierce: 0
   explosiveEnabled: 0
   explosionRadius: 0
+  splashDamageMultiplier: 0.3
   extraShots: 0
   shotInterval: 0.15
   knockbackEnabled: 0

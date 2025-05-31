@@ -1,117 +1,134 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CannonController : MonoBehaviour
 {
-    public Transform turretHead;
-    public float rotationSpeed = 180f; // degrees per second
-    public float maxAimAngle = 10f; // Allowed angle deviation to fire
+    public Transform rotatingPart;
+    public WeaponSystem weaponSystem;
+    public float rotationSpeed = 180f;
+    public float allowedDeviationAngle = 5f;
+    public Transform planetTransform;
 
-    public Transform planetCenter;
-    public float detectionRadius = 20f;
-    public LayerMask obstructionMask;
-
-    public WeaponSystem currentWeapon;
-
-    private Enemy currentTarget;
+    private Transform currentTarget;
+    private bool isPlayerAiming = false;
+    private Vector3 manualAimPosition;
 
     void Update()
     {
-        // Check if current target is still valid
-        if (currentTarget == null || !IsTargetValid(currentTarget))
+        HandleManualInput();
+
+        if (isPlayerAiming)
+        {
+            RotateToward(manualAimPosition);
+
+            Vector2 cannonPos = rotatingPart.position;
+            Vector2 aimDir = (manualAimPosition - (Vector3)cannonPos).normalized;
+
+            if (IsInLineOfSight(manualAimPosition) && IsLookingAtDirection(aimDir))
+            {
+                weaponSystem.TryFireWithDirection(aimDir);
+            }
+        }
+        else
         {
             currentTarget = FindNearestVisibleEnemy();
-        }
 
-        if (currentTarget != null)
-        {
-            Vector3 dir = (currentTarget.transform.position - turretHead.position).normalized;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
-
-            turretHead.rotation = Quaternion.RotateTowards(
-                turretHead.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
-
-            if (IsAimingAt(currentTarget.transform))
+            if (currentTarget != null)
             {
-                currentWeapon.TryFireAt(currentTarget.transform);
+                RotateToward(currentTarget.position);
+
+                if (IsLookingAtTarget(currentTarget.position) && IsInLineOfSight(currentTarget.position))
+                {
+                    weaponSystem.TryFireAt(currentTarget);
+                }
             }
         }
     }
 
-
-    private bool IsAimingAt(Transform target)
+    void HandleManualInput()
     {
-        Vector3 toTarget = (target.position - turretHead.position).normalized;
-        Vector3 turretForward = turretHead.up;
-
-        float angle = Vector3.Angle(turretForward, toTarget);
-        return angle <= maxAimAngle;
+        if (Touchscreen.current != null)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+            if (touch.press.isPressed)
+            {
+                Vector2 screenPos = touch.position.ReadValue();
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+                worldPos.z = 0f;
+                manualAimPosition = worldPos;
+                isPlayerAiming = true;
+            }
+            else
+            {
+                isPlayerAiming = false;
+            }
+        }
+        else if (Mouse.current != null)
+        {
+            if (Mouse.current.leftButton.isPressed)
+            {
+                Vector2 screenPos = Mouse.current.position.ReadValue();
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
+                worldPos.z = 0f;
+                manualAimPosition = worldPos;
+                isPlayerAiming = true;
+            }
+            else
+            {
+                isPlayerAiming = false;
+            }
+        }
     }
 
-    private Enemy FindNearestVisibleEnemy()
+    void RotateToward(Vector3 targetPosition)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
-        float closestDist = Mathf.Infinity;
-        Enemy closestEnemy = null;
+        Vector3 direction = (targetPosition - rotatingPart.position).normalized;
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.MoveTowardsAngle(rotatingPart.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
+        rotatingPart.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
 
-        foreach (var hit in hits)
+    bool IsLookingAtDirection(Vector2 dir)
+    {
+        float angleToTarget = Vector2.SignedAngle(rotatingPart.up, dir);
+        return Mathf.Abs(angleToTarget) <= allowedDeviationAngle;
+    }
+
+    bool IsLookingAtTarget(Vector3 targetPos)
+    {
+        Vector2 toTarget = (targetPos - rotatingPart.position).normalized;
+        return IsLookingAtDirection(toTarget);
+    }
+
+    bool IsInLineOfSight(Vector3 targetPos)
+    {
+        Vector2 origin = rotatingPart.position;
+        Vector2 dir = ((Vector2)targetPos - origin).normalized;
+        float dist = Vector2.Distance(origin, targetPos);
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, dir, dist);
+        if (hit.collider != null && hit.collider.transform == planetTransform)
+            return false;
+
+        return true;
+    }
+
+    Transform FindNearestVisibleEnemy()
+    {
+        Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        Transform closest = null;
+        float closestDist = float.MaxValue;
+
+        foreach (var enemy in enemies)
         {
-            Enemy enemy = hit.GetComponent<Enemy>();
-            if (enemy == null) continue;
-
-            Vector3 dir = enemy.transform.position - turretHead.position;
-            RaycastHit2D hitInfo = Physics2D.Raycast(turretHead.position, dir.normalized, dir.magnitude, obstructionMask);
-
-            if (hitInfo.collider == null && dir.magnitude < closestDist)
+            float dist = Vector2.Distance(rotatingPart.position, enemy.transform.position);
+            if (dist < closestDist && IsInLineOfSight(enemy.transform.position))
             {
-                closestDist = dir.magnitude;
-                closestEnemy = enemy;
+                closest = enemy.transform;
+                closestDist = dist;
             }
         }
 
-        return closestEnemy;
-    }
-    private bool IsTargetValid(Enemy target)
-    {
-        if (target == null)
-            return false;
-
-        // Check if within detection range
-        float dist = Vector3.Distance(turretHead.position, target.transform.position);
-        if (dist > detectionRadius)
-            return false;
-
-        // Check if obstructed by planet or other object
-        Vector3 dir = (target.transform.position - turretHead.position);
-        RaycastHit2D hit = Physics2D.Raycast(turretHead.position, dir.normalized, dir.magnitude, obstructionMask);
-        return hit.collider == null; // null means no obstruction
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (turretHead == null)
-            return;
-
-        // Draw the detection/attack radius
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(turretHead.position, detectionRadius);
-
-        // Draw aim cone
-        Vector3 forward = turretHead.up;
-        float halfAngle = maxAimAngle;
-
-        Gizmos.color = Color.red;
-        Quaternion leftRot = Quaternion.AngleAxis(-halfAngle, Vector3.forward);
-        Quaternion rightRot = Quaternion.AngleAxis(halfAngle, Vector3.forward);
-
-        Vector3 leftDir = leftRot * forward;
-        Vector3 rightDir = rightRot * forward;
-
-        float arcLength = detectionRadius;
-        Gizmos.DrawLine(turretHead.position, turretHead.position + leftDir * arcLength);
-        Gizmos.DrawLine(turretHead.position, turretHead.position + rightDir * arcLength);
+        return closest;
     }
 }

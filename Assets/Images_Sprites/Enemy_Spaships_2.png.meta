@@ -285,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Enemy_Spaships_2_0: -6504847071345445622
+      Enemy_Spaships_2_1: -1436355851280121299
+      Enemy_Spaships_2_2: -9074220515743290635
+      Enemy_Spaships_2_3: 2935580794561932022
+      Enemy_Spaships_2_4: 4874521575902087150
+      Enemy_Spaships_2_5: 3027909426168817662
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

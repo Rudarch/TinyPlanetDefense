@@ -55,7 +55,6 @@ public class KineticCannon : WeaponSystem
     public float allowedDeviationAngle = 5f;
     public Transform rotatingPart;
 
-    //private bool isFiring = false;
     private float lastFireTime = -Mathf.Infinity;
 
     void Start()
@@ -99,6 +98,14 @@ public class KineticCannon : WeaponSystem
         StartCoroutine(FireBurst(dir));
     }
 
+    public override void TryFireWithDirection(Vector2 direction)
+    {
+        if (Time.time - lastFireTime < cooldown) return;
+        lastFireTime = Time.time;
+
+        StartCoroutine(FireBurst(direction));
+    }
+
     public bool IsLookingAtTarget(Transform target)
     {
         if (target == null || rotatingPart == null)
@@ -116,10 +123,8 @@ public class KineticCannon : WeaponSystem
         {
             if (twinBarrelEnabled)
             {
-                // Fire from left barrel first
                 FireFromMuzzle(muzzleLeft, direction);
 
-                // Small delay before firing from right barrel
                 if (twinBarrelDelay > 0f)
                     yield return new WaitForSeconds(twinBarrelDelay);
 
