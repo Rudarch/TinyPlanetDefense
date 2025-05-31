@@ -1737,18 +1737,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305274677432706772, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5737902610290573324, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      propertyPath: moveSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5817518848662692413, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8611095868110961764, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.71
@@ -1788,18 +1776,6 @@ PrefabInstance:
     - target: {fileID: 8611095868110961764, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9016697250679359417, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      propertyPath: icons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9016697250679359417, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      propertyPath: icons.Array.data[1].iconObject
-      value: 
-      objectReference: {fileID: 2010187345}
-    - target: {fileID: 9016697250679359417, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      propertyPath: icons.Array.data[1].statusName
-      value: Burning
       objectReference: {fileID: 0}
     - target: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_Name
@@ -1963,7 +1939,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 9386a211bf549ea448f6055594ad8e92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3531,11 +3507,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960933079}
   m_CullTransparentMesh: 1
---- !u!1 &2010187345 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5817518848662692413, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-  m_PrefabInstance: {fileID: 794161665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136399285
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,23 +8,21 @@ public class Enemy : MonoBehaviour
     public float health = 5f;
     public float damage = 1f;
 
-    [Header("Jump Movement")]
-    public float jumpDistance = 1.5f;
-    public float jumpInterval = 1.0f;
-    public float jumpHeight = 0.5f;
+    [Header("Dash Movement")]
+    public float dashDistance = 1.5f;
+    public float dashInterval = 1.0f;
 
     [Header("References")]
     public Transform planetTarget;
     public System.Action OnDeath;
 
+    [Header("VFX")]
+    public GameObject thrusterFX;
+
     [SerializeField] private int xpReward = 1;
 
     private float maxHealth;
     private HealthBar healthBar;
-
-    private Vector3 jumpStart;
-    private Vector3 jumpEnd;
-    private float jumpProgress;
     private Rigidbody2D rb;
     public float moveSpeed = 2f;
 
@@ -51,7 +49,7 @@ public class Enemy : MonoBehaviour
             healthBar.gameObject.SetActive(false);
         }
 
-        StartCoroutine(JumpTowardPlanet());
+        StartCoroutine(DashTowardPlanet());
     }
 
     public void ApplyKnockback(Vector2 force)
@@ -72,28 +70,42 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector2.zero; // Stop enemy again
     }
 
-    IEnumerator JumpTowardPlanet()
+    IEnumerator DashTowardPlanet()
     {
         while (true)
         {
-            yield return new WaitForSeconds(jumpInterval);
+            float interval = dashInterval / (moveSpeed / 2f);
+            yield return new WaitForSeconds(interval);
+
             if (planetTarget == null) yield break;
 
             Vector3 dir = (planetTarget.position - transform.position).normalized;
-            jumpStart = transform.position;
-            float effectiveJumpDistance = jumpDistance * (moveSpeed / 2f); // 2f is base moveSpeed
-            jumpEnd = jumpStart + dir * effectiveJumpDistance;
-            jumpProgress = 0f;
+            // Rotate enemy to face the planet
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); // Adjust by -90 if sprite faces "up"
 
-            while (jumpProgress < 1f)
+            float effectiveDashDistance = dashDistance * (moveSpeed / 2f);
+            Vector3 targetPos = transform.position + dir * effectiveDashDistance;
+
+            if (thrusterFX != null) thrusterFX.SetActive(true);
+
+            float dashDuration = 0.2f;
+            float timer = 0f;
+            Vector3 start = transform.position;
+
+            while (timer < dashDuration)
             {
-                jumpProgress += Time.deltaTime / 0.2f;
-                float curved = Mathf.Sin(jumpProgress * Mathf.PI);
-                transform.position = Vector3.Lerp(jumpStart, jumpEnd, jumpProgress) + Vector3.up * curved * jumpHeight;
+                timer += Time.deltaTime;
+                float t = timer / dashDuration;
+                transform.position = Vector3.Lerp(start, targetPos, t);
                 yield return null;
             }
+
+            if (thrusterFX != null) thrusterFX.SetActive(false);
         }
     }
+
+
 
     public void TakeDamage(float amount)
     {
