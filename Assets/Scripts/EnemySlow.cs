@@ -10,7 +10,7 @@ public class EnemySlow : MonoBehaviour
     private SpriteRenderer sr;
     private Color originalColor;
     private EnemyStatusIcons statusIcons;
-
+    private const string STATUS_NAME = "Slowed";
     void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -33,7 +33,7 @@ public class EnemySlow : MonoBehaviour
         if (sr != null) 
             sr.color = Color.cyan;
         if (statusIcons != null) 
-            statusIcons.SetStatusIcon("Slowed", true);
+            statusIcons.SetStatusIcon(STATUS_NAME, true);
 
         yield return new WaitForSeconds(duration);
 
@@ -41,7 +41,7 @@ public class EnemySlow : MonoBehaviour
         if (sr != null) 
             sr.color = originalColor;
         if (statusIcons != null) 
-            statusIcons.SetStatusIcon("Slowed", false);
+            statusIcons.SetStatusIcon(STATUS_NAME, false);
 
         slowRoutine = null;
     }

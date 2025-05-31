@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     [Header("VFX")]
     public GameObject thrusterFX;
+    public GameObject deathExplosionPrefab;
 
     [SerializeField] private int xpReward = 1;
 
@@ -124,7 +125,6 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        // Award XP to cannon
         GameObject cannon = GameObject.FindWithTag("Cannon");
         if (cannon != null)
         {
@@ -136,6 +136,12 @@ public class Enemy : MonoBehaviour
         }
 
         OnDeath?.Invoke();
+
+        if (deathExplosionPrefab != null)
+        {
+            Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 

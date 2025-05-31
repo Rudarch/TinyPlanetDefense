@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Repos\\TinyPlanetDefense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\enemyslow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyslow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\kineticcannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\kineticcannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\effects\\burningeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\burningeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\cannon\\cryoshellsupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\cannon\\cryoshellsupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\enemystatusicons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemystatusicons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\lockcanvasrotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lockcanvasrotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Projectile.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
               "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
               "RelativeToolTip": "Assets\\Scripts\\Projectile.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAhwGwAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAswJcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T11:56:29.287Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "KineticCannon.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\KineticCannon.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\KineticCannon.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\KineticCannon.cs",
-              "RelativeToolTip": "Assets\\Scripts\\KineticCannon.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAhwJMAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T11:56:23.551Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CryoShellsUpgrade.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Cannon\\CryoShellsUpgrade.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Cannon\\CryoShellsUpgrade.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Cannon\\CryoShellsUpgrade.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Cannon\\CryoShellsUpgrade.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T11:56:12.097Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Enemy.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Enemy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Enemy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAAwBQAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T10:21:22.781Z",
+              "WhenOpened": "2025-05-31T20:04:23.49Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EnemySlow.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\EnemySlow.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemySlow.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\EnemySlow.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemySlow.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCMAAAAtAAAAAAAAAA==",
+              "Title": "BurningEffect.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\BurningEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\BurningEffect.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\BurningEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effects\\BurningEffect.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAawDUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T10:16:53.614Z",
+              "WhenOpened": "2025-05-31T20:03:41.213Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EnemyStatusIcons.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\EnemyStatusIcons.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyStatusIcons.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\EnemyStatusIcons.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemyStatusIcons.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAAVAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "LockCanvasRotation.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\LockCanvasRotation.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LockCanvasRotation.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\LockCanvasRotation.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LockCanvasRotation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T10:15:24.922Z",
+              "WhenOpened": "2025-05-31T19:56:22.788Z",
               "EditorCaption": ""
             }
           ]

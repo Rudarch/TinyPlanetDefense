@@ -917,9 +917,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyCount: 500
-    spawnDuration: 100
+    spawnDuration: 300
   - enemyCount: 500
-    spawnDuration: 10
+    spawnDuration: 60
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
   spawnRadius: 3
   planetCenter: {fileID: 6671393143994966655}
@@ -2171,8 +2171,9 @@ MonoBehaviour:
   popupRoot: {fileID: 1139739808}
   allUpgrades:
   - {fileID: 11400000, guid: cb119603d06a7d541b02a6069bffa0db, type: 2}
-  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
-  - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
+  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
+  - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
+  - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
 --- !u!1 &1181037105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,6 +3357,7 @@ MonoBehaviour:
   shotInterval: 0.15
   knockbackEnabled: 0
   knockbackForce: 5
+  projectileScale: 1
   ricochetEnabled: 0
   ricochetCount: 1
   ricochetRange: 5
@@ -3369,6 +3371,9 @@ MonoBehaviour:
   muzzleRight: {fileID: 1181037106}
   twinMuzzlesGroup: {fileID: 560091883}
   singleMuzzleGroup: {fileID: 1616862199}
+  thermiteEnabled: 0
+  thermiteDuration: 3
+  thermiteDPS: 1
   allowedDeviationAngle: 5
   rotatingPart: {fileID: 1920778747}
 --- !u!1 &1960933079

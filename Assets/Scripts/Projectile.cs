@@ -33,6 +33,12 @@ public class Projectile : MonoBehaviour
     public float cryoSlowAmount = 0.3f;
     public float cryoSlowDuration = 2f;
 
+    [Header("Thermite")]
+    public bool thermiteEnabled = false;
+    public float thermiteDuration = 3f;
+    public float thermiteDPS = 1f;
+    public bool reducedThermite = false; // used for AoE subhits
+
     private int ricochetsDone = 0;
     private List<Enemy> hitEnemies = new();
     private Vector2 direction;
@@ -69,20 +75,49 @@ public class Projectile : MonoBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
+
+                if (knockbackEnabled)
+                {
+                    Vector2 awayFromCenter = (enemy.transform.position - transform.position).normalized;
+                    enemy.ApplyKnockback(awayFromCenter * knockbackForce);
+                }
+
+                if (applyCryo)
+                {
+                    var slowable = enemy.GetComponent<EnemySlow>();
+                    if (slowable != null)
+                    {
+                        slowable.ApplySlow(cryoSlowAmount, cryoSlowDuration);
+                    }
+                }
+
+                if (thermiteEnabled)
+                {
+                    var burning = enemy.GetComponent<BurningEffect>();
+                    if (burning == null)
+                    {
+                        burning = enemy.gameObject.AddComponent<BurningEffect>();
+                        burning.baseDamagePerSecond = thermiteDPS;
+                        burning.burnDuration = thermiteDuration;
+                    }
+
+                    burning.ApplyOrRefresh(thermiteDPS, thermiteDuration);
+                }
             }
         }
 
+        // Visual shockwave
         if (explosionEffectPrefab != null)
         {
             GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             ShockwaveEffect shock = effect.GetComponent<ShockwaveEffect>();
             if (shock != null)
             {
-                shock.maxRadius = explosionRadius;
+                shock.maxRadius = explosionRadius * 2f;
             }
-            Debug.DrawLine(transform.position, transform.position + Vector3.right * explosionRadius, Color.green, 2f);
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -108,6 +143,19 @@ public class Projectile : MonoBehaviour
             {
                 slowable.ApplySlow(cryoSlowAmount, cryoSlowDuration);
             }
+        }
+
+        if (thermiteEnabled)
+        {
+            var burning = enemy.GetComponent<BurningEffect>();
+            if (burning == null)
+            {
+                burning = enemy.gameObject.AddComponent<BurningEffect>();
+                burning.baseDamagePerSecond = thermiteDPS;
+                burning.burnDuration = thermiteDuration;
+            }
+
+            burning.ApplyOrRefresh(thermiteDPS, thermiteDuration);
         }
 
         if (enableRicochet && ricochetsDone < maxRicochets)

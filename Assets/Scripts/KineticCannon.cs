@@ -19,9 +19,10 @@ public class KineticCannon : WeaponSystem
     public int extraShots = 0; // Number of additional shots per fire
     public float shotInterval = 0.15f; // Delay between burst shots
 
-    [Header("Knockback")]
+    [Header("High Caliber")]
     public bool knockbackEnabled = false;
     public float knockbackForce = 5f;
+    public float projectileScale = 1f;
 
     [Header("Ricochet")]
     public bool ricochetEnabled = false;
@@ -36,12 +37,18 @@ public class KineticCannon : WeaponSystem
     [Header("Twin Barrel")]
     public bool twinBarrelEnabled = false;
     public float twinBarrelDelay = 0.05f; 
+
     [Header("Muzzles")]
     public Transform muzzleCenter;
     public Transform muzzleLeft;
     public Transform muzzleRight;
     public GameObject twinMuzzlesGroup;
     public GameObject singleMuzzleGroup;
+
+    [Header("Thermite")]
+    public bool thermiteEnabled = false;
+    public float thermiteDuration = 3f;
+    public float thermiteDPS = 1f;
 
     [Header("Aiming")]
     public float allowedDeviationAngle = 5f;
@@ -132,15 +139,20 @@ public class KineticCannon : WeaponSystem
         if (muzzle == null) return;
 
         GameObject proj = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
+        proj.transform.localScale *= projectileScale;
         var projectile = proj.GetComponent<Projectile>();
         if (projectile != null)
         {
             projectile.damage = baseDamage + bonusDamage;
+
             projectile.pierceCount = extraPierce;
+
             projectile.isExplosive = explosiveEnabled;
             projectile.explosionRadius = explosionRadius;
+
             projectile.knockbackEnabled = knockbackEnabled;
             projectile.knockbackForce = knockbackForce;
+
             projectile.enableRicochet = ricochetEnabled;
             projectile.ricochetRange = ricochetRange;
             projectile.maxRicochets = ricochetCount;
@@ -148,6 +160,10 @@ public class KineticCannon : WeaponSystem
             projectile.applyCryo = cryoEnabled;
             projectile.cryoSlowAmount = cryoSlowAmount;
             projectile.cryoSlowDuration = cryoSlowDuration;
+
+            projectile.thermiteEnabled = thermiteEnabled;
+            projectile.thermiteDuration = thermiteDuration;
+            projectile.thermiteDPS = thermiteDPS;
 
             projectile.SetDirection(dir);
         }
