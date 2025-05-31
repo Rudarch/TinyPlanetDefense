@@ -94,3 +94,9 @@ TestResults/
 *.db-wal
 
 *.db-shm
+
+.utmp/RelWithDebInfo/p286p1a5/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/games-frame-pacing/
+
+.utmp/RelWithDebInfo/p286p1a5/arm64-v8a/
+
+.utmp/RelWithDebInfo/p286p1a5/
