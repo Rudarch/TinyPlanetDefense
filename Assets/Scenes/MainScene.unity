@@ -2170,17 +2170,8 @@ MonoBehaviour:
   optionParent: {fileID: 1200549709}
   popupRoot: {fileID: 1139739808}
   allUpgrades:
-  - {fileID: 11400000, guid: cb119603d06a7d541b02a6069bffa0db, type: 2}
+  - {fileID: 11400000, guid: f9e23a58bba57f14d927a76eeab8ece8, type: 2}
   - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
-  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
-  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
-  - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
-  - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
-  - {fileID: 11400000, guid: d7a905de42f78d54b9ebbae314503927, type: 2}
-  - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
-  - {fileID: 11400000, guid: 468595302bb263440958209d0ff89761, type: 2}
-  - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
-  - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
 --- !u!1 &1181037105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,7 +3341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
-  baseDamage: 3
+  baseDamage: 7
   bonusDamage: 0
   cooldown: 1
   extraPierce: 0
@@ -3516,6 +3507,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960933079}
   m_CullTransparentMesh: 1
+--- !u!1 &1992848706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992848707}
+  m_Layer: 3
+  m_Name: InterceptorSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992848707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992848706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.61, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2895315123865355977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2136399285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,6 +3759,7 @@ Transform:
   - {fileID: 2143308501}
   - {fileID: 71050341}
   - {fileID: 6671393143994966655}
+  - {fileID: 1992848707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4131335431094804155
@@ -3798,7 +3821,7 @@ CircleCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3829,6 +3852,7 @@ GameObject:
   - component: {fileID: 5933901204310152918}
   - component: {fileID: 4999076213395326009}
   - component: {fileID: 6089606871271464104}
+  - component: {fileID: 6089606871271464105}
   m_Layer: 3
   m_Name: Planet
   m_TagString: Planet
@@ -3850,6 +3874,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+--- !u!114 &6089606871271464105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089606871271464103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bd82a6d3ec7e8478c45b0e7d59358f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interceptorPrefab: {fileID: 1255202045022592806, guid: f8011c78c7ebb0d46aee9fda3be466fd, type: 3}
+  spawnPoint: {fileID: 1992848707}
+  launchDelay: 0.5
 --- !u!4 &6671393143994966655
 Transform:
   m_ObjectHideFlags: 0

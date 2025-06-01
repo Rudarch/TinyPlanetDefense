@@ -11,10 +11,12 @@ public class EnemySlow : MonoBehaviour
     private Color originalColor;
     private EnemyStatusIcons statusIcons;
     private const string STATUS_NAME = "Slowed";
+
     void Awake()
     {
         enemy = GetComponent<Enemy>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        originalColor = sr.color;
         statusIcons = GetComponentInChildren<EnemyStatusIcons>();
         originalSpeed = enemy.moveSpeed;
     }

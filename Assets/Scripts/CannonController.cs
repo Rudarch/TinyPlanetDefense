@@ -31,7 +31,10 @@ public class CannonController : MonoBehaviour
         }
         else
         {
-            currentTarget = FindNearestVisibleEnemy();
+            if (currentTarget == null || !IsTargetStillValid(currentTarget))
+            {
+                currentTarget = FindNearestVisibleEnemy();
+            }
 
             if (currentTarget != null)
             {
@@ -111,6 +114,14 @@ public class CannonController : MonoBehaviour
             return false;
 
         return true;
+    }
+
+    bool IsTargetStillValid(Transform target)
+    {
+        if (target == null)
+            return false;
+
+        return IsInLineOfSight(target.position);
     }
 
     Transform FindNearestVisibleEnemy()

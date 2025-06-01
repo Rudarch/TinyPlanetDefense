@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
     public bool thermiteEnabled = false;
     public float thermiteDuration = 3f;
     public float thermiteDPS = 1f;
-    public bool reducedThermite = false; // used for AoE subhits
+    public bool reducedThermite = false;
 
     private int ricochetsDone = 0;
     private List<Enemy> hitEnemies = new();
@@ -57,14 +57,14 @@ public class Projectile : MonoBehaviour
     }
     void LateUpdate()
     {
-        hasHitThisFrame = false; // reset every frame
+        hasHitThisFrame = false;
     }
 
     public void SetDirection(Vector2 dir)
     {
         direction = dir.normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); // Face forward
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 
     void Explode()
@@ -74,9 +74,8 @@ public class Projectile : MonoBehaviour
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
-            if (enemy != null && enemy != directHitEnemy) // Skip direct hit enemy
+            if (enemy != null && enemy != directHitEnemy)
             {
-                // Apply reduced AOE damage (30%)
                 float aoeDamage = damage * splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
 
@@ -178,7 +177,7 @@ public class Projectile : MonoBehaviour
                 }
 
                 SetDirection((next.transform.position - (Vector3)transform.position).normalized);
-                return; // don't destroy yet
+                return;
             }
         }
 
