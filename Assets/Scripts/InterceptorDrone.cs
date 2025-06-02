@@ -18,7 +18,6 @@ public class InterceptorDrone : MonoBehaviour
     private int shotsRemaining;
     private Enemy currentTarget;
     private float fireTimer = 0f;
-    private float searchTimer = 0f;
 
     public void Initialize()
     {
@@ -29,7 +28,6 @@ public class InterceptorDrone : MonoBehaviour
             Debug.Log("Planet not found.");
 
         state = State.Seeking;
-        searchTimer = 0f;
     }
 
     void Update()
@@ -138,14 +136,15 @@ public class InterceptorDrone : MonoBehaviour
         }
     }
 
-    void Shoot(Vector3 dir)
+    void Shoot(Vector3 targetPos)
     {
-        if (projectilePrefab == null) return;
-
+        Vector3 dir = (targetPos - transform.position).normalized;
         GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         var projectile = proj.GetComponent<Projectile>();
         if (projectile != null)
+        {
             projectile.SetDirection(dir);
+        }
     }
 
     Enemy FindNearestEnemy()

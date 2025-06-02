@@ -1,9 +1,9 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "OrbitalWingUpgrade", menuName = "Upgrades/OrbitalWing")]
-public class OrbitalWingUpgrade : CannonUpgrade
+public class OrbitalWingUpgrade : Upgrade
 {
-    public override void ApplyUpgrade(GameObject cannon)
+    public override void ApplyUpgrade()
     {
         GameObject planet = GameObject.FindWithTag("Planet");
         if (planet != null)
@@ -20,6 +20,6 @@ public class OrbitalWingUpgrade : CannonUpgrade
 
     public override string GetEffectText()
     {
-        return "Adds an interceptor that patrols and attacks enemies";
+        return "Adds an interceptor drone that and attacks enemies.";
     }
 }

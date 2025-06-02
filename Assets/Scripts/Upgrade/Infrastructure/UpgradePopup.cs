@@ -6,7 +6,7 @@ public class UpgradePopup : MonoBehaviour
     public GameObject optionPrefab;
     public Transform optionParent;
     public GameObject popupRoot;
-    public List<CannonUpgrade> allUpgrades;
+    public List<Upgrade> allUpgrades;
 
     private GameObject cannon;
     public void Show(GameObject cannon)
@@ -14,40 +14,36 @@ public class UpgradePopup : MonoBehaviour
         this.cannon = cannon;
         popupRoot.SetActive(true);
 
-        // Clear old UI
         foreach (Transform child in optionParent)
             Destroy(child.gameObject);
 
-        // Filter available upgrades
-        List<CannonUpgrade> available = new();
+        List<Upgrade> available = new();
         foreach (var upgrade in allUpgrades)
         {
             if (!upgrade.isUnique || !UpgradeManager.Instance.IsUniqueUpgradeTaken(upgrade))
                 available.Add(upgrade);
         }
 
-        // If no upgrades left, skip level up
         if (available.Count == 0)
         {
             popupRoot.SetActive(false);
-            FindFirstObjectByType<CannonXPSystem>()?.OnUpgradeSelected(); // Safely skip
+            FindFirstObjectByType<CannonXPSystem>()?.OnUpgradeSelected();
             return;
         }
 
-        // Randomly pick up to 3
-        List<CannonUpgrade> selected = new();
+        List<Upgrade> selected = new();
         while (selected.Count < Mathf.Min(3, available.Count))
         {
-            CannonUpgrade random = available[Random.Range(0, available.Count)];
+            Upgrade random = available[Random.Range(0, available.Count)];
             if (!selected.Contains(random))
                 selected.Add(random);
         }
 
-        // Show UI
         foreach (var upgrade in selected)
         {
             var ui = Instantiate(optionPrefab, optionParent);
-            ui.GetComponent<UpgradeOptionUI>().Setup(upgrade, cannon, this);
+            var upgradeOptionUI = ui.GetComponent<UpgradeOptionUI>();
+            upgradeOptionUI.Setup(upgrade, this);
         }
     }
 

@@ -4,39 +4,7 @@ using UnityEngine;
 public class KineticCannon : WeaponSystem
 {
     public GameObject projectilePrefab;
-    public float baseDamage = 10f;
-    public float bonusDamage = 0f;
-    public float cooldown = 2f;
-
-    [Header("Pierce Shots")]
-    public int extraPierce = 0;
-
-    [Header("Explosive Shots")]
-    public bool explosiveEnabled = false;
-    public float explosionRadius = 0f;
-    public float splashDamageMultiplier = 0.3f;
-
-    [Header("Extra Shots")]
-    public int extraShots = 0;
-    public float shotInterval = 0.15f;
-
-    [Header("High Caliber")]
-    public bool knockbackEnabled = false;
-    public float knockbackForce = 5f;
-    public float projectileScale = 1f;
-
-    [Header("Ricochet")]
-    public bool ricochetEnabled = false;
-    public int ricochetCount = 1;
-    public float ricochetRange = 5f;
-
-    [Header("Cryo Shells")]
-    public bool cryoEnabled = false;
-    public float cryoSlowAmount = 0.3f;
-    public float cryoSlowDuration = 2f;
-
-    [Header("Twin Barrel")]
-    public bool twinBarrelEnabled = false;
+    public float baseCooldown = 2f;
     public float twinBarrelDelay = 0.05f; 
 
     [Header("Muzzles")]
@@ -46,20 +14,11 @@ public class KineticCannon : WeaponSystem
     public GameObject twinMuzzlesGroup;
     public GameObject singleMuzzleGroup;
 
-    [Header("Thermite")]
-    public bool thermiteEnabled = false;
-    public float thermiteDuration = 3f;
-    public float thermiteDPS = 1f;
-
-    [Header("Aiming")]
-    public float allowedDeviationAngle = 5f;
-    public Transform rotatingPart;
-
     private float lastFireTime = -Mathf.Infinity;
 
     void Start()
     {
-        if (twinBarrelEnabled)
+        if (UpgradeStateManager.Instance.CannonUpgrades.twinBarrelEnabled)
         {
             EnableTwinMuzzles();
         }
@@ -87,9 +46,7 @@ public class KineticCannon : WeaponSystem
 
     public override void TryFireAt(Transform target)
     {
-        if (Time.time - lastFireTime < cooldown) 
-            return;
-        if (!IsLookingAtTarget(target)) 
+        if (Time.time - lastFireTime < baseCooldown * UpgradeStateManager.Instance.CannonUpgrades.cooldownReductionMultiplier) 
             return;
 
         lastFireTime = Time.time;
@@ -100,28 +57,17 @@ public class KineticCannon : WeaponSystem
 
     public override void TryFireWithDirection(Vector2 direction)
     {
-        if (Time.time - lastFireTime < cooldown) return;
+        if (Time.time - lastFireTime < baseCooldown * UpgradeStateManager.Instance.CannonUpgrades.cooldownReductionMultiplier) return;
         lastFireTime = Time.time;
 
         StartCoroutine(FireBurst(direction));
     }
 
-    public bool IsLookingAtTarget(Transform target)
-    {
-        if (target == null || rotatingPart == null)
-            return false;
-
-        Vector2 toTarget = (target.position - rotatingPart.position).normalized;
-        float angleToTarget = Vector2.SignedAngle(rotatingPart.up, toTarget);
-
-        return Mathf.Abs(angleToTarget) <= allowedDeviationAngle;
-    }
-
     IEnumerator FireBurst(Vector2 direction)
     {
-        for (int i = 0; i <= extraShots; i++)
+        for (int i = 0; i <= UpgradeStateManager.Instance.CannonUpgrades.extraShots; i++)
         {
-            if (twinBarrelEnabled)
+            if (UpgradeStateManager.Instance.CannonUpgrades.twinBarrelEnabled)
             {
                 FireFromMuzzle(muzzleLeft, direction);
 
@@ -135,8 +81,8 @@ public class KineticCannon : WeaponSystem
                 FireFromMuzzle(muzzleCenter, direction);
             }
 
-            if (i < extraShots)
-                yield return new WaitForSeconds(shotInterval);
+            if (i < UpgradeStateManager.Instance.CannonUpgrades.extraShots)
+                yield return new WaitForSeconds(UpgradeStateManager.Instance.CannonUpgrades.shotInterval);
         }
     }
 
@@ -145,33 +91,9 @@ public class KineticCannon : WeaponSystem
         if (muzzle == null) return;
 
         GameObject proj = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
-        proj.transform.localScale *= projectileScale;
         var projectile = proj.GetComponent<Projectile>();
         if (projectile != null)
         {
-            projectile.damage = baseDamage + bonusDamage;
-
-            projectile.pierceCount = extraPierce;
-
-            projectile.isExplosive = explosiveEnabled;
-            projectile.explosionRadius = explosionRadius;
-            projectile.splashDamageMultiplier = splashDamageMultiplier;
-
-            projectile.knockbackEnabled = knockbackEnabled;
-            projectile.knockbackForce = knockbackForce;
-
-            projectile.enableRicochet = ricochetEnabled;
-            projectile.ricochetRange = ricochetRange;
-            projectile.maxRicochets = ricochetCount;
-
-            projectile.applyCryo = cryoEnabled;
-            projectile.cryoSlowAmount = cryoSlowAmount;
-            projectile.cryoSlowDuration = cryoSlowDuration;
-
-            projectile.thermiteEnabled = thermiteEnabled;
-            projectile.thermiteDuration = thermiteDuration;
-            projectile.thermiteDPS = thermiteDPS;
-
             projectile.SetDirection(dir);
         }
     }

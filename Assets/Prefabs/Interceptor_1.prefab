@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52200bfdac2b85a4a8e03a28fe918b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  rotationSpeed: 120
-  interceptorRange: 1
+  moveSpeed: 0.3
+  rotationSpeed: 100
+  interceptorRange: 2
   shotsPerMission: 2
   reloadTime: 5
-  fireCooldown: 0.5
+  fireCooldown: 1
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
 --- !u!50 &8837947128523197071
 Rigidbody2D:

@@ -9,13 +9,11 @@ public class UpgradeOptionUI : MonoBehaviour
     public TMP_Text descriptionText;
     public Button selectButton;
 
-    private CannonUpgrade upgrade;
-    private GameObject cannon;
+    private Upgrade upgrade;
     private UpgradePopup popup;
-    public void Setup(CannonUpgrade upgrade, GameObject cannon, UpgradePopup popup)
+    public void Setup(Upgrade upgrade, UpgradePopup popup)
     {
         this.upgrade = upgrade;
-        this.cannon = cannon;
         this.popup = popup;
 
         icon.sprite = upgrade.icon;
@@ -29,7 +27,7 @@ public class UpgradeOptionUI : MonoBehaviour
 
     private void OnSelected()
     {
-        upgrade.ApplyUpgrade(cannon);
+        upgrade.ApplyUpgrade();
 
         UpgradeManager.Instance?.MarkUniqueUpgradeTaken(upgrade);
 

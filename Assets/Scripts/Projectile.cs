@@ -9,45 +9,21 @@ public class Projectile : MonoBehaviour
 
     [Header("Visuals")]
     public GameObject ricochetLinePrefab;
-
-    [Header("Pierceing")]
-    public int pierceCount = 0; 
-    private int enemiesHit = 0;
-
-    [Header("Explosive")]
-    public bool isExplosive = false;
-    public float explosionRadius = 0f;
-    public float splashDamageMultiplier = 0.3f;
     public GameObject explosionEffectPrefab;
 
-    [Header("Knockback")]
-    public bool knockbackEnabled = false;
-    public float knockbackForce = 5f;
-
-    [Header("Ricochet")]
-    public bool enableRicochet = false;
-    public int maxRicochets = 1;
-    public float ricochetRange = 5f;
-
-    [Header("Cryo Effect")]
-    public bool applyCryo = false;
-    public float cryoSlowAmount = 0.3f;
-    public float cryoSlowDuration = 2f;
-
-    [Header("Thermite")]
-    public bool thermiteEnabled = false;
-    public float thermiteDuration = 3f;
-    public float thermiteDPS = 1f;
-    public bool reducedThermite = false;
-
+    private int pierceCount = 0; 
+    private int enemiesHit = 0;
     private int ricochetsDone = 0;
     private List<Enemy> hitEnemies = new();
     private Vector2 direction;
     private bool hasHitThisFrame = false;
     private Enemy directHitEnemy = null;
+    private ProjectileUpgradeState upgradeState;
 
     void Start()
     {
+        upgradeState = UpgradeStateManager.Instance.ProjectileUpgrades;
+        damage += upgradeState.bonusDamage;
         Destroy(gameObject, lifetime);
     }
 
@@ -69,42 +45,46 @@ public class Projectile : MonoBehaviour
 
     void Explode()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgradeState.explosionRadius);
 
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
             if (enemy != null && enemy != directHitEnemy)
             {
-                float aoeDamage = damage * splashDamageMultiplier;
+                float aoeDamage = damage * upgradeState.splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
 
-                if (knockbackEnabled)
+                if (upgradeState.knockbackEnabled)
                 {
                     Vector2 awayFromCenter = (enemy.transform.position - transform.position).normalized;
-                    enemy.ApplyKnockback(awayFromCenter * knockbackForce);
+                    enemy.ApplyKnockback(awayFromCenter * upgradeState.knockbackForce);
                 }
 
-                if (applyCryo)
+                if (upgradeState.cryoEnabled)
                 {
                     var slowable = enemy.GetComponent<EnemySlow>();
                     if (slowable != null)
                     {
-                        slowable.ApplySlow(cryoSlowAmount, cryoSlowDuration);
+                        slowable.ApplySlow(
+                            upgradeState.cryoAmount,
+                            upgradeState.cryoDuration);
                     }
                 }
 
-                if (thermiteEnabled)
+                if (upgradeState.thermiteEnabled)
                 {
                     var burning = enemy.GetComponent<BurningEffect>();
                     if (burning == null)
                     {
                         burning = enemy.gameObject.AddComponent<BurningEffect>();
-                        burning.baseDamagePerSecond = thermiteDPS;
-                        burning.burnDuration = thermiteDuration;
+                        burning.baseDamagePerSecond = upgradeState.thermiteDPS;
+                        burning.burnDuration = upgradeState.thermiteDuration;
                     }
 
-                    burning.ApplyOrRefresh(thermiteDPS, thermiteDuration);
+                    burning.ApplyOrRefresh(
+                        upgradeState.thermiteDPS, 
+                        upgradeState.thermiteDuration);
                 }
             }
         }
@@ -115,7 +95,7 @@ public class Projectile : MonoBehaviour
             ShockwaveEffect shock = effect.GetComponent<ShockwaveEffect>();
             if (shock != null)
             {
-                shock.maxRadius = explosionRadius * 2f;
+                shock.maxRadius = upgradeState.explosionRadius * 2f;
             }
         }
     }
@@ -134,35 +114,35 @@ public class Projectile : MonoBehaviour
         hitEnemies.Add(enemy);
         enemy.TakeDamage(damage);
 
-        if (knockbackEnabled)
+        if (upgradeState.knockbackEnabled)
         {
             Vector2 knockDir = (enemy.transform.position - transform.position).normalized;
-            enemy.ApplyKnockback(knockDir * knockbackForce);
+            enemy.ApplyKnockback(knockDir * upgradeState.knockbackForce);
         }
 
-        if (applyCryo)
+        if (upgradeState.cryoEnabled)
         {
             var slowable = enemy.GetComponent<EnemySlow>();
             if (slowable != null)
             {
-                slowable.ApplySlow(cryoSlowAmount, cryoSlowDuration);
+                slowable.ApplySlow(upgradeState.cryoAmount, upgradeState.cryoDuration);
             }
         }
 
-        if (thermiteEnabled)
+        if (upgradeState.thermiteEnabled)
         {
             var burning = enemy.GetComponent<BurningEffect>();
             if (burning == null)
             {
                 burning = enemy.gameObject.AddComponent<BurningEffect>();
-                burning.baseDamagePerSecond = thermiteDPS;
-                burning.burnDuration = thermiteDuration;
+                burning.baseDamagePerSecond = upgradeState.thermiteDPS;
+                burning.burnDuration = upgradeState.thermiteDuration;
             }
 
-            burning.ApplyOrRefresh(thermiteDPS, thermiteDuration);
+            burning.ApplyOrRefresh(upgradeState.thermiteDPS, upgradeState.thermiteDuration);
         }
 
-        if (enableRicochet && ricochetsDone < maxRicochets)
+        if (upgradeState.ricochetEnabled && ricochetsDone < upgradeState.ricochetCount)
         {
             ricochetsDone++;
             Enemy next = FindNextEnemy(enemy.transform.position);
@@ -184,7 +164,7 @@ public class Projectile : MonoBehaviour
         enemiesHit++;
         if (enemiesHit > pierceCount)
         {
-            if (isExplosive && explosionRadius > 0f)
+            if (upgradeState.explosiveEnabled && upgradeState.explosionRadius > 0f)
                 Explode();
 
             Destroy(gameObject);
@@ -194,7 +174,7 @@ public class Projectile : MonoBehaviour
 
     private Enemy FindNextEnemy(Vector3 fromPosition)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, ricochetRange);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgradeState.ricochetRange);
         Enemy closest = null;
         float minDist = float.MaxValue;
 

@@ -8,7 +8,7 @@ public class CannonXPSystem : MonoBehaviour
     public int currentLevel = 1;
     public int baseXPToLevel = 5;
     public float levelMultiplier = 1.5f;
-    public UnityEvent<int> OnLevelUp;
+    public UnityEvent<GameObject> OnLevelUp;
     public UnityEvent<int, int> OnXPChanged;
     public UpgradePopup upgradePopup;
     public GameObject cannonGameObject;
@@ -34,7 +34,7 @@ public class CannonXPSystem : MonoBehaviour
             currentLevel++;
             pendingLevelUps++;
 
-            OnLevelUp?.Invoke(currentLevel);
+            OnLevelUp?.Invoke(cannonGameObject);
 
             xpToNextLevel = GetXPRequirementForLevel(currentLevel);
         }

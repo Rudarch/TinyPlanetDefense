@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCannonUpgrade", menuName = "Upgrades/CannonUpgrade")]
-public class CannonUpgrade : ScriptableObject
+public class Upgrade : ScriptableObject
 {
     public string upgradeName;
     [TextArea] public string description;
@@ -9,8 +8,7 @@ public class CannonUpgrade : ScriptableObject
 
     public bool isUnique = false;
 
-    protected string effect;
-    public virtual void ApplyUpgrade(GameObject cannon)
+    public virtual void ApplyUpgrade()
     {
         Debug.Log($"Applied upgrade: {upgradeName}");
     }

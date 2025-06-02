@@ -921,7 +921,7 @@ MonoBehaviour:
   - enemyCount: 500
     spawnDuration: 60
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-  spawnRadius: 3
+  spawnRadius: 4
   planetCenter: {fileID: 6671393143994966655}
   enemyParent: {fileID: 150644103}
   waveUI: {fileID: 150644105}
@@ -2088,7 +2088,6 @@ GameObject:
   - component: {fileID: 1139739809}
   - component: {fileID: 1139739811}
   - component: {fileID: 1139739810}
-  - component: {fileID: 1139739812}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -2154,24 +2153,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139739808}
   m_CullTransparentMesh: 1
---- !u!114 &1139739812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1139739808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0592672a6a554504ebe0a7f03648fb82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  optionPrefab: {fileID: 967793369289468580, guid: e56eaf332551ec74083b10120be8297f, type: 3}
-  optionParent: {fileID: 1200549709}
-  popupRoot: {fileID: 1139739808}
-  allUpgrades:
-  - {fileID: 11400000, guid: f9e23a58bba57f14d927a76eeab8ece8, type: 2}
-  - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
 --- !u!1 &1181037105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1200549709}
   - component: {fileID: 1200549710}
+  - component: {fileID: 1200549711}
   m_Layer: 5
   m_Name: UpgradeButtonsLayout
   m_TagString: Untagged
@@ -2234,9 +2216,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1139739809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 758.9392, y: -910}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1200549710
@@ -2257,7 +2239,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 100
   m_ChildAlignment: 4
-  m_Spacing: 10
+  m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -2265,6 +2247,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1200549711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200549708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1260360106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,7 +2691,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536275461}
-  - component: {fileID: 1536275462}
+  - component: {fileID: 1536275463}
+  - component: {fileID: 1536275464}
+  - component: {fileID: 1536275465}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2718,7 +2716,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1536275462
+--- !u!114 &1536275463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2727,7 +2725,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536275458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff79529e7b053394f989c7cf44985c58, type: 3}
+  m_Script: {fileID: 11500000, guid: f43f35333d556e742bf188279f79b0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionPrefab: {fileID: 967793369289468580, guid: e56eaf332551ec74083b10120be8297f, type: 3}
+  optionParent: {fileID: 1200549709}
+  popupRoot: {fileID: 1139739808}
+  allUpgrades:
+  - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
+  - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
+  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
+  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
+  - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
+  - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
+  - {fileID: 11400000, guid: f9e23a58bba57f14d927a76eeab8ece8, type: 2}
+  - {fileID: 11400000, guid: d7a905de42f78d54b9ebbae314503927, type: 2}
+  - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
+  - {fileID: 11400000, guid: 468595302bb263440958209d0ff89761, type: 2}
+  - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
+  - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
+--- !u!114 &1536275464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536275458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b3014b14c51ab4a949b39cbbef35e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1536275465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536275458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea027492a5d8c54f8ec3167c9b62770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1616862199
@@ -3199,7 +3237,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingPart: {fileID: 1920778747}
   weaponSystem: {fileID: 1920778749}
-  rotationSpeed: 30
   allowedDeviationAngle: 5
   planetTransform: {fileID: 2895315123865355977}
 --- !u!114 &1871424266
@@ -3221,9 +3258,9 @@ MonoBehaviour:
   OnLevelUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139739812}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradePopup, Assembly-CSharp
-        m_MethodName: Show
+        m_MethodName: 
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1871424263}
@@ -3236,7 +3273,7 @@ MonoBehaviour:
   OnXPChanged:
     m_PersistentCalls:
       m_Calls: []
-  upgradePopup: {fileID: 1139739812}
+  upgradePopup: {fileID: 1536275463}
   cannonGameObject: {fileID: 1871424263}
 --- !u!1 &1920778746
 GameObject:
@@ -3341,36 +3378,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
-  baseDamage: 7
-  bonusDamage: 0
-  cooldown: 1
-  extraPierce: 0
-  explosiveEnabled: 0
-  explosionRadius: 0
-  splashDamageMultiplier: 0.3
-  extraShots: 0
-  shotInterval: 0.15
-  knockbackEnabled: 0
-  knockbackForce: 5
-  projectileScale: 1
-  ricochetEnabled: 0
-  ricochetCount: 1
-  ricochetRange: 5
-  cryoEnabled: 0
-  cryoSlowAmount: 0.3
-  cryoSlowDuration: 2
-  twinBarrelEnabled: 0
+  baseCooldown: 2
   twinBarrelDelay: 0.1
   muzzleCenter: {fileID: 4131335431094804155}
   muzzleLeft: {fileID: 1116838083}
   muzzleRight: {fileID: 1181037106}
   twinMuzzlesGroup: {fileID: 560091883}
   singleMuzzleGroup: {fileID: 1616862199}
-  thermiteEnabled: 0
-  thermiteDuration: 3
-  thermiteDPS: 1
-  allowedDeviationAngle: 5
-  rotatingPart: {fileID: 1920778747}
 --- !u!1 &1960933079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,8 +4190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 6671393143994966655}
-  orbitRadius: 0.7
-  orbitSpeed: 15
+  orbitRadius: 0.8
+  orbitSpeed: 14
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
