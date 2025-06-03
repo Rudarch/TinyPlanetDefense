@@ -136,14 +136,13 @@ public class InterceptorDrone : MonoBehaviour
         }
     }
 
-    void Shoot(Vector3 targetPos)
+    void Shoot(Vector3 direction)
     {
-        Vector3 dir = (targetPos - transform.position).normalized;
         GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         var projectile = proj.GetComponent<Projectile>();
         if (projectile != null)
         {
-            projectile.SetDirection(dir);
+            projectile.SetDirection(direction.normalized);
         }
     }
 

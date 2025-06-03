@@ -4,8 +4,9 @@ using UnityEngine;
 public class OrbitalWingSystem : MonoBehaviour
 {
     public GameObject interceptorPrefab;
-    public Transform spawnPoint;
+    public Transform planet;
     public float launchDelay = 0.5f;
+    public float spawnOffset = 0.5f;
 
     private int interceptorCount = 0;
     private int activeInterceptors = 0;
@@ -31,15 +32,30 @@ public class OrbitalWingSystem : MonoBehaviour
                 yield break;
             }
 
-            if (spawnPoint == null)
+            if (planet == null)
             {
-                Debug.Log("Spawn point is not assigned.");
+                Debug.Log("Planet is not assigned.");
                 yield break;
             }
 
             if (activeInterceptors < interceptorCount)
             {
-                GameObject drone = Instantiate(interceptorPrefab, spawnPoint.position, Quaternion.identity);
+                Vector2 randomDir = Random.insideUnitCircle.normalized;
+
+                float planetRadius = 1f;
+                CircleCollider2D collider = planet.GetComponent<CircleCollider2D>();
+                if (collider != null)
+                {
+                    planetRadius = collider.radius * Mathf.Max(planet.localScale.x, planet.localScale.y);
+                }
+                else
+                {
+                    Debug.Log("Planet collider is missing, using default radius 1f.");
+                }
+
+                Vector3 spawnPosition = planet.position + (Vector3)(randomDir * (planetRadius + spawnOffset));
+
+                GameObject drone = Instantiate(interceptorPrefab, spawnPosition, Quaternion.identity);
                 var behavior = drone.GetComponent<InterceptorDrone>();
 
                 if (behavior != null)

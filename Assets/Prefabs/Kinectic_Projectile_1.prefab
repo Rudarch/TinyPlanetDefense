@@ -112,27 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eba54d5083134144b97823a329744d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
   lifetime: 5
-  damage: 7
+  damage: 4
   ricochetLinePrefab: {fileID: 1408851793309974807, guid: dfb982c2c600937498e8617649b6975f, type: 3}
-  pierceCount: 0
-  isExplosive: 0
-  explosionRadius: 0
-  splashDamageMultiplier: 0.3
   explosionEffectPrefab: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
-  knockbackEnabled: 0
-  knockbackForce: 5
-  enableRicochet: 0
-  maxRicochets: 1
-  ricochetRange: 5
-  applyCryo: 0
-  cryoSlowAmount: 0.3
-  cryoSlowDuration: 2
-  thermiteEnabled: 0
-  thermiteDuration: 3
-  thermiteDPS: 1
-  reducedThermite: 0
 --- !u!82 &2547260387813971645
 AudioSource:
   m_ObjectHideFlags: 0

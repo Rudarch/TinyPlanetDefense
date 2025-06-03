@@ -6,6 +6,7 @@ public class CannonController : MonoBehaviour
     public Transform rotatingPart;
     public WeaponSystem weaponSystem;
     public float allowedDeviationAngle = 5f;
+    public float baseRotationSpeed = 180f;
     public Transform planetTransform;
 
     private Transform currentTarget;
@@ -86,7 +87,7 @@ public class CannonController : MonoBehaviour
     {
         Vector3 direction = (targetPosition - rotatingPart.position).normalized;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        float angle = Mathf.MoveTowardsAngle(rotatingPart.eulerAngles.z, targetAngle, UpgradeStateManager.Instance.CannonUpgrades.rotationSpeed * Time.deltaTime);
+        float angle = Mathf.MoveTowardsAngle(rotatingPart.eulerAngles.z, targetAngle, (baseRotationSpeed + UpgradeStateManager.Instance.CannonUpgrades.rotationSpeed) * Time.deltaTime);
         rotatingPart.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 

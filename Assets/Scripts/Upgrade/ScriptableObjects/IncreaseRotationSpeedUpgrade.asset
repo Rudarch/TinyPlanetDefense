@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Increased rotation speed
   icon: {fileID: 21300000, guid: 7229e83da3a2b7a4393b9911159afce2, type: 3}
   isUnique: 0
-  speedBoost: 30
+  speedBoost: 15
