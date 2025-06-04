@@ -8,8 +8,8 @@ public class PiercingAmmoUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = UpgradeStateManager.Instance;
-        var state = upgradeStateManager.ProjectileUpgrades;
+        var upgradeStateManager = Upgrades.Inst;
+        var state = upgradeStateManager.Projectile;
         if (state != null)
         {
             state.piercingEnabled = true;

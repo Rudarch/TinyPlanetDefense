@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ProjectileUpgradeState
 {
+    public float bonusDamage;
+
     public bool explosiveEnabled;
     public float explosionRadius;
     public float splashDamageMultiplier;
@@ -25,5 +27,10 @@ public class ProjectileUpgradeState
     public float thermiteDuration;
     public float thermiteDPS;
 
-    public float bonusDamage;
+    public bool empEnabled;
+    public float empRadius;
+    public float empStunDuration;
+    public int empShotCounter;
+    public int shotsPerEMP;
+    public int empLevel = 0;
 }

@@ -8,8 +8,8 @@ public class ExtraShotUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = UpgradeStateManager.Instance;
-        var state = upgradeStateManager.CannonUpgrades;
+        var upgradeStateManager = Upgrades.Inst;
+        var state = upgradeStateManager.Cannon;
         if (state != null)
         {
             state.extraShots += extraShotsAdded;

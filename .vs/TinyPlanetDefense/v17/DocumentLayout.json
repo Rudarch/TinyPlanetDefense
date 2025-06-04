@@ -3,24 +3,56 @@
   "WorkspaceRootPath": "C:\\Repos\\TinyPlanetDefense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\orbitalwingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\orbitalwingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\interceptordrone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interceptordrone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\effects\\empshockwaveeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\empshockwaveeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\kineticcannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\kineticcannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\effects\\shockwaveeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\shockwaveeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\effects\\empstuneffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\empstuneffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\effects\\enemyslow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effects\\enemyslow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\upgrades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\upgrades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\upgrades\\emproundsupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\upgrades\\emproundsupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\projectileupgradestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\projectileupgradestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\cannoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cannoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\cannonupgradestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\cannonupgradestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\upgrademanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\upgrademanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\ui\\mainmenumobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\mainmenumobilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\cannonxpsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cannonxpsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +62,180 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "OrbitalWingSystem.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\OrbitalWingSystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\OrbitalWingSystem.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\OrbitalWingSystem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\OrbitalWingSystem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "EMPStunEffect.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\EMPStunEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\EMPStunEffect.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\EMPStunEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effects\\EMPStunEffect.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T10:18:08.13Z",
+              "WhenOpened": "2025-06-04T07:10:46.424Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile.cs",
+              "ViewState": "AgIAALIAAAAAAAAAAAAAALgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:09:59.653Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Enemy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T08:00:40.098Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InterceptorDrone.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\InterceptorDrone.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\InterceptorDrone.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\InterceptorDrone.cs",
-              "RelativeToolTip": "Assets\\Scripts\\InterceptorDrone.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAswB0AAAAeAAAAAAAAAA==",
+              "Title": "EMPShockwaveEffect.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\EMPShockwaveEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\EMPShockwaveEffect.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\EMPShockwaveEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effects\\EMPShockwaveEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T10:00:09.825Z",
+              "WhenOpened": "2025-06-04T07:23:24.348Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CannonUpgradeState.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\CannonUpgradeState.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\CannonUpgradeState.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\CannonUpgradeState.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\CannonUpgradeState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
+              "Title": "ShockwaveEffect.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\ShockwaveEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\ShockwaveEffect.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\ShockwaveEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effects\\ShockwaveEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T09:32:23.99Z",
+              "WhenOpened": "2025-06-04T21:07:39.042Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "KineticCannon.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\KineticCannon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\KineticCannon.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\KineticCannon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\KineticCannon.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAQwF4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:09:28.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProjectileUpgradeState.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\ProjectileUpgradeState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\ProjectileUpgradeState.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\ProjectileUpgradeState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\ProjectileUpgradeState.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:25:36.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CannonXPSystem.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonXPSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CannonXPSystem.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonXPSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CannonXPSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:14:28.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UpgradeManager.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\UpgradeManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\UpgradeManager.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\UpgradeManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\UpgradeManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:16:39.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Upgrades.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T07:08:47.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnemySlow.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\EnemySlow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effects\\EnemySlow.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Effects\\EnemySlow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effects\\EnemySlow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T08:13:45.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "CannonController.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CannonController.cs",
               "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\CannonController.cs",
               "RelativeToolTip": "Assets\\Scripts\\CannonController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAFkAAAClAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAwFsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-03T09:32:09.527Z",
+              "WhenOpened": "2025-06-04T07:13:55.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainMenuMobileController.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\MainMenuMobileController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MainMenuMobileController.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\MainMenuMobileController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\MainMenuMobileController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "EMPRoundsUpgrade.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Upgrades\\EMPRoundsUpgrade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Upgrades\\EMPRoundsUpgrade.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Upgrades\\EMPRoundsUpgrade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Upgrades\\EMPRoundsUpgrade.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T22:18:43.543Z",
+              "WhenOpened": "2025-06-04T08:26:51.183Z",
               "EditorCaption": ""
             }
           ]

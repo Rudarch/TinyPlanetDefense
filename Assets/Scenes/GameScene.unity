@@ -1737,6 +1737,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8611095868110961764, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.71
@@ -2734,7 +2750,7 @@ MonoBehaviour:
   allUpgrades:
   - {fileID: 11400000, guid: f9e23a58bba57f14d927a76eeab8ece8, type: 2}
   - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
-  - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
+  - {fileID: 11400000, guid: ba13e06763b29054896801b333d0b06f, type: 2}
 --- !u!114 &1536275464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,7 +2772,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536275458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ea027492a5d8c54f8ec3167c9b62770, type: 3}
+  m_Script: {fileID: 11500000, guid: 272d1d10a3dece440ac9dfaf00313325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1616862199
@@ -3370,7 +3386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
-  baseCooldown: 2
+  baseCooldown: 0.3
   twinBarrelDelay: 0.1
   muzzleCenter: {fileID: 4131335431094804155}
   muzzleLeft: {fileID: 1116838083}

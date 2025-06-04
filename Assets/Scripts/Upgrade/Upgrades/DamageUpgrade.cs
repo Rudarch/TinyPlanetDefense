@@ -10,8 +10,8 @@ public class IncreaseDamageUpgrade : Upgrade
     {
         base.ApplyUpgrade();
 
-        var upgradeStateManager = UpgradeStateManager.Instance;
-        var state = upgradeStateManager.ProjectileUpgrades;
+        var upgradeStateManager = Upgrades.Inst;
+        var state = upgradeStateManager.Projectile;
         if (state != null)
         {
             state.bonusDamage += bonusDamage;

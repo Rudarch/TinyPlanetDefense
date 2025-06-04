@@ -1,15 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
     public float lifetime = 5f;
     public float damage = 10f;
+    public bool empActivated = false;
 
     [Header("Visuals")]
     public GameObject ricochetLinePrefab;
     public GameObject explosionEffectPrefab;
+    public GameObject empEffectPrefab; //todo add
+
 
     private int pierceCount = 0; 
     private int enemiesHit = 0;
@@ -22,8 +26,9 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        upgradeState = UpgradeStateManager.Instance.ProjectileUpgrades;
+        upgradeState = Upgrades.Inst.Projectile;
         damage += upgradeState.bonusDamage;
+
         Destroy(gameObject, lifetime);
     }
 
@@ -167,10 +172,46 @@ public class Projectile : MonoBehaviour
             if (upgradeState.explosiveEnabled && upgradeState.explosionRadius > 0f)
                 Explode();
 
+            if (upgradeState.empEnabled && upgradeState.shotsPerEMP > 0)
+            {
+                upgradeState.empShotCounter++;
+
+                if (upgradeState.empShotCounter >= upgradeState.shotsPerEMP)
+                {
+                    upgradeState.empShotCounter = 0;
+
+                    float radius = upgradeState.empRadius;
+
+                    Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
+                    foreach (var hit in hits)
+                    {
+                        var empTarget = hit.GetComponent<Enemy>();
+                        if (empTarget != null)
+                        {
+                            var stun = empTarget.GetComponent<EMPStunEffect>();
+                            if (stun == null)
+                                stun = empTarget.gameObject.AddComponent<EMPStunEffect>();
+
+                            stun.ApplyStun(upgradeState.empStunDuration);
+                        }
+                    }
+
+                    // Visual effect with proper radius
+                    if (explosionEffectPrefab != null)
+                    {
+                        GameObject empVfx = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+                        var shockwave = empVfx.GetComponent<EMPShockwaveEffect>();
+                        if (shockwave != null)
+                        {
+                            shockwave.maxRadius = radius * 2f; // assumes sprite is 1 unit
+                        }
+                    }
+                }
+            }
+
             Destroy(gameObject);
         }
     }
-
 
     private Enemy FindNextEnemy(Vector3 fromPosition)
     {

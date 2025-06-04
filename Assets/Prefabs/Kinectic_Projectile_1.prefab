@@ -114,9 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   lifetime: 5
-  damage: 4
+  damage: 1
+  empActivated: 0
   ricochetLinePrefab: {fileID: 1408851793309974807, guid: dfb982c2c600937498e8617649b6975f, type: 3}
   explosionEffectPrefab: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
+  empEffectPrefab: {fileID: 6955652225482351914, guid: a4e88c89d280f32418951221c91e4e04, type: 3}
 --- !u!82 &2547260387813971645
 AudioSource:
   m_ObjectHideFlags: 0

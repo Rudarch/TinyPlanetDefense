@@ -9,8 +9,8 @@ public class ReduceCooldownUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = UpgradeStateManager.Instance;
-        var state = upgradeStateManager.CannonUpgrades;
+        var upgradeStateManager = Upgrades.Inst;
+        var state = upgradeStateManager.Cannon;
         if (state != null)
         {
             state.cooldownReductionMultiplier = Mathf.Max(0.1f, state.cooldownReductionMultiplier * 0.75f);

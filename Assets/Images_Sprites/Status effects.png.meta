@@ -201,7 +201,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpeedUp_Status_Effects_Icon_3
+      name: Stun_Status_Effects_Icon_3
       rect:
         serializedVersion: 2
         x: 774
@@ -242,7 +242,7 @@ TextureImporter:
       Poisoned_Status_Effects_Icon_1: 388469414
       SlowedIcon: 254239878
       Slowed_Status_Effects_Icon_0: 254239878
-      SpeedUp_Status_Effects_Icon_3: 983869673
+      Stun_Status_Effects_Icon_3: 983869673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

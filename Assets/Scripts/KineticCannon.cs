@@ -15,10 +15,11 @@ public class KineticCannon : WeaponSystem
     public GameObject singleMuzzleGroup;
 
     private float lastFireTime = -Mathf.Infinity;
+    private uint shotsFired = 0;
 
     void Start()
     {
-        if (UpgradeStateManager.Instance.CannonUpgrades.twinBarrelEnabled)
+        if (Upgrades.Inst.Cannon.twinBarrelEnabled)
         {
             EnableTwinMuzzles();
         }
@@ -46,7 +47,7 @@ public class KineticCannon : WeaponSystem
 
     public override void TryFireAt(Transform target)
     {
-        if (Time.time - lastFireTime < baseCooldown * UpgradeStateManager.Instance.CannonUpgrades.cooldownReductionMultiplier) 
+        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.Cannon.cooldownReductionMultiplier) 
             return;
 
         lastFireTime = Time.time;
@@ -57,7 +58,7 @@ public class KineticCannon : WeaponSystem
 
     public override void TryFireWithDirection(Vector2 direction)
     {
-        if (Time.time - lastFireTime < baseCooldown * UpgradeStateManager.Instance.CannonUpgrades.cooldownReductionMultiplier) return;
+        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.Cannon.cooldownReductionMultiplier) return;
         lastFireTime = Time.time;
 
         StartCoroutine(FireBurst(direction));
@@ -65,9 +66,9 @@ public class KineticCannon : WeaponSystem
 
     IEnumerator FireBurst(Vector2 direction)
     {
-        for (int i = 0; i <= UpgradeStateManager.Instance.CannonUpgrades.extraShots; i++)
+        for (int i = 0; i <= Upgrades.Inst.Cannon.extraShots; i++)
         {
-            if (UpgradeStateManager.Instance.CannonUpgrades.twinBarrelEnabled)
+            if (Upgrades.Inst.Cannon.twinBarrelEnabled)
             {
                 FireFromMuzzle(muzzleLeft, direction);
 
@@ -81,8 +82,8 @@ public class KineticCannon : WeaponSystem
                 FireFromMuzzle(muzzleCenter, direction);
             }
 
-            if (i < UpgradeStateManager.Instance.CannonUpgrades.extraShots)
-                yield return new WaitForSeconds(UpgradeStateManager.Instance.CannonUpgrades.shotInterval);
+            if (i < Upgrades.Inst.Cannon.extraShots)
+                yield return new WaitForSeconds(Upgrades.Inst.Cannon.shotInterval);
         }
     }
 
@@ -90,11 +91,17 @@ public class KineticCannon : WeaponSystem
     {
         if (muzzle == null) return;
 
+        shotsFired++;
         GameObject proj = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
         var projectile = proj.GetComponent<Projectile>();
+
         if (projectile != null)
         {
             projectile.SetDirection(dir);
+
+            if (Upgrades.Inst.Projectile.empEnabled
+                && ((shotsFired % Upgrades.Inst.Projectile.shotsPerEMP) == 0))
+                projectile.empActivated = true;
         }
     }
 

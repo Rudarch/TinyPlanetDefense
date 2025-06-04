@@ -4,6 +4,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
+    public float moveSpeed = 2f;
+    public bool isStunned = false;
+
     [Header("Stats")]
     public float health = 5f;
     public float damage = 1f;
@@ -25,7 +28,7 @@ public class Enemy : MonoBehaviour
     private float maxHealth;
     private HealthBar healthBar;
     private Rigidbody2D rb;
-    public float moveSpeed = 2f;
+    private Coroutine dashRoutine;
 
     void Awake()
     {
@@ -50,40 +53,46 @@ public class Enemy : MonoBehaviour
             healthBar.gameObject.SetActive(false);
         }
 
-        StartCoroutine(DashTowardPlanet());
+        dashRoutine = StartCoroutine(DashTowardPlanet());
     }
 
     public void ApplyKnockback(Vector2 force)
     {
         if (rb != null)
         {
-            StopCoroutine("KnockbackRoutine"); // Prevent stacking
+            StopCoroutine("KnockbackRoutine");
             StartCoroutine(KnockbackRoutine(force));
         }
     }
+
     private IEnumerator KnockbackRoutine(Vector2 force)
     {
-        rb.linearVelocity = Vector2.zero; // Stop current movement
+        rb.linearVelocity = Vector2.zero;
         rb.AddForce(force, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.1f); // Duration of knockback
+        yield return new WaitForSeconds(0.1f);
 
-        rb.linearVelocity = Vector2.zero; // Stop enemy again
+        rb.linearVelocity = Vector2.zero;
     }
 
     IEnumerator DashTowardPlanet()
     {
         while (true)
         {
+            if (isStunned)
+            {
+                yield return null;
+                continue;
+            }
+
             float interval = dashInterval / (moveSpeed / 2f);
             yield return new WaitForSeconds(interval);
 
             if (planetTarget == null) yield break;
 
             Vector3 dir = (planetTarget.position - transform.position).normalized;
-            // Rotate enemy to face the planet
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f); // Adjust by -90 if sprite faces "up"
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
 
             float effectiveDashDistance = dashDistance * (moveSpeed / 2f);
             Vector3 targetPos = transform.position + dir * effectiveDashDistance;
@@ -96,6 +105,9 @@ public class Enemy : MonoBehaviour
 
             while (timer < dashDuration)
             {
+                if (isStunned)
+                    break;
+
                 timer += Time.deltaTime;
                 float t = timer / dashDuration;
                 transform.position = Vector3.Lerp(start, targetPos, t);
@@ -105,8 +117,6 @@ public class Enemy : MonoBehaviour
             if (thrusterFX != null) thrusterFX.SetActive(false);
         }
     }
-
-
 
     public void TakeDamage(float amount)
     {
@@ -123,6 +133,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0f)
             Die();
     }
+
     void Die()
     {
         GameObject cannon = GameObject.FindWithTag("Cannon");
@@ -153,5 +164,15 @@ public class Enemy : MonoBehaviour
             Debug.Log($"Enemy dealt {damage} damage to the planet.");
             Destroy(gameObject);
         }
+    }
+
+    public void SetStunned(bool stunned)
+    {
+        isStunned = stunned;
+    }
+
+    public bool IsStunned()
+    {
+        return isStunned;
     }
 }

@@ -7,8 +7,8 @@ public class TwinBarrelUpgrade : Upgrade
     {
         var cannon = FindFirstObjectByType<KineticCannon>();
         base.ApplyUpgrade();
-        var upgradeStateManager = UpgradeStateManager.Instance;
-        var state = upgradeStateManager.CannonUpgrades;
+        var upgradeStateManager = Upgrades.Inst;
+        var state = upgradeStateManager.Cannon;
         if (state != null)
         {
             state.twinBarrelEnabled = true;
