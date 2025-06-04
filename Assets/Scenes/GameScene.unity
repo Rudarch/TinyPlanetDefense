@@ -921,7 +921,7 @@ MonoBehaviour:
   - enemyCount: 500
     spawnDuration: 60
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-  spawnRadius: 4
+  spawnRadius: 3
   planetCenter: {fileID: 6671393143994966655}
   enemyParent: {fileID: 150644103}
   waveUI: {fileID: 150644105}
@@ -1755,11 +1755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8611095868110961764, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.71
+      value: 0.685
       objectReference: {fileID: 0}
     - target: {fileID: 8611095868110961764, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.321
+      value: 2.574
       objectReference: {fileID: 0}
     - target: {fileID: 8611095868110961764, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_LocalPosition.z

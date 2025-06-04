@@ -172,40 +172,14 @@ public class Projectile : MonoBehaviour
             if (upgradeState.explosiveEnabled && upgradeState.explosionRadius > 0f)
                 Explode();
 
-            if (upgradeState.empEnabled && upgradeState.shotsPerEMP > 0)
+            if (upgradeState.empEnabled && empActivated)
             {
-                upgradeState.empShotCounter++;
 
-                if (upgradeState.empShotCounter >= upgradeState.shotsPerEMP)
+                var empShockwaveObj = Instantiate(empEffectPrefab, transform.position, Quaternion.identity);
+                var empShockwave = empShockwaveObj.GetComponent<EMPShockwaveEffect>();
+                if (empShockwave != null)
                 {
-                    upgradeState.empShotCounter = 0;
-
-                    float radius = upgradeState.empRadius;
-
-                    Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
-                    foreach (var hit in hits)
-                    {
-                        var empTarget = hit.GetComponent<Enemy>();
-                        if (empTarget != null)
-                        {
-                            var stun = empTarget.GetComponent<EMPStunEffect>();
-                            if (stun == null)
-                                stun = empTarget.gameObject.AddComponent<EMPStunEffect>();
-
-                            stun.ApplyStun(upgradeState.empStunDuration);
-                        }
-                    }
-
-                    // Visual effect with proper radius
-                    if (explosionEffectPrefab != null)
-                    {
-                        GameObject empVfx = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-                        var shockwave = empVfx.GetComponent<EMPShockwaveEffect>();
-                        if (shockwave != null)
-                        {
-                            shockwave.maxRadius = radius * 2f; // assumes sprite is 1 unit
-                        }
-                    }
+                    empShockwave.StunNearbyEnemies(transform.position);
                 }
             }
 

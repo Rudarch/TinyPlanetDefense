@@ -5,6 +5,7 @@ public class ShockwaveEffect : MonoBehaviour
     public float maxRadius = 1f;
     public float expandSpeed = 5f;
     public float fadeDuration = 0.2f;
+    public Color effectColor;
 
     private SpriteRenderer sr;
     private float timer = 0f;
@@ -13,7 +14,7 @@ public class ShockwaveEffect : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         transform.localScale = Vector3.zero;
-        sr.color = new Color(1f, 1f, 1f, 0.5f);
+        sr.color = effectColor;
     }
 
     void Update()

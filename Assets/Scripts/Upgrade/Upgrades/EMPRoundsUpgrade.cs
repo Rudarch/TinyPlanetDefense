@@ -17,11 +17,11 @@ public class EMPRoundsUpgrade : Upgrade
         var state = upgradeStateManager.Projectile;
         if (state != null)
         {
-            state.empLevel++;
             state.empEnabled = true;
             state.shotsPerEMP = shotsPerEMP;
             state.empRadius = GetRadius;
             state.empStunDuration = GetEmpStunDuration;
+            state.empLevel++;
             upgradeStateManager.SetProjectileUpgrades(state);
         }
     }
