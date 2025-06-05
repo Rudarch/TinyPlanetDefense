@@ -12,13 +12,18 @@ public class ProjectileHitHandler : MonoBehaviour
     private bool hasHitThisFrame = false;
     private Enemy directHitEnemy = null;
     private List<Enemy> hitEnemies = new();
-    private Vector2 currentDirection;
 
     private GameObject ricochetLinePrefab;
     private GameObject explosionEffectPrefab;
     private GameObject empEffectPrefab;
+    private AudioClip hitSound;
+    private AudioSource audioSource;
 
-    public void Setup(Projectile proj, ProjectileUpgradeState upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx)
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    public void Setup(Projectile proj, ProjectileUpgradeState upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx, AudioClip hitAudio)
     {
         projectile = proj;
         upgradeState = upgrades;
@@ -27,6 +32,7 @@ public class ProjectileHitHandler : MonoBehaviour
         ricochetLinePrefab = ricochetFx;
         explosionEffectPrefab = explosionFx;
         empEffectPrefab = empFx;
+        hitSound = hitAudio;
     }
 
     public void CheckImmediateOverlap()
@@ -44,11 +50,6 @@ public class ProjectileHitHandler : MonoBehaviour
     public void ResetFrame()
     {
         hasHitThisFrame = false;
-    }
-
-    public void UpdateDirection(Vector2 dir)
-    {
-        currentDirection = dir.normalized;
     }
 
     public void OnHit(Collider2D other)
@@ -69,6 +70,11 @@ public class ProjectileHitHandler : MonoBehaviour
 
         hitEnemies.Add(enemy);
         enemy.TakeDamage(damage);
+        if (hitSound != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(hitSound);
+        }
 
         if (upgradeState.knockbackEnabled)
         {

@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public GameObject ricochetLinePrefab;
     public GameObject explosionEffectPrefab;
     public GameObject empEffectPrefab;
+    public AudioClip hitSound;
 
     private Vector2 direction;
     private ProjectileHitHandler hitHandler;
@@ -25,7 +26,8 @@ public class Projectile : MonoBehaviour
             upgradeState.piercingEnabled ? upgradeState.pierceCount : 0,
             ricochetLinePrefab,
             explosionEffectPrefab,
-            empEffectPrefab
+            empEffectPrefab,
+            hitSound
         );
 
         hitHandler.CheckImmediateOverlap();
@@ -45,9 +47,14 @@ public class Projectile : MonoBehaviour
     public void SetDirection(Vector2 dir)
     {
         direction = dir.normalized;
-        hitHandler?.UpdateDirection(dir);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+    }
+
+    public void ApplyOvercharge(float damageMultiplier, float scaleMultiplier)
+    {
+        damage *= damageMultiplier;
+        transform.localScale *= scaleMultiplier;
     }
 
     void OnTriggerEnter2D(Collider2D other)

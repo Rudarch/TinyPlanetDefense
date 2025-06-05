@@ -14,11 +14,12 @@ public class KineticCannon : WeaponSystem
     public GameObject twinMuzzlesGroup;
     public GameObject singleMuzzleGroup;
 
+    private float nextOverchargeTime = 0f;
     private float lastFireTime = -Mathf.Infinity;
-    private uint shotsFired = 0;
-
+    AudioSource audioSource;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if (Upgrades.Inst.Cannon.twinBarrelEnabled)
         {
             EnableTwinMuzzles();
@@ -91,13 +92,25 @@ public class KineticCannon : WeaponSystem
     {
         if (muzzle == null) return;
 
-        shotsFired++;
         GameObject proj = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
         var projectile = proj.GetComponent<Projectile>();
+
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.Play();
 
         if (projectile != null)
         {
             projectile.SetDirection(dir);
+
+            var upgrades = Upgrades.Inst.Projectile;
+            if (upgrades.overchargedEnabled && Time.time >= nextOverchargeTime)
+            {
+                projectile.ApplyOvercharge(
+                    upgrades.overchargeDamageMultiplier,
+                    upgrades.overchargeScaleMultiplier
+                );
+                nextOverchargeTime = Time.time + upgrades.overchargeInterval;
+            }
         }
     }
 

@@ -153,6 +153,20 @@ public class Enemy : MonoBehaviour
             Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
         }
 
+        if (Upgrades.Inst.Projectile.energySiphonEnabled)
+        {
+            var planet = GameObject.FindWithTag("Planet");
+            if (planet != null)
+            {
+                var planetComp = planet.GetComponent<Planet>();
+                if (planetComp != null)
+                {
+                    float healAmount = planetComp.maxHealth * Upgrades.Inst.Projectile.energySiphonFraction;
+                    planetComp.Heal(healAmount);
+                }
+            }
+        }
+
         Destroy(gameObject);
     }
 

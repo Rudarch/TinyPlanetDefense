@@ -32,5 +32,13 @@ public class ProjectileUpgradeState
     public float empStunDuration;
     public int empShotCounter;
     public int shotsPerEMP;
-    public int empLevel = 0;
+    public int empLevel;
+
+    public bool energySiphonEnabled;
+    public float energySiphonFraction;
+
+    public bool overchargedEnabled;
+    public float overchargeInterval;
+    public float overchargeDamageMultiplier;
+    public float overchargeScaleMultiplier;
 }
