@@ -98,10 +98,6 @@ public class KineticCannon : WeaponSystem
         if (projectile != null)
         {
             projectile.SetDirection(dir);
-
-            if (Upgrades.Inst.Projectile.empEnabled
-                && ((shotsFired % Upgrades.Inst.Projectile.shotsPerEMP) == 0))
-                projectile.empActivated = true;
         }
     }
 

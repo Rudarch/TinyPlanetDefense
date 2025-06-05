@@ -123,7 +123,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -2, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3159818733813258544
 CanvasRenderer:
@@ -936,12 +936,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4bfa199fe3b2d4cbe5597bc57c16e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 1
   isStunned: 0
   health: 10
   damage: 10
   dashDistance: 0.2
-  dashInterval: 2
+  dashInterval: 1
   planetTarget: {fileID: 0}
   thrusterFX: {fileID: 8494555794564922000}
   deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
