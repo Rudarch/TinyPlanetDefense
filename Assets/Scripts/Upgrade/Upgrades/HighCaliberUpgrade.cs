@@ -9,20 +9,15 @@ public class HighCaliberUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
+        if (IsMaxedOut) return;
 
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.knockbackEnabled = true;
-            state.knockbackForce = knockbackForce;
-            state.projectileScale *= scaleMultiplier;
-
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        var state = Upgrades.Inst.Projectile;
+        state.knockbackEnabled = true;
+        state.knockbackForce = knockbackForce;
+        state.projectileScale *= scaleMultiplier;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"Projectiles knock enemies back by {knockbackForce} and are {Mathf.RoundToInt((scaleMultiplier - 1f) * 100)}% larger.";
     }

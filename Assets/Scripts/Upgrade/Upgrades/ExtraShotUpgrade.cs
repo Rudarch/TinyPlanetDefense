@@ -8,16 +8,13 @@ public class ExtraShotUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Cannon;
-        if (state != null)
-        {
-            state.extraShots += extraShotsAdded;
-            upgradeStateManager.SetCannonUpgrades(state);
-        }
+        if (IsMaxedOut) return;
+
+        var state = Upgrades.Inst.Cannon;
+        state.extraShots += extraShotsAdded;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"+{extraShotsAdded} Extra Shot{(extraShotsAdded > 1 ? "s" : "")}";
     }

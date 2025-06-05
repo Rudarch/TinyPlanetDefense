@@ -7,17 +7,13 @@ public class IncreaseRotationSpeedUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
+        if (IsMaxedOut) return;
 
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Cannon;
-        if (state != null)
-        {
-            state.rotationSpeed += speedBoost;
-            upgradeStateManager.SetCannonUpgrades(state);
-        }
+        var state = Upgrades.Inst.Cannon;
+        state.rotationSpeed += speedBoost;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"+{speedBoost}°/s Rotation Speed";
     }

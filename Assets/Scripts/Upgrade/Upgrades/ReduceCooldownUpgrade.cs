@@ -9,20 +9,18 @@ public class ReduceCooldownUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Cannon;
-        if (state != null)
-        {
-            state.cooldownReductionMultiplier = Mathf.Max(0.1f, state.cooldownReductionMultiplier * 0.75f);
-            state.shotInterval = Mathf.Max(0.05f, state.shotInterval * 0.75f);
-            upgradeStateManager.SetCannonUpgrades(state);
-        }
-        else Debug.Log($"{this.GetType().Name} cannot retrieve the state.");
+        if (IsMaxedOut) return;
+
+        float multiplier = Mathf.Clamp01(1f - cooldownReductionPercent);
+
+        var state = Upgrades.Inst.Cannon;
+        state.cooldownReductionMultiplier = Mathf.Max(0.1f, state.cooldownReductionMultiplier * multiplier);
+        state.shotInterval = Mathf.Max(0.05f, state.shotInterval * multiplier);
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         int percent = Mathf.RoundToInt(cooldownReductionPercent * 100f);
-        return $"-{percent}% Cooldown";
+        return $"-{percent}% shooting cooldown";
     }
 }

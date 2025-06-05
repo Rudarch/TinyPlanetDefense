@@ -12,25 +12,21 @@ public class EMPRoundsUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
+        if (IsMaxedOut) return;
 
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.empEnabled = true;
-            state.shotsPerEMP = shotsPerEMP;
-            state.empRadius = GetRadius;
-            state.empStunDuration = GetEmpStunDuration;
-            state.empLevel++;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        var state = Upgrades.Inst.Projectile;
+        state.empLevel = currentLevel;
+        state.empEnabled = true;
+        state.shotsPerEMP = shotsPerEMP;
+        state.empRadius = baseRadius + (radiusPerLevel * currentLevel);
+        state.empStunDuration = baseStunDuration + (stunDurationPerLevel * currentLevel);
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"Stuns enemies for {GetEmpStunDuration} seconds in {GetRadius} radius.";
     }
 
-    private float GetRadius => baseRadius + (radiusPerLevel * Upgrades.Inst.Projectile.empLevel);
-    private float GetEmpStunDuration => baseStunDuration + (stunDurationPerLevel * Upgrades.Inst.Projectile.empLevel);
+    private float GetRadius => baseRadius + (radiusPerLevel * (currentLevel + 1));
+    private float GetEmpStunDuration => baseStunDuration + (stunDurationPerLevel * (currentLevel + 1));
 }

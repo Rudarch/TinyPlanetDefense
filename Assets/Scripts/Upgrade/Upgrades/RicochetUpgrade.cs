@@ -9,18 +9,15 @@ public class RicochetUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.ricochetEnabled = true;
-            state.ricochetCount += extraRicochets;
-            state.ricochetRange += extraRange;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        if (IsMaxedOut) return;
+
+        var state = Upgrades.Inst.Projectile;
+        state.ricochetEnabled = true;
+        state.ricochetCount += extraRicochets;
+        state.ricochetRange += extraRange;
     }
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
-        return $"Bullets ricochet to {extraRicochets} more target(s)";
+        return $"Bullets ricochet to {extraRicochets} more target(s) and on extra range {extraRange}";
     }
 }

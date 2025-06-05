@@ -2708,7 +2708,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1536275461}
   - component: {fileID: 1536275463}
-  - component: {fileID: 1536275464}
   - component: {fileID: 1536275465}
   m_Layer: 0
   m_Name: GameManager
@@ -2748,21 +2747,21 @@ MonoBehaviour:
   optionParent: {fileID: 1200549709}
   popupRoot: {fileID: 1139739808}
   allUpgrades:
-  - {fileID: 11400000, guid: 0152bbf142b9af641b25c64274175feb, type: 2}
+  - {fileID: 11400000, guid: cb119603d06a7d541b02a6069bffa0db, type: 2}
+  - {fileID: 11400000, guid: ba13e06763b29054896801b333d0b06f, type: 2}
   - {fileID: 11400000, guid: 30a5a919740f812489e9e27e3b1657d3, type: 2}
+  - {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
+  - {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
+  - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
+  - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
   - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
---- !u!114 &1536275464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536275458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b3014b14c51ab4a949b39cbbef35e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - {fileID: 11400000, guid: f9e23a58bba57f14d927a76eeab8ece8, type: 2}
+  - {fileID: 11400000, guid: 0152bbf142b9af641b25c64274175feb, type: 2}
+  - {fileID: 11400000, guid: d7a905de42f78d54b9ebbae314503927, type: 2}
+  - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
+  - {fileID: 11400000, guid: 468595302bb263440958209d0ff89761, type: 2}
+  - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
+  - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
 --- !u!114 &1536275465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4013,6 +4012,7 @@ MonoBehaviour:
   planet: {fileID: 2895315123865355977}
   launchDelay: 0.5
   spawnOffset: 0.1
+  interceptorCount: 0
 --- !u!82 &6089606871271464106
 AudioSource:
   m_ObjectHideFlags: 0

@@ -3,30 +3,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CryoShellsUpgrade", menuName = "Upgrades/CryoShells")]
 public class CryoShellsUpgrade : Upgrade
 {
-    public float slowAmount = 0.3f;
-    public float slowDuration = 2f;
+    public float baseSlowAmount = 0.3f;
+    public float slowAmountPerLevel = 0.2f;
+    public float slowDuration = 5f;
 
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.cryoEnabled = true;
-            state.cryoAmount = slowAmount;
-            state.cryoDuration = slowDuration;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        if (IsMaxedOut) return;
+
+        var state = Upgrades.Inst.Projectile;
+        state.cryoEnabled = true;
+        state.cryoAmount = GetSlowAmmount;
+        state.cryoDuration = slowDuration;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
-        return $"Projectiles slow enemies by {slowAmount * 100f}% for {slowDuration} seconds.";
+        return $"Projectiles slow enemies by {GetSlowAmmount}% for {slowDuration} seconds.";
     }
 
-    private void OnEnable()
-    {
-        isUnique = true;
-    }
+    float GetSlowAmmount => baseSlowAmount + (slowAmountPerLevel * currentLevel);
 }

@@ -9,17 +9,13 @@ public class IncreaseDamageUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
+        if (IsMaxedOut) return;
 
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.bonusDamage += bonusDamage;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        var state = Upgrades.Inst.Projectile;
+        state.bonusDamage += bonusDamage;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"+{bonusDamage} Damage";
     }

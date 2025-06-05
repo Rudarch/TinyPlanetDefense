@@ -25,7 +25,7 @@ public class ProjectileUpgradeState
 
     public bool thermiteEnabled;
     public float thermiteDuration;
-    public float thermiteDPS;
+    public float thermiteDPSPercent;
 
     public bool empEnabled;
     public float empRadius;

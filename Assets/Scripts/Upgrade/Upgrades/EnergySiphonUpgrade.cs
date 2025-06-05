@@ -8,23 +8,15 @@ public class EnergySiphonUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.energySiphonEnabled = true;
-            state.energySiphonFraction = healFraction;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        if (IsMaxedOut) return;
+
+        var state = Upgrades.Inst.Projectile; 
+        state.energySiphonEnabled = true;
+        state.energySiphonFraction = healFraction;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"Kills heal the planet for {healFraction * 100f}% HP.";
-    }
-
-    private void OnEnable()
-    {
-        isUnique = true;
     }
 }

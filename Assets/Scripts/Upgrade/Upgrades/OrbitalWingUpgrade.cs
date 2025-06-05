@@ -5,6 +5,9 @@ public class OrbitalWingUpgrade : Upgrade
 {
     public override void ApplyUpgrade()
     {
+        base.ApplyUpgrade();
+        if (IsMaxedOut) return;
+
         GameObject planet = GameObject.FindWithTag("Planet");
         if (planet != null)
         {
@@ -18,8 +21,8 @@ public class OrbitalWingUpgrade : Upgrade
         else Debug.Log("Planet not found.");
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
-        return "Adds an interceptor drone that and attacks enemies.";
+        return $"Adds 1 drone which automatically attacks enemies.";
     }
 }

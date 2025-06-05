@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UpgradePopup : MonoBehaviour
@@ -20,8 +21,7 @@ public class UpgradePopup : MonoBehaviour
         List<Upgrade> available = new();
         foreach (var upgrade in allUpgrades)
         {
-            if (!upgrade.isUnique || !UpgradeManager.Instance.IsUniqueUpgradeTaken(upgrade))
-                available.Add(upgrade);
+            available = allUpgrades.Where(upg => !upg.IsMaxedOut).ToList();
         }
 
         if (available.Count == 0)

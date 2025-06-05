@@ -10,21 +10,17 @@ public class OverchargedShotUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
+        if (IsMaxedOut) return;
+
         var state = Upgrades.Inst.Projectile;
         state.overchargedEnabled = true;
         state.overchargeInterval = interval;
-        state.overchargeDamageMultiplier = damageMultiplier;
+        state.overchargeDamageMultiplier = damageMultiplier * currentLevel;
         state.overchargeScaleMultiplier = scaleMultiplier;
-        Upgrades.Inst.SetProjectileUpgrades(state);
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
-        return $"Every {interval} seconds, your next shot deals {damageMultiplier}x damage and is larger.";
-    }
-
-    private void OnEnable()
-    {
-        isUnique = true;
+        return $"Every {interval} seconds, your next shot deals {damageMultiplier * (currentLevel + 1)}x damage and is larger.";
     }
 }

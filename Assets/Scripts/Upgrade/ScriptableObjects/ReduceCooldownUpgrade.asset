@@ -15,5 +15,6 @@ MonoBehaviour:
   upgradeName: Turbo Loader
   description: Shortens the reload cooldown
   icon: {fileID: 21300000, guid: 4acdccf4f18ed9045bafdf69a8f6f8a1, type: 3}
-  isUnique: 0
+  maxLevel: 4
+  currentLevel: 0
   cooldownReductionPercent: 0.2

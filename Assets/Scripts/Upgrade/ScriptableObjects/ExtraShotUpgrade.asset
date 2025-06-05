@@ -15,4 +15,6 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  maxLevel: 2
+  currentLevel: 0
   extraShotsAdded: 1

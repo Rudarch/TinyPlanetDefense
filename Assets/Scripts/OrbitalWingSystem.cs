@@ -7,8 +7,8 @@ public class OrbitalWingSystem : MonoBehaviour
     public Transform planet;
     public float launchDelay = 0.5f;
     public float spawnOffset = 0.5f;
+    public int interceptorCount = 0;
 
-    private int interceptorCount = 0;
     private int activeInterceptors = 0;
     private bool isLaunching = false;
 

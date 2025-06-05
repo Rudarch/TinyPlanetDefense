@@ -15,9 +15,5 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
-  isUnique: 0
-  interceptorPrefab: {fileID: 1255202045022592806, guid: f8011c78c7ebb0d46aee9fda3be466fd, type: 3}
-  interceptorRange: 1
-  shotsPerMission: 3
-  reloadTime: 5
-  launchDelay: 0.5
+  maxLevel: 5
+  currentLevel: 0

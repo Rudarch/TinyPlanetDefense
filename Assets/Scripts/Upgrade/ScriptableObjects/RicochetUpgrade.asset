@@ -15,5 +15,7 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  maxLevel: 3
+  currentLevel: 0
   extraRicochets: 1
-  extraRange: 2
+  extraRange: 0.5

@@ -19,14 +19,4 @@ public class Upgrades : MonoBehaviour
         Projectile = new ProjectileUpgradeState();
         Cannon = new CannonUpgradeState();
     }
-
-    public void SetProjectileUpgrades(ProjectileUpgradeState state)
-    {
-        Projectile = state;
-    }
-
-    public void SetCannonUpgrades(CannonUpgradeState state)
-    {
-        Cannon = state;
-    }
 }

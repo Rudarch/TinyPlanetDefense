@@ -15,7 +15,8 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
-  isUnique: 1
+  maxLevel: 3
+  currentLevel: 0
   interval: 3
   damageMultiplier: 3
   scaleMultiplier: 1.5

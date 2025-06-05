@@ -8,18 +8,14 @@ public class PiercingAmmoUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.piercingEnabled = true;
-            state.pierceCount += extraPierce;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
-        else Debug.Log($"{this.GetType().Name} cannot retrieve the state.");
+        if (IsMaxedOut) return;
+
+        var state = Upgrades.Inst.Projectile;
+        state.piercingEnabled = true;
+        state.pierceCount += extraPierce;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
         return $"+{extraPierce} Piercing";
     }

@@ -9,20 +9,16 @@ public class ExplosiveRoundsUpgrade : Upgrade
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
+        if (IsMaxedOut) return;
 
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.explosiveEnabled = true;
-            state.explosionRadius += extraRadius;
-            state.splashDamageMultiplier = splashDamageMultiplier;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        var state = Upgrades.Inst.Projectile;
+        state.explosiveEnabled = true;
+        state.explosionRadius += extraRadius;
+        state.splashDamageMultiplier = splashDamageMultiplier;
     }
 
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
-        return $"Enables AoE, +{extraRadius} Radius";
+        return $"Enables AoE, +{extraRadius} Radius of effects";
     }
 }

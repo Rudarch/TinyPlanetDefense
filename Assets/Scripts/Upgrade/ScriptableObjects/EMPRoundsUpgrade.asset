@@ -15,7 +15,8 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
-  isUnique: 0
+  maxLevel: 3
+  currentLevel: 0
   baseStunDuration: 0.5
   stunDurationPerLevel: 0.2
   baseRadius: 0.5

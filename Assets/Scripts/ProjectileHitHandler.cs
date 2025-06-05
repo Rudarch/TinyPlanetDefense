@@ -95,11 +95,11 @@ public class ProjectileHitHandler : MonoBehaviour
             if (burn == null)
             {
                 burn = enemy.gameObject.AddComponent<BurningEffect>();
-                burn.baseDamagePerSecond = upgradeState.thermiteDPS;
+                burn.baseDamagePerSecond = damage * upgradeState.thermiteDPSPercent;
                 burn.burnDuration = upgradeState.thermiteDuration;
             }
 
-            burn.ApplyOrRefresh(upgradeState.thermiteDPS, upgradeState.thermiteDuration);
+            burn.ApplyOrRefresh(damage * upgradeState.thermiteDPSPercent, upgradeState.thermiteDuration);
         }
 
         if (upgradeState.ricochetEnabled && ricochetsDone < upgradeState.ricochetCount)
@@ -167,11 +167,11 @@ public class ProjectileHitHandler : MonoBehaviour
                     if (burn == null)
                     {
                         burn = enemy.gameObject.AddComponent<BurningEffect>();
-                        burn.baseDamagePerSecond = upgradeState.thermiteDPS;
+                        burn.baseDamagePerSecond = damage * upgradeState.thermiteDPSPercent;
                         burn.burnDuration = upgradeState.thermiteDuration;
                     }
 
-                    burn.ApplyOrRefresh(upgradeState.thermiteDPS, upgradeState.thermiteDuration);
+                    burn.ApplyOrRefresh(damage * upgradeState.thermiteDPSPercent, upgradeState.thermiteDuration);
                 }
             }
         }

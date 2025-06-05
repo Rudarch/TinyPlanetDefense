@@ -18,7 +18,7 @@ public class UpgradeOptionUI : MonoBehaviour
 
         icon.sprite = upgrade.icon;
         nameText.text = upgrade.upgradeName;
-        descriptionText.text = $"{upgrade.description}\n<size=80%><color=yellow>{upgrade.GetEffectText()}</color></size>";
+        descriptionText.text = $"{upgrade.description}\n<size=80%><color=yellow>{upgrade.GetUpgradeEffectText()}</color></size>";
 
         selectButton.onClick.RemoveAllListeners();
         selectButton.onClick.AddListener(OnSelected);
@@ -28,8 +28,6 @@ public class UpgradeOptionUI : MonoBehaviour
     private void OnSelected()
     {
         upgrade.ApplyUpgrade();
-
-        UpgradeManager.Instance?.MarkUniqueUpgradeTaken(upgrade);
 
         popup.Hide();
     }

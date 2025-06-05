@@ -4,23 +4,24 @@ using UnityEngine;
 public class ThermiteRoundsUpgrade : Upgrade
 {
     public float burnDuration = 3f;
-    public float dps = 1f;
+
+    [Range(0.1f, 1f)]
+    public float baseDamagePercent = 0.3f;
+    [Range(0.1f, 1f)]
+    public float damagePercent = 0.1f;
 
     public override void ApplyUpgrade()
     {
         base.ApplyUpgrade();
-        var upgradeStateManager = Upgrades.Inst;
-        var state = upgradeStateManager.Projectile;
-        if (state != null)
-        {
-            state.thermiteEnabled = true;
-            state.thermiteDuration = burnDuration;
-            state.thermiteDPS = dps;
-            upgradeStateManager.SetProjectileUpgrades(state);
-        }
+        if (IsMaxedOut) return;
+
+        var state = Upgrades.Inst.Projectile;
+        state.thermiteEnabled = true;
+        state.thermiteDuration = burnDuration;
+        state.thermiteDPSPercent = baseDamagePercent + (damagePercent * currentLevel);
     }
-    public override string GetEffectText()
+    public override string GetUpgradeEffectText()
     {
-        return $"Enemies hit are burned for {burnDuration}s ({dps}/s).";
+        return $"Enemies hit are burnedby {baseDamagePercent + (damagePercent * (currentLevel + 1))}% damage for {burnDuration}s ).";
     }
 }

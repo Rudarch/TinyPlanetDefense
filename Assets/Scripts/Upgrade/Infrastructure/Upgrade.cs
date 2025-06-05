@@ -6,14 +6,24 @@ public class Upgrade : ScriptableObject
     [TextArea] public string description;
     public Sprite icon;
 
-    public bool isUnique = false;
+    public int maxLevel = 1;
+    public int currentLevel = 0;
+
+    public bool IsMaxedOut => currentLevel >= maxLevel;
 
     public virtual void ApplyUpgrade()
     {
-        Debug.Log($"Applied upgrade: {upgradeName}");
+        if (IsMaxedOut)
+        {
+            Debug.LogWarning($"{upgradeName} has reached max level.");
+            return;
+        }
+
+        currentLevel++;
+        Debug.Log($"Applied upgrade: (Level {currentLevel}/{maxLevel})");
     }
 
-    public virtual string GetEffectText()
+    public virtual string GetUpgradeEffectText()
     {
         return string.Empty;
     }

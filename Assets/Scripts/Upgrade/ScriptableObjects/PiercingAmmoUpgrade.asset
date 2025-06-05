@@ -15,4 +15,6 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  maxLevel: 3
+  currentLevel: 0
   extraPierce: 1
