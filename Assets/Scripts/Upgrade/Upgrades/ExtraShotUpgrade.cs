@@ -3,15 +3,20 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExtraShotUpgrade", menuName = "Upgrades/ExtraShot")]
 public class ExtraShotUpgrade : Upgrade
 {
-    public int extraShotsAdded = 1;
+    [SerializeField] int extraShotsAdded = 1;
 
-    public override void ApplyUpgrade()
+    public int extraShots;
+
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
+        extraShots = extraShotsAdded * currentLevel;
+    }
 
-        var state = Upgrades.Inst.Cannon;
-        state.extraShots += extraShotsAdded;
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.extraShot = this;
+        extraShots = 0;
     }
 
     public override string GetUpgradeEffectText()

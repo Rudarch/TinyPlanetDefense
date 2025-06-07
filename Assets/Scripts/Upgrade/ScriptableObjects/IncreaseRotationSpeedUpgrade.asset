@@ -15,6 +15,10 @@ MonoBehaviour:
   upgradeName: Targeting AI
   description: Increased rotation speed
   icon: {fileID: 21300000, guid: 7229e83da3a2b7a4393b9911159afce2, type: 3}
+  enabled: 0
   maxLevel: 4
   currentLevel: 0
-  speedBoost: 15
+  activatable: 1
+  energyCostPerSecond: 1
+  speedBoostPerLevel: 15
+  rotationBoost: 0

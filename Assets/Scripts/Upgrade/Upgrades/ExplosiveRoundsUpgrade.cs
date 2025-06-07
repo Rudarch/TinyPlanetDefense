@@ -3,22 +3,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExplosiveRoundsUpgrade", menuName = "Upgrades/ExplosiveRounds")]
 public class ExplosiveRoundsUpgrade : Upgrade
 {
-    public float extraRadius = 0.5f;
+    public float radiusPerLevel = 0.5f;
     public float splashDamageMultiplier = 0.3f;
 
-    public override void ApplyUpgrade()
-    {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
+    public float explosionRadius;
 
-        var state = Upgrades.Inst.Projectile;
-        state.explosiveEnabled = true;
-        state.explosionRadius += extraRadius;
-        state.splashDamageMultiplier = splashDamageMultiplier;
+    protected override void ApplyUpgradeInternal()
+    {
+        explosionRadius = radiusPerLevel * currentLevel;
+    }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.explosiveRounds = this;
+        explosionRadius = 0;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"Enables AoE, +{extraRadius} Radius of effects";
+        return $"Enables AoE in {GetExplosionRadius} Radius";
     }
+
+    float GetExplosionRadius => radiusPerLevel * NextLevel;
 }

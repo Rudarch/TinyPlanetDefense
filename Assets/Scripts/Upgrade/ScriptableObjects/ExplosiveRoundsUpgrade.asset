@@ -15,7 +15,11 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  enabled: 0
   maxLevel: 3
   currentLevel: 0
-  extraRadius: 0.2
+  activatable: 1
+  energyCostPerSecond: 1
+  radiusPerLevel: 0.5
   splashDamageMultiplier: 0.3
+  explosionRadius: 0

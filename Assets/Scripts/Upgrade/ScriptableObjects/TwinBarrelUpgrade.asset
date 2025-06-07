@@ -15,4 +15,8 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
-  isUnique: 1
+  enabled: 0
+  maxLevel: 1
+  currentLevel: 0
+  activatable: 1
+  energyCostPerSecond: 1

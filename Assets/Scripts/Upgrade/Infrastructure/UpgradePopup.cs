@@ -7,9 +7,13 @@ public class UpgradePopup : MonoBehaviour
     public GameObject optionPrefab;
     public Transform optionParent;
     public GameObject popupRoot;
-    public List<Upgrade> allUpgrades;
 
     private GameObject cannon;
+    private void Start()
+    {
+        foreach (var upgrade in Upgrades.Inst.allUpgrades)
+            upgrade.Initialize();
+    }
     public void Show(GameObject cannon)
     {
         this.cannon = cannon;
@@ -19,10 +23,7 @@ public class UpgradePopup : MonoBehaviour
             Destroy(child.gameObject);
 
         List<Upgrade> available = new();
-        foreach (var upgrade in allUpgrades)
-        {
-            available = allUpgrades.Where(upg => !upg.IsMaxedOut).ToList();
-        }
+        available = Upgrades.Inst.allUpgrades.Where(upg => !upg.IsMaxedOut).ToList();
 
         if (available.Count == 0)
         {
@@ -46,7 +47,6 @@ public class UpgradePopup : MonoBehaviour
             upgradeOptionUI.Setup(upgrade, this);
         }
     }
-
 
     public void Hide()
     {

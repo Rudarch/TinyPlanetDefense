@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6781183465530918781}
   - component: {fileID: 6342496403394202887}
   m_Layer: 5
-  m_Name: UpgrageButton
+  m_Name: UpgradeSelectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

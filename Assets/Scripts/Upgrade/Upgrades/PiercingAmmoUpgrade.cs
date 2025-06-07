@@ -3,20 +3,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PiercingAmmoUpgrade", menuName = "Upgrades/PiercingAmmo")]
 public class PiercingAmmoUpgrade : Upgrade
 {
-    public int extraPierce = 1;
+    [SerializeField] int extraPiercePerLevel = 1;
 
-    public override void ApplyUpgrade()
+    public int pierceCount;
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
-
-        var state = Upgrades.Inst.Projectile;
-        state.piercingEnabled = true;
-        state.pierceCount += extraPierce;
+        pierceCount = extraPiercePerLevel * currentLevel;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{extraPierce} Piercing";
+        return $"+{extraPiercePerLevel} Piercing. {extraPiercePerLevel * NextLevel} in total";
+    }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.piercingAmmo = this;
+        pierceCount = 0;
     }
 }

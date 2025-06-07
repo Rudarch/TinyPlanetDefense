@@ -11,6 +11,7 @@ public class UpgradeOptionUI : MonoBehaviour
 
     private Upgrade upgrade;
     private UpgradePopup popup;
+
     public void Setup(Upgrade upgrade, UpgradePopup popup)
     {
         this.upgrade = upgrade;
@@ -28,6 +29,11 @@ public class UpgradeOptionUI : MonoBehaviour
     private void OnSelected()
     {
         upgrade.ApplyUpgrade();
+
+        if (upgrade.activatable)
+        {
+            UpgradeButtonPanel.Inst.AddUpgradeButton(upgrade);
+        }
 
         popup.Hide();
     }

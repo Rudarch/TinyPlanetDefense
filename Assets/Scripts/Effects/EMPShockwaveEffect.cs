@@ -20,7 +20,7 @@ public class EMPShockwaveEffect : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        float scale = Mathf.Min(Upgrades.Inst.Projectile.empRadius, timer * expandSpeed);
+        float scale = Mathf.Min(Upgrades.Inst.empRounds.radius, timer * expandSpeed);
         float worldScale = scale * 2f;
 
         transform.localScale = new Vector3(worldScale, worldScale, 1f);
@@ -35,7 +35,7 @@ public class EMPShockwaveEffect : MonoBehaviour
 
     public void StunNearbyEnemies(Vector3 center)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(center, Upgrades.Inst.Projectile.empRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(center, Upgrades.Inst.empRounds.radius);
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
@@ -45,7 +45,7 @@ public class EMPShockwaveEffect : MonoBehaviour
                 if (stun == null)
                     stun = enemy.gameObject.AddComponent<EMPStunEffect>();
 
-                stun.ApplyStun(Upgrades.Inst.Projectile.empStunDuration);
+                stun.ApplyStun(Upgrades.Inst.empRounds.stunDuration);
             }
         }
     }

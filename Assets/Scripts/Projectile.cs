@@ -15,15 +15,15 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        var upgradeState = Upgrades.Inst.Projectile;
-        damage += upgradeState.bonusDamage;
+        var upgradeState = Upgrades.Inst;
+        damage += upgradeState.increaseDamage.bonusDamage;
 
         hitHandler = gameObject.AddComponent<ProjectileHitHandler>();
         hitHandler.Setup(
             this,
             upgradeState,
             damage,
-            upgradeState.piercingEnabled ? upgradeState.pierceCount : 0,
+            upgradeState.piercingAmmo.enabled ? upgradeState.piercingAmmo.pierceCount : 0,
             ricochetLinePrefab,
             explosionEffectPrefab,
             empEffectPrefab,

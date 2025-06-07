@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6425176c8a04cc4597be45ea790391e, type: 3}
-  m_Name: EnergySiphonUpgrade
+  m_Name: LifeSiphonUpgrade
   m_EditorClassIdentifier: 
   upgradeName: 
   description: 
   icon: {fileID: 0}
-  isUnique: 1
+  enabled: 0
+  maxLevel: 1
+  currentLevel: 0
+  activatable: 1
+  energyCostPerSecond: 1
   healFraction: 0.01
+  lifeSiphonFraction: 0.01

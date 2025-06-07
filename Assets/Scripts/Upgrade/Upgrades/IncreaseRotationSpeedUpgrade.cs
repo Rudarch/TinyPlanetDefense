@@ -3,18 +3,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "IncreaseRotationSpeedUpgrade", menuName = "Upgrades/IncreaseRotationSpeed")]
 public class IncreaseRotationSpeedUpgrade : Upgrade
 {
-    public float speedBoost = 90f;
-    public override void ApplyUpgrade()
+    public float speedBoostPerLevel = 15f;
+    public float rotationBoost;
+    protected override void ApplyUpgradeInternal() 
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
-
-        var state = Upgrades.Inst.Cannon;
-        state.rotationSpeed += speedBoost;
+        rotationBoost = speedBoostPerLevel * currentLevel;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{speedBoost}°/s Rotation Speed";
+        return $"+{speedBoostPerLevel * NextLevel}°/s Rotation Speed";
+    }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.increaseRotationSpeed = this;
+        rotationBoost = 0;
     }
 }

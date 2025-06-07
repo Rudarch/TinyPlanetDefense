@@ -3,11 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "OrbitalWingUpgrade", menuName = "Upgrades/OrbitalWing")]
 public class OrbitalWingUpgrade : Upgrade
 {
-    public override void ApplyUpgrade()
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
-
         GameObject planet = GameObject.FindWithTag("Planet");
         if (planet != null)
         {
@@ -23,6 +20,12 @@ public class OrbitalWingUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Adds 1 drone which automatically attacks enemies.";
+        return $"Adds 1 drone which automatically attacks enemies. {NextLevel} in total.";
+    }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.orbitalWing = this;
     }
 }

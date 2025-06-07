@@ -3,21 +3,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RicochetUpgrade", menuName = "Upgrades/Ricochet")]
 public class RicochetUpgrade : Upgrade
 {
-    public int extraRicochets = 1;
-    public float extraRange = 2f;
+    [SerializeField] int extraRicochets = 1;
+    [SerializeField] float extraRange = 0.2f;
 
-    public override void ApplyUpgrade()
+    public int ricochetCount;
+    public float ricochetRange;
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
-
-        var state = Upgrades.Inst.Projectile;
-        state.ricochetEnabled = true;
-        state.ricochetCount += extraRicochets;
-        state.ricochetRange += extraRange;
+        ricochetCount = extraRicochets * currentLevel;
+        ricochetRange = extraRange * currentLevel;
     }
     public override string GetUpgradeEffectText()
     {
-        return $"Bullets ricochet to {extraRicochets} more target(s) and on extra range {extraRange}";
+        return $"Bullets ricochet to {GetExtraRicochets} more target(s) and in {GetExtraRange} extra range";
     }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.ricochet = this;
+    }
+
+    float GetExtraRicochets => ricochetCount + extraRicochets;
+    float GetExtraRange => ricochetRange + extraRange;
 }

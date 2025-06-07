@@ -3,25 +3,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ThermiteRoundsUpgrade", menuName = "Upgrades/ThermiteRounds")]
 public class ThermiteRoundsUpgrade : Upgrade
 {
+    [Range(0.1f, 1f)] public float baseDamagePercent = 0.3f;
+    [Range(0.1f, 1f)] public float damagePercentPerLevel = 0.15f;
     public float burnDuration = 3f;
+    public float thermiteDPSPercent;
 
-    [Range(0.1f, 1f)]
-    public float baseDamagePercent = 0.3f;
-    [Range(0.1f, 1f)]
-    public float damagePercent = 0.1f;
-
-    public override void ApplyUpgrade()
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
-
-        var state = Upgrades.Inst.Projectile;
-        state.thermiteEnabled = true;
-        state.thermiteDuration = burnDuration;
-        state.thermiteDPSPercent = baseDamagePercent + (damagePercent * currentLevel);
+        thermiteDPSPercent = baseDamagePercent + (damagePercentPerLevel * currentLevel);
     }
+
     public override string GetUpgradeEffectText()
     {
-        return $"Enemies hit are burnedby {baseDamagePercent + (damagePercent * (currentLevel + 1))}% damage for {burnDuration}s ).";
+        return $"Enemies hit are burnedby {baseDamagePercent + (damagePercentPerLevel * NextLevel)}% damage for {burnDuration}s ).";
+    }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.thermiteRounds = this;
+        thermiteDPSPercent = baseDamagePercent;
     }
 }

@@ -15,8 +15,12 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  enabled: 0
   maxLevel: 3
   currentLevel: 0
-  burnDuration: 3
+  activatable: 1
+  energyCostPerSecond: 1
   baseDamagePercent: 0.2
-  damagePercent: 0.15
+  damagePercentPerLevel: 0.15
+  burnDuration: 3
+  thermiteDPSPercent: 0.2

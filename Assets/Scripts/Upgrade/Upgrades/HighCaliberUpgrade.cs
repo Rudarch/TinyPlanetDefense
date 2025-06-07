@@ -5,16 +5,18 @@ public class HighCaliberUpgrade : Upgrade
 {
     public float knockbackForce = 5f;
     public float scaleMultiplier = 1.3f;
+    public float projectileScale = 1;
 
-    public override void ApplyUpgrade()
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
+        projectileScale = scaleMultiplier * currentLevel;
+    }
 
-        var state = Upgrades.Inst.Projectile;
-        state.knockbackEnabled = true;
-        state.knockbackForce = knockbackForce;
-        state.projectileScale *= scaleMultiplier;
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.highCaliber = this;
+        projectileScale = 1;
     }
 
     public override string GetUpgradeEffectText()

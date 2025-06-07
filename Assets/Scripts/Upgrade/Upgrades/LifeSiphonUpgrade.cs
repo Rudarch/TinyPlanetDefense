@@ -1,0 +1,25 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "EnergySiphonUpgrade", menuName = "Upgrades/EnergySiphon")]
+public class LifeSiphonUpgrade : Upgrade
+{
+    [Range(0f, 1f)] public float healFraction = 0.01f;
+    public float lifeSiphonFraction;
+
+    protected override void ApplyUpgradeInternal()
+    {
+        lifeSiphonFraction = healFraction;
+    }
+
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.lifeSiphon = this;
+        lifeSiphonFraction = healFraction;
+    }
+
+    public override string GetUpgradeEffectText()
+    {
+        return $"Kills heal the planet for {healFraction * 100f}% HP.";
+    }
+}

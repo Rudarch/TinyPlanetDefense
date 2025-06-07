@@ -20,7 +20,7 @@ public class KineticCannon : WeaponSystem
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        if (Upgrades.Inst.Cannon.twinBarrelEnabled)
+        if (Upgrades.Inst.twinBarrel.enabled)
         {
             EnableTwinMuzzles();
         }
@@ -48,7 +48,7 @@ public class KineticCannon : WeaponSystem
 
     public override void TryFireAt(Transform target)
     {
-        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.Cannon.cooldownReductionMultiplier) 
+        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.reduceCooldown.cooldownReductionMultiplier) 
             return;
 
         lastFireTime = Time.time;
@@ -59,7 +59,7 @@ public class KineticCannon : WeaponSystem
 
     public override void TryFireWithDirection(Vector2 direction)
     {
-        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.Cannon.cooldownReductionMultiplier) return;
+        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.reduceCooldown.cooldownReductionMultiplier) return;
         lastFireTime = Time.time;
 
         StartCoroutine(FireBurst(direction));
@@ -67,9 +67,9 @@ public class KineticCannon : WeaponSystem
 
     IEnumerator FireBurst(Vector2 direction)
     {
-        for (int i = 0; i <= Upgrades.Inst.Cannon.extraShots; i++)
+        for (int i = 0; i <= Upgrades.Inst.extraShot.extraShots; i++)
         {
-            if (Upgrades.Inst.Cannon.twinBarrelEnabled)
+            if (Upgrades.Inst.twinBarrel.enabled)
             {
                 FireFromMuzzle(muzzleLeft, direction);
 
@@ -83,8 +83,8 @@ public class KineticCannon : WeaponSystem
                 FireFromMuzzle(muzzleCenter, direction);
             }
 
-            if (i < Upgrades.Inst.Cannon.extraShots)
-                yield return new WaitForSeconds(Upgrades.Inst.Cannon.shotInterval);
+            if (i < Upgrades.Inst.extraShot.extraShots)
+                yield return new WaitForSeconds(Upgrades.Inst.reduceCooldown.shotInterval);
         }
     }
 
@@ -102,14 +102,14 @@ public class KineticCannon : WeaponSystem
         {
             projectile.SetDirection(dir);
 
-            var upgrades = Upgrades.Inst.Projectile;
-            if (upgrades.overchargedEnabled && Time.time >= nextOverchargeTime)
+            var upgrades = Upgrades.Inst;
+            if (upgrades.overchargedShot.enabled && Time.time >= nextOverchargeTime)
             {
                 projectile.ApplyOvercharge(
-                    upgrades.overchargeDamageMultiplier,
-                    upgrades.overchargeScaleMultiplier
+                    upgrades.overchargedShot.damageMultiplier,
+                    upgrades.overchargedShot.scaleMultiplier
                 );
-                nextOverchargeTime = Time.time + upgrades.overchargeInterval;
+                nextOverchargeTime = Time.time + upgrades.overchargedShot.interval;
             }
         }
     }

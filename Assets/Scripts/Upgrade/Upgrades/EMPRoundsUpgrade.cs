@@ -3,23 +3,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EMPRoundsUpgrade", menuName = "Upgrades/EMPRoundsUpgrade")]
 public class EMPRoundsUpgrade : Upgrade
 {
-    public float baseStunDuration = 0.5f;
-    public float stunDurationPerLevel = 0.2f;
-    public float baseRadius = 2f;
-    public float radiusPerLevel = 0.5f;
+    [SerializeField] float baseStunDuration = 0.5f;
+    [SerializeField] float stunDurationPerLevel = 0.2f;
+    [SerializeField] float baseRadius = 2f;
+    [SerializeField] float radiusPerLevel = 0.5f;
+    [SerializeField] int baseShotsPerEMP = 5;
+
     public int shotsPerEMP = 5;
+    public float radius;
+    public float stunDuration;
+    public int shotCounter;
 
-    public override void ApplyUpgrade()
+    protected override void ApplyUpgradeInternal()
     {
-        base.ApplyUpgrade();
-        if (IsMaxedOut) return;
-
-        var state = Upgrades.Inst.Projectile;
-        state.empLevel = currentLevel;
-        state.empEnabled = true;
-        state.shotsPerEMP = shotsPerEMP;
-        state.empRadius = baseRadius + (radiusPerLevel * currentLevel);
-        state.empStunDuration = baseStunDuration + (stunDurationPerLevel * currentLevel);
+        radius = baseRadius + (radiusPerLevel * currentLevel);
+        stunDuration = baseStunDuration + (stunDurationPerLevel * currentLevel);
     }
 
     public override string GetUpgradeEffectText()
@@ -27,6 +25,16 @@ public class EMPRoundsUpgrade : Upgrade
         return $"Stuns enemies for {GetEmpStunDuration} seconds in {GetRadius} radius.";
     }
 
-    private float GetRadius => baseRadius + (radiusPerLevel * (currentLevel + 1));
-    private float GetEmpStunDuration => baseStunDuration + (stunDurationPerLevel * (currentLevel + 1));
+    public override void Initialize()
+    {
+        ResetUpgrade();
+        Upgrades.Inst.empRounds = this;
+        radius = baseRadius;
+        stunDuration = baseStunDuration;
+        shotCounter = 0;
+        shotsPerEMP = baseShotsPerEMP;
+    }
+
+    private float GetRadius => baseRadius + (radiusPerLevel * NextLevel);
+    private float GetEmpStunDuration => baseStunDuration + (stunDurationPerLevel * NextLevel);
 }

@@ -15,7 +15,12 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  enabled: 0
   maxLevel: 3
   currentLevel: 0
+  activatable: 1
+  energyCostPerSecond: 1
   extraRicochets: 1
   extraRange: 0.5
+  ricochetCount: 0
+  ricochetRange: 0

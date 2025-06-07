@@ -4,7 +4,7 @@ using UnityEngine;
 public class ProjectileHitHandler : MonoBehaviour
 {
     private Projectile projectile;
-    private ProjectileUpgradeState upgradeState;
+    private Upgrades upgrades;
     private float damage;
     private int pierceCount;
     private int enemiesHit = 0;
@@ -23,10 +23,10 @@ public class ProjectileHitHandler : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    public void Setup(Projectile proj, ProjectileUpgradeState upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx, AudioClip hitAudio)
+    public void Setup(Projectile proj, Upgrades upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx, AudioClip hitAudio)
     {
         projectile = proj;
-        upgradeState = upgrades;
+        this.upgrades = upgrades;
         damage = baseDamage;
         pierceCount = pierce;
         ricochetLinePrefab = ricochetFx;
@@ -76,33 +76,33 @@ public class ProjectileHitHandler : MonoBehaviour
             audioSource.PlayOneShot(hitSound);
         }
 
-        if (upgradeState.knockbackEnabled)
+        if (upgrades.highCaliber.enabled)
         {
             Vector2 knockDir = (enemy.transform.position - transform.position).normalized;
-            enemy.ApplyKnockback(knockDir * upgradeState.knockbackForce);
+            enemy.ApplyKnockback(knockDir * upgrades.highCaliber.knockbackForce);
         }
 
-        if (upgradeState.cryoEnabled)
+        if (upgrades.cryoShells.enabled)
         {
             var slow = enemy.GetComponent<EnemySlow>();
             if (slow != null)
-                slow.ApplySlow(upgradeState.cryoAmount, upgradeState.cryoDuration);
+                slow.ApplySlow(upgrades.cryoShells.slowAmount, upgrades.cryoShells.slowDuration);
         }
 
-        if (upgradeState.thermiteEnabled)
+        if (upgrades.thermiteRounds.enabled)
         {
             var burn = enemy.GetComponent<BurningEffect>();
             if (burn == null)
             {
                 burn = enemy.gameObject.AddComponent<BurningEffect>();
-                burn.baseDamagePerSecond = damage * upgradeState.thermiteDPSPercent;
-                burn.burnDuration = upgradeState.thermiteDuration;
+                burn.baseDamagePerSecond = damage * upgrades.thermiteRounds.thermiteDPSPercent;
+                burn.burnDuration = upgrades.thermiteRounds.burnDuration;
             }
 
-            burn.ApplyOrRefresh(damage * upgradeState.thermiteDPSPercent, upgradeState.thermiteDuration);
+            burn.ApplyOrRefresh(damage * upgrades.thermiteRounds.thermiteDPSPercent, upgrades.thermiteRounds.burnDuration);
         }
 
-        if (upgradeState.ricochetEnabled && ricochetsDone < upgradeState.ricochetCount)
+        if (upgrades.ricochet.enabled && ricochetsDone < upgrades.ricochet.ricochetCount)
         {
             ricochetsDone++;
             Enemy next = FindNextEnemy(enemy.transform.position);
@@ -124,12 +124,12 @@ public class ProjectileHitHandler : MonoBehaviour
         enemiesHit++;
         if (enemiesHit > pierceCount)
         {
-            if (upgradeState.explosiveEnabled && upgradeState.explosionRadius > 0f)
+            if (upgrades.explosiveRounds.enabled && upgrades.explosiveRounds.explosionRadius > 0f)
                 Explode();
 
-            if (upgradeState.empEnabled && upgradeState.empShotCounter++ >= upgradeState.shotsPerEMP)
+            if (upgrades.empRounds.enabled&& upgrades.empRounds.shotCounter++ >= upgrades.empRounds.shotsPerEMP)
             {
-                upgradeState.empShotCounter = 0;
+                upgrades.empRounds.shotCounter = 0;
                 TriggerEMP();
             }
 
@@ -139,39 +139,39 @@ public class ProjectileHitHandler : MonoBehaviour
 
     private void Explode()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgradeState.explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgrades.explosiveRounds.explosionRadius);
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
             if (enemy != null && enemy != directHitEnemy)
             {
-                float aoeDamage = damage * upgradeState.splashDamageMultiplier;
+                float aoeDamage = damage * upgrades.explosiveRounds.splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
 
-                if (upgradeState.knockbackEnabled)
+                if (upgrades.highCaliber.enabled)
                 {
                     Vector2 away = (enemy.transform.position - transform.position).normalized;
-                    enemy.ApplyKnockback(away * upgradeState.knockbackForce);
+                    enemy.ApplyKnockback(away * upgrades.highCaliber.knockbackForce);
                 }
 
-                if (upgradeState.cryoEnabled)
+                if (upgrades.cryoShells.enabled)
                 {
                     var slow = enemy.GetComponent<EnemySlow>();
                     if (slow != null)
-                        slow.ApplySlow(upgradeState.cryoAmount, upgradeState.cryoDuration);
+                        slow.ApplySlow(upgrades.cryoShells.slowAmount, upgrades.cryoShells.slowDuration);
                 }
 
-                if (upgradeState.thermiteEnabled)
+                if (upgrades.thermiteRounds.enabled)
                 {
                     var burn = enemy.GetComponent<BurningEffect>();
                     if (burn == null)
                     {
                         burn = enemy.gameObject.AddComponent<BurningEffect>();
-                        burn.baseDamagePerSecond = damage * upgradeState.thermiteDPSPercent;
-                        burn.burnDuration = upgradeState.thermiteDuration;
+                        burn.baseDamagePerSecond = damage * upgrades.thermiteRounds.thermiteDPSPercent;
+                        burn.burnDuration = upgrades.thermiteRounds.burnDuration;
                     }
 
-                    burn.ApplyOrRefresh(damage * upgradeState.thermiteDPSPercent, upgradeState.thermiteDuration);
+                    burn.ApplyOrRefresh(damage * upgrades.thermiteRounds.thermiteDPSPercent, upgrades.thermiteRounds.burnDuration);
                 }
             }
         }
@@ -181,7 +181,7 @@ public class ProjectileHitHandler : MonoBehaviour
             GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             var shock = effect.GetComponent<ShockwaveEffect>();
             if (shock != null)
-                shock.maxRadius = upgradeState.explosionRadius * 2f;
+                shock.maxRadius = upgrades.explosiveRounds.explosionRadius * 2f;
         }
     }
 
@@ -198,7 +198,7 @@ public class ProjectileHitHandler : MonoBehaviour
 
     private Enemy FindNextEnemy(Vector3 fromPosition)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgradeState.ricochetRange);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgrades.ricochet.ricochetRange);
         float minDist = float.MaxValue;
         Enemy closest = null;
 

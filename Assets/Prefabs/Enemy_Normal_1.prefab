@@ -945,7 +945,7 @@ MonoBehaviour:
   planetTarget: {fileID: 0}
   thrusterFX: {fileID: 8494555794564922000}
   deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
-  xpReward: 5
+  xpReward: 5000
 --- !u!114 &4652173292674739430
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,8 +15,13 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
+  enabled: 0
   maxLevel: 3
   currentLevel: 0
+  activatable: 1
+  energyCostPerSecond: 1
   baseSlowAmount: 0.3
   slowAmountPerLevel: 0.2
-  slowDuration: 2
+  baseSlowDuration: 5
+  slowDuration: 5
+  slowAmount: 0
