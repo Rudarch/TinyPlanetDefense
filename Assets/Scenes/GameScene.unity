@@ -3499,8 +3499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
-  baseCooldown: 0.3
-  twinBarrelDelay: 0.1
+  baseCooldown: 1
+  twinBarrelDelay: 0.15
   muzzleCenter: {fileID: 4131335431094804155}
   muzzleLeft: {fileID: 1116838083}
   muzzleRight: {fileID: 1181037106}

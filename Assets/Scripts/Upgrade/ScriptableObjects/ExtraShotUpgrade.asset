@@ -15,10 +15,10 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 0}
-  enabled: 0
+  enabled: 1
   maxLevel: 2
-  currentLevel: 0
+  currentLevel: 2
   activatable: 1
   energyCostPerSecond: 1
   extraShotsAdded: 1
-  extraShots: 0
+  shotsPerSalvo: 2

@@ -23,10 +23,11 @@ public abstract class Upgrade : ScriptableObject
             return;
         }
 
-        ApplyUpgradeInternal();
-
         enabled = true;
         currentLevel++;
+
+        ApplyUpgradeInternal();
+
         Debug.Log($"Applied upgrade: (Level {currentLevel}/{maxLevel})");
     }
 

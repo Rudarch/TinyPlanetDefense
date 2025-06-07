@@ -38,7 +38,6 @@ public class Upgrades : MonoBehaviour
 
     public bool IsUpgradeActive(Upgrade upgrade) => activeUpgrades.Contains(upgrade);
 
-
     public void ToggleUpgrade(Upgrade upgrade, bool isActive)
     {
         if (upgrade == null)

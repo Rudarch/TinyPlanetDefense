@@ -10,7 +10,7 @@ public class UpgradeButtonPanel : MonoBehaviour
     public float maxRowWidthRatio = 0.9f;
 
     private readonly List<GameObject> buttons = new();
-
+    private readonly HashSet<System.Type> activeUpgradeTypes = new();
     public static UpgradeButtonPanel Inst { get; private set; }
     void Awake()
     {
@@ -24,6 +24,14 @@ public class UpgradeButtonPanel : MonoBehaviour
 
     public void AddUpgradeButton(Upgrade upgrade)
     {
+        if (!upgrade.activatable)
+            return;
+
+        var upgradeType = upgrade.GetType();
+
+        if (activeUpgradeTypes.Contains(upgradeType))
+            return;
+
         GameObject buttonGO = Instantiate(upgradeButtonPrefab, panel);
         var button = buttonGO.GetComponent<UpgradeUIButton>();
         if (button != null)
@@ -32,6 +40,8 @@ public class UpgradeButtonPanel : MonoBehaviour
         }
 
         buttons.Add(buttonGO);
+
+        activeUpgradeTypes.Add(upgradeType);
         RebuildLayout();
     }
 
@@ -49,6 +59,14 @@ public class UpgradeButtonPanel : MonoBehaviour
             Destroy(target);
             RebuildLayout();
         }
+    }
+
+    public void ResetButtons()
+    {
+        foreach (var button in buttons)
+            Destroy(button);
+
+        activeUpgradeTypes.Clear();
     }
 
     private void RebuildLayout()

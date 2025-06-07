@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class KineticCannon : WeaponSystem
 {
     public GameObject projectilePrefab;
     public float baseCooldown = 2f;
-    public float twinBarrelDelay = 0.05f; 
+    public float twinBarrelDelay = 0.05f;
 
     [Header("Muzzles")]
     public Transform muzzleCenter;
@@ -15,66 +16,64 @@ public class KineticCannon : WeaponSystem
     public GameObject singleMuzzleGroup;
 
     private float nextOverchargeTime = 0f;
-    private float lastFireTime = -Mathf.Infinity;
-    AudioSource audioSource;
+    private bool isFiring = false;
+    private AudioSource audioSource;
+
+    private static readonly Dictionary<float, WaitForSeconds> waitCache = new();
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
         if (Upgrades.Inst.twinBarrel.enabled)
-        {
             EnableTwinMuzzles();
-        }
         else
-        {
             EnableSingleMuzzle();
-        }
     }
 
     public void EnableTwinMuzzles()
     {
-        if (twinMuzzlesGroup != null) 
-            twinMuzzlesGroup.SetActive(true);
-        if (singleMuzzleGroup != null) 
-            singleMuzzleGroup.SetActive(false);
+        if (twinMuzzlesGroup != null) twinMuzzlesGroup.SetActive(true);
+        if (singleMuzzleGroup != null) singleMuzzleGroup.SetActive(false);
     }
 
     private void EnableSingleMuzzle()
     {
-        if (twinMuzzlesGroup != null) 
-            twinMuzzlesGroup.SetActive(false);
-        if (singleMuzzleGroup != null) 
-            singleMuzzleGroup.SetActive(true);
+        if (twinMuzzlesGroup != null) twinMuzzlesGroup.SetActive(false);
+        if (singleMuzzleGroup != null) singleMuzzleGroup.SetActive(true);
     }
 
     public override void TryFireAt(Transform target)
     {
-        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.reduceCooldown.cooldownReductionMultiplier) 
-            return;
-
-        lastFireTime = Time.time;
-        Vector2 dir = (target.position - transform.position).normalized;
-
-        StartCoroutine(FireBurst(dir));
+        if (!isFiring)
+        {
+            Vector2 dir = (target.position - transform.position).normalized;
+            StartCoroutine(FireBurst(dir));
+        }
     }
 
     public override void TryFireWithDirection(Vector2 direction)
     {
-        if (Time.time - lastFireTime < baseCooldown * Upgrades.Inst.reduceCooldown.cooldownReductionMultiplier) return;
-        lastFireTime = Time.time;
-
-        StartCoroutine(FireBurst(direction));
+        if (!isFiring)
+            StartCoroutine(FireBurst(direction));
     }
 
     IEnumerator FireBurst(Vector2 direction)
     {
-        for (int i = 0; i <= Upgrades.Inst.extraShot.extraShots; i++)
+        isFiring = true;
+
+        int salvoCount = 1 + Upgrades.Inst.extraShot.shotsPerSalvo;
+        float shotInterval = Upgrades.Inst.reduceCooldown.shotInterval;
+        float finalCooldown = baseCooldown * Upgrades.Inst.reduceCooldown.cooldownReductionMultiplier;
+
+        for (int i = 0; i < salvoCount; i++)
         {
             if (Upgrades.Inst.twinBarrel.enabled)
             {
                 FireFromMuzzle(muzzleLeft, direction);
 
                 if (twinBarrelDelay > 0f)
-                    yield return new WaitForSeconds(twinBarrelDelay);
+                    yield return GetWait(twinBarrelDelay);
 
                 FireFromMuzzle(muzzleRight, direction);
             }
@@ -83,9 +82,12 @@ public class KineticCannon : WeaponSystem
                 FireFromMuzzle(muzzleCenter, direction);
             }
 
-            if (i < Upgrades.Inst.extraShot.extraShots)
-                yield return new WaitForSeconds(Upgrades.Inst.reduceCooldown.shotInterval);
+            if (i < salvoCount - 1)
+                yield return GetWait(shotInterval);
         }
+
+        yield return GetWait(finalCooldown);
+        isFiring = false;
     }
 
     void FireFromMuzzle(Transform muzzle, Vector2 dir)
@@ -114,4 +116,13 @@ public class KineticCannon : WeaponSystem
         }
     }
 
+    private static WaitForSeconds GetWait(float seconds)
+    {
+        if (!waitCache.TryGetValue(seconds, out var wait))
+        {
+            wait = new WaitForSeconds(seconds);
+            waitCache[seconds] = wait;
+        }
+        return wait;
+    }
 }

@@ -5,18 +5,18 @@ public class ExtraShotUpgrade : Upgrade
 {
     [SerializeField] int extraShotsAdded = 1;
 
-    public int extraShots;
+    public int shotsPerSalvo;
 
     protected override void ApplyUpgradeInternal()
     {
-        extraShots = extraShotsAdded * currentLevel;
+        shotsPerSalvo = extraShotsAdded * currentLevel;
     }
 
     public override void Initialize()
     {
         ResetUpgrade();
         Upgrades.Inst.extraShot = this;
-        extraShots = 0;
+        shotsPerSalvo = 0;
     }
 
     public override string GetUpgradeEffectText()
