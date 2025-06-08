@@ -36,9 +36,9 @@ public class Upgrades : MonoBehaviour
         Inst = this;
     }
 
-    public bool IsUpgradeActive(Upgrade upgrade) => activeUpgrades.Contains(upgrade);
+    //public bool IsUpgradeActive(Upgrade upgrade) => activeUpgrades.Contains(upgrade);
 
-    public void ToggleUpgrade(Upgrade upgrade, bool isActive)
+    public void ToggleUpgrade(Upgrade upgrade)
     {
         if (upgrade == null)
         {
@@ -46,15 +46,16 @@ public class Upgrades : MonoBehaviour
             return;
         }
 
-        if (isActive)
+        if (upgrade.enabled)
         {
-            Debug.Log($"Activating upgrade: {upgrade.upgradeName}");
-            upgrade.OnActivate();
+            Debug.Log($"Deactivating upgrade: {upgrade.upgradeName}");
+            activeUpgrades.Remove(upgrade);
+            upgrade.OnDeactivate();
         }
         else
         {
-            Debug.Log($"Deactivating upgrade: {upgrade.upgradeName}");
-            upgrade.OnDeactivate();
+            Debug.Log($"Activating upgrade: {upgrade.upgradeName}");
+            upgrade.OnActivate();
         }
     }
 

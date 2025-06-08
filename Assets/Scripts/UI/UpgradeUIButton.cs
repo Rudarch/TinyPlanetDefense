@@ -9,10 +9,10 @@ public class UpgradeUIButton : MonoBehaviour
 
     private Upgrade upgrade;
 
-    public void Initialize(Upgrade upgradeData, Sprite upgradeIcon, System.Action<Upgrade> onClick)
+    public void Initialize(Upgrade upgradeData, System.Action<Upgrade> onClick)
     {
         upgrade = upgradeData;
-        icon.sprite = upgradeIcon;
+        icon.sprite = upgradeData.icon;
 
         if (button != null)
         {
@@ -31,10 +31,5 @@ public class UpgradeUIButton : MonoBehaviour
     public Upgrade GetUpgrade()
     {
         return upgrade;
-    }
-
-    public void SetUpgrade(Upgrade upgrade)
-    {
-        this.upgrade = upgrade;
     }
 }

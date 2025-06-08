@@ -63,8 +63,8 @@ public class KineticCannon : WeaponSystem
         isFiring = true;
 
         int salvoCount = 1 + Upgrades.Inst.extraShot.shotsPerSalvo;
-        float shotInterval = Upgrades.Inst.reduceCooldown.shotInterval;
-        float finalCooldown = baseCooldown * Upgrades.Inst.reduceCooldown.cooldownReductionMultiplier;
+        float shotInterval = Upgrades.Inst.reduceCooldown.GetShotInterval();
+        float finalCooldown = baseCooldown * Upgrades.Inst.reduceCooldown.GetCooldownReductionMultiplier();
 
         for (int i = 0; i < salvoCount; i++)
         {

@@ -9,8 +9,8 @@ public class ReduceCooldownUpgrade : Upgrade
     [SerializeField] float baseCooldownReductionMultiplier = 1f;
     [SerializeField] float baseShotInterval = 0.15f;
 
-    public float cooldownReductionMultiplier;
-    public float shotInterval;
+    private float cooldownReductionMultiplier;
+    private float shotInterval;
     protected override void ApplyUpgradeInternal()
     {
         float multiplier = Mathf.Clamp01(1f - cooldownReductionPercent);
@@ -30,5 +30,17 @@ public class ReduceCooldownUpgrade : Upgrade
         Upgrades.Inst.reduceCooldown = this;
         cooldownReductionMultiplier = baseCooldownReductionMultiplier;
         shotInterval = baseShotInterval;
+    }
+
+    public float GetCooldownReductionMultiplier()
+    {
+        if (enabled) return cooldownReductionMultiplier;
+        else return baseCooldownReductionMultiplier;
+    }
+
+    public float GetShotInterval()
+    {
+        if (enabled) return shotInterval;
+        else return baseShotInterval;
     }
 }
