@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acbbb9d529e0d084189a2f7e071e32d0, type: 3}
   m_Name: OverchargedShotUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
-  enabled: 0
+  upgradeName: Overcharged Shot
+  description: Shoots overcharged rounds
+  icon: {fileID: -1263395096065246782, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
+  enabled: 1
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
-  damageMultiplierPerLevel: 2
+  damageMultiplierPerLevel: 3
   interval: 3
   damageMultiplier: 3
   scaleMultiplier: 1.5

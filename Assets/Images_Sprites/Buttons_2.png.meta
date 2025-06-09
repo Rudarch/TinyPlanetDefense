@@ -1,13 +1,28 @@
 fileFormatVersion: 2
-guid: 30c6932af4bfccd47ad80578b085df10
+guid: 9dc21a9ed9cafef4bbc9c1f37fb5e59e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3086813930782705126
-    second: HeavyShells_Icon_1_0
+      213: 7088191770784263116
+    second: Buttons_2_0
   - first:
-      213: 8099212914342644130
-    second: HeavyShells_Icon_1_1
+      213: 8352587340909930176
+    second: Buttons_2_1
+  - first:
+      213: -4229824867763076503
+    second: Buttons_2_2
+  - first:
+      213: 2698164581407625867
+    second: Buttons_2_3
+  - first:
+      213: 4181916796099247601
+    second: Buttons_2_4
+  - first:
+      213: 4415504269367665028
+    second: Buttons_2_5
+  - first:
+      213: 4571772646358261142
+    second: Buttons_2_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -129,13 +144,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HeavyShells_Icon_1_0
+      name: Buttons_2_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 0
-        width: 235
-        height: 243
+        x: 8
+        y: 739
+        width: 186
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e5c7085ae096da20800000000000000
-      internalID: 3086813930782705126
+      spriteID: ccb61755cd05e5260800000000000000
+      internalID: 7088191770784263116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HeavyShells_Icon_1_1
+      name: Buttons_2_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 241
-        width: 130
-        height: 113
+        x: 230
+        y: 733
+        width: 192
+        height: 191
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +181,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a946afeb3f266070800000000000000
-      internalID: 8099212914342644130
+      spriteID: 0c66c52cee95ae370800000000000000
+      internalID: 8352587340909930176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons_2_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 498
+        width: 187
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9624ede71b4ac45c0800000000000000
+      internalID: -4229824867763076503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons_2_3
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 494
+        width: 192
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b82975c246ec17520800000000000000
+      internalID: 2698164581407625867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons_2_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 263
+        width: 187
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fd3cb75b27290a30800000000000000
+      internalID: 4181916796099247601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons_2_5
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 257
+        width: 192
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48161e71db5074d30800000000000000
+      internalID: 4415504269367665028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttons_2_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 21
+        width: 187
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69d1804eff2327f30800000000000000
+      internalID: 4571772646358261142
       vertices: []
       indices: 
       edges: []
@@ -176,7 +301,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +310,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      HeavyShells_Icon_1_0: 3086813930782705126
-      HeavyShells_Icon_1_1: 8099212914342644130
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6425176c8a04cc4597be45ea790391e, type: 3}
   m_Name: LifeSiphonUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
+  upgradeName: Life Siphone
+  description: Restores some health from killing enemies.
+  icon: {fileID: -3472077474700413736, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
   enabled: 0
   maxLevel: 1
-  currentLevel: 0
+  currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
   healFraction: 0.01

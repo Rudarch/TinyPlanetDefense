@@ -21,6 +21,6 @@ public class HighCaliberUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Projectiles knock enemies back by {knockbackForce} and are {Mathf.RoundToInt((scaleMultiplier - 1f) * 100)}% larger.";
+        return $"{knockbackForce} total knockback force";
     }
 }

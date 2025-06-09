@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953c838c73a91d0458af9c9a2981444f, type: 3}
   m_Name: TwinBarrelUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
-  enabled: 0
+  upgradeName: Twin Barrel
+  description: Adds second barrel
+  icon: {fileID: 1743004619048646842, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
+  enabled: 1
   maxLevel: 1
-  currentLevel: 0
+  currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1

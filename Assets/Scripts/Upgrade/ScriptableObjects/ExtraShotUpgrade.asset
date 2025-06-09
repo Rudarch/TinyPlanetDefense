@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9299b8a8179b20f4ca4ecb6d5c5d508c, type: 3}
   m_Name: ExtraShotUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
+  upgradeName: Extra Shot
+  description: Shoots an additional round
+  icon: {fileID: 1064629416, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
   enabled: 1
   maxLevel: 2
   currentLevel: 2
   activatable: 1
   energyCostPerSecond: 1
   extraShotsAdded: 1
+  baseShotInterval: 0.15
   shotsPerSalvo: 2
+  shotInterval: 0.15

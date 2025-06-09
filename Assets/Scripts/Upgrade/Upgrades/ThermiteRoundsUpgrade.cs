@@ -15,7 +15,7 @@ public class ThermiteRoundsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Enemies hit are burnedby {baseDamagePercent + (damagePercentPerLevel * NextLevel)}% damage for {burnDuration}s ).";
+        return $"{(baseDamagePercent + (damagePercentPerLevel * NextLevel)) * 100}%/s of ammo damage in {burnDuration}s";
     }
 
     public override void Initialize()

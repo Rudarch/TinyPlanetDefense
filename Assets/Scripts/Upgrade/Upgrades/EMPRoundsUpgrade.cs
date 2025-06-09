@@ -22,7 +22,7 @@ public class EMPRoundsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Stuns enemies for {GetEmpStunDuration} seconds in {GetRadius} radius.";
+        return $"{GetEmpStunDuration} seconds stun in {GetRadius} radius.";
     }
 
     public override void Initialize()

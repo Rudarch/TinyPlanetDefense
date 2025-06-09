@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865191500a1ed34408fc22b2d5457aa4, type: 3}
   m_Name: ExplosiveRoundsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
+  upgradeName: Explosive Rounds
+  description: Projectiles receive the AOE effect
+  icon: {fileID: -8695695381994133817, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
   enabled: 0
   maxLevel: 3
   currentLevel: 0

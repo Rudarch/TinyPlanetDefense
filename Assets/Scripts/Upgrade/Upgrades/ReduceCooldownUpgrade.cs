@@ -7,21 +7,17 @@ public class ReduceCooldownUpgrade : Upgrade
     public float cooldownReductionPercent = 0.25f;
 
     [SerializeField] float baseCooldownReductionMultiplier = 1f;
-    [SerializeField] float baseShotInterval = 0.15f;
+    //[SerializeField] float baseShotInterval = 0.1f;
 
     private float cooldownReductionMultiplier;
-    private float shotInterval;
     protected override void ApplyUpgradeInternal()
     {
-        float multiplier = Mathf.Clamp01(1f - cooldownReductionPercent);
-
-        cooldownReductionMultiplier = Mathf.Max(0.1f, cooldownReductionMultiplier * multiplier);
-        shotInterval = Mathf.Max(0.05f, shotInterval * multiplier);
+        cooldownReductionMultiplier = GetCooldownReductionMultiplierInternal();
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"-{cooldownReductionPercent * 100f}% shooting cooldown";
+        return $"-{cooldownReductionPercent * 100f}%, -{100 - (Mathf.Abs(GetCooldownReductionMultiplierInternal()) * 100)}% in total.";
     }
 
     public override void Initialize()
@@ -29,18 +25,21 @@ public class ReduceCooldownUpgrade : Upgrade
         ResetUpgrade();
         Upgrades.Inst.reduceCooldown = this;
         cooldownReductionMultiplier = baseCooldownReductionMultiplier;
-        shotInterval = baseShotInterval;
     }
 
-    public float GetCooldownReductionMultiplier()
+    public float CooldownReductionMultiplier
     {
-        if (enabled) return cooldownReductionMultiplier;
-        else return baseCooldownReductionMultiplier;
+        get
+        {
+            if (enabled) return cooldownReductionMultiplier;
+            else return baseCooldownReductionMultiplier;
+        }
     }
 
-    public float GetShotInterval()
+    private float GetCooldownReductionMultiplierInternal()
     {
-        if (enabled) return shotInterval;
-        else return baseShotInterval;
+        float multiplier = Mathf.Clamp01(1f - cooldownReductionPercent);
+
+        return Mathf.Max(0.1f, cooldownReductionMultiplier * multiplier);
     }
 }

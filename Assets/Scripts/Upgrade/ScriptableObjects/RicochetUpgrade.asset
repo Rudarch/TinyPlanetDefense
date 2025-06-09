@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50149ece0cba123429439533753a0b12, type: 3}
   m_Name: RicochetUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
-  enabled: 0
+  upgradeName: Ricochet
+  description: Bullets ricochet to more targets
+  icon: {fileID: 2296958065693842985, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
+  enabled: 1
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 2
   activatable: 1
   energyCostPerSecond: 1
   extraRicochets: 1
-  extraRange: 0.5
-  ricochetCount: 0
-  ricochetRange: 0
+  extraRange: 0.1
+  ricochetCount: 2
+  ricochetRange: 0.2

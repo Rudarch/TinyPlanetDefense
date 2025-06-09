@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6453befaaeb4aff4eb46bcd9203732b9, type: 3}
   m_Name: EMPRoundsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
+  upgradeName: EMP Rounds
+  description: Shoots EMP charges, which stun the enemies
+  icon: {fileID: 3247520538013584815, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
   enabled: 0
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
   baseStunDuration: 0.3
@@ -28,4 +28,4 @@ MonoBehaviour:
   shotsPerEMP: 5
   radius: 0.5
   stunDuration: 0.5
-  shotCounter: 0
+  shotCounter: 1

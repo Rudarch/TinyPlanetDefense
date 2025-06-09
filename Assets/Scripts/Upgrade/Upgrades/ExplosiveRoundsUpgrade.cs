@@ -22,7 +22,7 @@ public class ExplosiveRoundsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Enables AoE in {GetExplosionRadius} Radius";
+        return $"+{radiusPerLevel}, {GetExplosionRadius} total radius";
     }
 
     float GetExplosionRadius => radiusPerLevel * NextLevel;

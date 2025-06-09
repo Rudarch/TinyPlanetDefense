@@ -11,7 +11,7 @@ public class TwinBarrelUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return "Adds a second barrel";
+        return "More firepower - more fun!";
     }
 
     public override void Initialize()

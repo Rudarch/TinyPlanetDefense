@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 189ed1fe51dd9164e876d4aca822cbe5, type: 3}
   m_Name: OrbitalWingUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
-  enabled: 0
+  upgradeName: Orbital WIng
+  description: Adds an autonomous attack drone
+  icon: {fileID: 4730563971670607309, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
+  enabled: 1
   maxLevel: 5
-  currentLevel: 0
+  currentLevel: 2
   activatable: 1
   energyCostPerSecond: 1

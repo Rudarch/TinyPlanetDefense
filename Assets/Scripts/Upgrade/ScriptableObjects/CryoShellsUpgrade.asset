@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15f8cb24930f314480c82c02d29bdbd, type: 3}
   m_Name: CryoShellsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
+  upgradeName: Cryo Shells
+  description: Shots slow down the enemies
+  icon: {fileID: -160360882, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
   enabled: 0
   maxLevel: 3
   currentLevel: 0
   activatable: 1
   energyCostPerSecond: 1
-  baseSlowAmount: 0.3
+  baseSlowAmount: 0.1
   slowAmountPerLevel: 0.2
   baseSlowDuration: 5
   slowDuration: 5

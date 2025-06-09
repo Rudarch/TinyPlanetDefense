@@ -5,6 +5,7 @@ public class UpgradeUIButton : MonoBehaviour
 {
     public Button button;
     public Image background;
+    public Image glow;
     public Image icon;
 
     private Upgrade upgrade;
@@ -25,7 +26,7 @@ public class UpgradeUIButton : MonoBehaviour
 
     public void SetEnabled(bool enabled)
     {
-        background.color = enabled ? Color.white : Color.gray;
+        glow.enabled = enabled;
     }
 
     public Upgrade GetUpgrade()

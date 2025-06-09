@@ -7,7 +7,7 @@ public class UpgradeButtonPanel : MonoBehaviour
     public GameObject upgradeButtonPrefab;
     public float horizontalSpacing = 10f;
     public float verticalSpacing = 10f;
-    public float maxRowWidthRatio = 0.9f;
+    public float maxRowWidthRatio = 1f;
 
     private readonly List<GameObject> buttons = new();
     private readonly HashSet<System.Type> activeUpgradeTypes = new();
@@ -38,10 +38,10 @@ public class UpgradeButtonPanel : MonoBehaviour
         {
             button.Initialize(upgrade, (upg) => {
                 Upgrades.Inst.ToggleUpgrade(upg);
-                button.SetEnabled(!upgrade.enabled);
+                button.SetEnabled(upgrade.enabled);
             });
         }
-
+        button.SetEnabled(true);
         buttons.Add(buttonGO);
         activeUpgradeTypes.Add(upgradeType);
         RebuildLayout();

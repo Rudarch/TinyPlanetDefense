@@ -16,7 +16,7 @@ public class CryoShellsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Projectiles slow enemies by {GetSlowAmmount}% for {slowDuration} seconds.";
+        return $"{GetSlowAmmount}% for {slowDuration} seconds.";
     }
 
     public override void Initialize()
@@ -27,5 +27,5 @@ public class CryoShellsUpgrade : Upgrade
         slowAmount = 0;
     }
 
-    float GetSlowAmmount => baseSlowAmount + (slowAmountPerLevel * NextLevel) * 100f;
+    float GetSlowAmmount => (baseSlowAmount + (slowAmountPerLevel * NextLevel)) * 100f;
 }

@@ -20,7 +20,7 @@ public class OrbitalWingUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Adds 1 drone which automatically attacks enemies. {NextLevel} in total.";
+        return $"+1 drone. {NextLevel} in total.";
     }
 
     public override void Initialize()

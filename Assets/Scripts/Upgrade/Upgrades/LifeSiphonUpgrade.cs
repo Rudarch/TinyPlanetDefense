@@ -20,6 +20,6 @@ public class LifeSiphonUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Kills heal the planet for {healFraction * 100f}% HP.";
+        return $"+{healFraction * 100f}% HP per kill.";
     }
 }

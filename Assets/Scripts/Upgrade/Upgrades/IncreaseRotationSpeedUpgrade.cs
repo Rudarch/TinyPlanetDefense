@@ -12,7 +12,7 @@ public class IncreaseRotationSpeedUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{speedBoostPerLevel * NextLevel}°/s Rotation Speed";
+        return $"+{speedBoostPerLevel}°/s, {rotationBoost + speedBoostPerLevel} in total";
     }
 
     public override void Initialize()

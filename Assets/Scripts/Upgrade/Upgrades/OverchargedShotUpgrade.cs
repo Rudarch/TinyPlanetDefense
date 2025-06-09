@@ -15,7 +15,7 @@ public class OverchargedShotUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Every {interval} seconds, your next shot deals {damageMultiplierPerLevel * NextLevel}x damage and is larger.";
+        return $"Every {interval} seconds, {damageMultiplierPerLevel * NextLevel}x damage.";
     }
 
     public override void Initialize()

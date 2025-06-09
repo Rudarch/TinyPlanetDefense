@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1b8d75be161a4cb5ae20faf116c46, type: 3}
   m_Name: PiercingAmmoUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
+  upgradeName: Piercing Ammo
+  description: The projectiles pierce enemies
+  icon: {fileID: -2794174469487630112, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
   enabled: 0
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 3
   activatable: 1
   energyCostPerSecond: 1
   extraPiercePerLevel: 1
-  pierceCount: 0
+  pierceCount: 3

@@ -14,7 +14,7 @@ public class IncreaseDamageUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{bonusDamagePerLevel} Damage. {bonusDamage + bonusDamagePerLevel} total.";
+        return $"+{bonusDamagePerLevel} Damage. {bonusDamage + bonusDamagePerLevel} in total.";
     }
 
     public override void Initialize()

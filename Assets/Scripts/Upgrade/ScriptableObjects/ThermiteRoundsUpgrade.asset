@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606e79886a10efb4c89cf0ad0dc5a309, type: 3}
   m_Name: ThermiteRoundsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
-  description: 
-  icon: {fileID: 0}
-  enabled: 0
+  upgradeName: Thermite Rounds
+  description: Sets enemies on fire
+  icon: {fileID: 223580912, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
+  enabled: 1
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
   baseDamagePercent: 0.2
-  damagePercentPerLevel: 0.15
+  damagePercentPerLevel: 0.1
   burnDuration: 3
-  thermiteDPSPercent: 0.2
+  thermiteDPSPercent: 0.3
