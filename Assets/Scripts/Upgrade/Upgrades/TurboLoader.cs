@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ReduceCooldownUpgrade", menuName = "Upgrades/ReduceCooldown")]
-public class ReduceCooldownUpgrade : Upgrade
+[CreateAssetMenu(fileName = "TurboLoader", menuName = "Upgrades/TurboLoader")]
+public class TurboLoader : Upgrade
 {
     [SerializeField] [Range(0f, 1f)] 
     public float cooldownReductionPercent = 0.25f;

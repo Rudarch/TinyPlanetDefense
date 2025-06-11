@@ -9,14 +9,16 @@ public class UpgradeButtonPanel : MonoBehaviour
     public float verticalSpacing = 10f;
     public float maxRowWidthRatio = 1f;
 
-    private readonly List<GameObject> buttons = new();
-    private readonly HashSet<System.Type> activeUpgradeTypes = new();
+    private readonly List<UpgradeUIButton> buttons = new();
+    private readonly Dictionary<Upgrade, UpgradeUIButton> upgradeToButton = new();
+
     public static UpgradeButtonPanel Inst { get; private set; }
+
     void Awake()
     {
         if (Inst != null && Inst != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         Inst = this;
@@ -24,62 +26,53 @@ public class UpgradeButtonPanel : MonoBehaviour
 
     public void AddUpgradeButton(Upgrade upgrade)
     {
-        if (!upgrade.activatable)
-            return;
-
-        var upgradeType = upgrade.GetType();
-
-        if (activeUpgradeTypes.Contains(upgradeType))
+        if (!upgrade.activatable || upgradeToButton.ContainsKey(upgrade))
             return;
 
         GameObject buttonGO = Instantiate(upgradeButtonPrefab, panel);
-        var button = buttonGO.GetComponent<UpgradeUIButton>();
-        if (button != null)
+        var buttonUI = buttonGO.GetComponent<UpgradeUIButton>();
+        if (buttonUI != null)
         {
-            button.Initialize(upgrade, (upg) => {
-                Upgrades.Inst.ToggleUpgrade(upg);
-                button.SetEnabled(upgrade.enabled);
-            });
+            buttonUI.Initialize(upgrade, ToggleUpgrade);
+            buttons.Add(buttonUI);
+            upgradeToButton[upgrade] = buttonUI;
+            RebuildLayout();
         }
-        button.SetEnabled(true);
-        buttons.Add(buttonGO);
-        activeUpgradeTypes.Add(upgradeType);
-        RebuildLayout();
     }
 
     public void RemoveUpgradeButton(Upgrade upgrade)
     {
-        GameObject target = buttons.Find(go =>
-        {
-            var btn = go.GetComponent<UpgradeUIButton>();
-            return btn != null && btn.GetUpgrade() == upgrade;
-        });
+        if (!upgradeToButton.TryGetValue(upgrade, out var button))
+            return;
 
-        if (target != null)
-        {
-            buttons.Remove(target);
-            Destroy(target);
-            RebuildLayout();
-        }
+        buttons.Remove(button);
+        upgradeToButton.Remove(upgrade);
+        Destroy(button.gameObject);
+        RebuildLayout();
     }
 
     public void ResetButtons()
     {
         foreach (var button in buttons)
-            Destroy(button);
+        {
+            Destroy(button.gameObject);
+        }
 
-        activeUpgradeTypes.Clear();
+        buttons.Clear();
+        upgradeToButton.Clear();
     }
 
-    private void RebuildLayout()
+    public void RebuildLayout()
     {
         float maxRowWidth = panel.rect.width * maxRowWidthRatio;
         Vector2 buttonSize = upgradeButtonPrefab.GetComponent<RectTransform>().sizeDelta;
 
-        float x = 0f, y = 0f;
-        for (int i = 0; i < buttons.Count; i++)
+        float x = 0f;
+        float y = 0f;
+
+        foreach (var button in buttons)
         {
-            RectTransform rt = buttons[i].GetComponent<RectTransform>();
+            RectTransform rt = button.GetComponent<RectTransform>();
             if (x + buttonSize.x > maxRowWidth && x > 0f)
             {
                 x = 0f;
@@ -89,5 +82,17 @@ public class UpgradeButtonPanel : MonoBehaviour
             rt.anchoredPosition = new Vector2(x, y);
             x += buttonSize.x + horizontalSpacing;
         }
+    }
+
+    public UpgradeUIButton GetButtonForUpgrade(Upgrade upgrade)
+    {
+        upgradeToButton.TryGetValue(upgrade, out var button);
+        return button;
+    }
+
+    private void ToggleUpgrade(Upgrade upgrade)
+    {
+        Upgrades.Inst.ToggleUpgrade(upgrade);
+        GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.enabled);
     }
 }

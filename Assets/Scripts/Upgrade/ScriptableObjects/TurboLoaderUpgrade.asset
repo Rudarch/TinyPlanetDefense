@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f18f2723e92aa14ab8f51ce504d477e, type: 3}
-  m_Name: ReduceCooldownUpgrade
+  m_Name: TurboLoaderUpgrade
   m_EditorClassIdentifier: 
   upgradeName: Turbo Loader
   description: Shortens the reload cooldown
-  icon: {fileID: 7455904369158184593, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
+  icon: {fileID: -5579780383750340384, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   enabled: 1
   maxLevel: 4
   currentLevel: 1
@@ -22,4 +22,3 @@ MonoBehaviour:
   energyCostPerSecond: 1
   cooldownReductionPercent: 0.2
   baseCooldownReductionMultiplier: 1
-  baseShotInterval: 0.1

@@ -4,39 +4,47 @@ using UnityEngine;
 
 public class Upgrades : MonoBehaviour
 {
+    public static Upgrades Inst { get; private set; }
+
+    [Header("Projectile Upgrades")]
     public CryoShellsUpgrade cryoShells;
     public IncreaseDamageUpgrade increaseDamage;
     public EMPRoundsUpgrade empRounds;
     public LifeSiphonUpgrade lifeSiphon;
     public ExplosiveRoundsUpgrade explosiveRounds;
-    public ExtraShotUpgrade extraShot;
-    public HighCaliberUpgrade highCaliber;
-    public IncreaseRotationSpeedUpgrade increaseRotationSpeed;
-    public OrbitalWingUpgrade orbitalWing;
-    public OverchargedShotUpgrade overchargedShot;
-    public PiercingAmmoUpgrade piercingAmmo;
-    public ReduceCooldownUpgrade reduceCooldown;
-    public RicochetUpgrade ricochet;
     public ThermiteRoundsUpgrade thermiteRounds;
+    public HighCaliberUpgrade highCaliber;
+    public PiercingAmmoUpgrade piercingAmmo;
+    public RicochetUpgrade ricochet;
+
+    [Header("Cannon Upgrades")]
+    public ExtraShotUpgrade extraShot;
+    public TurboLoader reduceCooldown;
     public TwinBarrelUpgrade twinBarrel;
+    public IncreaseRotationSpeedUpgrade increaseRotationSpeed;
+    public OverchargedShotUpgrade overchargedShot;
 
+    [Header("Special Upgrades")]
+    public OrbitalWingUpgrade orbitalWing;
+
+    [Header("All Upgrades")]
     public List<Upgrade> allUpgrades;
-    
-    private HashSet<Upgrade> activeUpgrades = new();
 
-
-    public static Upgrades Inst { get; private set; }
     void Awake()
     {
         if (Inst != null && Inst != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
-        Inst = this;
-    }
 
-    //public bool IsUpgradeActive(Upgrade upgrade) => activeUpgrades.Contains(upgrade);
+        Inst = this;
+
+        foreach (var upgrade in allUpgrades)
+        {
+            upgrade.Initialize();
+        }
+    }
 
     public void ToggleUpgrade(Upgrade upgrade)
     {
@@ -49,7 +57,6 @@ public class Upgrades : MonoBehaviour
         if (upgrade.enabled)
         {
             Debug.Log($"Deactivating upgrade: {upgrade.upgradeName}");
-            activeUpgrades.Remove(upgrade);
             upgrade.OnDeactivate();
         }
         else
@@ -57,16 +64,23 @@ public class Upgrades : MonoBehaviour
             Debug.Log($"Activating upgrade: {upgrade.upgradeName}");
             upgrade.OnActivate();
         }
+
+        UpgradeButtonPanel.Inst?.GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.enabled);
     }
 
     public float GetTotalActiveDrain()
     {
-        return activeUpgrades.Sum(u => u.energyCostPerSecond);
+        return allUpgrades
+            .Where(upg => upg.activatable && upg.enabled)
+            .Sum(upg => upg.energyCostPerSecond);
     }
 
-    public void ForceAllUpgradesOff()
+    public void ForceDeactivateAll()
     {
-        activeUpgrades.Clear();
-        //UpgradeUI.Inst.ForceAllButtonsOff(); TODO;
+        foreach (var upgrade in allUpgrades.Where(u => u.activatable && u.enabled))
+        {
+            upgrade.OnDeactivate();
+            UpgradeButtonPanel.Inst?.GetButtonForUpgrade(upgrade)?.UpdateVisual(false);
+        }
     }
 }

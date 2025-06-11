@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Ricochet
   description: Bullets ricochet to more targets
-  icon: {fileID: 2296958065693842985, guid: 5c38d6c1f4e36764dbec9a69d1138da2, type: 3}
-  enabled: 1
+  icon: {fileID: -1266927123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  enabled: 0
   maxLevel: 3
-  currentLevel: 2
+  currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
   extraRicochets: 1
   extraRange: 0.1
-  ricochetCount: 2
-  ricochetRange: 0.2
+  ricochetCount: 1
+  ricochetRange: 0.1

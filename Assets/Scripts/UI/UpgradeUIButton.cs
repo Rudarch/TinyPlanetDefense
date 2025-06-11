@@ -1,36 +1,69 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UpgradeUIButton : MonoBehaviour
 {
-    public Button button;
-    public Image background;
-    public Image glow;
-    public Image icon;
+    [Header("UI References")]
+    public UnityEngine.UI.Button button;
+    public UnityEngine.UI.Image background;
+    public Sprite backgroundEnabled;
+    public Sprite backgroundDisabled;
+    public UnityEngine.UI.Image icon;
+    public Color disabledColor;
+    public AudioClip clickSound;
 
+    private AudioSource audioSource;
     private Upgrade upgrade;
+
+    public Upgrade BoundUpgrade => upgrade;
+    public RectTransform RectTransform => GetComponent<RectTransform>();
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+    }
 
     public void Initialize(Upgrade upgradeData, System.Action<Upgrade> onClick)
     {
         upgrade = upgradeData;
-        icon.sprite = upgradeData.icon;
+
+        if (icon != null && upgrade.icon != null)
+            icon.sprite = upgrade.icon;
 
         if (button != null)
         {
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => onClick?.Invoke(upgrade));
+            button.onClick.AddListener(() =>
+            {
+                if (clickSound != null && audioSource != null)
+                {
+                    audioSource.pitch = Random.Range(0.95f, 1.05f); // optional variation
+                    audioSource.PlayOneShot(clickSound);
+                }
+
+                onClick?.Invoke(upgrade);
+            });
         }
 
-        SetEnabled(false);
+        UpdateVisual(upgrade.enabled);
     }
 
-    public void SetEnabled(bool enabled)
+    public void UpdateVisual(bool isActive)
     {
-        glow.enabled = enabled;
-    }
+        if(backgroundEnabled == null || backgroundDisabled == null) return;
+        if (isActive)
+        {
+            background.sprite = backgroundEnabled;
+            icon.color = Color.white;
+        }
+        else
+        {
 
-    public Upgrade GetUpgrade()
-    {
-        return upgrade;
+            background.sprite = backgroundDisabled;
+            icon.color = disabledColor;
+        }
     }
 }
