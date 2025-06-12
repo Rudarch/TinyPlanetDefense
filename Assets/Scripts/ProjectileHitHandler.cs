@@ -16,6 +16,7 @@ public class ProjectileHitHandler : MonoBehaviour
     private GameObject ricochetLinePrefab;
     private GameObject explosionEffectPrefab;
     private GameObject empEffectPrefab;
+    private GameObject impactFlashPrefab;
     private AudioClip hitSound;
     private AudioSource audioSource;
 
@@ -23,7 +24,8 @@ public class ProjectileHitHandler : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
-    public void Setup(Projectile proj, Upgrades upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx, AudioClip hitAudio)
+
+    public void Setup(Projectile proj, Upgrades upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx, GameObject impactFlashPrefab, AudioClip hitAudio)
     {
         projectile = proj;
         this.upgrades = upgrades;
@@ -32,6 +34,7 @@ public class ProjectileHitHandler : MonoBehaviour
         ricochetLinePrefab = ricochetFx;
         explosionEffectPrefab = explosionFx;
         empEffectPrefab = empFx;
+        this.impactFlashPrefab = impactFlashPrefab;
         hitSound = hitAudio;
     }
 
@@ -86,7 +89,7 @@ public class ProjectileHitHandler : MonoBehaviour
         {
             var slow = enemy.GetComponent<EnemySlow>();
             if (slow != null)
-                slow.ApplySlow(upgrades.cryoShells.slowAmount, upgrades.cryoShells.slowDuration);
+                slow.ApplySlow(upgrades.cryoShells.SlowAmount, upgrades.cryoShells.SlowDuration);
         }
 
         if (upgrades.thermiteRounds.enabled)
@@ -127,9 +130,9 @@ public class ProjectileHitHandler : MonoBehaviour
             if (upgrades.explosiveRounds.enabled && upgrades.explosiveRounds.explosionRadius > 0f)
                 Explode();
 
-            if (upgrades.empRounds.enabled&& upgrades.empRounds.shotCounter++ >= upgrades.empRounds.shotsPerEMP)
+            if (upgrades.empRounds.enabled&& upgrades.empRounds.ShotCounter++ >= upgrades.empRounds.ShotsPerEMP)
             {
-                upgrades.empRounds.shotCounter = 0;
+                upgrades.empRounds.ShotCounter = 0;
                 TriggerEMP();
             }
 
@@ -158,7 +161,7 @@ public class ProjectileHitHandler : MonoBehaviour
                 {
                     var slow = enemy.GetComponent<EnemySlow>();
                     if (slow != null)
-                        slow.ApplySlow(upgrades.cryoShells.slowAmount, upgrades.cryoShells.slowDuration);
+                        slow.ApplySlow(upgrades.cryoShells.SlowAmount, upgrades.cryoShells.SlowDuration);
                 }
 
                 if (upgrades.thermiteRounds.enabled)

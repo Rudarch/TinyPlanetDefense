@@ -7,7 +7,8 @@ public class Projectile : MonoBehaviour
     public float damage = 10f;
     public GameObject ricochetLinePrefab;
     public GameObject explosionEffectPrefab;
-    public GameObject empEffectPrefab;
+    public GameObject empEffectPrefab; 
+    public GameObject impactFlashPrefab;
     public AudioClip hitSound;
 
     private Vector2 direction;
@@ -16,7 +17,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         var upgradeState = Upgrades.Inst;
-        damage += upgradeState.increaseDamage.bonusDamage;
+        damage += upgradeState.increaseDamage.BonusDamage;
 
         hitHandler = gameObject.AddComponent<ProjectileHitHandler>();
         hitHandler.Setup(
@@ -27,8 +28,8 @@ public class Projectile : MonoBehaviour
             ricochetLinePrefab,
             explosionEffectPrefab,
             empEffectPrefab,
-            hitSound
-        );
+            impactFlashPrefab,
+            hitSound);
 
         hitHandler.CheckImmediateOverlap();
         Destroy(gameObject, lifetime);
@@ -60,5 +61,6 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         hitHandler.OnHit(other);
+
     }
 }

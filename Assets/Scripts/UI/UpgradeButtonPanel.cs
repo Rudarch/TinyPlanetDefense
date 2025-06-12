@@ -1,15 +1,15 @@
+
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeButtonPanel : MonoBehaviour
 {
     public RectTransform panel;
     public GameObject upgradeButtonPrefab;
-    public float horizontalSpacing = 10f;
-    public float verticalSpacing = 10f;
-    public float maxRowWidthRatio = 1f;
+    public GameObject rowPrefab;
 
-    private readonly List<UpgradeUIButton> buttons = new();
+    private readonly List<RectTransform> rows = new();
     private readonly Dictionary<Upgrade, UpgradeUIButton> upgradeToButton = new();
 
     public static UpgradeButtonPanel Inst { get; private set; }
@@ -29,14 +29,13 @@ public class UpgradeButtonPanel : MonoBehaviour
         if (!upgrade.activatable || upgradeToButton.ContainsKey(upgrade))
             return;
 
-        GameObject buttonGO = Instantiate(upgradeButtonPrefab, panel);
+        RectTransform targetRow = GetOrCreateRowForNextButton();
+        GameObject buttonGO = Instantiate(upgradeButtonPrefab, targetRow);
         var buttonUI = buttonGO.GetComponent<UpgradeUIButton>();
         if (buttonUI != null)
         {
             buttonUI.Initialize(upgrade, ToggleUpgrade);
-            buttons.Add(buttonUI);
             upgradeToButton[upgrade] = buttonUI;
-            RebuildLayout();
         }
     }
 
@@ -45,43 +44,25 @@ public class UpgradeButtonPanel : MonoBehaviour
         if (!upgradeToButton.TryGetValue(upgrade, out var button))
             return;
 
-        buttons.Remove(button);
         upgradeToButton.Remove(upgrade);
         Destroy(button.gameObject);
-        RebuildLayout();
+        CleanEmptyRows();
     }
 
     public void ResetButtons()
     {
-        foreach (var button in buttons)
+        foreach (var kv in upgradeToButton)
         {
-            Destroy(button.gameObject);
+            if (kv.Value != null)
+                Destroy(kv.Value.gameObject);
         }
-
-        buttons.Clear();
         upgradeToButton.Clear();
-    }
 
-    public void RebuildLayout()
-    {
-        float maxRowWidth = panel.rect.width * maxRowWidthRatio;
-        Vector2 buttonSize = upgradeButtonPrefab.GetComponent<RectTransform>().sizeDelta;
-
-        float x = 0f;
-        float y = 0f;
-
-        foreach (var button in buttons)
+        foreach (var row in rows)
         {
-            RectTransform rt = button.GetComponent<RectTransform>();
-            if (x + buttonSize.x > maxRowWidth && x > 0f)
-            {
-                x = 0f;
-                y -= buttonSize.y + verticalSpacing;
-            }
-
-            rt.anchoredPosition = new Vector2(x, y);
-            x += buttonSize.x + horizontalSpacing;
+            Destroy(row.gameObject);
         }
+        rows.Clear();
     }
 
     public UpgradeUIButton GetButtonForUpgrade(Upgrade upgrade)
@@ -94,5 +75,48 @@ public class UpgradeButtonPanel : MonoBehaviour
     {
         Upgrades.Inst.ToggleUpgrade(upgrade);
         GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.enabled);
+    }
+
+    private RectTransform GetOrCreateRowForNextButton()
+    {
+        float buttonWidth = upgradeButtonPrefab.GetComponent<RectTransform>().sizeDelta.x;
+        RectTransform currentRow = rows.Count > 0 ? rows[rows.Count - 1] : null;
+
+        if (currentRow == null || !CanFitInRow(currentRow, buttonWidth))
+        {
+            GameObject newRow = Instantiate(rowPrefab, panel);
+            currentRow = newRow.GetComponent<RectTransform>();
+            rows.Add(currentRow);
+        }
+
+        return currentRow;
+    }
+
+    private bool CanFitInRow(RectTransform row, float nextButtonWidth)
+    {
+        var layout = row.GetComponent<HorizontalLayoutGroup>();
+        if (layout == null) return false;
+
+        float totalPadding = layout.padding.left + layout.padding.right;
+        float spacing = layout.spacing;
+        float rowWidth = row.rect.width;
+
+        float usedWidth = totalPadding;
+        foreach (RectTransform child in row)
+        {
+            usedWidth += child.sizeDelta.x + spacing;
+        }
+
+        return usedWidth + nextButtonWidth <= rowWidth;
+    }
+
+    private void CleanEmptyRows()
+    {
+        for (int i = rows.Count - 1; i >= 0; i--)
+        {
+            if (rows[i] == null || rows[i].childCount > 0) continue;
+            Destroy(rows[i].gameObject);
+            rows.RemoveAt(i);
+        }
     }
 }

@@ -37,7 +37,7 @@ public class KineticCannon : WeaponSystem
         if (singleMuzzleGroup != null) singleMuzzleGroup.SetActive(false);
     }
 
-    private void EnableSingleMuzzle()
+    public void EnableSingleMuzzle()
     {
         if (twinMuzzlesGroup != null) twinMuzzlesGroup.SetActive(false);
         if (singleMuzzleGroup != null) singleMuzzleGroup.SetActive(true);

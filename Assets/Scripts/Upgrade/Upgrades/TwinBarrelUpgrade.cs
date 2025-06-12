@@ -3,9 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TwinBarrelUpgrade", menuName = "Upgrades/TwinBarrel")]
 public class TwinBarrelUpgrade : Upgrade
 {
+    KineticCannon cannon;
+    void Start()
+    {
+        cannon = FindFirstObjectByType<KineticCannon>();
+    }
+
     protected override void ApplyUpgradeInternal()
     {
-        var cannon = FindFirstObjectByType<KineticCannon>();
         cannon?.EnableTwinMuzzles();
     }
 
@@ -18,5 +23,18 @@ public class TwinBarrelUpgrade : Upgrade
     {
         ResetUpgrade();
         Upgrades.Inst.twinBarrel = this;
+    }
+
+
+    public override void OnActivate()
+    {
+        base.OnActivate();
+        cannon?.EnableTwinMuzzles();
+    }
+
+    public override void OnDeactivate()
+    {
+        base.OnDeactivate();
+        cannon?.EnableSingleMuzzle();
     }
 }

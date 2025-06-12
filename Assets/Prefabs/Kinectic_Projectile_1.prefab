@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7120455047051376512}
@@ -215,6 +215,7 @@ MonoBehaviour:
   ricochetLinePrefab: {fileID: 1408851793309974807, guid: dfb982c2c600937498e8617649b6975f, type: 3}
   explosionEffectPrefab: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
   empEffectPrefab: {fileID: 6955652225482351914, guid: a4e88c89d280f32418951221c91e4e04, type: 3}
+  impactFlashPrefab: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 8ad0c9cdecf5f9849a2c8e225e443f71, type: 3}
 --- !u!1 &8204084467353614868
 GameObject:
@@ -243,7 +244,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7442623370896955172}
@@ -293,7 +294,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 542688775927591018, guid: 0815c0db84c80694296cbdc791fb8cf3, type: 3}
-  m_Color: {r: 1, g: 0.71740556, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.88970673, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

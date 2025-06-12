@@ -7,8 +7,11 @@ public class CryoShellsUpgrade : Upgrade
     [SerializeField] float slowAmountPerLevel = 0.2f;
     [SerializeField] float baseSlowDuration = 5f;
 
-    public float slowDuration;
-    public float slowAmount;
+    private float disabledSlowDuration = 0f;
+    private float disabledSlowAmount = 0f;
+    private float slowDuration;
+    private float slowAmount;
+
     protected override void ApplyUpgradeInternal()
     {
         slowAmount = baseSlowAmount + (slowAmountPerLevel * currentLevel);
@@ -16,7 +19,7 @@ public class CryoShellsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"{GetSlowAmmount}% for {slowDuration} seconds.";
+        return $"{GetSlowAmmount}% for {SlowDuration} seconds.";
     }
 
     public override void Initialize()
@@ -28,4 +31,22 @@ public class CryoShellsUpgrade : Upgrade
     }
 
     float GetSlowAmmount => (baseSlowAmount + (slowAmountPerLevel * NextLevel)) * 100f;
+
+    public float SlowDuration 
+    { 
+        get 
+        {
+            if (enabled) return slowDuration;
+            else return disabledSlowDuration;
+        }
+    }
+
+    public float SlowAmount
+    {
+        get
+        {
+            if (enabled) return slowAmount;
+            else return disabledSlowAmount;
+        }
+    }
 }

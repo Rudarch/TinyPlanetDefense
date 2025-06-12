@@ -9,7 +9,8 @@ public abstract class Upgrade : ScriptableObject
     public int maxLevel = 1;
     public int currentLevel = 0;
     public bool activatable = false;
-    public float energyCostPerSecond = 1f;
+    public float energyCostPerSecond = 0f;
+    public float energyCostPerLevel = 1f;
     public bool IsMaxedOut => currentLevel >= maxLevel;
 
     protected int NextLevel => currentLevel + 1;
@@ -25,7 +26,7 @@ public abstract class Upgrade : ScriptableObject
 
         enabled = true;
         currentLevel++;
-
+        energyCostPerSecond += energyCostPerLevel;
         ApplyUpgradeInternal();
 
         Debug.Log($"Applied upgrade: (Level {currentLevel}/{maxLevel})");
@@ -35,6 +36,7 @@ public abstract class Upgrade : ScriptableObject
     {
         currentLevel = 0;
         enabled = false;
+        energyCostPerSecond = 0;
     }
 
     public virtual string GetUpgradeEffectText()

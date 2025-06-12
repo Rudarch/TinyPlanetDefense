@@ -7,7 +7,8 @@ public class EnergySystem : MonoBehaviour
 {
     public float maxEnergy = 100f;
     public float currentEnergy = 100f;
-    public float regenPerSecond = 5f;
+    public float regenPerSecond = 3f;
+    public float regenPerLevel = 0.5f;
 
     public static Action<float, float> OnEnergyChanged;
 
@@ -17,16 +18,24 @@ public class EnergySystem : MonoBehaviour
     void Update()
     {
         float totalDrain = Upgrades.Inst.GetTotalActiveDrain();
-        currentEnergy += (regenPerSecond - totalDrain) * Time.deltaTime;
+        var energyDelta = (regenPerSecond - totalDrain);
+        var energyDeltaOverTime = energyDelta * Time.deltaTime;
+        currentEnergy += energyDeltaOverTime;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
         OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
 
         energyFillImage.fillAmount = currentEnergy / maxEnergy;
-        emergyText.text = Mathf.Round(currentEnergy).ToString();
+        var sign = energyDelta < 0 ? "-" : "+";
+        emergyText.text = $"{sign}{(float)Math.Round(energyDelta, 1)}";
 
         if (currentEnergy <= 0f)
             Upgrades.Inst.ForceDeactivateAll();
     }
 
     public bool HasEnough(float amount) => currentEnergy >= amount;
+
+    public void OnLevelUp()
+    {
+        regenPerSecond += regenPerLevel;
+    }
 }

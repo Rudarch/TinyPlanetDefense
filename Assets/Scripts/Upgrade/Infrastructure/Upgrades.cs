@@ -44,6 +44,7 @@ public class Upgrades : MonoBehaviour
         {
             upgrade.Initialize();
         }
+        Debug.Log($"{allUpgrades.Count} upgrades were initialized.");
     }
 
     public void ToggleUpgrade(Upgrade upgrade)

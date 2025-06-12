@@ -4,8 +4,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "IncreaseDamageUpgrade", menuName = "Upgrades/IncreaseDamage")]
 public class IncreaseDamageUpgrade : Upgrade
 {
-    public float bonusDamage = 0f;
+    private float bonusDamage = 0f;
     public float bonusDamagePerLevel = 5f;
+
+    public float BonusDamage
+    {
+        get
+        {
+            if (enabled) return bonusDamage;
+            else return 0;
+        }
+    }
 
     protected override void ApplyUpgradeInternal()
     {

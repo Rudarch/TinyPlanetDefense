@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: a292a52a10058714d83507ed472f8dfc
+guid: 0690e328f11943542ba15272863b26ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7182013009810618309
-    second: Alien_Tank_1_0
+      213: -7671673109216329897
+    second: GamePanel_1 (1)_0
+  - first:
+      213: 5763552064465129887
+    second: GamePanel_1 (1)_1
+  - first:
+      213: -1920829047046556267
+    second: GamePanel_1 (1)_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,7 +103,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +116,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -126,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alien_Tank_1_0
+      name: GamePanel_1 (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 366
-        height: 378
+        x: 336
+        y: 713
+        width: 139
+        height: 143
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b380102383d545c90800000000000000
-      internalID: -7182013009810618309
+      spriteID: 75f7e3414fdb88590800000000000000
+      internalID: -7671673109216329897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePanel_1 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 728
+        width: 513
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91d9e6e0104cff40800000000000000
+      internalID: 5763552064465129887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePanel_1 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 1012
+        height: 698
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 595b980a828d755e0800000000000000
+      internalID: -1920829047046556267
       vertices: []
       indices: 
       edges: []
@@ -160,8 +210,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Alien_Tank_1_0: -7182013009810618309
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

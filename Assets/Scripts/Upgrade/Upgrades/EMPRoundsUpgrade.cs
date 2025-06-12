@@ -9,10 +9,11 @@ public class EMPRoundsUpgrade : Upgrade
     [SerializeField] float radiusPerLevel = 0.5f;
     [SerializeField] int baseShotsPerEMP = 5;
 
-    public int shotsPerEMP = 5;
-    public float radius;
-    public float stunDuration;
-    public int shotCounter;
+    private int shotsPerEMP = 5;
+    private int shotCounter;
+
+    private float radius;
+    private float stunDuration;
 
     protected override void ApplyUpgradeInternal()
     {
@@ -29,12 +30,18 @@ public class EMPRoundsUpgrade : Upgrade
     {
         ResetUpgrade();
         Upgrades.Inst.empRounds = this;
-        radius = baseRadius;
-        stunDuration = baseStunDuration;
-        shotCounter = 0;
-        shotsPerEMP = baseShotsPerEMP;
+        Radius = baseRadius;
+        StunDuration = baseStunDuration;
+        ShotCounter = 0;
+        ShotsPerEMP = baseShotsPerEMP;
     }
 
     private float GetRadius => baseRadius + (radiusPerLevel * NextLevel);
     private float GetEmpStunDuration => baseStunDuration + (stunDurationPerLevel * NextLevel);
+
+    public int ShotsPerEMP { get => shotsPerEMP; set => shotsPerEMP = value; }
+    public int ShotCounter { get => shotCounter; set => shotCounter = value; }
+    public float Radius { get => radius; set => radius = value; }
+    public float StunDuration { get => stunDuration; set => stunDuration = value; }
+
 }

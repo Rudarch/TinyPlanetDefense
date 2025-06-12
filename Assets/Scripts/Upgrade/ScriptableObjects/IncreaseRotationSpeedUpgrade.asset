@@ -16,9 +16,10 @@ MonoBehaviour:
   description: Increases the rotation speed
   icon: {fileID: 6636624058292690123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   enabled: 0
-  maxLevel: 4
+  maxLevel: 3
   currentLevel: 0
   activatable: 1
-  energyCostPerSecond: 1
-  speedBoostPerLevel: 15
+  energyCostPerSecond: 0
+  energyCostPerLevel: 0.5
+  speedBoostPerLevel: 25
   rotationBoost: 0

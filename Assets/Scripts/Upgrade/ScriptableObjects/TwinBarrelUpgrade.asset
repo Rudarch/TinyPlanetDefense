@@ -20,3 +20,4 @@ MonoBehaviour:
   currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
+  energyCostPerLevel: 1
