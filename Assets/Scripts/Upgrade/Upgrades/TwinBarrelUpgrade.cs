@@ -19,22 +19,21 @@ public class TwinBarrelUpgrade : Upgrade
         return "More firepower - more fun!";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.twinBarrel = this;
     }
 
 
-    public override void OnActivate()
+    public override void Activate()
     {
-        base.OnActivate();
+        base.Activate();
         cannon?.EnableTwinMuzzles();
     }
 
-    public override void OnDeactivate()
+    public override void Deactivate()
     {
-        base.OnDeactivate();
+        base.Deactivate();
         cannon?.EnableSingleMuzzle();
     }
 }

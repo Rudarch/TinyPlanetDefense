@@ -11,9 +11,8 @@ public class LifeSiphonUpgrade : Upgrade
         lifeSiphonFraction = healFraction;
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.lifeSiphon = this;
         lifeSiphonFraction = healFraction;
     }

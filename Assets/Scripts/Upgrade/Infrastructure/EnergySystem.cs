@@ -26,7 +26,7 @@ public class EnergySystem : MonoBehaviour
 
         energyFillImage.fillAmount = currentEnergy / maxEnergy;
         var sign = energyDelta < 0 ? "-" : "+";
-        emergyText.text = $"{sign}{(float)Math.Round(energyDelta, 1)}";
+        emergyText.text = $"{sign}{energyDelta.ToString("F1")}";
 
         if (currentEnergy <= 0f)
             Upgrades.Inst.ForceDeactivateAll();

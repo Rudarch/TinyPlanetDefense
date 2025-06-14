@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EMPShockwaveEffect : MonoBehaviour
+public class AntigravityPulseEffect : MonoBehaviour
 {
     public float fadeDuration = 0.4f;
     public Color effectColor = Color.cyan;

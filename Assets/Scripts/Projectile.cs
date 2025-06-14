@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
     public float damage = 10f;
     public GameObject ricochetLinePrefab;
     public GameObject explosionEffectPrefab;
-    public GameObject empEffectPrefab; 
     public GameObject impactFlashPrefab;
     public AudioClip hitSound;
 
@@ -24,10 +23,9 @@ public class Projectile : MonoBehaviour
             this,
             upgradeState,
             damage,
-            upgradeState.piercingAmmo.enabled ? upgradeState.piercingAmmo.pierceCount : 0,
+            upgradeState.piercingAmmo.IsEnabled ? upgradeState.piercingAmmo.pierceCount : 0,
             ricochetLinePrefab,
             explosionEffectPrefab,
-            empEffectPrefab,
             impactFlashPrefab,
             hitSound);
 

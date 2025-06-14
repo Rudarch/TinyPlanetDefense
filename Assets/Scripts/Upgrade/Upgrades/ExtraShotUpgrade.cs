@@ -6,8 +6,8 @@ public class ExtraShotUpgrade : Upgrade
     [SerializeField] int extraShotsAdded = 1;
     [SerializeField] float baseShotInterval = 0.1f;
 
-    public int shotsPerSalvo;
-    public float shotInterval;
+    private int shotsPerSalvo;
+    private float shotInterval;
 
     protected override void ApplyUpgradeInternal()
     {
@@ -15,9 +15,8 @@ public class ExtraShotUpgrade : Upgrade
         shotInterval = baseShotInterval;
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.extraShot = this;
         shotsPerSalvo = 0;
         shotInterval = baseShotInterval;
@@ -28,7 +27,7 @@ public class ExtraShotUpgrade : Upgrade
     {
         get
         {
-            if (enabled) return shotInterval;
+            if (IsEnabled) return shotInterval;
             else return baseShotInterval;
         }
     }
@@ -37,7 +36,7 @@ public class ExtraShotUpgrade : Upgrade
     {
         get
         {
-            if (enabled) return shotsPerSalvo;
+            if (IsEnabled) return shotsPerSalvo;
             else return 0;
         }
     }

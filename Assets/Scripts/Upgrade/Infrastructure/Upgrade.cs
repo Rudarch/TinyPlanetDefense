@@ -5,17 +5,24 @@ public abstract class Upgrade : ScriptableObject
     public string upgradeName;
     [TextArea] public string description;
     public Sprite icon;
-    public bool enabled = false;
     public int maxLevel = 1;
     public int currentLevel = 0;
     public bool activatable = false;
     public float energyCostPerSecond = 0f;
-    public float energyCostPerLevel = 1f;
+    public float energyCostIncreasePerLevel = 1f;
     public bool IsMaxedOut => currentLevel >= maxLevel;
 
+    protected bool enabled = false;
     protected int NextLevel => currentLevel + 1;
 
-    public abstract void Initialize();
+    public bool IsEnabled { get => enabled; protected set => enabled = value; }
+
+    public virtual void Initialize()
+    {
+        ResetUpgrade();
+        InitializeInternal();
+    }
+
     public void ApplyUpgrade()
     {
         if (IsMaxedOut)
@@ -24,9 +31,9 @@ public abstract class Upgrade : ScriptableObject
             return;
         }
 
-        enabled = true;
+        energyCostPerSecond += GetEnergyCostIncreaseForNextLevel();
+
         currentLevel++;
-        energyCostPerSecond += energyCostPerLevel;
         ApplyUpgradeInternal();
 
         Debug.Log($"Applied upgrade: (Level {currentLevel}/{maxLevel})");
@@ -35,7 +42,7 @@ public abstract class Upgrade : ScriptableObject
     protected void ResetUpgrade()
     {
         currentLevel = 0;
-        enabled = false;
+        IsEnabled = false;
         energyCostPerSecond = 0;
     }
 
@@ -44,16 +51,24 @@ public abstract class Upgrade : ScriptableObject
         return string.Empty;
     }
 
-    protected virtual void ApplyUpgradeInternal() { }
-
-
-    public virtual void OnActivate()
+    public virtual float GetEnergyCostIncreaseForNextLevel() 
     {
-        enabled = true;
+        return NextLevel > 1
+            ? (energyCostIncreasePerLevel / 2f)
+            : energyCostIncreasePerLevel;
     }
 
-    public virtual void OnDeactivate()
+    protected virtual void ApplyUpgradeInternal() { }
+
+    protected virtual void InitializeInternal() { }
+
+    public virtual void Activate()
     {
-        enabled = false;
+        IsEnabled = true;
+    }
+
+    public virtual void Deactivate()
+    {
+        IsEnabled = false;
     }
 }

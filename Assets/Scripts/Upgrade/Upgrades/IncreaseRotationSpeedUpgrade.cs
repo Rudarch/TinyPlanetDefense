@@ -15,9 +15,8 @@ public class IncreaseRotationSpeedUpgrade : Upgrade
         return $"+{speedBoostPerLevel}°/s, {rotationBoost + speedBoostPerLevel} in total";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.increaseRotationSpeed = this;
         rotationBoost = 0;
     }

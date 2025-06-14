@@ -152,7 +152,7 @@ public class Enemy : MonoBehaviour
             Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
         }
 
-        if (Upgrades.Inst.lifeSiphon.enabled)
+        if (Upgrades.Inst.lifeSiphon.IsEnabled)
         {
             var planet = GameObject.FindWithTag("Planet");
             if (planet != null)
@@ -187,5 +187,15 @@ public class Enemy : MonoBehaviour
     public bool IsStunned()
     {
         return isStunned;
+    }
+
+    void OnEnable()
+    {
+        EnemyManager.Inst?.RegisterEnemy(this);
+    }
+
+    void OnDisable()
+    {
+        EnemyManager.Inst?.UnregisterEnemy(this);
     }
 }

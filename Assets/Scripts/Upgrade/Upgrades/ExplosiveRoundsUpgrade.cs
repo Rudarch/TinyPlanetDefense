@@ -13,9 +13,8 @@ public class ExplosiveRoundsUpgrade : Upgrade
         explosionRadius = radiusPerLevel * currentLevel;
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.explosiveRounds = this;
         explosionRadius = 0;
     }

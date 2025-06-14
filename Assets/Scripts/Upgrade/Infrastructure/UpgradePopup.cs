@@ -9,11 +9,11 @@ public class UpgradePopup : MonoBehaviour
     public GameObject popupRoot;
 
     private GameObject cannon;
-    private void Start()
-    {
-        foreach (var upgrade in Upgrades.Inst.allUpgrades)
-            upgrade.Initialize();
-    }
+    //private void Start()
+    //{
+    //    foreach (var upgrade in Upgrades.Inst.allUpgrades)
+    //        upgrade.Initialize();
+    //}
     public void Show(GameObject cannon)
     {
         this.cannon = cannon;

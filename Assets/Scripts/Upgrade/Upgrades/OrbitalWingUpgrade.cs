@@ -23,9 +23,8 @@ public class OrbitalWingUpgrade : Upgrade
         return $"+1 drone. {NextLevel} in total.";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.orbitalWing = this;
     }
 }

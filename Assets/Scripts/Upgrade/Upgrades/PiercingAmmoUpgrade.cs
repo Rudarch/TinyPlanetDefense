@@ -16,9 +16,8 @@ public class PiercingAmmoUpgrade : Upgrade
         return $"+{extraPiercePerLevel} Piercing. {extraPiercePerLevel * NextLevel} in total";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.piercingAmmo = this;
         pierceCount = 0;
     }

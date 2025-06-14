@@ -18,9 +18,8 @@ public class ThermiteRoundsUpgrade : Upgrade
         return $"{(baseDamagePercent + (damagePercentPerLevel * NextLevel)) * 100}%/s of ammo damage in {burnDuration}s";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.thermiteRounds = this;
         thermiteDPSPercent = baseDamagePercent;
     }

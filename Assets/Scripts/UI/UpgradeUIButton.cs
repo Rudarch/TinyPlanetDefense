@@ -48,7 +48,7 @@ public class UpgradeUIButton : MonoBehaviour
             });
         }
 
-        UpdateVisual(upgrade.enabled);
+        UpdateVisual(upgrade.IsEnabled);
     }
 
     public void UpdateVisual(bool isActive)

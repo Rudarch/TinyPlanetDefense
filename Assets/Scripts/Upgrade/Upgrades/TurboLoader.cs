@@ -3,13 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TurboLoader", menuName = "Upgrades/TurboLoader")]
 public class TurboLoader : Upgrade
 {
-    [SerializeField] [Range(0f, 1f)] 
-    public float cooldownReductionPercent = 0.25f;
-
+    [SerializeField] [Range(0f, 1f)] public float cooldownReductionPercent = 0.25f;
     [SerializeField] float baseCooldownReductionMultiplier = 1f;
-    //[SerializeField] float baseShotInterval = 0.1f;
+    [SerializeField] private float cooldownReductionMultiplier;
 
-    private float cooldownReductionMultiplier;
     protected override void ApplyUpgradeInternal()
     {
         cooldownReductionMultiplier = GetCooldownReductionMultiplierInternal();
@@ -20,9 +17,8 @@ public class TurboLoader : Upgrade
         return $"-{cooldownReductionPercent * 100f}%, -{100 - (Mathf.Abs(GetCooldownReductionMultiplierInternal()) * 100)}% in total.";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.reduceCooldown = this;
         cooldownReductionMultiplier = baseCooldownReductionMultiplier;
     }
@@ -31,7 +27,7 @@ public class TurboLoader : Upgrade
     {
         get
         {
-            if (enabled) return cooldownReductionMultiplier;
+            if (IsEnabled) return cooldownReductionMultiplier;
             else return baseCooldownReductionMultiplier;
         }
     }

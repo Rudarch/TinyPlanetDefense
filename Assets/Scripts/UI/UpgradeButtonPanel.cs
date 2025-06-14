@@ -74,7 +74,7 @@ public class UpgradeButtonPanel : MonoBehaviour
     private void ToggleUpgrade(Upgrade upgrade)
     {
         Upgrades.Inst.ToggleUpgrade(upgrade);
-        GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.enabled);
+        GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.IsEnabled);
     }
 
     private RectTransform GetOrCreateRowForNextButton()

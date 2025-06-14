@@ -15,12 +15,12 @@ MonoBehaviour:
   upgradeName: Explosive Rounds
   description: Projectiles receive the AOE effect
   icon: {fileID: 3822724474062737495, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  enabled: 0
+  enabled: 1
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
   activatable: 1
-  energyCostPerSecond: 0
-  energyCostPerLevel: 1
-  radiusPerLevel: 0.5
+  energyCostPerSecond: 1
+  energyCostIncreasePerLevel: 1
+  radiusPerLevel: 0.2
   splashDamageMultiplier: 0.3
-  explosionRadius: 0
+  explosionRadius: 0.2

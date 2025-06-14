@@ -11,7 +11,7 @@ public class IncreaseDamageUpgrade : Upgrade
     {
         get
         {
-            if (enabled) return bonusDamage;
+            if (IsEnabled) return bonusDamage;
             else return 0;
         }
     }
@@ -26,9 +26,8 @@ public class IncreaseDamageUpgrade : Upgrade
         return $"+{bonusDamagePerLevel} Damage. {bonusDamage + bonusDamagePerLevel} in total.";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.increaseDamage = this;
         bonusDamage = 0f;
     }

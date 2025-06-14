@@ -15,7 +15,6 @@ public class ProjectileHitHandler : MonoBehaviour
 
     private GameObject ricochetLinePrefab;
     private GameObject explosionEffectPrefab;
-    private GameObject empEffectPrefab;
     private GameObject impactFlashPrefab;
     private AudioClip hitSound;
     private AudioSource audioSource;
@@ -25,7 +24,7 @@ public class ProjectileHitHandler : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void Setup(Projectile proj, Upgrades upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject empFx, GameObject impactFlashPrefab, AudioClip hitAudio)
+    public void Setup(Projectile proj, Upgrades upgrades, float baseDamage, int pierce, GameObject ricochetFx, GameObject explosionFx, GameObject impactFlashPrefab, AudioClip hitAudio)
     {
         projectile = proj;
         this.upgrades = upgrades;
@@ -33,7 +32,6 @@ public class ProjectileHitHandler : MonoBehaviour
         pierceCount = pierce;
         ricochetLinePrefab = ricochetFx;
         explosionEffectPrefab = explosionFx;
-        empEffectPrefab = empFx;
         this.impactFlashPrefab = impactFlashPrefab;
         hitSound = hitAudio;
     }
@@ -79,20 +77,7 @@ public class ProjectileHitHandler : MonoBehaviour
             audioSource.PlayOneShot(hitSound);
         }
 
-        if (upgrades.highCaliber.enabled)
-        {
-            Vector2 knockDir = (enemy.transform.position - transform.position).normalized;
-            enemy.ApplyKnockback(knockDir * upgrades.highCaliber.knockbackForce);
-        }
-
-        if (upgrades.cryoShells.enabled)
-        {
-            var slow = enemy.GetComponent<EnemySlow>();
-            if (slow != null)
-                slow.ApplySlow(upgrades.cryoShells.SlowAmount, upgrades.cryoShells.SlowDuration);
-        }
-
-        if (upgrades.thermiteRounds.enabled)
+        if (upgrades.thermiteRounds.IsEnabled)
         {
             var burn = enemy.GetComponent<BurningEffect>();
             if (burn == null)
@@ -105,7 +90,7 @@ public class ProjectileHitHandler : MonoBehaviour
             burn.ApplyOrRefresh(damage * upgrades.thermiteRounds.thermiteDPSPercent, upgrades.thermiteRounds.burnDuration);
         }
 
-        if (upgrades.ricochet.enabled && ricochetsDone < upgrades.ricochet.ricochetCount)
+        if (upgrades.ricochet.IsEnabled && ricochetsDone < upgrades.ricochet.ricochetCount)
         {
             ricochetsDone++;
             Enemy next = FindNextEnemy(enemy.transform.position);
@@ -127,14 +112,8 @@ public class ProjectileHitHandler : MonoBehaviour
         enemiesHit++;
         if (enemiesHit > pierceCount)
         {
-            if (upgrades.explosiveRounds.enabled && upgrades.explosiveRounds.explosionRadius > 0f)
+            if (upgrades.explosiveRounds.IsEnabled && upgrades.explosiveRounds.explosionRadius > 0f)
                 Explode();
-
-            if (upgrades.empRounds.enabled&& upgrades.empRounds.ShotCounter++ >= upgrades.empRounds.ShotsPerEMP)
-            {
-                upgrades.empRounds.ShotCounter = 0;
-                TriggerEMP();
-            }
 
             Destroy(gameObject, 0.05f);
         }
@@ -151,20 +130,7 @@ public class ProjectileHitHandler : MonoBehaviour
                 float aoeDamage = damage * upgrades.explosiveRounds.splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
 
-                if (upgrades.highCaliber.enabled)
-                {
-                    Vector2 away = (enemy.transform.position - transform.position).normalized;
-                    enemy.ApplyKnockback(away * upgrades.highCaliber.knockbackForce);
-                }
-
-                if (upgrades.cryoShells.enabled)
-                {
-                    var slow = enemy.GetComponent<EnemySlow>();
-                    if (slow != null)
-                        slow.ApplySlow(upgrades.cryoShells.SlowAmount, upgrades.cryoShells.SlowDuration);
-                }
-
-                if (upgrades.thermiteRounds.enabled)
+                if (upgrades.thermiteRounds.IsEnabled)
                 {
                     var burn = enemy.GetComponent<BurningEffect>();
                     if (burn == null)
@@ -185,17 +151,6 @@ public class ProjectileHitHandler : MonoBehaviour
             var shock = effect.GetComponent<ShockwaveEffect>();
             if (shock != null)
                 shock.maxRadius = upgrades.explosiveRounds.explosionRadius * 2f;
-        }
-    }
-
-    private void TriggerEMP()
-    {
-        if (empEffectPrefab != null)
-        {
-            GameObject effect = Instantiate(empEffectPrefab, transform.position, Quaternion.identity);
-            var shock = effect.GetComponent<EMPShockwaveEffect>();
-            if (shock != null)
-                shock.StunNearbyEnemies(transform.position);
         }
     }
 

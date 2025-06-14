@@ -10,22 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6453befaaeb4aff4eb46bcd9203732b9, type: 3}
-  m_Name: EMPRoundsUpgrade
+  m_Name: EMPWaveUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: EMP Rounds
-  description: Shoots EMP charges, which stun the enemies
+  upgradeName: EMP Wave
+  description: "The lanet emits a\u0442 EMP wave that stuns enemies"
   icon: {fileID: -2672912283772737747, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  enabled: 0
   maxLevel: 3
   currentLevel: 1
   activatable: 1
   energyCostPerSecond: 1
-  baseStunDuration: 0.3
-  stunDurationPerLevel: 0.2
-  baseRadius: 0.3
-  radiusPerLevel: 0.2
-  baseShotsPerEMP: 5
-  shotsPerEMP: 5
-  radius: 0.5
-  stunDuration: 0.5
-  shotCounter: 0
+  energyCostIncreasePerLevel: 1
+  effectVFX: {fileID: 6955652225482351914, guid: a4e88c89d280f32418951221c91e4e04, type: 3}
+  baseEffectDuration: 2
+  effectDurationPerLevel: 2
+  effectDuration: 4
+  effectRadius: 2
+  waveInterval: 0.5

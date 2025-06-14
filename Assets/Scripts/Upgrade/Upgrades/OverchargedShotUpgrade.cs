@@ -18,9 +18,8 @@ public class OverchargedShotUpgrade : Upgrade
         return $"Every {interval} seconds, {damageMultiplierPerLevel * NextLevel}x damage.";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.overchargedShot = this;
         damageMultiplier = damageMultiplierPerLevel;
     }

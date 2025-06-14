@@ -18,9 +18,8 @@ public class RicochetUpgrade : Upgrade
         return $"+{extraRicochets}, {GetExtraRicochets} in total, in {GetExtraRange} ricochet range";
     }
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
-        ResetUpgrade();
         Upgrades.Inst.ricochet = this;
         ricochetCount = 0;
         ricochetRange = 0;

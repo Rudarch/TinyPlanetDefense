@@ -386,8 +386,8 @@ Transform:
   m_GameObject: {fileID: 71050340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.11, z: 0}
-  m_LocalScale: {x: 1, y: 0.69, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.36, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2895315123865355977}
@@ -993,10 +993,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 500
+  - enemyCount: 2500
     spawnDuration: 300
-  - enemyCount: 500
-    spawnDuration: 60
+  - enemyCount: 2500
+    spawnDuration: 100
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
   spawnRadius: 2.7
   planetCenter: {fileID: 6671393143994966655}
@@ -1892,6 +1892,10 @@ PrefabInstance:
     - target: {fileID: 3715551689263205772, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737902610290573324, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      propertyPath: xpReward
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3036,6 +3040,7 @@ GameObject:
   - component: {fileID: 1536275463}
   - component: {fileID: 1536275466}
   - component: {fileID: 1536275465}
+  - component: {fileID: 1536275467}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3085,15 +3090,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272d1d10a3dece440ac9dfaf00313325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cryoShells: {fileID: 0}
   increaseDamage: {fileID: 0}
-  empRounds: {fileID: 0}
   lifeSiphon: {fileID: 0}
   explosiveRounds: {fileID: 0}
   thermiteRounds: {fileID: 0}
-  highCaliber: {fileID: 0}
   piercingAmmo: {fileID: 0}
   ricochet: {fileID: 0}
+  cryoWave: {fileID: 0}
+  empWave: {fileID: 0}
+  antigravityPulse: {fileID: 0}
   extraShot: {fileID: 0}
   reduceCooldown: {fileID: 0}
   twinBarrel: {fileID: 0}
@@ -3116,6 +3121,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
   - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
   - {fileID: 11400000, guid: 468595302bb263440958209d0ff89761, type: 2}
+  planetUpgradeHandler: {fileID: 0}
 --- !u!114 &1536275466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3131,9 +3137,21 @@ MonoBehaviour:
   maxEnergy: 100
   currentEnergy: 100
   regenPerSecond: 1
-  regenPerLevel: 0.5
+  regenPerLevel: 0.3
   energyFillImage: {fileID: 257797572}
   emergyText: {fileID: 2130381914}
+--- !u!114 &1536275467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536275458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f5ad4b1d23363458e24313b41a1314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1616862199
 GameObject:
   m_ObjectHideFlags: 0
@@ -4195,7 +4213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 100.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -4260,7 +4278,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 4.831848, y: 4.3932495, z: -0.43780518, w: 6.5605774}
+  m_margin: {x: 11.041199, y: 4.3932495, z: -45.045288, w: 6.5605774}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4365,8 +4383,8 @@ Transform:
   m_GameObject: {fileID: 2143308500}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2895315123865355977}
@@ -4488,7 +4506,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.849, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7207932783230206283}
@@ -4574,8 +4592,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.12707272}
-  m_Radius: 1.258244
+  m_Offset: {x: 0, y: 0.039503932}
+  m_Radius: 0.42214763
 --- !u!1 &6089606871271464103
 GameObject:
   m_ObjectHideFlags: 0
@@ -4590,6 +4608,7 @@ GameObject:
   - component: {fileID: 6089606871271464106}
   - component: {fileID: 6089606871271464104}
   - component: {fileID: 6089606871271464105}
+  - component: {fileID: 6089606871271464107}
   m_Layer: 3
   m_Name: Planet
   m_TagString: Planet
@@ -4612,7 +4631,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healEffectPrefab: {fileID: 8383328140951261382, guid: 90cb1d6e0744c344abb5abf55989dc75, type: 3}
-  healSound: {fileID: 8300000, guid: 44a09081f8d91de47811cfac9b04dfb7, type: 3}
+  healSound: {fileID: 0}
 --- !u!114 &6089606871271464105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4727,6 +4746,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6089606871271464107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089606871271464103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d69dab73bc3fd47b5672fc68bcc210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6671393143994966655
 Transform:
   m_ObjectHideFlags: 0
@@ -4751,8 +4782,8 @@ Transform:
   m_GameObject: {fileID: 1568660638033892704}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1871424264}
