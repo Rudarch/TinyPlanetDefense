@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExtraShotUpgrade", menuName = "Upgrades/ExtraShot")]
 public class ExtraShotUpgrade : Upgrade
 {
-    [SerializeField] int extraShotsAdded = 1;
+    [SerializeField] int extraShotsPerLevel = 1;
     [SerializeField] float baseShotInterval = 0.1f;
 
     private int shotsPerSalvo;
@@ -11,7 +11,7 @@ public class ExtraShotUpgrade : Upgrade
 
     protected override void ApplyUpgradeInternal()
     {
-        shotsPerSalvo = extraShotsAdded * currentLevel;
+        shotsPerSalvo = extraShotsPerLevel * currentLevel;
         shotInterval = baseShotInterval;
     }
 
@@ -43,13 +43,6 @@ public class ExtraShotUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{extraShotsAdded} Extra Shot{(extraShotsAdded > 1 ? "s" : "")}, {extraShotsAdded * NextLevel} in total";
+        return $"+{extraShotsPerLevel} Extra Shot{(extraShotsPerLevel > 1 ? "s" : "")}, {extraShotsPerLevel * NextLevel} in total";
     }
-
-    //private float GetShotIntervalInternal()
-    //{
-    //    float multiplier = Mathf.Clamp01(1f - cooldownReductionPercent);
-
-    //    return Mathf.Max(0.05f, shotInterval * multiplier);
-    //}
 }

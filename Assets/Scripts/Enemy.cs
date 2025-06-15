@@ -135,10 +135,10 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        GameObject cannon = GameObject.FindWithTag("Cannon");
-        if (cannon != null)
+        GameObject gameController = GameObject.FindWithTag("GameController");
+        if (gameController != null)
         {
-            var xpSystem = cannon.GetComponent<CannonXPSystem>();
+            var xpSystem = gameController.GetComponent<ExperienceSystem>();
             if (xpSystem != null)
             {
                 xpSystem.AddXP(xpReward);

@@ -15,10 +15,15 @@ MonoBehaviour:
   upgradeName: Heavy Shells
   description: Each shot deals more damage
   icon: {fileID: -1862853827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  enabled: 1
   maxLevel: 999
-  currentLevel: 1
+  currentLevel: 2
   activatable: 0
-  energyCostPerSecond: 0
-  bonusDamage: 1
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
+  energyDrainAmount: 2
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
   bonusDamagePerLevel: 1

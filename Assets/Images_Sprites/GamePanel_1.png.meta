@@ -140,7 +140,7 @@ TextureImporter:
         width: 139
         height: 143
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -154,15 +154,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GamePanel_1 (1)_1
+      name: GamePanel_1 (1)_1_FillBar
       rect:
         serializedVersion: 2
         x: 496
-        y: 728
+        y: 729
         width: 513
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,7 +184,7 @@ TextureImporter:
         width: 1012
         height: 698
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -197,11 +197,77 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GamePanel_1_0_fill_white
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 776
+        width: 516
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c1b5d3cb07e4945bdaa891bc854928
+      internalID: -393643963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePanel_1_0_Circle_fill
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 736
+        width: 205
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544caaba7a45ab6488b84cec036d013a
+      internalID: 1726420382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GamePanel_1_0_Circle_Slim_fill
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 854
+        width: 216
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1e16e0de1f65a04fba77c27fe84ba88
+      internalID: 107198824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a6ee6c7a98767c54091fb1b540772f9b
     internalID: 0
     vertices: []
     indices: 
@@ -210,7 +276,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GamePanel_1 (1)_1_FillBar: 5763552064465129887
+      GamePanel_1_0_Circle_Slim_fill: 107198824
+      GamePanel_1_0_Circle_fill: 1726420382
+      GamePanel_1_0_fill_white: -393643963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour
     {
         var upgradeState = Upgrades.Inst;
         damage += upgradeState.increaseDamage.BonusDamage;
+        damage *= upgradeState.overheatProtocol.OverheatDamageMultiplier;
 
         hitHandler = gameObject.AddComponent<ProjectileHitHandler>();
         hitHandler.Setup(

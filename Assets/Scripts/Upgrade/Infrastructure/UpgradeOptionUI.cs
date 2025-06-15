@@ -7,8 +7,7 @@ public class UpgradeOptionUI : MonoBehaviour
     public Image icon;
     public TMP_Text nameText;
     public TMP_Text descriptionText;
-    public TMP_Text energyIncreaseText;
-    public TMP_Text currentEnergyCostText;
+    public TMP_Text energyCostText;
     public Button selectButton;
 
     private Upgrade upgrade;
@@ -22,8 +21,19 @@ public class UpgradeOptionUI : MonoBehaviour
         icon.sprite = upgrade.icon;
         nameText.text = upgrade.upgradeName;
         descriptionText.text = $"{upgrade.description}\n<size=80%><color=yellow>{upgrade.GetUpgradeEffectText()}</color></size>";
-        energyIncreaseText.text = $"-{upgrade.GetEnergyCostIncreaseForNextLevel()}";
-        currentEnergyCostText.text = $"-{upgrade.energyCostPerSecond}";
+
+        switch (upgrade.activationStyle)
+        {
+            case ActivationStyle.Timed:
+                energyCostText.text = $"{upgrade.GetEnergyActivationCostForNextLevel()} per activation";
+                break;
+            case ActivationStyle.Toggle:
+                energyCostText.text = $"-{upgrade.GetEnergyDrainForNextLevel()} energy per second";
+                break;
+            default:
+                energyCostText.text = $"No evergy required";
+                break;
+        }
         selectButton.onClick.RemoveAllListeners();
         selectButton.onClick.AddListener(OnSelected);
     }
@@ -32,9 +42,8 @@ public class UpgradeOptionUI : MonoBehaviour
     private void OnSelected()
     {
         upgrade.ApplyUpgrade();
-        //upgrade.Activate();
 
-        if (upgrade.activatable)
+        if (upgrade.activationStyle != ActivationStyle.Passive)
         {
             UpgradeButtonPanel.Inst.AddUpgradeButton(upgrade);
         }

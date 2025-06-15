@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class UpgradeUIButton : MonoBehaviour
 {
     [Header("UI References")]
     public UnityEngine.UI.Button button;
     public UnityEngine.UI.Image background;
+    public UnityEngine.UI.Image icon;
     public Sprite backgroundEnabled;
     public Sprite backgroundDisabled;
-    public UnityEngine.UI.Image icon;
+    public GameObject glowEffect;
     public Color disabledColor;
+
     public AudioClip clickSound;
 
     private AudioSource audioSource;
@@ -24,6 +24,17 @@ public class UpgradeUIButton : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        if (upgrade.activationStyle == ActivationStyle.Timed)
+        {
+            if (glowEffect != null && upgrade.IsReadyForActivation && !glowEffect.activeSelf)
+                glowEffect.SetActive(true);
+            else if (glowEffect != null && !upgrade.IsReadyForActivation && glowEffect.activeSelf)
+                glowEffect.SetActive(false);
+        }
     }
 
     public void Initialize(Upgrade upgradeData, System.Action<Upgrade> onClick)
@@ -40,7 +51,7 @@ public class UpgradeUIButton : MonoBehaviour
             {
                 if (clickSound != null && audioSource != null)
                 {
-                    audioSource.pitch = Random.Range(0.95f, 1.05f); // optional variation
+                    audioSource.pitch = Random.Range(0.95f, 1.05f);
                     audioSource.PlayOneShot(clickSound);
                 }
 
@@ -48,7 +59,8 @@ public class UpgradeUIButton : MonoBehaviour
             });
         }
 
-        UpdateVisual(upgrade.IsEnabled);
+        upgrade.OnActivationChanged += UpdateVisual;
+        UpdateVisual(upgrade.IsActivated);
     }
 
     public void UpdateVisual(bool isActive)

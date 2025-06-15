@@ -8,15 +8,10 @@ public class UpgradePopup : MonoBehaviour
     public Transform optionParent;
     public GameObject popupRoot;
 
-    private GameObject cannon;
-    //private void Start()
-    //{
-    //    foreach (var upgrade in Upgrades.Inst.allUpgrades)
-    //        upgrade.Initialize();
-    //}
-    public void Show(GameObject cannon)
+    public ExperienceSystem xpSystem;
+
+    public void Show()
     {
-        this.cannon = cannon;
         popupRoot.SetActive(true);
 
         foreach (Transform child in optionParent)
@@ -28,7 +23,7 @@ public class UpgradePopup : MonoBehaviour
         if (available.Count == 0)
         {
             popupRoot.SetActive(false);
-            FindFirstObjectByType<CannonXPSystem>()?.OnUpgradeSelected();
+            FindFirstObjectByType<ExperienceSystem>()?.OnUpgradeSelected();
             return;
         }
 
@@ -52,7 +47,6 @@ public class UpgradePopup : MonoBehaviour
     {
         popupRoot.SetActive(false);
 
-        var xpSystem = cannon.GetComponent<CannonXPSystem>();
         if (xpSystem != null)
         {
             xpSystem.OnUpgradeSelected();

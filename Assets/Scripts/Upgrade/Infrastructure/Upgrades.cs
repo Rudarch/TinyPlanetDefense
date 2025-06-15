@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Upgrade;
 
 public class Upgrades : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Upgrades : MonoBehaviour
     public TwinBarrelUpgrade twinBarrel;
     public IncreaseRotationSpeedUpgrade increaseRotationSpeed;
     public OverchargedShotUpgrade overchargedShot;
+    public OverheatProtocolUpgrade overheatProtocol;
 
     [Header("Special Upgrades")]
     public OrbitalWingUpgrade orbitalWing;
@@ -33,6 +35,7 @@ public class Upgrades : MonoBehaviour
     public List<Upgrade> allUpgrades;
 
     public PlanetUpgradeHandler planetUpgradeHandler;
+
     void Awake()
     {
         if (Inst != null && Inst != this)
@@ -49,9 +52,6 @@ public class Upgrades : MonoBehaviour
         }
 
         Debug.Log($"{allUpgrades.Count} upgrades were initialized.");
-
-        var planet = GameObject.FindWithTag("Planet");
-        planetUpgradeHandler = planet.GetComponent<PlanetUpgradeHandler>();
     }
 
     public void ToggleUpgrade(Upgrade upgrade)
@@ -62,33 +62,46 @@ public class Upgrades : MonoBehaviour
             return;
         }
 
-        if (upgrade.IsEnabled)
+        if (upgrade.IsActivated)
         {
             Debug.Log($"Deactivating upgrade: {upgrade.upgradeName}");
             upgrade.Deactivate();
         }
-        else
+        else if (upgrade.activationStyle == ActivationStyle.Timed)
         {
-            Debug.Log($"Activating upgrade: {upgrade.upgradeName}");
+            if (upgrade.IsReadyForActivation && EnergySystem.Inst.HasEnough(upgrade.activationEnergyAmount))
+            {
+                Debug.Log($"Activating timed upgrade: {upgrade.upgradeName}");
+                upgrade.Activate();
+            }
+        }
+        else if (upgrade.activationStyle == ActivationStyle.Toggle)
+        {
+            Debug.Log($"Activating toggle upgrade: {upgrade.upgradeName}");
             upgrade.Activate();
         }
-
-        UpgradeButtonPanel.Inst?.GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.IsEnabled);
     }
 
     public float GetTotalActiveDrain()
     {
         return allUpgrades
-            .Where(upg => upg.activatable && upg.IsEnabled)
-            .Sum(upg => upg.energyCostPerSecond);
+            .Where(upg => upg.activationStyle == ActivationStyle.Toggle && upg.IsActivated)
+            .Sum(upg => upg.energyDrainAmount);
     }
 
     public void ForceDeactivateAll()
     {
-        foreach (var upgrade in allUpgrades.Where(u => u.activatable && u.IsEnabled))
+        foreach (var upgrade in allUpgrades.Where(upgrade => upgrade.activationStyle == ActivationStyle.Toggle && upgrade.IsActivated))
         {
             upgrade.Deactivate();
-            UpgradeButtonPanel.Inst?.GetButtonForUpgrade(upgrade)?.UpdateVisual(false);
+        }
+    }
+
+    public void TickTimedUpgrades(float deltaTime)
+    {
+        foreach (var upgrade in allUpgrades)
+        {
+            upgrade.TickUpgrade(deltaTime);
         }
     }
 }

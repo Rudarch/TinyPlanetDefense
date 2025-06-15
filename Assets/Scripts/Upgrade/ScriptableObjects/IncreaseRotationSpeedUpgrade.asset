@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: IncreaseRotationSpeedUpgrade
   m_EditorClassIdentifier: 
   upgradeName: Targeting AI
-  description: Increases the rotation speed
+  description: Increases cannon rotation speed
   icon: {fileID: 6636624058292690123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  enabled: 0
-  maxLevel: 3
+  maxLevel: 10
   currentLevel: 0
-  activatable: 1
-  energyCostPerSecond: 0
-  energyCostPerLevel: 0.5
-  speedBoostPerLevel: 25
+  activatable: 0
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
+  energyDrainAmount: 0
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
+  speedBoostPerLevel: 30
   rotationBoost: 0

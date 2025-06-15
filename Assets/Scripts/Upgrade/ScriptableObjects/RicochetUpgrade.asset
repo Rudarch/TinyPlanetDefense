@@ -15,12 +15,18 @@ MonoBehaviour:
   upgradeName: Ricochet
   description: Bullets ricochet to more targets
   icon: {fileID: -1266927123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  enabled: 0
   maxLevel: 3
-  currentLevel: 1
+  currentLevel: 2
   activatable: 1
-  energyCostPerSecond: 1
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
+  energyDrainAmount: 2
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
   extraRicochets: 1
   extraRange: 0.1
-  ricochetCount: 1
-  ricochetRange: 0.1
+  ricochetCount: 2
+  ricochetRange: 0.2

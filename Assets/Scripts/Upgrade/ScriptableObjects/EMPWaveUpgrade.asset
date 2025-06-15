@@ -16,13 +16,19 @@ MonoBehaviour:
   description: "The lanet emits a\u0442 EMP wave that stuns enemies"
   icon: {fileID: -2672912283772737747, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
+  currentLevel: 2
   activatable: 1
-  energyCostPerSecond: 1
-  energyCostIncreasePerLevel: 1
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
+  energyDrainAmount: 2
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
   effectVFX: {fileID: 6955652225482351914, guid: a4e88c89d280f32418951221c91e4e04, type: 3}
-  baseEffectDuration: 2
-  effectDurationPerLevel: 2
-  effectDuration: 4
+  baseEffectValue: 0.5
+  effectValuePerLevel: 0.5
+  effectValue: 1.5
   effectRadius: 2
-  waveInterval: 0.5
+  waveInterval: 10

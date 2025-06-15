@@ -13,20 +13,38 @@ public class EnergySystem : MonoBehaviour
     public static Action<float, float> OnEnergyChanged;
 
     public Image energyFillImage;
-    public TextMeshProUGUI emergyText;
+    public TextMeshProUGUI energyText;
+
+    public static EnergySystem Inst { get; private set; }
+    void Awake()
+    {
+        if (Inst != null && Inst != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Inst = this;
+    }
 
     void Update()
     {
         float totalDrain = Upgrades.Inst.GetTotalActiveDrain();
         var energyDelta = (regenPerSecond - totalDrain);
-        var energyDeltaOverTime = energyDelta * Time.deltaTime;
-        currentEnergy += energyDeltaOverTime;
+        float deltaTimeEnergy = energyDelta * Time.deltaTime;
+
+        currentEnergy += deltaTimeEnergy;
         currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+
         OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
 
-        energyFillImage.fillAmount = currentEnergy / maxEnergy;
-        var sign = energyDelta < 0 ? "-" : "+";
-        emergyText.text = $"{sign}{energyDelta.ToString("F1")}";
+        if (energyFillImage != null)
+            energyFillImage.fillAmount = currentEnergy / maxEnergy;
+
+        if (energyText != null)
+            energyText.text = $"{(energyDelta >= 0 ? "+" : "")}{energyDelta:F1}";
+
+        Upgrades.Inst.TickTimedUpgrades(Time.deltaTime);
 
         if (currentEnergy <= 0f)
             Upgrades.Inst.ForceDeactivateAll();
@@ -34,8 +52,27 @@ public class EnergySystem : MonoBehaviour
 
     public bool HasEnough(float amount) => currentEnergy >= amount;
 
+    public bool Consume(float amount)
+    {
+        if (currentEnergy >= amount)
+        {
+            currentEnergy -= amount;
+            currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+            OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
+            return true;
+        }
+
+        return false;
+    }
+
     public void OnLevelUp()
     {
         regenPerSecond += regenPerLevel;
+    }
+
+    public void Restore(float amount)
+    {
+        currentEnergy = Mathf.Clamp(currentEnergy + amount, 0, maxEnergy);
+        OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
     }
 }

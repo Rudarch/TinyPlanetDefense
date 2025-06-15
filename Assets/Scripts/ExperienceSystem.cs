@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CannonXPSystem : MonoBehaviour
+public class ExperienceSystem : MonoBehaviour
 {
     [Header("XP Settings")]
     public int currentXP = 0;
@@ -9,7 +9,7 @@ public class CannonXPSystem : MonoBehaviour
     public int baseXPToLevel = 5;
     public float levelMultiplier = 1.5f;
     public UnityEvent OnLevelUp;
-    public UnityEvent<int, int> OnXPChanged;
+    public UnityEvent<float, float> OnXPChanged;
     public UpgradePopup upgradePopup;
     public GameObject cannonGameObject;
 
@@ -51,7 +51,7 @@ public class CannonXPSystem : MonoBehaviour
 
         isChoosingUpgrade = true;
         Time.timeScale = 0f; // Pause game
-        upgradePopup.Show(cannonGameObject != null ? cannonGameObject : gameObject);
+        upgradePopup.Show();
     }
 
     public void OnUpgradeSelected()
@@ -60,7 +60,7 @@ public class CannonXPSystem : MonoBehaviour
 
         if (pendingLevelUps > 0)
         {
-            upgradePopup.Show(this.gameObject);
+            upgradePopup.Show();
         }
         else
         {

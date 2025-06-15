@@ -26,7 +26,7 @@ public class UpgradeButtonPanel : MonoBehaviour
 
     public void AddUpgradeButton(Upgrade upgrade)
     {
-        if (!upgrade.activatable || upgradeToButton.ContainsKey(upgrade))
+        if (upgrade.activationStyle == ActivationStyle.Passive || upgradeToButton.ContainsKey(upgrade))
             return;
 
         RectTransform targetRow = GetOrCreateRowForNextButton();
@@ -74,7 +74,6 @@ public class UpgradeButtonPanel : MonoBehaviour
     private void ToggleUpgrade(Upgrade upgrade)
     {
         Upgrades.Inst.ToggleUpgrade(upgrade);
-        GetButtonForUpgrade(upgrade)?.UpdateVisual(upgrade.IsEnabled);
     }
 
     private RectTransform GetOrCreateRowForNextButton()

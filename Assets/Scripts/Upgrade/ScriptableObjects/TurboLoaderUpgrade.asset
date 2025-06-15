@@ -15,11 +15,17 @@ MonoBehaviour:
   upgradeName: Turbo Loader
   description: Shortens the reload cooldown
   icon: {fileID: -5579780383750340384, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  enabled: 1
-  maxLevel: 4
-  currentLevel: 1
-  activatable: 1
-  energyCostPerSecond: 1
-  energyCostPerLevel: 1
-  cooldownReductionPercent: 0.2
+  maxLevel: 10
+  currentLevel: 3
+  activatable: 0
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
+  energyDrainAmount: 3
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
+  cooldownReductionPercent: 0.1
   baseCooldownReductionMultiplier: 1
+  cooldownReductionMultiplier: 0.7289999

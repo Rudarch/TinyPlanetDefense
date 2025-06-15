@@ -1,5 +1,8 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
+public enum ActivationStyle { Passive, Toggle, Timed }
 public abstract class Upgrade : ScriptableObject
 {
     public string upgradeName;
@@ -7,16 +10,31 @@ public abstract class Upgrade : ScriptableObject
     public Sprite icon;
     public int maxLevel = 1;
     public int currentLevel = 0;
-    public bool activatable = false;
-    public float energyCostPerSecond = 0f;
-    public float energyCostIncreasePerLevel = 1f;
+
+    [Header("Energy drain")]
+    [SerializeField] protected float baseEnergyDrain = 0f;
+    [SerializeField] protected float energyDrainPerLevel = 1f;
+    public float energyDrainAmount = 0f;
+
+    [Header("Energy activation")]
+    [SerializeField] protected float baseActivationEnergyCost = 0f;
+    [SerializeField] protected float activationEnergyCostPerLevel = 0f;
+    public float activationEnergyAmount = 0f;
+
+    [Header("Activation")]
+    public ActivationStyle activationStyle = ActivationStyle.Passive;
+    public float activationDuration = 0f;
+    private float activationTimer = 0f;
+
+    public bool IsActivated { get; private set; }
+    public bool IsReadyForActivation => EnergySystem.Inst.HasEnough(activationEnergyAmount) && !IsActivated;
     public bool IsMaxedOut => currentLevel >= maxLevel;
+    public bool IsEnabled { get => enabled; protected set => enabled = value; }
+
+    public Action<bool> OnActivationChanged;
 
     protected bool enabled = false;
     protected int NextLevel => currentLevel + 1;
-
-    public bool IsEnabled { get => enabled; protected set => enabled = value; }
-
     public virtual void Initialize()
     {
         ResetUpgrade();
@@ -31,9 +49,11 @@ public abstract class Upgrade : ScriptableObject
             return;
         }
 
-        energyCostPerSecond += GetEnergyCostIncreaseForNextLevel();
-
         currentLevel++;
+
+        energyDrainAmount = baseEnergyDrain + (energyDrainPerLevel * currentLevel);
+        activationEnergyAmount = baseActivationEnergyCost + (activationEnergyCostPerLevel * currentLevel);
+
         ApplyUpgradeInternal();
 
         Debug.Log($"Applied upgrade: (Level {currentLevel}/{maxLevel})");
@@ -41,9 +61,13 @@ public abstract class Upgrade : ScriptableObject
 
     protected void ResetUpgrade()
     {
+        enabled = false;
+        IsActivated = false;
         currentLevel = 0;
-        IsEnabled = false;
-        energyCostPerSecond = 0;
+        energyDrainAmount = 0;
+        activationEnergyAmount = 0;
+        activationTimer = 0;
+        OnActivationChanged = null;
     }
 
     public virtual string GetUpgradeEffectText()
@@ -51,24 +75,50 @@ public abstract class Upgrade : ScriptableObject
         return string.Empty;
     }
 
-    public virtual float GetEnergyCostIncreaseForNextLevel() 
+    public virtual float GetEnergyDrainForNextLevel()
     {
-        return NextLevel > 1
-            ? (energyCostIncreasePerLevel / 2f)
-            : energyCostIncreasePerLevel;
+        return baseEnergyDrain + (energyDrainPerLevel * NextLevel);
+    }
+
+    public virtual float GetEnergyActivationCostForNextLevel()
+    {
+        return baseActivationEnergyCost + (activationEnergyCostPerLevel * NextLevel);
     }
 
     protected virtual void ApplyUpgradeInternal() { }
 
     protected virtual void InitializeInternal() { }
 
+    public void TickUpgrade(float deltaTime)
+    {
+        if (activationStyle == ActivationStyle.Timed && IsActivated)
+        {
+            activationTimer -= deltaTime;
+            if (activationTimer <= 0f)
+            {
+                IsActivated = false;
+            }
+        }
+    }
+
     public virtual void Activate()
     {
+        if (activationStyle == ActivationStyle.Timed && IsReadyForActivation)
+        {
+            EnergySystem.Inst.Consume(activationEnergyAmount);
+            IsActivated = true;
+            activationTimer = activationDuration;
+        }
+
         IsEnabled = true;
+        OnActivationChanged?.Invoke(IsEnabled);
+        Debug.Log($"{upgradeName} Activated.");
     }
 
     public virtual void Deactivate()
     {
         IsEnabled = false;
+        OnActivationChanged?.Invoke(IsEnabled);
+        Debug.Log($"{upgradeName} Deactivated.");
     }
 }
