@@ -1849,7 +1849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5737902610290573324, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: xpReward
-      value: 5000
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_AnchorMax.y

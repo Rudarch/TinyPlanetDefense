@@ -19,13 +19,13 @@ public class UpgradeOptionUI : MonoBehaviour
         this.popup = popup;
 
         icon.sprite = upgrade.icon;
-        nameText.text = upgrade.upgradeName;
+        nameText.text = $"{upgrade.upgradeName}\n<size=80%><color=grey>{upgrade.NextLevel}/{upgrade.maxLevel}</color></size>";
         descriptionText.text = $"{upgrade.description}\n<size=80%><color=yellow>{upgrade.GetUpgradeEffectText()}</color></size>";
 
         switch (upgrade.activationStyle)
         {
             case ActivationStyle.Timed:
-                energyCostText.text = $"-{upgrade.GetEnergyActivationCostForNextLevel()} energy per activation";
+                energyCostText.text = $"-{upgrade.GetEnergyActivationCostForNextLevel()} energy on activation";
                 break;
             case ActivationStyle.Toggle:
                 energyCostText.text = $"-{upgrade.GetEnergyDrainForNextLevel()} energy per second";

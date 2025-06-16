@@ -35,7 +35,7 @@ public abstract class Upgrade : ScriptableObject
     public Action<float, float> OnActivationTimerChanged;
 
     //protected bool enabled = false;
-    protected int NextLevel => currentLevel + 1;
+    public int NextLevel => currentLevel + 1;
     public virtual void Initialize()
     {
         ResetUpgrade();

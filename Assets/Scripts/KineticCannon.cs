@@ -62,32 +62,38 @@ public class KineticCannon : WeaponSystem
     {
         isFiring = true;
 
-        int salvoCount = 1 + Upgrades.Inst.extraShot.ExtraShotsPerSalvo;
-        float shotInterval = Upgrades.Inst.extraShot.ExtraShotInterval * Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier;
-        float finalCooldown = baseCooldown * Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier;
+        float cooldownMult = Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier;
+        float finalCooldown = baseCooldown * cooldownMult;
 
-        for (int i = 0; i < salvoCount; i++)
+        if (Upgrades.Inst.twinBarrel.IsActivated)
         {
-            if (Upgrades.Inst.twinBarrel.IsActivated)
-            {
-                FireFromMuzzle(muzzleLeft, direction);
-
-                if (twinBarrelDelay > 0f)
-                    yield return GetWait(twinBarrelDelay * Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier);
-
-                FireFromMuzzle(muzzleRight, direction);
-            }
-            else
-            {
-                FireFromMuzzle(muzzleCenter, direction);
-            }
-
-            if (i < salvoCount - 1)
-                yield return GetWait(shotInterval);
+            FireWithChance(muzzleLeft, direction);
+            yield return GetWait(twinBarrelDelay * cooldownMult);
+            FireWithChance(muzzleRight, direction);
+        }
+        else
+        {
+            FireWithChance(muzzleCenter, direction);
         }
 
         yield return GetWait(finalCooldown);
         isFiring = false;
+    }
+
+    void FireWithChance(Transform muzzle, Vector2 direction)
+    {
+        FireFromMuzzle(muzzle, direction);
+
+        if (Upgrades.Inst.extraShot.IsActivated && Upgrades.Inst.extraShot.RollExtraShot())
+        {
+            float delay = Upgrades.Inst.extraShot.extraShotInterval * Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier;
+            StartCoroutine(DelayedExtraShot(muzzle, direction, delay));
+        }
+    }
+    IEnumerator DelayedExtraShot(Transform muzzle, Vector2 direction, float delay)
+    {
+        yield return GetWait(delay);
+        FireFromMuzzle(muzzle, direction);
     }
 
     void FireFromMuzzle(Transform muzzle, Vector2 dir)
@@ -104,14 +110,13 @@ public class KineticCannon : WeaponSystem
         {
             projectile.SetDirection(dir);
 
-            var upgrades = Upgrades.Inst;
-            if (upgrades.overchargedShot.IsActivated && Time.time >= nextOverchargeTime)
+            if (Upgrades.Inst.overchargedShot.IsActivated && Time.time >= nextOverchargeTime)
             {
                 projectile.ApplyOvercharge(
-                    upgrades.overchargedShot.damageMultiplier,
-                    upgrades.overchargedShot.scaleMultiplier
+                    Upgrades.Inst.overchargedShot.damageMultiplier,
+                    Upgrades.Inst.overchargedShot.scaleMultiplier
                 );
-                nextOverchargeTime = Time.time + upgrades.overchargedShot.interval;
+                nextOverchargeTime = Time.time + Upgrades.Inst.overchargedShot.interval;
             }
         }
     }

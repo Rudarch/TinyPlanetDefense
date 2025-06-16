@@ -93,6 +93,8 @@ public class ProjectileHitHandler : MonoBehaviour
         if (upgrades.ricochet.IsActivated && ricochetsDone < upgrades.ricochet.ricochetCount)
         {
             ricochetsDone++;
+            damage *= upgrades.ricochet.ricochetDamageMultiplier;
+
             Enemy next = FindNextEnemy(enemy.transform.position);
             if (next != null)
             {
@@ -108,6 +110,7 @@ public class ProjectileHitHandler : MonoBehaviour
                 return;
             }
         }
+
 
         enemiesHit++;
         if (enemiesHit > pierceCount)

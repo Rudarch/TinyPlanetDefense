@@ -20,10 +20,10 @@ MonoBehaviour:
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 40
+  baseActivationEnergyCost: 50
   activationEnergyCostPerLevel: 10
   activationEnergyAmount: 0
   activationStyle: 2
-  activationDuration: 10
+  activationDuration: 7
   extraPiercePerLevel: 2
   pierceCount: 0

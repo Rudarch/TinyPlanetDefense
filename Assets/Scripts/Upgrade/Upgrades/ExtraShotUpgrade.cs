@@ -3,48 +3,34 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExtraShotUpgrade", menuName = "Upgrades/ExtraShot")]
 public class ExtraShotUpgrade : Upgrade
 {
-    [Header("Configuration")]
-    [SerializeField] int extraShotsPerLevel = 1;
-    [SerializeField] float baseShotInterval = 0.1f;
+    [Header("Chance-based Extra Shot")]
+    [SerializeField] float baseChance = 0.35f;
+    [SerializeField] float chancePerLevel = 0.05f;
+    public float extraShotInterval = 0.1f;
 
-    //[Header("Values")]
-    private int shotsPerSalvo;
-    private float shotInterval;
+    [SerializeField] float totalChance = 0;
 
-    protected override void ApplyUpgradeInternal()
+    public override string GetUpgradeEffectText()
     {
-        shotsPerSalvo = extraShotsPerLevel * currentLevel;
-        shotInterval = baseShotInterval;
+        float totalChance = baseChance + (NextLevel * chancePerLevel);
+        return $"Chance to fire an extra shot: {totalChance * 100f:F0}%";
     }
 
     protected override void InitializeInternal()
     {
         Upgrades.Inst.extraShot = this;
-        shotsPerSalvo = 0;
-        shotInterval = baseShotInterval;
+        totalChance = 0f;
     }
 
-
-    public float ExtraShotInterval
+    protected override void ApplyUpgradeInternal()
     {
-        get
-        {
-            if (IsActivated) return shotInterval;
-            else return baseShotInterval;
-        }
+        totalChance = baseChance + (currentLevel * chancePerLevel);
     }
 
-    public int ExtraShotsPerSalvo
+    public bool RollExtraShot()
     {
-        get
-        {
-            if (IsActivated) return shotsPerSalvo;
-            else return 0;
-        }
-    }
+        if (!IsActivated) return false;
 
-    public override string GetUpgradeEffectText()
-    {
-        return $"+{extraShotsPerLevel} Extra Shot{(extraShotsPerLevel > 1 ? "s" : "")}, {extraShotsPerLevel * NextLevel} in total";
+        return Random.value < totalChance;
     }
 }

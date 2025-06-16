@@ -6,6 +6,7 @@ public class RicochetUpgrade : Upgrade
     [Header("Configuration")]
     [SerializeField] int extraRicochets = 1;
     [SerializeField] float extraRange = 0.1f;
+    public float ricochetDamageMultiplier = 0.7f;
 
     [Header("Values")]
     public int ricochetCount;

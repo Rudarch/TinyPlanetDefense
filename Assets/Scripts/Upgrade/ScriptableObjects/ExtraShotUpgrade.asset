@@ -15,16 +15,17 @@ MonoBehaviour:
   upgradeName: Extra Shot
   description: Shoots an additional round
   icon: {fileID: 5514012819739748338, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 1
+  maxLevel: 4
   currentLevel: 0
-  activatable: 1
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 40
+  baseActivationEnergyCost: 30
   activationEnergyCostPerLevel: 10
   activationEnergyAmount: 0
   activationStyle: 2
-  activationDuration: 10
-  extraShotsPerLevel: 1
-  baseShotInterval: 0.15
+  activationDuration: 15
+  baseChance: 0.35
+  chancePerLevel: 0.15
+  extraShotInterval: 0.1
+  totalChance: 0

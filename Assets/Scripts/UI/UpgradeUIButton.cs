@@ -29,17 +29,6 @@ public class UpgradeUIButton : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        //if (upgrade.activationStyle == ActivationStyle.Timed)
-        //{
-        //    if (glowEffect != null && upgrade.IsReadyForActivation && !glowEffect.activeSelf)
-        //        glowEffect.SetActive(true);
-        //    else if (glowEffect != null && !upgrade.IsReadyForActivation && glowEffect.activeSelf)
-        //        glowEffect.SetActive(false);
-        //}
-    }
-
     public void Initialize(Upgrade upgradeData, System.Action<Upgrade> onClick)
     {
         upgrade = upgradeData;

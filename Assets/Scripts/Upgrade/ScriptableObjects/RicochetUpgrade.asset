@@ -16,16 +16,17 @@ MonoBehaviour:
   description: Bullets ricochet to more targets
   icon: {fileID: -1266927123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 2
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 2
-  baseActivationEnergyCost: 40
-  activationEnergyCostPerLevel: 10
-  activationEnergyAmount: 60
-  activationStyle: 2
-  activationDuration: 10
+  currentLevel: 1
+  baseEnergyDrain: 1
+  energyDrainPerLevel: 0.5
+  energyDrainAmount: 0
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
   extraRicochets: 1
   extraRange: 0.3
-  ricochetCount: 2
-  ricochetRange: 0.2
+  ricochetDamageMultiplier: 0.7
+  ricochetCount: 1
+  ricochetRange: 0.3
