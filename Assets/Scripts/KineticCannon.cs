@@ -25,7 +25,7 @@ public class KineticCannon : WeaponSystem
     {
         audioSource = GetComponent<AudioSource>();
 
-        if (Upgrades.Inst.twinBarrel.IsEnabled)
+        if (Upgrades.Inst.twinBarrel.IsActivated)
             EnableTwinMuzzles();
         else
             EnableSingleMuzzle();
@@ -68,7 +68,7 @@ public class KineticCannon : WeaponSystem
 
         for (int i = 0; i < salvoCount; i++)
         {
-            if (Upgrades.Inst.twinBarrel.IsEnabled)
+            if (Upgrades.Inst.twinBarrel.IsActivated)
             {
                 FireFromMuzzle(muzzleLeft, direction);
 
@@ -105,7 +105,7 @@ public class KineticCannon : WeaponSystem
             projectile.SetDirection(dir);
 
             var upgrades = Upgrades.Inst;
-            if (upgrades.overchargedShot.IsEnabled && Time.time >= nextOverchargeTime)
+            if (upgrades.overchargedShot.IsActivated && Time.time >= nextOverchargeTime)
             {
                 projectile.ApplyOvercharge(
                     upgrades.overchargedShot.damageMultiplier,

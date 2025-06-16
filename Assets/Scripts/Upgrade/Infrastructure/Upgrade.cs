@@ -13,7 +13,7 @@ public abstract class Upgrade : ScriptableObject
 
     [Header("Energy drain")]
     [SerializeField] protected float baseEnergyDrain = 0f;
-    [SerializeField] protected float energyDrainPerLevel = 1f;
+    [SerializeField] protected float energyDrainPerLevel = 0f;
     public float energyDrainAmount = 0f;
 
     [Header("Energy activation")]
@@ -29,11 +29,12 @@ public abstract class Upgrade : ScriptableObject
     public bool IsActivated { get; private set; }
     public bool IsReadyForActivation => EnergySystem.Inst.HasEnough(activationEnergyAmount) && !IsActivated;
     public bool IsMaxedOut => currentLevel >= maxLevel;
-    public bool IsEnabled { get => enabled; protected set => enabled = value; }
+    //public bool IsEnabled { get => enabled; protected set => enabled = value; }
 
     public Action<bool> OnActivationChanged;
+    public Action<float, float> OnActivationTimerChanged;
 
-    protected bool enabled = false;
+    //protected bool enabled = false;
     protected int NextLevel => currentLevel + 1;
     public virtual void Initialize()
     {
@@ -61,7 +62,6 @@ public abstract class Upgrade : ScriptableObject
 
     protected void ResetUpgrade()
     {
-        enabled = false;
         IsActivated = false;
         currentLevel = 0;
         energyDrainAmount = 0;
@@ -94,9 +94,10 @@ public abstract class Upgrade : ScriptableObject
         if (activationStyle == ActivationStyle.Timed && IsActivated)
         {
             activationTimer -= deltaTime;
+            OnActivationTimerChanged.Invoke(activationDuration, activationTimer);
             if (activationTimer <= 0f)
             {
-                IsActivated = false;
+                Deactivate();
             }
         }
     }
@@ -106,19 +107,18 @@ public abstract class Upgrade : ScriptableObject
         if (activationStyle == ActivationStyle.Timed && IsReadyForActivation)
         {
             EnergySystem.Inst.Consume(activationEnergyAmount);
-            IsActivated = true;
             activationTimer = activationDuration;
         }
 
-        IsEnabled = true;
-        OnActivationChanged?.Invoke(IsEnabled);
+        IsActivated = true;
+        OnActivationChanged?.Invoke(IsActivated);
         Debug.Log($"{upgradeName} Activated.");
     }
 
     public virtual void Deactivate()
     {
-        IsEnabled = false;
-        OnActivationChanged?.Invoke(IsEnabled);
+        IsActivated = false;
+        OnActivationChanged?.Invoke(IsActivated);
         Debug.Log($"{upgradeName} Deactivated.");
     }
 }

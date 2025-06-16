@@ -3,9 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "RicochetUpgrade", menuName = "Upgrades/Ricochet")]
 public class RicochetUpgrade : Upgrade
 {
+    [Header("Configuration")]
     [SerializeField] int extraRicochets = 1;
     [SerializeField] float extraRange = 0.1f;
 
+    [Header("Values")]
     public int ricochetCount;
     public float ricochetRange;
     protected override void ApplyUpgradeInternal()

@@ -3,10 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TwinBarrelUpgrade", menuName = "Upgrades/TwinBarrel")]
 public class TwinBarrelUpgrade : Upgrade
 {
-    KineticCannon cannon;
-    void Start()
+    protected GameObject planet;
+    protected KineticCannon cannon;
+
+    protected void Awake()
     {
-        cannon = FindFirstObjectByType<KineticCannon>();
+        planet = GameObject.FindWithTag("Planet");
+        cannon = planet?.GetComponentInChildren<KineticCannon>();
     }
 
     protected override void ApplyUpgradeInternal()
@@ -16,7 +19,7 @@ public class TwinBarrelUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return "More firepower - more fun!";
+        return $"More firepower - more fun! For {activationDuration} seconds.";
     }
 
     protected override void InitializeInternal()

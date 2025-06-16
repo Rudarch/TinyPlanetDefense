@@ -34,7 +34,7 @@ public class UpgradeButtonPanel : MonoBehaviour
         var buttonUI = buttonGO.GetComponent<UpgradeUIButton>();
         if (buttonUI != null)
         {
-            buttonUI.Initialize(upgrade, ToggleUpgrade);
+            buttonUI.Initialize(upgrade, Upgrades.Inst.ToggleUpgrade);
             upgradeToButton[upgrade] = buttonUI;
         }
     }
@@ -69,11 +69,6 @@ public class UpgradeButtonPanel : MonoBehaviour
     {
         upgradeToButton.TryGetValue(upgrade, out var button);
         return button;
-    }
-
-    private void ToggleUpgrade(Upgrade upgrade)
-    {
-        Upgrades.Inst.ToggleUpgrade(upgrade);
     }
 
     private RectTransform GetOrCreateRowForNextButton()

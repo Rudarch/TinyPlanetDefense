@@ -16,16 +16,18 @@ MonoBehaviour:
   description: Projectiles receive the AOE effect
   icon: {fileID: 3822724474062737495, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
-  activatable: 1
+  currentLevel: 3
   baseEnergyDrain: 0
-  energyDrainPerLevel: 1
+  energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationStyle: 1
-  activationDuration: 0
-  radiusPerLevel: 0.2
-  splashDamageMultiplier: 0.3
-  explosionRadius: 0.2
+  baseActivationEnergyCost: 40
+  activationEnergyCostPerLevel: 10
+  activationEnergyAmount: 70
+  activationStyle: 2
+  activationDuration: 5
+  baseExplosionRadius: 0.2
+  radiusPerLevel: 0.1
+  baseSplashDamageMultiplier: 0.2
+  splashDamageMultiplierPerLevel: 0.1
+  splashDamageMultiplier: 0.5
+  explosionRadius: 0.5

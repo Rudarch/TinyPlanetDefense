@@ -3,9 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExtraShotUpgrade", menuName = "Upgrades/ExtraShot")]
 public class ExtraShotUpgrade : Upgrade
 {
+    [Header("Configuration")]
     [SerializeField] int extraShotsPerLevel = 1;
     [SerializeField] float baseShotInterval = 0.1f;
 
+    //[Header("Values")]
     private int shotsPerSalvo;
     private float shotInterval;
 
@@ -27,7 +29,7 @@ public class ExtraShotUpgrade : Upgrade
     {
         get
         {
-            if (IsEnabled) return shotInterval;
+            if (IsActivated) return shotInterval;
             else return baseShotInterval;
         }
     }
@@ -36,7 +38,7 @@ public class ExtraShotUpgrade : Upgrade
     {
         get
         {
-            if (IsEnabled) return shotsPerSalvo;
+            if (IsActivated) return shotsPerSalvo;
             else return 0;
         }
     }

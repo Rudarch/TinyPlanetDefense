@@ -27,7 +27,7 @@ public class TurboLoader : Upgrade
     {
         get
         {
-            if (IsEnabled) return cooldownReductionMultiplier;
+            if (IsActivated) return cooldownReductionMultiplier;
             else return baseCooldownReductionMultiplier;
         }
     }

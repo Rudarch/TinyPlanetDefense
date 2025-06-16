@@ -17,8 +17,7 @@ MonoBehaviour:
   icon: {fileID: -4576195762108713507, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 10
   currentLevel: 0
-  activatable: 1
-  baseEnergyDrain: 0
+  baseEnergyDrain: 1
   energyDrainPerLevel: 1
   energyDrainAmount: 0
   baseActivationEnergyCost: 0

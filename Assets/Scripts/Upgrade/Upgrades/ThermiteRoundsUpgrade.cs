@@ -3,24 +3,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ThermiteRoundsUpgrade", menuName = "Upgrades/ThermiteRounds")]
 public class ThermiteRoundsUpgrade : Upgrade
 {
-    [Range(0.1f, 1f)] public float baseDamagePercent = 0.3f;
-    [Range(0.1f, 1f)] public float damagePercentPerLevel = 0.15f;
-    public float burnDuration = 3f;
+    [Header("Configuration")]
+    [SerializeField] [Range(0.1f, 1f)] public float baseDamagePercent = 0.3f;
+    [SerializeField] [Range(0.1f, 1f)] public float damagePercentPerLevel = 0.15f;
+    [SerializeField] public float burnDuration = 3f;
+
+    [Header("Values")]
     public float thermiteDPSPercent;
 
     protected override void ApplyUpgradeInternal()
     {
-        thermiteDPSPercent = baseDamagePercent + (damagePercentPerLevel * currentLevel);
+        burnDuration = burnDuration <= 0 ? 1 : burnDuration;
+        thermiteDPSPercent = (baseDamagePercent + (damagePercentPerLevel * currentLevel)) / burnDuration;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"{(baseDamagePercent + (damagePercentPerLevel * NextLevel)) * 100}%/s of ammo damage in {burnDuration}s";
+        return $"{(baseDamagePercent + (damagePercentPerLevel * currentLevel)) / burnDuration * 100}% damage over {burnDuration} sec.";
     }
 
     protected override void InitializeInternal()
     {
         Upgrades.Inst.thermiteRounds = this;
-        thermiteDPSPercent = baseDamagePercent;
+        thermiteDPSPercent = 0;
     }
 }

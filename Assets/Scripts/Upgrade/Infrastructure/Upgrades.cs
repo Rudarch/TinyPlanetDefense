@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Upgrade;
 
 public class Upgrades : MonoBehaviour
 {
+    [Header("All Upgrades")]
+    public List<Upgrade> allUpgrades;
+
     public static Upgrades Inst { get; private set; }
 
     [Header("Projectile Upgrades")]
-    public IncreaseDamageUpgrade increaseDamage;
+    public HeavyShellsUpgrade heavyShells;
     public LifeSiphonUpgrade lifeSiphon;
     public ExplosiveRoundsUpgrade explosiveRounds;
     public ThermiteRoundsUpgrade thermiteRounds;
@@ -30,9 +32,8 @@ public class Upgrades : MonoBehaviour
 
     [Header("Special Upgrades")]
     public OrbitalWingUpgrade orbitalWing;
-
-    [Header("All Upgrades")]
-    public List<Upgrade> allUpgrades;
+    public OverchargedCapacitorsUpgrade overchargedCapacitors;
+    public AdaptiveFluxRegulatorUpgrade adaptiveFluxRegulator;
 
     public PlanetUpgradeHandler planetUpgradeHandler;
 
@@ -64,20 +65,17 @@ public class Upgrades : MonoBehaviour
 
         if (upgrade.IsActivated)
         {
-            Debug.Log($"Deactivating upgrade: {upgrade.upgradeName}");
             upgrade.Deactivate();
         }
         else if (upgrade.activationStyle == ActivationStyle.Timed)
         {
             if (upgrade.IsReadyForActivation && EnergySystem.Inst.HasEnough(upgrade.activationEnergyAmount))
             {
-                Debug.Log($"Activating timed upgrade: {upgrade.upgradeName}");
                 upgrade.Activate();
             }
         }
-        else if (upgrade.activationStyle == ActivationStyle.Toggle)
+        else 
         {
-            Debug.Log($"Activating toggle upgrade: {upgrade.upgradeName}");
             upgrade.Activate();
         }
     }

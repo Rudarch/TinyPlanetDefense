@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "IncreaseDamageUpgrade", menuName = "Upgrades/IncreaseDamage")]
-public class IncreaseDamageUpgrade : Upgrade
+[CreateAssetMenu(fileName = "HeavyShellsUpgrade", menuName = "Upgrades/HeavyShells")]
+public class HeavyShellsUpgrade : Upgrade
 {
     private float bonusDamage = 0f;
     public float bonusDamagePerLevel = 5f;
@@ -11,7 +11,7 @@ public class IncreaseDamageUpgrade : Upgrade
     {
         get
         {
-            if (IsEnabled) return bonusDamage;
+            if (IsActivated) return bonusDamage;
             else return 0;
         }
     }
@@ -28,7 +28,7 @@ public class IncreaseDamageUpgrade : Upgrade
 
     protected override void InitializeInternal()
     {
-        Upgrades.Inst.increaseDamage = this;
+        Upgrades.Inst.heavyShells = this;
         bonusDamage = 0f;
     }
 

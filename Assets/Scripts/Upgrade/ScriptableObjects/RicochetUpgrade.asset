@@ -17,16 +17,15 @@ MonoBehaviour:
   icon: {fileID: -1266927123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
   currentLevel: 2
-  activatable: 1
   baseEnergyDrain: 0
   energyDrainPerLevel: 1
   energyDrainAmount: 2
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationStyle: 1
-  activationDuration: 0
+  baseActivationEnergyCost: 40
+  activationEnergyCostPerLevel: 10
+  activationEnergyAmount: 60
+  activationStyle: 2
+  activationDuration: 10
   extraRicochets: 1
-  extraRange: 0.1
+  extraRange: 0.3
   ricochetCount: 2
   ricochetRange: 0.2

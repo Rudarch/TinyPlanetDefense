@@ -16,17 +16,16 @@ MonoBehaviour:
   description: Sets enemies on fire
   icon: {fileID: 4433317290345902414, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
-  activatable: 1
+  currentLevel: 3
   baseEnergyDrain: 0
   energyDrainPerLevel: 1
-  energyDrainAmount: 1
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationStyle: 1
-  activationDuration: 0
-  baseDamagePercent: 0.1
-  damagePercentPerLevel: 0.1
-  burnDuration: 4
-  thermiteDPSPercent: 0.2
+  energyDrainAmount: 3
+  baseActivationEnergyCost: 40
+  activationEnergyCostPerLevel: 10
+  activationEnergyAmount: 70
+  activationStyle: 2
+  activationDuration: 5
+  baseDamagePercent: 0.2
+  damagePercentPerLevel: 0.2
+  burnDuration: 3
+  thermiteDPSPercent: 0.26666668

@@ -18,7 +18,7 @@ public class OverheatProtocolUpgrade : Upgrade
     {
         get
         {
-            if (IsEnabled && IsOverheating)
+            if (IsActivated && IsOverheating)
             {
                 return damageMultiplier;
             }

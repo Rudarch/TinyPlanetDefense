@@ -16,16 +16,15 @@ MonoBehaviour:
   description: Shortens the reload cooldown
   icon: {fileID: -5579780383750340384, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 10
-  currentLevel: 3
-  activatable: 0
+  currentLevel: 2
   baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 3
+  energyDrainPerLevel: 0
+  energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 1
+  activationStyle: 0
   activationDuration: 0
   cooldownReductionPercent: 0.1
   baseCooldownReductionMultiplier: 1
-  cooldownReductionMultiplier: 0.7289999
+  cooldownReductionMultiplier: 0

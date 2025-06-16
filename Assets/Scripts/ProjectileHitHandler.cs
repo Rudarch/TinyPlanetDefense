@@ -77,7 +77,7 @@ public class ProjectileHitHandler : MonoBehaviour
             audioSource.PlayOneShot(hitSound);
         }
 
-        if (upgrades.thermiteRounds.IsEnabled)
+        if (upgrades.thermiteRounds.IsActivated)
         {
             var burn = enemy.GetComponent<BurningEffect>();
             if (burn == null)
@@ -90,7 +90,7 @@ public class ProjectileHitHandler : MonoBehaviour
             burn.ApplyOrRefresh(damage * upgrades.thermiteRounds.thermiteDPSPercent, upgrades.thermiteRounds.burnDuration);
         }
 
-        if (upgrades.ricochet.IsEnabled && ricochetsDone < upgrades.ricochet.ricochetCount)
+        if (upgrades.ricochet.IsActivated && ricochetsDone < upgrades.ricochet.ricochetCount)
         {
             ricochetsDone++;
             Enemy next = FindNextEnemy(enemy.transform.position);
@@ -112,7 +112,7 @@ public class ProjectileHitHandler : MonoBehaviour
         enemiesHit++;
         if (enemiesHit > pierceCount)
         {
-            if (upgrades.explosiveRounds.IsEnabled && upgrades.explosiveRounds.explosionRadius > 0f)
+            if (upgrades.explosiveRounds.IsActivated && upgrades.explosiveRounds.explosionRadius > 0f)
                 Explode();
 
             Destroy(gameObject, 0.05f);
@@ -130,7 +130,7 @@ public class ProjectileHitHandler : MonoBehaviour
                 float aoeDamage = damage * upgrades.explosiveRounds.splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
 
-                if (upgrades.thermiteRounds.IsEnabled)
+                if (upgrades.thermiteRounds.IsActivated)
                 {
                     var burn = enemy.GetComponent<BurningEffect>();
                     if (burn == null)

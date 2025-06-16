@@ -152,7 +152,7 @@ public class Enemy : MonoBehaviour
             Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
         }
 
-        if (Upgrades.Inst.lifeSiphon.IsEnabled)
+        if (Upgrades.Inst.lifeSiphon.IsActivated)
         {
             var planet = GameObject.FindWithTag("Planet");
             if (planet != null)

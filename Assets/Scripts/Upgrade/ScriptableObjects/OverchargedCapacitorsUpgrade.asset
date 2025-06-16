@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859989a59cb275743902f0fffc32b280, type: 3}
-  m_Name: OverheatProtocolUpgrade
+  m_Script: {fileID: 11500000, guid: c8565495c0236d348aa1cb216fa851c0, type: 3}
+  m_Name: OverchargedCapacitorsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Overheat protocol
+  upgradeName: 
   description: 
-  icon: {fileID: -790303996, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 1
-  currentLevel: 1
+  icon: {fileID: 0}
+  maxLevel: 4
+  currentLevel: 0
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
@@ -25,5 +25,4 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationStyle: 0
   activationDuration: 0
-  energyThreshold: 0.25
-  damageMultiplier: 2
+  maxEnergyLevel: 20

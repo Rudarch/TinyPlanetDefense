@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb5bf0ed0233f5c4aa73a9ef68df54d2, type: 3}
-  m_Name: IncreaseDamageUpgrade
+  m_Name: HeavyShellsUpgrade
   m_EditorClassIdentifier: 
   upgradeName: Heavy Shells
   description: Each shot deals more damage
   icon: {fileID: -1862853827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 999
-  currentLevel: 2
-  activatable: 0
+  currentLevel: 0
   baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 2
+  energyDrainPerLevel: 0
+  energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 1
+  activationStyle: 0
   activationDuration: 0
   bonusDamagePerLevel: 1

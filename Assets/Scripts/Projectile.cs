@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         var upgradeState = Upgrades.Inst;
-        damage += upgradeState.increaseDamage.BonusDamage;
+        damage += upgradeState.heavyShells.BonusDamage;
         damage *= upgradeState.overheatProtocol.OverheatDamageMultiplier;
 
         hitHandler = gameObject.AddComponent<ProjectileHitHandler>();
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
             this,
             upgradeState,
             damage,
-            upgradeState.piercingAmmo.IsEnabled ? upgradeState.piercingAmmo.pierceCount : 0,
+            upgradeState.piercingAmmo.IsActivated ? upgradeState.piercingAmmo.pierceCount : 0,
             ricochetLinePrefab,
             explosionEffectPrefab,
             impactFlashPrefab,

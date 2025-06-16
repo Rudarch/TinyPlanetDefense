@@ -17,7 +17,7 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
     }
     protected override IEnumerator Trigger()
     {
-        while (IsEnabled)
+        while (IsActivated)
         {
             yield return new WaitForSeconds(waveInterval);
             var enemies = EnemyManager.Inst.GetEnemiesInRange(planet.transform.position, Upgrades.Inst.cryoWave.effectRadius);

@@ -25,13 +25,13 @@ public class UpgradeOptionUI : MonoBehaviour
         switch (upgrade.activationStyle)
         {
             case ActivationStyle.Timed:
-                energyCostText.text = $"{upgrade.GetEnergyActivationCostForNextLevel()} per activation";
+                energyCostText.text = $"-{upgrade.GetEnergyActivationCostForNextLevel()} energy per activation";
                 break;
             case ActivationStyle.Toggle:
                 energyCostText.text = $"-{upgrade.GetEnergyDrainForNextLevel()} energy per second";
                 break;
             default:
-                energyCostText.text = $"No evergy required";
+                energyCostText.text = $"Passive";
                 break;
         }
         selectButton.onClick.RemoveAllListeners();
@@ -47,7 +47,11 @@ public class UpgradeOptionUI : MonoBehaviour
         {
             UpgradeButtonPanel.Inst.AddUpgradeButton(upgrade);
         }
-
+        else
+        {
+            upgrade.Activate();
+        }
+        
         popup.Hide();
     }
 }

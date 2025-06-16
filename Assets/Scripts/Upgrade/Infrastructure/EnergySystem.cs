@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnergySystem : MonoBehaviour
 {
-    public float maxEnergy = 100f;
+    public float baseMaxEnergy = 100f;
     public float currentEnergy = 100f;
     public float regenPerSecond = 3f;
     public float regenPerLevel = 0.5f;
@@ -16,6 +16,8 @@ public class EnergySystem : MonoBehaviour
     public TextMeshProUGUI energyText;
 
     public static EnergySystem Inst { get; private set; }
+    public float MaxEnergy { get => baseMaxEnergy + Upgrades.Inst.overchargedCapacitors.BonusMaxEnergy; }
+
     void Awake()
     {
         if (Inst != null && Inst != this)
@@ -34,12 +36,12 @@ public class EnergySystem : MonoBehaviour
         float deltaTimeEnergy = energyDelta * Time.deltaTime;
 
         currentEnergy += deltaTimeEnergy;
-        currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+        currentEnergy = Mathf.Clamp(currentEnergy, 0, MaxEnergy);
 
-        OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
+        OnEnergyChanged?.Invoke(currentEnergy, MaxEnergy);
 
         if (energyFillImage != null)
-            energyFillImage.fillAmount = currentEnergy / maxEnergy;
+            energyFillImage.fillAmount = currentEnergy / MaxEnergy;
 
         if (energyText != null)
             energyText.text = $"{(energyDelta >= 0 ? "+" : "")}{energyDelta:F1}";
@@ -57,8 +59,8 @@ public class EnergySystem : MonoBehaviour
         if (currentEnergy >= amount)
         {
             currentEnergy -= amount;
-            currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
-            OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
+            currentEnergy = Mathf.Clamp(currentEnergy, 0, MaxEnergy);
+            OnEnergyChanged?.Invoke(currentEnergy, MaxEnergy);
             return true;
         }
 
@@ -72,7 +74,7 @@ public class EnergySystem : MonoBehaviour
 
     public void Restore(float amount)
     {
-        currentEnergy = Mathf.Clamp(currentEnergy + amount, 0, maxEnergy);
-        OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
+        currentEnergy = Mathf.Clamp(currentEnergy + amount, 0, MaxEnergy);
+        OnEnergyChanged?.Invoke(currentEnergy, MaxEnergy);
     }
 }

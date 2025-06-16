@@ -8,8 +8,10 @@ public class UpgradeUIButton : MonoBehaviour
     public UnityEngine.UI.Image icon;
     public Sprite backgroundEnabled;
     public Sprite backgroundDisabled;
-    public GameObject glowEffect;
+    public UnityEngine.UI.Image glowEffect;
     public Color disabledColor;
+    public Color toggleOnColor;
+    public Color timedOnColor;
 
     public AudioClip clickSound;
 
@@ -28,13 +30,13 @@ public class UpgradeUIButton : MonoBehaviour
 
     void Update()
     {
-        if (upgrade.activationStyle == ActivationStyle.Timed)
-        {
-            if (glowEffect != null && upgrade.IsReadyForActivation && !glowEffect.activeSelf)
-                glowEffect.SetActive(true);
-            else if (glowEffect != null && !upgrade.IsReadyForActivation && glowEffect.activeSelf)
-                glowEffect.SetActive(false);
-        }
+        //if (upgrade.activationStyle == ActivationStyle.Timed)
+        //{
+        //    if (glowEffect != null && upgrade.IsReadyForActivation && !glowEffect.activeSelf)
+        //        glowEffect.SetActive(true);
+        //    else if (glowEffect != null && !upgrade.IsReadyForActivation && glowEffect.activeSelf)
+        //        glowEffect.SetActive(false);
+        //}
     }
 
     public void Initialize(Upgrade upgradeData, System.Action<Upgrade> onClick)
@@ -60,22 +62,45 @@ public class UpgradeUIButton : MonoBehaviour
         }
 
         upgrade.OnActivationChanged += UpdateVisual;
+        upgrade.OnActivationTimerChanged += UpdateGlow;
         UpdateVisual(upgrade.IsActivated);
+        UpdateGlow(1, 0);
+    }
+
+    public void UpdateGlow(float max, float value)
+    {
+        glowEffect.fillAmount = value / max;
     }
 
     public void UpdateVisual(bool isActive)
     {
         if(backgroundEnabled == null || backgroundDisabled == null) return;
+
         if (isActive)
         {
             background.sprite = backgroundEnabled;
             icon.color = Color.white;
+
+            if (upgrade.activationStyle == ActivationStyle.Toggle)
+            {
+                UpdateGlow(1, 1);
+                glowEffect.color = toggleOnColor;
+            }
+            else
+            {
+                glowEffect.color = timedOnColor;
+            }
         }
         else
         {
-
             background.sprite = backgroundDisabled;
             icon.color = disabledColor;
+
+            if (upgrade.activationStyle == ActivationStyle.Toggle)
+            {
+                UpdateGlow(1, 1);
+                glowEffect.color = disabledColor;
+            }
         }
     }
 }

@@ -936,11 +936,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4bfa199fe3b2d4cbe5597bc57c16e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.3
+  moveSpeed: 0.4
   isStunned: 0
   health: 10
   damage: 10
-  dashDistance: 0.6
+  dashDistance: 0.5
   dashInterval: 0.5
   planetTarget: {fileID: 0}
   thrusterFX: {fileID: 8494555794564922000}
