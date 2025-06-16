@@ -3,35 +3,59 @@
   "WorkspaceRootPath": "C:\\Repos\\TinyPlanetDefense\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\ui\\upgradeuibutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\upgradeuibutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\planeteffectupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\planeteffectupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\ui\\planethealthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\planethealthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\upgrades\\cryowaveupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\upgrades\\cryowaveupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\upgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\upgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\upgrades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\upgrade\\infrastructure\\upgrades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\upgrades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\satelliteorbit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\satelliteorbit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\ui\\upgradeuibutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\upgradeuibutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\infrastructure\\energysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\energysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\upgrade\\upgrades\\adaptivefluxregulatorupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\upgrade\\infrastructure\\upgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\infrastructure\\upgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\ui\\upgradebuttonpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\upgradebuttonpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\kineticcannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\kineticcannon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|c:\\repos\\tinyplanetdefense\\assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\experiencesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\experiencesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\ui\\planethealthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\planethealthui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\satelliteorbit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\satelliteorbit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\planet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|C:\\Repos\\TinyPlanetDefense\\assets\\scripts\\upgrade\\upgrades\\adaptivefluxregulatorupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE43272F-5CDA-50D4-7461-952E05E7F77E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\upgrade\\upgrades\\adaptivefluxregulatorupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,11 +66,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlanetEffectUpgrade.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\PlanetEffectUpgrade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\PlanetEffectUpgrade.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\PlanetEffectUpgrade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\PlanetEffectUpgrade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T22:48:27.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "CryoWaveUpgrade.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Upgrades\\CryoWaveUpgrade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Upgrades\\CryoWaveUpgrade.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Upgrades\\CryoWaveUpgrade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Upgrades\\CryoWaveUpgrade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T22:47:38.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpgradeButtonPanel.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\UpgradeButtonPanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UpgradeButtonPanel.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\UpgradeButtonPanel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UpgradeButtonPanel.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAADgvyQAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T22:13:42.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "KineticCannon.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\KineticCannon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\KineticCannon.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\KineticCannon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\KineticCannon.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T22:04:27.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T22:02:10.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "PlanetHealthUI.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\PlanetHealthUI.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\PlanetHealthUI.cs",
@@ -54,38 +143,37 @@
               "RelativeToolTip": "Assets\\Scripts\\UI\\PlanetHealthUI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T11:48:14.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T11:48:14.062Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Upgrade.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrade.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrade.cs",
               "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrade.cs",
               "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrade.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAACIAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAqwEsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-16T11:42:47.544Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "UpgradeUIButton.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\UpgradeUIButton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UpgradeUIButton.cs",
               "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\UI\\UpgradeUIButton.cs",
               "RelativeToolTip": "Assets\\Scripts\\UI\\UpgradeUIButton.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAGMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAowFIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-16T11:30:32.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "SatelliteOrbit.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\SatelliteOrbit.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SatelliteOrbit.cs",
@@ -93,12 +181,49 @@
               "RelativeToolTip": "Assets\\Scripts\\SatelliteOrbit.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T09:59:01.828Z",
+              "WhenOpened": "2025-06-16T09:59:01.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnergySystem.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T09:42:45.877Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
+              "Title": "Upgrades.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAADgvxQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T09:33:48.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ExperienceSystem.cs",
+              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\ExperienceSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ExperienceSystem.cs",
+              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\ExperienceSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ExperienceSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-16T15:45:42.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Planet.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Planet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Planet.cs",
@@ -106,38 +231,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Planet.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T09:58:50.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T09:58:50.052Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EnergySystem.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\EnergySystem.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAkAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T09:42:45.877Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Upgrades.cs",
-              "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
-              "ToolTip": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Infrastructure\\Upgrades.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAwwGUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T09:33:48.046Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "AdaptiveFluxRegulatorUpgrade.cs",
               "DocumentMoniker": "C:\\Repos\\TinyPlanetDefense\\Assets\\Scripts\\Upgrade\\Upgrades\\AdaptiveFluxRegulatorUpgrade.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Upgrade\\Upgrades\\AdaptiveFluxRegulatorUpgrade.cs",
@@ -145,8 +243,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Upgrade\\Upgrades\\AdaptiveFluxRegulatorUpgrade.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwAoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-16T09:30:26.151Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T09:30:26.151Z"
             }
           ]
         }

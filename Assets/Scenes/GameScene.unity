@@ -707,10 +707,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 2500
-    spawnDuration: 600
-  - enemyCount: 2500
-    spawnDuration: 100
+  - enemyCount: 10
+    spawnDuration: 1
+  - enemyCount: 1
+    spawnDuration: 5
+  - enemyCount: 20
+    spawnDuration: 1
+  - enemyCount: 1
+    spawnDuration: 10
+  - enemyCount: 40
+    spawnDuration: 1
+  - enemyCount: 1
+    spawnDuration: 20
+  - enemyCount: 80
+    spawnDuration: 1
+  - enemyCount: 1
+    spawnDuration: 30
+  - enemyCount: 150
+    spawnDuration: 1
+  - enemyCount: 150
+    spawnDuration: 60
   enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
   spawnRadius: 2.7
   planetCenter: {fileID: 6671393143994966655}
@@ -1833,7 +1849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5737902610290573324, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: xpReward
-      value: 5
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2994,6 +3010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allUpgrades:
+  - {fileID: 11400000, guid: b9654a437721afc489d211ae215b7820, type: 2}
   - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
   - {fileID: 11400000, guid: cb119603d06a7d541b02a6069bffa0db, type: 2}
   - {fileID: 11400000, guid: ba13e06763b29054896801b333d0b06f, type: 2}
@@ -3044,8 +3061,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMaxEnergy: 100
   currentEnergy: 100
-  regenPerSecond: 2
-  regenPerLevel: 0.2
+  baseRegenPerSecond: 2
+  regenPerLevel: 0.3
   energyFillImage: {fileID: 257797572}
   energyText: {fileID: 2130381914}
 --- !u!114 &1536275467
@@ -3087,8 +3104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentXP: 0
   currentLevel: 1
-  baseXPToLevel: 5
-  levelMultiplier: 1.35
+  baseXPToLevel: 10
+  levelMultiplier: 1.2
   OnLevelUp:
     m_PersistentCalls:
       m_Calls:

@@ -20,7 +20,7 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
         while (IsActivated)
         {
             yield return new WaitForSeconds(waveInterval);
-            var enemies = EnemyManager.Inst.GetEnemiesInRange(planet.transform.position, Upgrades.Inst.cryoWave.effectRadius);
+            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.cryoWave.effectRadius);
             foreach (var enemy in enemies)
             {
                 var slow = enemy.GetComponent<EnemySlow>();
@@ -30,7 +30,7 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
                 }
             }
 
-            var fx = GameObject.Instantiate(effectVFX, planet.transform.position, Quaternion.identity);
+            var fx = GameObject.Instantiate(effectVFX, Planet.transform.position, Quaternion.identity);
             var effect = fx.GetComponent<FreezeEffect>();
             effect.maxRadius = Upgrades.Inst.cryoWave.effectRadius;
         }

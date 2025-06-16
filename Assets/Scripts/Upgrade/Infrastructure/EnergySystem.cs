@@ -7,7 +7,7 @@ public class EnergySystem : MonoBehaviour
 {
     public float baseMaxEnergy = 100f;
     public float currentEnergy = 100f;
-    public float regenPerSecond = 3f;
+    public float baseRegenPerSecond = 3f;
     public float regenPerLevel = 0.5f;
 
     public static Action<float, float> OnEnergyChanged;
@@ -17,6 +17,7 @@ public class EnergySystem : MonoBehaviour
 
     public static EnergySystem Inst { get; private set; }
     public float MaxEnergy { get => baseMaxEnergy + Upgrades.Inst.overchargedCapacitors.BonusMaxEnergy; }
+    public float EnergyRegen { get => baseRegenPerSecond + Upgrades.Inst.adaptiveFluxRegulator.BonusEnergyRegen; }
 
     void Awake()
     {
@@ -32,7 +33,7 @@ public class EnergySystem : MonoBehaviour
     void Update()
     {
         float totalDrain = Upgrades.Inst.GetTotalActiveDrain();
-        var energyDelta = (regenPerSecond - totalDrain);
+        var energyDelta = (EnergyRegen - totalDrain);
         float deltaTimeEnergy = energyDelta * Time.deltaTime;
 
         currentEnergy += deltaTimeEnergy;
@@ -69,7 +70,7 @@ public class EnergySystem : MonoBehaviour
 
     public void OnLevelUp()
     {
-        regenPerSecond += regenPerLevel;
+        baseRegenPerSecond += regenPerLevel;
     }
 
     public void Restore(float amount)

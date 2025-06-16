@@ -24,14 +24,14 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
         while (IsActivated)
         {
             yield return new WaitForSeconds(waveInterval);
-            var enemies = EnemyManager.Inst.GetEnemiesInRange(planet.transform.position, Upgrades.Inst.empWave.effectRadius);
+            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.empWave.effectRadius);
             foreach (var enemy in enemies)
             {
                 var stunEffect = enemy.GetComponent<EMPStunEffect>();
                 stunEffect?.ApplyStun(Upgrades.Inst.empWave.effectValue);
             }
 
-            var fx = GameObject.Instantiate(effectVFX, planet.transform.position, Quaternion.identity);
+            var fx = GameObject.Instantiate(effectVFX, Planet.transform.position, Quaternion.identity);
             var effect = fx.GetComponent<EMPShockwaveEffect>();
             effect.maxRadius = Upgrades.Inst.empWave.effectRadius;
         }

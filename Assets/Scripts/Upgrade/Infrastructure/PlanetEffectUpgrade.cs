@@ -11,13 +11,19 @@ public abstract class PlanetEffectUpgrade : Upgrade
     public float effectValue = 0f;
     public float effectRadius = 2f;
     public float waveInterval = 10f;
+    private GameObject planet;
 
-
-    protected GameObject planet;
-
-    protected void Awake()
+    protected GameObject Planet 
     {
-        planet = GameObject.FindWithTag("Planet");
+        get
+        {
+            if (planet == null)
+            {
+                planet = GameObject.FindWithTag("Planet");
+            }
+
+            return planet;
+        }
     }
 
     protected override void InitializeInternal()

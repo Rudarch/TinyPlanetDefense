@@ -12,6 +12,7 @@ public class UpgradeUIButton : MonoBehaviour
     public Color disabledColor;
     public Color toggleOnColor;
     public Color timedOnColor;
+    public Color enoughEnergyForActivationColor;
 
     public AudioClip clickSound;
 
@@ -61,10 +62,25 @@ public class UpgradeUIButton : MonoBehaviour
             });
         }
 
+        if (upgrade.activationStyle == ActivationStyle.Timed)
+        {
+            EnergySystem.OnEnergyChanged += HandleEnergyChanged;
+        }
+
         upgrade.OnActivationChanged += UpdateVisual;
         upgrade.OnActivationTimerChanged += UpdateGlow;
         UpdateVisual(upgrade.IsActivated);
         UpdateGlow(1, 0);
+    }
+
+    void HandleEnergyChanged(float currentEnergy, float maxEnergy)
+    {
+        if (upgrade.IsActivated) return;
+
+        if (currentEnergy >= upgrade.activationEnergyAmount)
+            icon.color = enoughEnergyForActivationColor;
+        else 
+            icon.color = disabledColor;
     }
 
     public void UpdateGlow(float max, float value)

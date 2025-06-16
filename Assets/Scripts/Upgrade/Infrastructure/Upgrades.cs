@@ -65,7 +65,8 @@ public class Upgrades : MonoBehaviour
 
         if (upgrade.IsActivated)
         {
-            upgrade.Deactivate();
+            if (upgrade.activationStyle != ActivationStyle.Timed)
+                upgrade.Deactivate();
         }
         else if (upgrade.activationStyle == ActivationStyle.Timed)
         {
