@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Header("Damage Settings")]
+    public float minDamage = 8f;
+    public float maxDamage = 12f;
+    [HideInInspector] public float damage;
+
     public float speed = 10f;
-    public float lifetime = 5f;
-    public float damage = 10f;
+    public float lifetime = 5f; 
     public GameObject ricochetLinePrefab;
     public GameObject explosionEffectPrefab;
     public GameObject impactFlashPrefab;
@@ -16,6 +20,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         var upgradeState = Upgrades.Inst;
+        damage = Random.Range(minDamage, maxDamage);
         damage += upgradeState.heavyShells.BonusDamage;
         damage *= upgradeState.overheatProtocol.OverheatDamageMultiplier;
 
@@ -60,6 +65,5 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         hitHandler.OnHit(other);
-
     }
 }

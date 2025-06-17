@@ -44,6 +44,7 @@ public class ProjectileHitHandler : MonoBehaviour
             if (col.TryGetComponent(out Enemy enemy) && !hitEnemies.Contains(enemy))
             {
                 HandleHit(enemy);
+                break;
             }
         }
     }

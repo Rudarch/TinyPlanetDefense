@@ -28,4 +28,4 @@ MonoBehaviour:
   damageMultiplierPerLevel: 3
   interval: 3
   damageMultiplier: 3
-  scaleMultiplier: 1.5
+  scaleMultiplier: 2

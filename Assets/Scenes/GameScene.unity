@@ -3545,7 +3545,7 @@ MonoBehaviour:
   rotatingPart: {fileID: 1920778747}
   weaponSystem: {fileID: 1920778749}
   allowedDeviationAngle: 5
-  baseRotationSpeed: 60
+  baseRotationSpeed: 45
   planetTransform: {fileID: 2895315123865355977}
 --- !u!1 &1920778746
 GameObject:

@@ -21,7 +21,7 @@ MonoBehaviour:
   energyDrainPerLevel: 0
   energyDrainAmount: 0
   baseActivationEnergyCost: 20
-  activationEnergyCostPerLevel: 20
+  activationEnergyCostPerLevel: 10
   activationEnergyAmount: 0
   activationStyle: 2
   activationDuration: 10

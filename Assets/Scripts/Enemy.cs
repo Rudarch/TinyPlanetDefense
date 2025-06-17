@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float moveSpeed = 2f;
     public bool isStunned = false;
 
     [Header("Stats")]
@@ -13,6 +12,7 @@ public class Enemy : MonoBehaviour
     [Header("Dash Movement")]
     public float dashDistance = 1.5f;
     public float dashInterval = 1.0f;
+    public float moveSpeed = 1f;
 
     [Header("References")]
     public Transform planetTarget;
@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
                 continue;
             }
 
-            float interval = dashInterval / (moveSpeed / 2f);
+            float interval = dashInterval;
             yield return new WaitForSeconds(interval);
 
             if (planetTarget == null) yield break;
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
 
-            float effectiveDashDistance = dashDistance * (moveSpeed / 2f);
+            float effectiveDashDistance = dashDistance * moveSpeed;
             Vector3 targetPos = transform.position + dir * effectiveDashDistance;
 
             if (thrusterFX != null) thrusterFX.SetActive(true);

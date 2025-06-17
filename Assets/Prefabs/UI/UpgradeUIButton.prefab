@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.61512667, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 6120872483413564263}
   - component: {fileID: 1200920651368690336}
   - component: {fileID: 7296633240098732457}
+  - component: {fileID: 2992928412917917805}
   m_Layer: 0
   m_Name: UpgradeUIButton
   m_TagString: Untagged
@@ -288,11 +289,32 @@ MonoBehaviour:
   button: {fileID: 1200920651368690336}
   background: {fileID: 6120872483413564263}
   icon: {fileID: 8270130816825263860}
-  backgroundEnabled: {fileID: 7405541223983854910, guid: ff0980d9565ca93429c8bdd1ada8643d, type: 3}
-  backgroundDisabled: {fileID: 5719861194764415069, guid: ff0980d9565ca93429c8bdd1ada8643d, type: 3}
   glowEffect: {fileID: 1828428533583833574}
-  disabledColor: {r: 0.3372549, g: 0.3372549, b: 0.3372549, a: 0.5019608}
-  toggleOnColor: {r: 0.1490565, g: 0.9556312, b: 1, a: 1}
-  timedOnColor: {r: 1, g: 0.6156863, b: 0, a: 1}
-  enoughEnergyForActivationColor: {r: 0.14901961, g: 0.95686275, b: 1, a: 0.8039216}
+  toggleOnIconColor: {r: 0, g: 1, b: 0.9591, a: 1}
+  toggleOnGlowColor: {r: 0, g: 1, b: 0.9607844, a: 1}
+  disabledToggleIconColor: {r: 0.48212886, g: 0.54252404, b: 0.5471698, a: 0.6745098}
+  disabledToggleGlowColor: {r: 0.4738697, g: 0.5419341, b: 0.5471698, a: 0.6666667}
+  timedOnIconColor: {r: 1, g: 1, b: 1, a: 1}
+  timedOnGlowColor: {r: 1, g: 0.47552526, b: 0, a: 1}
+  enoughEnergyForActivationIconColor: {r: 0.7056604, g: 0.7056604, b: 0.7056604, a: 1}
+  enoughEnergyForActivationGlowColor: {r: 0, g: 0, b: 0, a: 0}
+  notEnoughEnergyForActivationIconColor: {r: 0.2981131, g: 0.2981131, b: 0.2981131, a: 0.42745098}
+  notEnoughEnergyForActivationGlowColor: {r: 0, g: 0, b: 0, a: 0}
+  coloroutine: {fileID: 2992928412917917805}
   clickSound: {fileID: 8300000, guid: b3fd5a4c1868eb448b77410abe5d2130, type: 3}
+--- !u!114 &2992928412917917805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071604795494209040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d319c1e20b5fa43be92837a5ff6781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  alphaFrom: 1
+  alphaTo: 0.5
+  image: {fileID: 1828428533583833574}
