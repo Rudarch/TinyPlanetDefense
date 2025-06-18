@@ -68,6 +68,12 @@ public abstract class Upgrade : ScriptableObject
         activationEnergyAmount = 0;
         activationTimer = 0;
         OnActivationChanged = null;
+        ResetInternal();
+    }
+
+    protected virtual void ResetInternal()
+    {
+
     }
 
     public virtual string GetUpgradeEffectText()

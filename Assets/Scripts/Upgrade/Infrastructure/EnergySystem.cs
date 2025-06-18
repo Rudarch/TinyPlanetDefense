@@ -16,8 +16,8 @@ public class EnergySystem : MonoBehaviour
     public TextMeshProUGUI energyText;
 
     public static EnergySystem Inst { get; private set; }
-    public float MaxEnergy { get => baseMaxEnergy + Upgrades.Inst.overchargedCapacitors.BonusMaxEnergy; }
-    public float EnergyRegen { get => baseRegenPerSecond + Upgrades.Inst.adaptiveFluxRegulator.BonusEnergyRegen; }
+    public float MaxEnergy { get => baseMaxEnergy + Upgrades.Inst.OverchargedCapacitors.BonusMaxEnergy; }
+    public float EnergyRegen { get => baseRegenPerSecond + Upgrades.Inst.AdaptiveFluxRegulator.BonusEnergyRegen; }
 
     void Awake()
     {

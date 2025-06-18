@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public class WaveEffect : MonoBehaviour
+{
+    public float fadeDuration = 0.4f;
+    [HideInInspector] public Color effectColor = Color.white;
+    [HideInInspector] public float maxRadius = 5f;
+
+    private SpriteRenderer sr;
+    private float timer = 0f;
+    private float expandSpeed;
+
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        transform.localScale = Vector3.zero;
+
+        transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+
+        if (sr != null)
+            effectColor = sr.color;
+
+        expandSpeed = maxRadius / fadeDuration;
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        float scale = Mathf.Min(maxRadius, timer * expandSpeed);
+        float worldScale = scale * 2f;
+        transform.localScale = new Vector3(worldScale, worldScale, 1f);
+
+        float alpha = Mathf.Lerp(0.5f, 0f, timer / fadeDuration);
+        if (sr != null)
+            sr.color = new Color(effectColor.r, effectColor.g, effectColor.b, alpha);
+
+        if (timer > fadeDuration)
+            Destroy(gameObject);
+    }
+}

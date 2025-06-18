@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4164878855778866568}
   - component: {fileID: 8300477366844369860}
-  - component: {fileID: 2992110368350653547}
+  - component: {fileID: -1414807671966463435}
   m_Layer: 0
   m_Name: ShockwaveEffect
   m_TagString: Untagged
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 27470021962921838, guid: fce4ce5cc4d21e74cab87e069f920e37, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 8618573339298858040, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  m_Color: {r: 1, g: 0.3803922, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2992110368350653547
+--- !u!114 &-1414807671966463435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +97,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 898617381875453659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29eb9e8a8103b7d46a77f284ad4cd1a2, type: 3}
+  m_Script: {fileID: 11500000, guid: dbe71dcbe352db644ba32287072dc6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeDuration: 0.3
+  effectColor: {r: 1, g: 0.38163266, b: 0, a: 1}
   maxRadius: 1
-  expandSpeed: 1
-  fadeDuration: 0.7
-  effectColor: {r: 0.98490566, g: 0.732047, b: 0.36980408, a: 1}

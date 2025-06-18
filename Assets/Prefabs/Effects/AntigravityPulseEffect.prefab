@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7783488305161771089}
   - component: {fileID: 2287450461821027618}
-  - component: {fileID: 1324965664504216269}
+  - component: {fileID: -4290655185040885834}
   m_Layer: 0
   m_Name: AntigravityPulseEffect
   m_TagString: Untagged
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
-  m_Sprite: {fileID: 27470021962921838, guid: fce4ce5cc4d21e74cab87e069f920e37, type: 3}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 8618573339298858040, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1324965664504216269
+--- !u!114 &-4290655185040885834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5807174540880351334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70096497255f48419830dadeea4e83a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbe71dcbe352db644ba32287072dc6e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 0.4
-  effectColor: {r: 1, g: 0.089635246, b: 0, a: 1}
+  fadeDuration: 2
+  effectColor: {r: 0.6745098, g: 0, b: 1, a: 1}
   maxRadius: 5

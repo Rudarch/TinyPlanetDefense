@@ -16,9 +16,9 @@ MonoBehaviour:
   description: The planet emits an anti-gravity pulse
   icon: {fileID: -790303996, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
-  baseEnergyDrain: 1
-  energyDrainPerLevel: 0.5
+  currentLevel: 2
+  baseEnergyDrain: 2
+  energyDrainPerLevel: 2
   energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
@@ -26,8 +26,8 @@ MonoBehaviour:
   activationStyle: 1
   activationDuration: 0
   effectVFX: {fileID: 5807174540880351334, guid: 5d51c3a7c08b02a40a9227beca70540a, type: 3}
-  baseEffectValue: 0.25
-  effectValuePerLevel: 0.5
-  effectValue: 0
-  effectRadius: 1.8
-  waveInterval: 12
+  basePushBackValue: 2
+  pushBackValuePerLevel: 2
+  pushBackValue: 0
+  pushBackRadius: 2
+  waveInterval: 1

@@ -38,7 +38,7 @@ public class OrbitalWingSystem : MonoBehaviour
                 yield break;
             }
 
-            if (Upgrades.Inst.orbitalWing.IsActivated && activeInterceptors < interceptorCount)
+            if (Upgrades.Inst.OrbitalWing.IsActivated && activeInterceptors < interceptorCount)
             {
                 Vector2 randomDir = Random.insideUnitCircle.normalized;
 

@@ -7,6 +7,18 @@ public class PlanetUpgradeHandler : MonoBehaviour
 {
     private readonly Dictionary<string, Coroutine> activeEffects = new();
 
+    public static PlanetUpgradeHandler Inst;
+    void Awake()
+    {
+        if (Inst != null && Inst != this)
+        {
+            Destroy(GetComponent<PlanetUpgradeHandler>());
+            return;
+        }
+
+        Inst = this;
+    }
+
     public void RegisterEffect(string effectName, Func<IEnumerator> effect)
     {
         if (!activeEffects.ContainsKey(effectName))

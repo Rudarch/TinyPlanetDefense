@@ -4,38 +4,35 @@ using UnityEngine;
 
 public class Upgrades : MonoBehaviour
 {
-    [Header("All Upgrades")]
-    public List<Upgrade> allUpgrades;
-
     public static Upgrades Inst { get; private set; }
+    public List<Upgrade> AllUpgrades;
 
-    [Header("Projectile Upgrades")]
-    public HeavyShellsUpgrade heavyShells;
-    public LifeSiphonUpgrade lifeSiphon;
-    public ExplosiveRoundsUpgrade explosiveRounds;
-    public ThermiteRoundsUpgrade thermiteRounds;
-    public PiercingAmmoUpgrade piercingAmmo;
-    public RicochetUpgrade ricochet;
-
-    [Header("Planet Upgrades")]
-    public CryoWaveUpgrade cryoWave;
-    public EMPWaveUpgrade empWave;
-    public AntigravityPulseUpgrade antigravityPulse;
-
-    [Header("Cannon Upgrades")]
-    public ExtraShotUpgrade extraShot;
-    public TurboLoader reduceCooldown;
-    public TwinBarrelUpgrade twinBarrel;
-    public IncreaseRotationSpeedUpgrade increaseRotationSpeed;
-    public OverchargedShotUpgrade overchargedShot;
-    public OverheatProtocolUpgrade overheatProtocol;
-
-    [Header("Special Upgrades")]
-    public OrbitalWingUpgrade orbitalWing;
-    public OverchargedCapacitorsUpgrade overchargedCapacitors;
-    public AdaptiveFluxRegulatorUpgrade adaptiveFluxRegulator;
-
-    public PlanetUpgradeHandler planetUpgradeHandler;
+    // Projectile Upgrades
+    [HideInInspector] public HeavyShellsUpgrade HeavyShells;
+    [HideInInspector]public LifeSiphonUpgrade LifeSiphon;
+    [HideInInspector]public ExplosiveRoundsUpgrade ExplosiveRounds;
+    [HideInInspector]public ThermiteRoundsUpgrade ThermiteRounds;
+    [HideInInspector]public PiercingAmmoUpgrade PiercingAmmo;
+    [HideInInspector]public RicochetUpgrade Ricochet;
+    
+    // Planet Upgrades
+    [HideInInspector]public CryoWaveUpgrade CryoWave;
+    [HideInInspector]public EMPWaveUpgrade EmpWave;
+    [HideInInspector]public AntigravityPulseUpgrade AntigravityPulse;
+    [HideInInspector]public PlasmaHaloUpgrade PlasmaHalo;
+    
+    // Cannon Upgrades
+    [HideInInspector]public ExtraShotUpgrade ExtraShot;
+    [HideInInspector]public TurboLoader ReduceCooldown;
+    [HideInInspector]public TwinBarrelUpgrade TwinBarrel;
+    [HideInInspector]public IncreaseRotationSpeedUpgrade IncreaseRotationSpeed;
+    [HideInInspector]public OverchargedShotUpgrade OverchargedShot;
+    [HideInInspector]public OverheatProtocolUpgrade OverheatProtocol;
+    
+    // Special Upgrades
+    [HideInInspector]public OrbitalWingUpgrade OrbitalWing;
+    [HideInInspector]public OverchargedCapacitorsUpgrade OverchargedCapacitors;
+    [HideInInspector] public AdaptiveFluxRegulatorUpgrade AdaptiveFluxRegulator;
 
     void Awake()
     {
@@ -47,12 +44,12 @@ public class Upgrades : MonoBehaviour
 
         Inst = this;
 
-        foreach (var upgrade in allUpgrades)
+        foreach (var upgrade in AllUpgrades)
         {
             upgrade.Initialize();
         }
 
-        Debug.Log($"{allUpgrades.Count} upgrades were initialized.");
+        Debug.Log($"{AllUpgrades.Count} upgrades were initialized.");
     }
 
     public void ToggleUpgrade(Upgrade upgrade)
@@ -83,14 +80,14 @@ public class Upgrades : MonoBehaviour
 
     public float GetTotalActiveDrain()
     {
-        return allUpgrades
+        return AllUpgrades
             .Where(upg => upg.activationStyle == ActivationStyle.Toggle && upg.IsActivated)
             .Sum(upg => upg.energyDrainAmount);
     }
 
     public void ForceDeactivateAll()
     {
-        foreach (var upgrade in allUpgrades.Where(upgrade => upgrade.activationStyle == ActivationStyle.Toggle && upgrade.IsActivated))
+        foreach (var upgrade in AllUpgrades.Where(upgrade => upgrade.activationStyle == ActivationStyle.Toggle && upgrade.IsActivated))
         {
             upgrade.Deactivate();
         }
@@ -98,7 +95,7 @@ public class Upgrades : MonoBehaviour
 
     public void TickTimedUpgrades(float deltaTime)
     {
-        foreach (var upgrade in allUpgrades)
+        foreach (var upgrade in AllUpgrades)
         {
             upgrade.TickUpgrade(deltaTime);
         }

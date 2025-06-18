@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b21acaec575a0440abc3cc73545ff63, type: 3}
+  m_Name: PlasmaHaloUpgrade
+  m_EditorClassIdentifier: 
+  upgradeName: Plasma Halo
+  description: 
+  icon: {fileID: 0}
+  maxLevel: 3
+  currentLevel: 1
+  baseEnergyDrain: 1.5
+  energyDrainPerLevel: 0.75
+  energyDrainAmount: 3
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationStyle: 1
+  activationDuration: 0
+  effectVFX: {fileID: 4120323009963743839, guid: 3e73ea5855422f74da48ca19bdb1d204, type: 3}
+  baseDamagePerSecond: 0.2
+  baseRadius: 1
+  radiusIncreasePerLevel: 0.2
+  radius: 1.2
+  pushForce: 0.2
+  tickInterval: 1
+  damagePerSecond: 0.4

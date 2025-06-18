@@ -152,7 +152,7 @@ public class Enemy : MonoBehaviour
             Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
         }
 
-        if (Upgrades.Inst.lifeSiphon.IsActivated)
+        if (Upgrades.Inst.LifeSiphon.IsActivated)
         {
             var planet = GameObject.FindWithTag("Planet");
             if (planet != null)
@@ -160,7 +160,7 @@ public class Enemy : MonoBehaviour
                 var planetComp = planet.GetComponent<Planet>();
                 if (planetComp != null)
                 {
-                    float healAmount = planetComp.maxHealth * Upgrades.Inst.lifeSiphon.lifeSiphonFraction;
+                    float healAmount = planetComp.maxHealth * Upgrades.Inst.LifeSiphon.lifeSiphonFraction;
                     planetComp.Heal(healAmount);
                 }
             }

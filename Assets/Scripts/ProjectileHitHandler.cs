@@ -78,23 +78,23 @@ public class ProjectileHitHandler : MonoBehaviour
             audioSource.PlayOneShot(hitSound);
         }
 
-        if (upgrades.thermiteRounds.IsActivated)
+        if (upgrades.ThermiteRounds.IsActivated)
         {
             var burn = enemy.GetComponent<BurningEffect>();
             if (burn == null)
             {
                 burn = enemy.gameObject.AddComponent<BurningEffect>();
-                burn.baseDamagePerSecond = damage * upgrades.thermiteRounds.thermiteDPSPercent;
-                burn.burnDuration = upgrades.thermiteRounds.burnDuration;
+                burn.baseDamagePerSecond = damage * upgrades.ThermiteRounds.thermiteDPSPercent;
+                burn.burnDuration = upgrades.ThermiteRounds.burnDuration;
             }
 
-            burn.ApplyOrRefresh(damage * upgrades.thermiteRounds.thermiteDPSPercent, upgrades.thermiteRounds.burnDuration);
+            burn.ApplyOrRefresh(damage * upgrades.ThermiteRounds.thermiteDPSPercent, upgrades.ThermiteRounds.burnDuration);
         }
 
-        if (upgrades.ricochet.IsActivated && ricochetsDone < upgrades.ricochet.ricochetCount)
+        if (upgrades.Ricochet.IsActivated && ricochetsDone < upgrades.Ricochet.ricochetCount)
         {
             ricochetsDone++;
-            damage *= upgrades.ricochet.ricochetDamageMultiplier;
+            damage *= upgrades.Ricochet.ricochetDamageMultiplier;
 
             Enemy next = FindNextEnemy(enemy.transform.position);
             if (next != null)
@@ -116,7 +116,7 @@ public class ProjectileHitHandler : MonoBehaviour
         enemiesHit++;
         if (enemiesHit > pierceCount)
         {
-            if (upgrades.explosiveRounds.IsActivated && upgrades.explosiveRounds.explosionRadius > 0f)
+            if (upgrades.ExplosiveRounds.IsActivated && upgrades.ExplosiveRounds.explosionRadius > 0f)
                 Explode();
 
             Destroy(gameObject, 0.05f);
@@ -125,26 +125,26 @@ public class ProjectileHitHandler : MonoBehaviour
 
     private void Explode()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgrades.explosiveRounds.explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgrades.ExplosiveRounds.explosionRadius);
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
             if (enemy != null && enemy != directHitEnemy)
             {
-                float aoeDamage = damage * upgrades.explosiveRounds.splashDamageMultiplier;
+                float aoeDamage = damage * upgrades.ExplosiveRounds.splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
 
-                if (upgrades.thermiteRounds.IsActivated)
+                if (upgrades.ThermiteRounds.IsActivated)
                 {
                     var burn = enemy.GetComponent<BurningEffect>();
                     if (burn == null)
                     {
                         burn = enemy.gameObject.AddComponent<BurningEffect>();
-                        burn.baseDamagePerSecond = damage * upgrades.thermiteRounds.thermiteDPSPercent;
-                        burn.burnDuration = upgrades.thermiteRounds.burnDuration;
+                        burn.baseDamagePerSecond = damage * upgrades.ThermiteRounds.thermiteDPSPercent;
+                        burn.burnDuration = upgrades.ThermiteRounds.burnDuration;
                     }
 
-                    burn.ApplyOrRefresh(damage * upgrades.thermiteRounds.thermiteDPSPercent, upgrades.thermiteRounds.burnDuration);
+                    burn.ApplyOrRefresh(damage * upgrades.ThermiteRounds.thermiteDPSPercent, upgrades.ThermiteRounds.burnDuration);
                 }
             }
         }
@@ -152,15 +152,15 @@ public class ProjectileHitHandler : MonoBehaviour
         if (explosionEffectPrefab != null)
         {
             GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-            var shock = effect.GetComponent<ShockwaveEffect>();
+            var shock = effect.GetComponent<WaveEffect>();
             if (shock != null)
-                shock.maxRadius = upgrades.explosiveRounds.explosionRadius * 2f;
+                shock.maxRadius = upgrades.ExplosiveRounds.explosionRadius * 2f;
         }
     }
 
     private Enemy FindNextEnemy(Vector3 fromPosition)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgrades.ricochet.ricochetRange);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, upgrades.Ricochet.ricochetRange);
         float minDist = float.MaxValue;
         Enemy closest = null;
 

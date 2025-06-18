@@ -25,7 +25,7 @@ public class KineticCannon : WeaponSystem
     {
         audioSource = GetComponent<AudioSource>();
 
-        if (Upgrades.Inst.twinBarrel.IsActivated)
+        if (Upgrades.Inst.TwinBarrel.IsActivated)
             EnableTwinMuzzles();
         else
             EnableSingleMuzzle();
@@ -62,10 +62,10 @@ public class KineticCannon : WeaponSystem
     {
         isFiring = true;
 
-        float cooldownMult = Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier;
+        float cooldownMult = Upgrades.Inst.ReduceCooldown.CooldownReductionMultiplier;
         float finalCooldown = baseCooldown * cooldownMult;
 
-        if (Upgrades.Inst.twinBarrel.IsActivated)
+        if (Upgrades.Inst.TwinBarrel.IsActivated)
         {
             FireWithChance(muzzleLeft, direction);
             yield return GetWait(twinBarrelDelay * cooldownMult);
@@ -84,9 +84,9 @@ public class KineticCannon : WeaponSystem
     {
         FireFromMuzzle(muzzle, direction);
 
-        if (Upgrades.Inst.extraShot.IsActivated && Upgrades.Inst.extraShot.RollExtraShot())
+        if (Upgrades.Inst.ExtraShot.IsActivated && Upgrades.Inst.ExtraShot.RollExtraShot())
         {
-            float delay = Upgrades.Inst.extraShot.extraShotInterval * Upgrades.Inst.reduceCooldown.CooldownReductionMultiplier;
+            float delay = Upgrades.Inst.ExtraShot.extraShotInterval * Upgrades.Inst.ReduceCooldown.CooldownReductionMultiplier;
             StartCoroutine(DelayedExtraShot(muzzle, direction, delay));
         }
     }
@@ -110,13 +110,13 @@ public class KineticCannon : WeaponSystem
         {
             projectile.SetDirection(dir);
 
-            if (Upgrades.Inst.overchargedShot.IsActivated && Time.time >= nextOverchargeTime)
+            if (Upgrades.Inst.OverchargedShot.IsActivated && Time.time >= nextOverchargeTime)
             {
                 projectile.ApplyOvercharge(
-                    Upgrades.Inst.overchargedShot.damageMultiplier,
-                    Upgrades.Inst.overchargedShot.scaleMultiplier
+                    Upgrades.Inst.OverchargedShot.damageMultiplier,
+                    Upgrades.Inst.OverchargedShot.scaleMultiplier
                 );
-                nextOverchargeTime = Time.time + Upgrades.Inst.overchargedShot.interval;
+                nextOverchargeTime = Time.time + Upgrades.Inst.OverchargedShot.interval;
             }
         }
     }
