@@ -6,22 +6,35 @@ using static UnityEngine.UI.Image;
 [CreateAssetMenu(menuName = "Upgrades/EMPWaveUpgrade")]
 public class EMPWaveUpgrade : PlanetEffectUpgrade
 {
-    [SerializeField] protected float baseEffectValue = 2f;
-    [SerializeField] protected float effectValuePerLevel = 2f;
+    [Header("Configuration Settings")]
+    [SerializeField] float baseStunTime = 2f;
+    [SerializeField] float effectStunTimePerLevel = 2f;
+    [SerializeField] float radius = 2f;
+    [SerializeField] float waveInterval = 10f;
 
-    public float effectValue = 0f;
-    public float effectRadius = 2f;
-    public float waveInterval = 10f;
+    [Header("Values")]
+    public float stunTime = 0f;
     protected override void InitializeInternal()
     {
-        Upgrades.Inst.EmpWave = this;
         base.InitializeInternal();
+        Upgrades.Inst.EmpWave = this;
+    }
 
+    protected override void ApplyUpgradeInternal()
+    {
+        base.ApplyUpgradeInternal();
+        stunTime = baseStunTime + (effectStunTimePerLevel * currentLevel);
+    }
+
+    protected override void ResetInternal()
+    {
+        base.ResetInternal();
+        stunTime = 0;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"Every {waveInterval} seconds for {effectValue} sec.";
+        return $"Stuns in {radius} radius for {baseStunTime + (effectStunTimePerLevel * NextLevel)} sec.";
     }
 
 
@@ -29,16 +42,16 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
     {
         while (IsActivated)
         {
-            TriggerWaveEffectVFX(Upgrades.Inst.EmpWave.effectRadius);
+            TriggerWaveEffectVFX(Upgrades.Inst.EmpWave.radius);
 
-            yield return new WaitForSeconds(waveInterval);
-
-            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.EmpWave.effectRadius);
+            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.EmpWave.radius);
             foreach (var enemy in enemies)
             {
                 var stunEffect = enemy.GetComponent<EMPStunEffect>();
-                stunEffect?.ApplyStun(Upgrades.Inst.EmpWave.effectValue);
+                stunEffect?.ApplyStun(Upgrades.Inst.EmpWave.stunTime);
             }
+
+            yield return new WaitForSeconds(waveInterval);
         }
     }
 }

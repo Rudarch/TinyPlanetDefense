@@ -4,15 +4,16 @@ using System.Collections;
 [CreateAssetMenu(fileName = "PlasmaHaloUpgrade", menuName = "Upgrades/PlasmaHalo")]
 public class PlasmaHaloUpgrade : PlanetEffectUpgrade
 {
+    [Header("Configuration Settings")]
     [SerializeField] float baseDamagePerSecond = 1f;
     [SerializeField] float baseRadius = 1f;
     [SerializeField] float radiusIncreasePerLevel = 1f;
+    [SerializeField] float tickInterval = 0.2f;
 
-    public float radius = 1f;
-    public float pushForce = 0.01f;
-    public float tickInterval = 0.2f;
-
+    [Header("Values")]
     public float damagePerSecond = 1f;
+    public float radius = 1f;
+
     protected override void InitializeInternal()
     {
         base.InitializeInternal();
@@ -28,8 +29,8 @@ public class PlasmaHaloUpgrade : PlanetEffectUpgrade
 
     protected override void ResetInternal()
     {
-        radius = baseRadius;
-        damagePerSecond = baseDamagePerSecond;
+        radius = 0f;
+        damagePerSecond = 0f;
     }
 
     public override string GetUpgradeEffectText()

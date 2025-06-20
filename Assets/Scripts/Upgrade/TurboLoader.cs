@@ -14,7 +14,7 @@ public class TurboLoader : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"-{cooldownReductionPercent * 100f}%, -{100 - (Mathf.Abs(GetCooldownReductionMultiplierInternal()) * 100)}% in total.";
+        return $"{Mathf.Round(cooldownReductionPercent * 100f)}%({Mathf.Round(100 - (Mathf.Abs(GetCooldownReductionMultiplierInternal()) * 100))}% total) cooldown reduction";
     }
 
     protected override void InitializeInternal()

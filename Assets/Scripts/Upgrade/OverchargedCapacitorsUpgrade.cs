@@ -5,7 +5,7 @@ using UnityEngine;
 public class OverchargedCapacitorsUpgrade : Upgrade
 {
     private float bonusMaxEnergy = 0f;
-    public float maxEnergyLevel = 20f;
+    public float maxEnergyPerLevel = 20f;
 
     public float BonusMaxEnergy
     {
@@ -18,12 +18,12 @@ public class OverchargedCapacitorsUpgrade : Upgrade
 
     protected override void ApplyUpgradeInternal()
     {
-        bonusMaxEnergy = maxEnergyLevel * currentLevel;
+        bonusMaxEnergy = maxEnergyPerLevel * currentLevel;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{bonusMaxEnergy}({maxEnergyLevel * NextLevel} total) max energy.";
+        return $"+{maxEnergyPerLevel}({maxEnergyPerLevel * NextLevel} total) max energy.";
     }
 
     protected override void InitializeInternal()

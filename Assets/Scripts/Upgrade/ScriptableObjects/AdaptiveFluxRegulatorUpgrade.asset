@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Adaptive Flux Regulator
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 1841340840, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 5
   currentLevel: 1
   baseEnergyDrain: 0
@@ -23,6 +23,6 @@ MonoBehaviour:
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 0
   activationDuration: 0
-  energyRegenLevel: 1
+  activationStyle: 0
+  energyRegenLevel: 2

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Projectile : MonoBehaviour
 {
@@ -15,27 +17,32 @@ public class Projectile : MonoBehaviour
     public AudioClip hitSound;
 
     private Vector2 direction;
-    private ProjectileHitHandler hitHandler;
+    private AudioSource audioSource;
+    private List<Enemy> hitEnemies = new();
+    private Enemy directHitEnemy = null;
+    private int enemiesHit = 0;
+    private int ricochetsDone = 0;
+    private int pierceCount = 0;
+    private bool hasHitThisFrame = false;
+    private bool isOvercharged = false;
+    private bool isDestroyed = false;
+
 
     void Start()
     {
-        var upgradeState = Upgrades.Inst;
+        audioSource = GetComponent<AudioSource>();
         damage = Random.Range(minDamage, maxDamage);
-        damage += upgradeState.HeavyShells.BonusDamage;
-        damage *= upgradeState.OverheatProtocol.OverheatDamageMultiplier;
+        damage += Upgrades.Inst.HeavyShells.BonusDamage;
+        damage *= Upgrades.Inst.OverheatProtocol.OverheatDamageMultiplier;
 
-        hitHandler = gameObject.AddComponent<ProjectileHitHandler>();
-        hitHandler.Setup(
-            this,
-            upgradeState,
-            damage,
-            upgradeState.PiercingAmmo.IsActivated ? upgradeState.PiercingAmmo.pierceCount : 0,
-            ricochetLinePrefab,
-            explosionEffectPrefab,
-            impactFlashPrefab,
-            hitSound);
+        if (isOvercharged)
+        {
+            damage *= Upgrades.Inst.OverchargedShot.damageMultiplier;
+        }
 
-        hitHandler.CheckImmediateOverlap();
+        pierceCount = Upgrades.Inst.PiercingAmmo.IsActivated ? Upgrades.Inst.PiercingAmmo.pierceCount : 0;
+
+        CheckImmediateOverlap();
         Destroy(gameObject, lifetime);
     }
 
@@ -46,7 +53,7 @@ public class Projectile : MonoBehaviour
 
     void LateUpdate()
     {
-        hitHandler.ResetFrame();
+        ResetFrame();
     }
 
     public void SetDirection(Vector2 dir)
@@ -56,14 +63,163 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 
-    public void ApplyOvercharge(float damageMultiplier, float scaleMultiplier)
+    public void ApplyOvercharge(float scaleMultiplier)
     {
-        damage *= damageMultiplier;
+        isOvercharged = true;
         transform.localScale *= scaleMultiplier;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        hitHandler.OnHit(other);
+        if (isDestroyed) return;
+        OnHit(other);
+    }
+
+    public void CheckImmediateOverlap()
+    {
+        Collider2D[] overlaps = Physics2D.OverlapCircleAll(transform.position, 0.05f);
+        foreach (var col in overlaps)
+        {
+            if (col.TryGetComponent(out Enemy enemy) && !hitEnemies.Contains(enemy))
+            {
+                HandleHit(enemy);
+                break;
+            }
+        }
+    }
+
+    public void ResetFrame()
+    {
+        hasHitThisFrame = false;
+    }
+
+    public void OnHit(Collider2D other)
+    {
+        if (hasHitThisFrame) return;
+        hasHitThisFrame = true;
+
+        var enemy = other.GetComponent<Enemy>();
+        if (enemy == null || hitEnemies.Contains(enemy)) return;
+
+        HandleHit(enemy);
+    }
+
+    private void HandleHit(Enemy enemy)
+    {
+        if (isDestroyed) return;
+
+        if (directHitEnemy == null)
+            directHitEnemy = enemy;
+
+        hitEnemies.Add(enemy);
+        enemy.TakeDamage(damage);
+        if (hitSound != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(hitSound);
+        }
+
+        if (Upgrades.Inst.ThermiteRounds.IsActivated)
+        {
+            var burn = enemy.GetComponent<BurningEffect>();
+            if (burn == null)
+            {
+                burn = enemy.gameObject.AddComponent<BurningEffect>();
+                burn.baseDamagePerSecond = damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent;
+                burn.burnDuration = Upgrades.Inst.ThermiteRounds.burnDuration;
+            }
+
+            burn.ApplyOrRefresh(damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent, Upgrades.Inst.ThermiteRounds.burnDuration);
+        }
+
+        if (Upgrades.Inst.Ricochet.IsActivated && ricochetsDone < Upgrades.Inst.Ricochet.ricochetCount)
+        {
+            ricochetsDone++;
+            damage *= Upgrades.Inst.Ricochet.ricochetDamageMultiplier;
+
+            Enemy next = FindNextEnemy(enemy.transform.position);
+            if (next != null)
+            {
+                if (ricochetLinePrefab != null)
+                {
+                    var lineObj = Instantiate(ricochetLinePrefab);
+                    var line = lineObj.GetComponent<RicochetLine>();
+                    if (line != null)
+                        line.SetPoints(transform.position, next.transform.position);
+                }
+
+                SetDirection((next.transform.position - transform.position).normalized);
+                return;
+            }
+        }
+
+
+        enemiesHit++;
+        if (enemiesHit > pierceCount)
+        {
+            if (Upgrades.Inst.ExplosiveRounds.IsActivated && Upgrades.Inst.ExplosiveRounds.explosionRadius > 0f)
+                Explode();
+
+            isDestroyed = true;
+            Destroy(gameObject, 0.05f);
+        }
+    }
+
+    private void Explode()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, Upgrades.Inst.ExplosiveRounds.explosionRadius);
+        foreach (var hit in hits)
+        {
+            var enemy = hit.GetComponent<Enemy>();
+            if (enemy != null && enemy != directHitEnemy)
+            {
+                float aoeDamage = damage * Upgrades.Inst.ExplosiveRounds.splashDamageMultiplier;
+                enemy.TakeDamage(aoeDamage);
+
+                if (Upgrades.Inst.ThermiteRounds.IsActivated)
+                {
+                    var burn = enemy.GetComponent<BurningEffect>();
+                    if (burn == null)
+                    {
+                        burn = enemy.gameObject.AddComponent<BurningEffect>();
+                        burn.baseDamagePerSecond = damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent;
+                        burn.burnDuration = Upgrades.Inst.ThermiteRounds.burnDuration;
+                    }
+
+                    burn.ApplyOrRefresh(damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent, Upgrades.Inst.ThermiteRounds.burnDuration);
+                }
+            }
+        }
+
+        if (explosionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            var shock = effect.GetComponent<WaveEffect>();
+            if (shock != null)
+                shock.maxRadius = Upgrades.Inst.ExplosiveRounds.explosionRadius * 2f;
+        }
+    }
+
+    private Enemy FindNextEnemy(Vector3 fromPosition)
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, Upgrades.Inst.Ricochet.ricochetRange);
+        float minDist = float.MaxValue;
+        Enemy closest = null;
+
+        foreach (var hit in hits)
+        {
+            var candidate = hit.GetComponent<Enemy>();
+            if (candidate != null && !hitEnemies.Contains(candidate))
+            {
+                float dist = Vector3.Distance(candidate.transform.position, fromPosition);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    closest = candidate;
+                }
+            }
+        }
+
+        return closest;
     }
 }

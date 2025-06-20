@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8565495c0236d348aa1cb216fa851c0, type: 3}
   m_Name: OverchargedCapacitorsUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
+  upgradeName: Overcharged Capacitors
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 1638591721, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 5
-  currentLevel: 4
+  currentLevel: 2
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 0
   activationDuration: 0
-  maxEnergyLevel: 20
+  activationStyle: 0
+  maxEnergyPerLevel: 20

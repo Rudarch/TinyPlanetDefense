@@ -4,12 +4,14 @@ using System.Collections;
 [CreateAssetMenu(fileName = "AntigravityPulseUpgrade", menuName = "Upgrades/AntigravityPulse")]
 public class AntigravityPulseUpgrade : PlanetEffectUpgrade
 {
+    [Header("Configuration Settings")]
     [SerializeField] float basePushBackValue = 2f;
     [SerializeField] float pushBackValuePerLevel = 2f;
+    [SerializeField] float pushBackRadius = 2f;
+    [SerializeField] float waveInterval = 10f;
 
+    [Header("Values")]
     public float pushBackValue = 0f;
-    public float pushBackRadius = 2f;
-    public float waveInterval = 10f;
 
     protected override void InitializeInternal()
     {

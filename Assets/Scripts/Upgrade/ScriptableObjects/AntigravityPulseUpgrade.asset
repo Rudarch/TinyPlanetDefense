@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Anti gravity pulse
   description: The planet emits an anti-gravity pulse
-  icon: {fileID: -790303996, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  icon: {fileID: -289038649, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 2
-  baseEnergyDrain: 2
-  energyDrainPerLevel: 2
-  energyDrainAmount: 0
+  currentLevel: 1
+  baseEnergyDrain: 3
+  energyDrainPerLevel: 3
+  energyDrainAmount: 5
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 1
   activationDuration: 0
+  activationStyle: 1
   effectVFX: {fileID: 5807174540880351334, guid: 5d51c3a7c08b02a40a9227beca70540a, type: 3}
-  basePushBackValue: 2
-  pushBackValuePerLevel: 2
-  pushBackValue: 0
-  pushBackRadius: 2
+  basePushBackValue: 0.1
+  pushBackValuePerLevel: 0.1
+  pushBackRadius: 1.5
   waveInterval: 1
+  pushBackValue: 0.3

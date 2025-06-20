@@ -20,11 +20,11 @@ public abstract class Upgrade : ScriptableObject
     [SerializeField] protected float baseActivationEnergyCost = 0f;
     [SerializeField] protected float activationEnergyCostPerLevel = 0f;
     public float activationEnergyAmount = 0f;
+    public float activationDuration = 0f;
+    private float activationTimer = 0f;
 
     [Header("Activation")]
     public ActivationStyle activationStyle = ActivationStyle.Passive;
-    public float activationDuration = 0f;
-    private float activationTimer = 0f;
 
     public bool IsActivated { get; private set; }
     public bool IsReadyForActivation => EnergySystem.Inst.HasEnough(activationEnergyAmount) && !IsActivated;

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 98d8c98b14dc28943bddeaf1a1371ee0
+guid: 45f8c035eb679f44aac351edfdbde7dc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1142905366082296580
-    second: SpaceShips_2_0
+      213: -3661401809615410310
+    second: SpaceShips_3_0
   - first:
-      213: -6403956613218381197
-    second: SpaceShips_2_1
+      213: 2255888944523748931
+    second: SpaceShips_3_1
   - first:
-      213: 1631893060288648797
-    second: SpaceShips_2_2
+      213: -235999876918559247
+    second: SpaceShips_3_2
   - first:
-      213: 197068007421262354
-    second: SpaceShips_2_3
+      213: 5635079309665822641
+    second: SpaceShips_3_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,89 +135,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpaceShips_2_0
+      name: SpaceShips_3_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 640
-        width: 426
-        height: 337
+        x: 47
+        y: 574
+        width: 400
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40b1935006a6cdf00800000000000000
-      internalID: 1142905366082296580
+      spriteID: a7ba6edf376103dc0800000000000000
+      internalID: -3661401809615410310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceShips_2_1
+      name: SpaceShips_3_1
       rect:
         serializedVersion: 2
-        x: 533
-        y: 627
-        width: 452
-        height: 350
+        x: 535
+        y: 575
+        width: 400
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 372da10d3639027a0800000000000000
-      internalID: -6403956613218381197
+      spriteID: 346a117fa078e4f10800000000000000
+      internalID: 2255888944523748931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceShips_2_2
+      name: SpaceShips_3_2
       rect:
         serializedVersion: 2
-        x: 28
-        y: 151
-        width: 414
-        height: 318
+        x: 45
+        y: 84
+        width: 400
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d561ee99716a5a610800000000000000
-      internalID: 1631893060288648797
+      spriteID: 1fdbb31cc5f89bcf0800000000000000
+      internalID: -235999876918559247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpaceShips_2_3
+      name: SpaceShips_3_3
       rect:
         serializedVersion: 2
-        x: 519
-        y: 129
-        width: 449
-        height: 328
+        x: 534
+        y: 65
+        width: 400
+        height: 420
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21a30f20f402cb200800000000000000
-      internalID: 197068007421262354
+      spriteID: 1b7e8c5b6c2d33e40800000000000000
+      internalID: 5635079309665822641
       vertices: []
       indices: 
       edges: []
@@ -226,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 01eeac5a8d67fec46b6395a7c3b59639
     internalID: 0
     vertices: []
     indices: 
@@ -236,10 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SpaceShips_2_0: 1142905366082296580
-      SpaceShips_2_1: -6403956613218381197
-      SpaceShips_2_2: 1631893060288648797
-      SpaceShips_2_3: 197068007421262354
+      SpaceShips_3_0: -3661401809615410310
+      SpaceShips_3_1: 2255888944523748931
+      SpaceShips_3_2: -235999876918559247
+      SpaceShips_3_3: 5635079309665822641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

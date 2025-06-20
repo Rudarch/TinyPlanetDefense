@@ -14,22 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Plasma Halo
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: -1159479704, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
+  currentLevel: 2
   baseEnergyDrain: 1.5
   energyDrainPerLevel: 0.75
   energyDrainAmount: 3
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 1
   activationDuration: 0
+  activationStyle: 1
   effectVFX: {fileID: 4120323009963743839, guid: 3e73ea5855422f74da48ca19bdb1d204, type: 3}
-  baseDamagePerSecond: 0.2
+  baseDamagePerSecond: 0.1
   baseRadius: 1
   radiusIncreasePerLevel: 0.2
-  radius: 1.2
-  pushForce: 0.2
   tickInterval: 1
-  damagePerSecond: 0.4
+  damagePerSecond: 0.6
+  radius: 1.4
