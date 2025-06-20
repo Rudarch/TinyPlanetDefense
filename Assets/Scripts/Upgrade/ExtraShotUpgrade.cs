@@ -8,12 +8,12 @@ public class ExtraShotUpgrade : Upgrade
     [SerializeField] float chancePerLevel = 0.05f;
     public float extraShotInterval = 0.1f;
 
-    [SerializeField] float totalChance = 0;
+    private float totalChance = 0f;
 
     public override string GetUpgradeEffectText()
     {
-        float totalChance = baseChance + (NextLevel * chancePerLevel);
-        return $"Chance to fire an extra shot: {totalChance * 100f:F0}%";
+        float previewChance = baseChance + (NextLevel * chancePerLevel);
+        return $"Chance to fire extra shots: {previewChance * 100f:F0}%";
     }
 
     protected override void InitializeInternal()
@@ -27,10 +27,17 @@ public class ExtraShotUpgrade : Upgrade
         totalChance = baseChance + (currentLevel * chancePerLevel);
     }
 
-    public bool RollExtraShot()
+    public int GetExtraShotCount()
     {
-        if (!IsActivated) return false;
+        if (!IsActivated)
+            return 0;
 
-        return Random.value < totalChance;
+        int count = Mathf.FloorToInt(totalChance);
+        float remainder = totalChance - count;
+
+        if (Random.value < remainder)
+            count++;
+
+        return count;
     }
 }

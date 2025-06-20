@@ -3034,6 +3034,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
   - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
   - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
+  - {fileID: 11400000, guid: 1bc7f4bd89faaa243b7b0183e29f2906, type: 2}
   HeavyShells: {fileID: 0}
   LifeSiphon: {fileID: 0}
   ExplosiveRounds: {fileID: 0}
@@ -3051,6 +3052,7 @@ MonoBehaviour:
   OverchargedShot: {fileID: 0}
   OverheatProtocol: {fileID: 0}
   OrbitalWing: {fileID: 0}
+  OrbitalStrike: {fileID: 0}
   OverchargedCapacitors: {fileID: 0}
   AdaptiveFluxRegulator: {fileID: 0}
 --- !u!114 &1536275466

@@ -83,13 +83,14 @@ public class KineticCannon : WeaponSystem
     void FireWithChance(Transform muzzle, Vector2 direction)
     {
         FireFromMuzzle(muzzle, direction);
-
-        if (Upgrades.Inst.ExtraShot.IsActivated && Upgrades.Inst.ExtraShot.RollExtraShot())
+        int extraShots = Upgrades.Inst.ExtraShot.GetExtraShotCount();
+        for (int i = 0; i < extraShots; i++)
         {
             float delay = Upgrades.Inst.ExtraShot.extraShotInterval * Upgrades.Inst.ReduceCooldown.CooldownReductionMultiplier;
             StartCoroutine(DelayedExtraShot(muzzle, direction, delay));
         }
     }
+
     IEnumerator DelayedExtraShot(Transform muzzle, Vector2 direction, float delay)
     {
         yield return GetWait(delay);

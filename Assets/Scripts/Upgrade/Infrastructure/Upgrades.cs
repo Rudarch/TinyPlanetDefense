@@ -9,29 +9,30 @@ public class Upgrades : MonoBehaviour
 
     // Projectile Upgrades
     [HideInInspector] public HeavyShellsUpgrade HeavyShells;
-    [HideInInspector]public LifeSiphonUpgrade LifeSiphon;
-    [HideInInspector]public ExplosiveRoundsUpgrade ExplosiveRounds;
-    [HideInInspector]public ThermiteRoundsUpgrade ThermiteRounds;
-    [HideInInspector]public PiercingAmmoUpgrade PiercingAmmo;
-    [HideInInspector]public RicochetUpgrade Ricochet;
+    [HideInInspector] public LifeSiphonUpgrade LifeSiphon;
+    [HideInInspector] public ExplosiveRoundsUpgrade ExplosiveRounds;
+    [HideInInspector] public ThermiteRoundsUpgrade ThermiteRounds;
+    [HideInInspector] public PiercingAmmoUpgrade PiercingAmmo;
+    [HideInInspector] public RicochetUpgrade Ricochet;
     
     // Planet Upgrades
-    [HideInInspector]public CryoWaveUpgrade CryoWave;
-    [HideInInspector]public EMPWaveUpgrade EmpWave;
-    [HideInInspector]public AntigravityPulseUpgrade AntigravityPulse;
-    [HideInInspector]public PlasmaHaloUpgrade PlasmaHalo;
+    [HideInInspector] public CryoWaveUpgrade CryoWave;
+    [HideInInspector] public EMPWaveUpgrade EmpWave;
+    [HideInInspector] public AntigravityPulseUpgrade AntigravityPulse;
+    [HideInInspector] public PlasmaHaloUpgrade PlasmaHalo;
     
     // Cannon Upgrades
-    [HideInInspector]public ExtraShotUpgrade ExtraShot;
-    [HideInInspector]public TurboLoader ReduceCooldown;
-    [HideInInspector]public TwinBarrelUpgrade TwinBarrel;
-    [HideInInspector]public IncreaseRotationSpeedUpgrade IncreaseRotationSpeed;
-    [HideInInspector]public OverchargedShotUpgrade OverchargedShot;
-    [HideInInspector]public OverheatProtocolUpgrade OverheatProtocol;
-    
+    [HideInInspector] public ExtraShotUpgrade ExtraShot;
+    [HideInInspector] public TurboLoader ReduceCooldown;
+    [HideInInspector] public TwinBarrelUpgrade TwinBarrel;
+    [HideInInspector] public IncreaseRotationSpeedUpgrade IncreaseRotationSpeed;
+    [HideInInspector] public OverchargedShotUpgrade OverchargedShot;
+    [HideInInspector] public OverheatProtocolUpgrade OverheatProtocol;
+
     // Special Upgrades
-    [HideInInspector]public OrbitalWingUpgrade OrbitalWing;
-    [HideInInspector]public OverchargedCapacitorsUpgrade OverchargedCapacitors;
+    [HideInInspector] public OrbitalWingUpgrade OrbitalWing;
+    [HideInInspector] public OrbitalStrikeUpgrade OrbitalStrike;
+    [HideInInspector] public OverchargedCapacitorsUpgrade OverchargedCapacitors;
     [HideInInspector] public AdaptiveFluxRegulatorUpgrade AdaptiveFluxRegulator;
 
     void Awake()

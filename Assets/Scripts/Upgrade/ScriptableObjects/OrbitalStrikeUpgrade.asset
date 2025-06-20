@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f0c8a8bd3d13a43a83ccc9abef01c9, type: 3}
+  m_Name: OrbitalStrikeUpgrade
+  m_EditorClassIdentifier: 
+  upgradeName: 
+  description: 
+  icon: {fileID: 668217827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  maxLevel: 3
+  currentLevel: 3
+  baseEnergyDrain: 2
+  energyDrainPerLevel: 1
+  energyDrainAmount: 5
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
+  activationEnergyAmount: 0
+  activationDuration: 0
+  activationStyle: 1
+  effectVFX: {fileID: 5271979767319652204, guid: 520d37921f987d147b8ff70280578f0a, type: 3}
+  beamYOffset: 4.725
+  baseStrikes: 0
+  strikeDelay: 0.2
+  waveInterval: 4
+  damage: 25
+  impactSound: {fileID: 8300000, guid: 820d2145ac42892449c27fb525ac5bf0, type: 3}

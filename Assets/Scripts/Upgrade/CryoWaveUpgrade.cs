@@ -14,22 +14,21 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
     [Header("Values")]
     public float slowAmount = 0f;
 
-
     protected override void ApplyUpgradeInternal()
     {
         base.ApplyUpgradeInternal();
         slowAmount = baseSlowAmount + (slowAmountPerLevel * currentLevel);
+    }
+    protected override void ResetInternal()
+    {
+        base.ResetInternal();
+        slowAmount = 0f;
     }
 
     protected override void InitializeInternal()
     {
         base.InitializeInternal();
         Upgrades.Inst.CryoWave = this;
-    }
-    protected override void ResetInternal()
-    {
-        base.ResetInternal();
-        slowAmount = 0f;
     }
 
     public override string GetUpgradeEffectText()
