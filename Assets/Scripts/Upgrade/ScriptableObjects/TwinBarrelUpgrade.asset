@@ -23,5 +23,5 @@ MonoBehaviour:
   baseActivationEnergyCost: 80
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
+  activationDuration: 12
   activationStyle: 2
-  activationDuration: 8

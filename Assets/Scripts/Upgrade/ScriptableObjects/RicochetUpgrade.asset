@@ -23,8 +23,8 @@ MonoBehaviour:
   baseActivationEnergyCost: 35
   activationEnergyCostPerLevel: 10
   activationEnergyAmount: 0
+  activationDuration: 11
   activationStyle: 2
-  activationDuration: 10
   extraRicochets: 2
   extraRange: 0.3
   ricochetDamageMultiplier: 0.7

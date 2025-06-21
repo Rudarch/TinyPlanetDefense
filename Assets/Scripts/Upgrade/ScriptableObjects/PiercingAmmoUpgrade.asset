@@ -23,7 +23,7 @@ MonoBehaviour:
   baseActivationEnergyCost: 40
   activationEnergyCostPerLevel: 10
   activationEnergyAmount: 0
+  activationDuration: 10
   activationStyle: 2
-  activationDuration: 8
   extraPiercePerLevel: 1
   pierceCount: 0

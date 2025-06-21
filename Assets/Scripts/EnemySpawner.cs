@@ -1,27 +1,35 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnemySpawner;
 
 public class EnemySpawner : MonoBehaviour
 {
     [System.Serializable]
-    public class Wave
+    public class EnemySpawnInfo
     {
-        public int enemyCount = 5;
-        public float spawnDuration = 5f; // Total time to spawn all enemies
+        public GameObject enemyPrefab;
+        public int count = 5;
+        public float spawnDuration = 5f;
+        public int spawnZoneIndex = -1; // -1 = random
     }
 
-    public List<Wave> waves = new List<Wave>();
-    public GameObject enemyPrefab;
-    public float spawnRadius = 8f;
-    public Transform planetCenter;
+    [System.Serializable]
+    public class Wave
+    {
+        public List<EnemySpawnInfo> enemyGroups;
+        public bool waitForEnemiesToDie = true;
+    }
+
+    public List<Wave> waves = new();
+    public List<BoxCollider2D> spawnZones = new(); // Each zone is a BoxCollider2D
     public Transform enemyParent;
-    public WaveProgressUI waveUI; 
-    
-    [Header("Wave Timing")]
+    public Transform planetCenter;
+    public WaveProgressUI waveUI;
     public float extraDelayBetweenWaves = 3f;
 
-    private int enemiesAlive;
+    private int enemiesAlive = 0;
     private int currentWave = 0;
 
     void Start()
@@ -32,54 +40,77 @@ public class EnemySpawner : MonoBehaviour
             if (planet != null) planetCenter = planet.transform;
         }
 
+        waveUI.Initialize(waves.Count);
         StartCoroutine(SpawnWaveRoutine());
     }
 
     IEnumerator SpawnWaveRoutine()
     {
-        waveUI.SetNextWaveTimer(0);
-        yield return new WaitForSeconds(0);
+        yield return null;
 
         while (currentWave < waves.Count)
         {
+            Wave wave = waves[currentWave];
             waveUI.SetWave(currentWave);
-            yield return StartCoroutine(SpawnWave(waves[currentWave]));
 
-            currentWave++;
-
-            if (currentWave < waves.Count)
+            List<Coroutine> spawnCoroutines = new();
+            foreach (var group in wave.enemyGroups)
             {
-                float timeToNextWave = waves[currentWave].spawnDuration + extraDelayBetweenWaves;
-                waveUI.SetNextWaveTimer(timeToNextWave);
-                yield return new WaitForSeconds(timeToNextWave);
+                spawnCoroutines.Add(StartCoroutine(SpawnEnemyGroup(group)));
+            }
+
+            foreach (var co in spawnCoroutines)
+                yield return co;
+
+            if (wave.waitForEnemiesToDie)
+            {
+                while (enemiesAlive > 0)
+                    yield return null;
             }
             else
             {
-                waveUI.SetNextWaveTimer(0f);
+                yield return new WaitForSeconds(extraDelayBetweenWaves);
             }
+
+            currentWave++;
         }
     }
 
-
-    IEnumerator SpawnWave(Wave wave)
+    IEnumerator SpawnEnemyGroup(EnemySpawnInfo group)
     {
-        enemiesAlive = wave.enemyCount;
-        waveUI.SetEnemiesRemaining(enemiesAlive);
-        float interval = wave.enemyCount > 0 ? wave.spawnDuration / wave.enemyCount : 0.5f;
+        float interval = group.count > 0 ? group.spawnDuration / group.count : 0.5f;
 
-        for (int i = 0; i < wave.enemyCount; i++)
+        for (int i = 0; i < group.count; i++)
         {
-            SpawnEnemyAtRandomPosition();
+            SpawnEnemy(group.enemyPrefab, group.spawnZoneIndex);
+            enemiesAlive++;
+            waveUI.SetEnemiesRemaining(enemiesAlive);
             yield return new WaitForSeconds(interval);
         }
     }
 
-    void SpawnEnemyAtRandomPosition()
+    void SpawnEnemy(GameObject prefab, int zoneIndex)
     {
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        Vector3 spawnPos = planetCenter.position + (Vector3)(randomDirection * spawnRadius);
-        GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity, enemyParent);
-        enemy.GetComponent<Enemy>().OnDeath += HandleEnemyDeath;
+        BoxCollider2D zone = (zoneIndex >= 0 && zoneIndex < spawnZones.Count)
+            ? spawnZones[zoneIndex]
+            : spawnZones[Random.Range(0, spawnZones.Count)];
+
+        Vector2 zoneMin = zone.bounds.min;
+        Vector2 zoneMax = zone.bounds.max;
+        Vector2 randomPos = new Vector2(
+            Random.Range(zoneMin.x, zoneMax.x),
+            Random.Range(zoneMin.y, zoneMax.y)
+        );
+
+        GameObject enemy = Instantiate(prefab, randomPos, Quaternion.identity, enemyParent);
+        try
+        {
+            enemy.GetComponent<Enemy>().OnDeath += HandleEnemyDeath;
+        }
+        catch(System.Exception ex) 
+        {
+            Debug.Log($"Excpetion: {ex.Message}");
+        }
     }
 
     private void HandleEnemyDeath()

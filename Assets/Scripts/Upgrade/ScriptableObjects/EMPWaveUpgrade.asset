@@ -20,14 +20,14 @@ MonoBehaviour:
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 20
-  activationEnergyCostPerLevel: 20
+  baseActivationEnergyCost: 30
+  activationEnergyCostPerLevel: 10
   activationEnergyAmount: 0
-  activationStyle: 2
   activationDuration: 0.25
+  activationStyle: 2
   effectVFX: {fileID: 6955652225482351914, guid: a4e88c89d280f32418951221c91e4e04, type: 3}
-  baseEffectValue: 1
-  effectValuePerLevel: 1
-  effectValue: 0
-  effectRadius: 2
+  baseStunTime: 3
+  effectStunTimePerLevel: 1
+  radius: 2
   waveInterval: 0.1
+  stunTime: 0

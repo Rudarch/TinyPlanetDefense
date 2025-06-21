@@ -175,6 +175,8 @@ public class Enemy : MonoBehaviour
         {
             GameObject.FindWithTag("Planet").GetComponent<Planet>().TakeDamage(damage);
             Debug.Log($"Enemy dealt {damage} damage to the planet.");
+
+            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

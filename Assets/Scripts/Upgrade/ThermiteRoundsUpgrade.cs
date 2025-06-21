@@ -1,30 +1,60 @@
+
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(fileName = "ThermiteRoundsUpgrade", menuName = "Upgrades/ThermiteRounds")]
 public class ThermiteRoundsUpgrade : Upgrade
 {
     [Header("Configuration")]
-    [SerializeField] [Range(0.1f, 1f)] public float baseDamagePercent = 0.3f;
-    [SerializeField] [Range(0.1f, 1f)] public float damagePercentPerLevel = 0.15f;
-    [SerializeField] public float burnDuration = 3f;
+    [SerializeField] GameObject burnZonePrefab;
+
+    [SerializeField] float baseThermiteDPSPercent = 0.1f;
+    [SerializeField] float thermiteDPSPercentPerLevel = 0.1f;
+
+    [SerializeField] float baseBurnZoneRadius = .2f;
+    [SerializeField] float burnZoneRadiusPercentPerLevel = .2f;
 
     [Header("Values")]
-    public float thermiteDPSPercent;
+    public float enemyBurnDuration = 2f;
+    public float burnZoneDuration = 3f;
+    public float burnZoneRadius = .3f;
+    public float thermiteDPSPercent = 0.1f;
 
-    protected override void ApplyUpgradeInternal()
+    protected override void ApplyUpgradeInternal() 
     {
-        burnDuration = burnDuration <= 0 ? 1 : burnDuration;
-        thermiteDPSPercent = (baseDamagePercent + (damagePercentPerLevel * currentLevel)) / burnDuration;
+        thermiteDPSPercent = baseThermiteDPSPercent + thermiteDPSPercentPerLevel * currentLevel;
+        burnZoneRadius = baseBurnZoneRadius + burnZoneRadiusPercentPerLevel * currentLevel;
     }
 
-    public override string GetUpgradeEffectText()
+    protected override void ResetInternal()
     {
-        return $"{(baseDamagePercent + (damagePercentPerLevel * currentLevel)) / burnDuration * 100}% damage over {burnDuration} sec.";
+        thermiteDPSPercent = 0f;
+        burnZoneRadius = 0f;
     }
 
     protected override void InitializeInternal()
     {
         Upgrades.Inst.ThermiteRounds = this;
-        thermiteDPSPercent = 0;
+    }
+
+    public void SpawnBurnZone(Vector3 position, float damage)
+    {
+        if (burnZonePrefab != null)
+        {
+            GameObject zone = Instantiate(burnZonePrefab, position, Quaternion.identity);
+            var burn = zone.GetComponent<ThermiteBurnZone>();
+            if (burn != null)
+            {
+                burn.duration = burnZoneDuration;
+                burn.radius = burnZoneRadius;
+                burn.burnDPS = damage * thermiteDPSPercent;
+                burn.burnDuration = enemyBurnDuration;
+            }
+        }
+    }
+
+    public override string GetUpgradeEffectText()
+    {
+        return $"Burns target and leaves a burning zone that damages other enemies.";
     }
 }

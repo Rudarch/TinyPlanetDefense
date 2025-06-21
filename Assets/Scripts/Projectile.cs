@@ -121,15 +121,7 @@ public class Projectile : MonoBehaviour
 
         if (Upgrades.Inst.ThermiteRounds.IsActivated)
         {
-            var burn = enemy.GetComponent<BurningEffect>();
-            if (burn == null)
-            {
-                burn = enemy.gameObject.AddComponent<BurningEffect>();
-                burn.baseDamagePerSecond = damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent;
-                burn.burnDuration = Upgrades.Inst.ThermiteRounds.burnDuration;
-            }
-
-            burn.ApplyOrRefresh(damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent, Upgrades.Inst.ThermiteRounds.burnDuration);
+            Upgrades.Inst.ThermiteRounds.SpawnBurnZone(enemy.transform.position, damage);
         }
 
         if (Upgrades.Inst.Ricochet.IsActivated && ricochetsDone < Upgrades.Inst.Ricochet.ricochetCount)
@@ -175,19 +167,6 @@ public class Projectile : MonoBehaviour
             {
                 float aoeDamage = damage * Upgrades.Inst.ExplosiveRounds.splashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
-
-                if (Upgrades.Inst.ThermiteRounds.IsActivated)
-                {
-                    var burn = enemy.GetComponent<BurningEffect>();
-                    if (burn == null)
-                    {
-                        burn = enemy.gameObject.AddComponent<BurningEffect>();
-                        burn.baseDamagePerSecond = damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent;
-                        burn.burnDuration = Upgrades.Inst.ThermiteRounds.burnDuration;
-                    }
-
-                    burn.ApplyOrRefresh(damage * Upgrades.Inst.ThermiteRounds.thermiteDPSPercent, Upgrades.Inst.ThermiteRounds.burnDuration);
-                }
             }
         }
 
@@ -198,6 +177,8 @@ public class Projectile : MonoBehaviour
             if (shock != null)
                 shock.maxRadius = Upgrades.Inst.ExplosiveRounds.explosionRadius * 2f;
         }
+
+        Upgrades.Inst.ExplosiveRounds.ApplyKnockbackToEnemies(transform.position);
     }
 
     private Enemy FindNextEnemy(Vector3 fromPosition)
