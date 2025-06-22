@@ -82,9 +82,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9423d703969ec6c468753177003a6b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  pierceCooldown: 0.05
-  rotationsPerSecond: 2
+  planet: {fileID: 0}
+  orbitSpeed: 60
+  rotationSpeed: 2
   visual: {fileID: 6114765254208466459}
 --- !u!1 &5227475738271133893
 GameObject:

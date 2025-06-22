@@ -9,6 +9,8 @@ public class OrbitalBladesUpgrade : Upgrade
     public int bladesPerLevel = 1;
     public float baseRotationSpeed = 60f;
     public float rotationSpeedPerLevel = 15f;
+    [SerializeField] private float orbitRadius = 2f;
+    public float OrbitRadius => orbitRadius;
 
     private OrbitalBladeController controller;
 

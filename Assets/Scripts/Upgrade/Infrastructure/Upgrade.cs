@@ -29,12 +29,10 @@ public abstract class Upgrade : ScriptableObject
     public bool IsActivated { get; private set; }
     public bool IsReadyForActivation => EnergySystem.Inst.HasEnough(activationEnergyAmount) && !IsActivated;
     public bool IsMaxedOut => currentLevel >= maxLevel;
-    //public bool IsEnabled { get => enabled; protected set => enabled = value; }
 
     public Action<bool> OnActivationChanged;
     public Action<float, float> OnActivationTimerChanged;
 
-    //protected bool enabled = false;
     public int NextLevel => currentLevel + 1;
     public virtual void Initialize()
     {

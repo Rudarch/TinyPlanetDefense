@@ -151,14 +151,15 @@ public class EnergyPulseMiniGame : MonoBehaviour
 
     IEnumerator PlayPulse()
     {
-        Vector3 originalScale = bonusFillBar.rectTransform.localScale;
-        Vector3 targetScale = originalScale * pulseScale;
+        RectTransform rt = bonusFillBar.rectTransform;
+        Vector3 originalScale = rt.localScale;
+        Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * pulseScale, originalScale.z);
 
         float timer = 0f;
         while (timer < pulseDuration)
         {
             float t = timer / pulseDuration;
-            bonusFillBar.rectTransform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            rt.localScale = Vector3.Lerp(originalScale, targetScale, t);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
@@ -167,12 +168,13 @@ public class EnergyPulseMiniGame : MonoBehaviour
         while (timer < pulseDuration)
         {
             float t = timer / pulseDuration;
-            bonusFillBar.rectTransform.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            rt.localScale = Vector3.Lerp(targetScale, originalScale, t);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        bonusFillBar.rectTransform.localScale = originalScale;
+        rt.localScale = originalScale;
     }
+
 
 }

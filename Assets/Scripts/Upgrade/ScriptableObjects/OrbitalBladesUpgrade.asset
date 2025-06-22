@@ -15,8 +15,8 @@ MonoBehaviour:
   upgradeName: 
   description: 
   icon: {fileID: 384417829, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 1
-  currentLevel: 1
+  maxLevel: 3
+  currentLevel: 0
   baseEnergyDrain: 4
   energyDrainPerLevel: 1
   energyDrainAmount: 0
@@ -30,3 +30,4 @@ MonoBehaviour:
   bladesPerLevel: 1
   baseRotationSpeed: 60
   rotationSpeedPerLevel: 15
+  orbitRadius: 2

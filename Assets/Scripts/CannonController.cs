@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class CannonController : MonoBehaviour
 {
@@ -55,6 +56,9 @@ public class CannonController : MonoBehaviour
             var touch = Touchscreen.current.primaryTouch;
             if (touch.press.isPressed)
             {
+                int fingerId = touch.touchId.ReadValue();
+                if (EventSystem.current.IsPointerOverGameObject(fingerId)) return;
+
                 Vector2 screenPos = touch.position.ReadValue();
                 Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
                 worldPos.z = 0f;
@@ -70,6 +74,8 @@ public class CannonController : MonoBehaviour
         {
             if (Mouse.current.leftButton.isPressed)
             {
+                if (EventSystem.current.IsPointerOverGameObject()) return;
+
                 Vector2 screenPos = Mouse.current.position.ReadValue();
                 Vector3 worldPos = Camera.main.ScreenToWorldPoint(screenPos);
                 worldPos.z = 0f;
