@@ -263,6 +263,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GamePanel_1_0_energyEfficiency
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 876
+        width: 578
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05899c3d9472ce4991c3eef7022ea5e
+      internalID: 1513691651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -280,6 +302,7 @@ TextureImporter:
       GamePanel_1 (1)_1_FillBar: 5763552064465129887
       GamePanel_1_0_Circle_Slim_fill: 107198824
       GamePanel_1_0_Circle_fill: 1726420382
+      GamePanel_1_0_energyEfficiency: 1513691651
       GamePanel_1_0_fill_white: -393643963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
