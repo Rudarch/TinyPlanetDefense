@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: 9ebc4eed9026c094f9847832963de995
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3982924132709480819
+    second: OrbitalBlade_1_0
+  - first:
+      213: 8405899281366889190
+    second: OrbitalBlade_1_1
+  - first:
+      213: 2213047286044354030
+    second: OrbitalBlade_1_2
+  - first:
+      213: 8807369875936359514
+    second: OrbitalBlade_1_3
+  - first:
+      213: 570380670393393633
+    second: OrbitalBlade_1_4
+  - first:
+      213: 7114732486115769847
+    second: OrbitalBlade_1_5
+  - first:
+      213: 8406391931162149742
+    second: OrbitalBlade_1_6
+  - first:
+      213: -8122006030197727387
+    second: OrbitalBlade_1_7
+  - first:
+      213: 3505486332444297772
+    second: OrbitalBlade_1_8
+  - first:
+      213: -8384850132115904127
+    second: OrbitalBlade_1_9
+  - first:
+      213: -6268223128143870384
+    second: OrbitalBlade_1_10
+  - first:
+      213: -1429329476017317986
+    second: OrbitalBlade_1_11
+  - first:
+      213: -6089158059684796191
+    second: OrbitalBlade_1_12
+  - first:
+      213: -7972256061481243009
+    second: OrbitalBlade_1_13
+  - first:
+      213: -2829138749278957155
+    second: OrbitalBlade_1_14
+  - first:
+      213: -6161633573471941401
+    second: OrbitalBlade_1_15
+  - first:
+      213: 3122996334788838294
+    second: OrbitalBlade_1_16
+  - first:
+      213: -6840356841785811175
+    second: OrbitalBlade_1_17
+  - first:
+      213: -1256252850068424058
+    second: OrbitalBlade_1_18
+  - first:
+      213: -1172674826495833244
+    second: OrbitalBlade_1_19
+  - first:
+      213: -5129729284843265519
+    second: OrbitalBlade_1_20
+  - first:
+      213: -6023389608073146568
+    second: OrbitalBlade_1_21
+  - first:
+      213: -5594846184714700372
+    second: OrbitalBlade_1_22
+  - first:
+      213: -5913940141042379285
+    second: OrbitalBlade_1_23
+  - first:
+      213: 2649879095047023335
+    second: OrbitalBlade_1_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OrbitalBlade_1_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 844
+        width: 129
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379ba717560364730800000000000000
+      internalID: 3982924132709480819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_1
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 932
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2b59b2cd0c7a470800000000000000
+      internalID: 8405899281366889190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_2
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 911
+        width: 156
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5e0db08c256be10800000000000000
+      internalID: 2213047286044354030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 191
+        width: 391
+        height: 692
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a54b9ac1d301a3a70800000000000000
+      internalID: 8807369875936359514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_4
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 871
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e12c8d92366ae700800000000000000
+      internalID: 570380670393393633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_5
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 324
+        width: 161
+        height: 414
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fdbcda208b9cb260800000000000000
+      internalID: 7114732486115769847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_6
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 662
+        width: 318
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6341a32ce089a470800000000000000
+      internalID: 8406391931162149742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_7
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 530
+        width: 500
+        height: 319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56fdb7a3c86d84f80800000000000000
+      internalID: -8122006030197727387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_8
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 663
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2a445a1f3df5a030800000000000000
+      internalID: 3505486332444297772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_9
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 326
+        width: 86
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189285cca3703ab80800000000000000
+      internalID: -8384850132115904127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_10
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 197
+        width: 389
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 056c812864cc209a0800000000000000
+      internalID: -6268223128143870384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_11
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 586
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e971efa1a600a2ce0800000000000000
+      internalID: -1429329476017317986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_12
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 471
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8e747a107fe7ba0800000000000000
+      internalID: -6089158059684796191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_13
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 216
+        width: 256
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ea4f4d95bdc5190800000000000000
+      internalID: -7972256061481243009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_14
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 400
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d915fe40c41ecb8d0800000000000000
+      internalID: -2829138749278957155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_15
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 324
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec851129ea7d7aa0800000000000000
+      internalID: -6161633573471941401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_16
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 70
+        width: 410
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6938fe1ce9c175b20800000000000000
+      internalID: 3122996334788838294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_17
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 266
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f9174b1bb2211a0800000000000000
+      internalID: -6840356841785811175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_18
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 216
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68a799350b4e09ee0800000000000000
+      internalID: -1256252850068424058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_19
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 88
+        width: 199
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46b4ca95572d9bfe0800000000000000
+      internalID: -1172674826495833244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_20
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 170
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 112aff6d46a8fc8b0800000000000000
+      internalID: -5129729284843265519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_21
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 38
+        width: 104
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f4503901f986ca0800000000000000
+      internalID: -6023389608073146568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_22
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 171
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9712ba90d1b52b0800000000000000
+      internalID: -5594846184714700372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_23
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 29
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be5de3e66c67deda0800000000000000
+      internalID: -5913940141042379285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OrbitalBlade_1_24
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 0
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eae20e4ff246c420800000000000000
+      internalID: 2649879095047023335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      OrbitalBlade_1_0: 3982924132709480819
+      OrbitalBlade_1_1: 8405899281366889190
+      OrbitalBlade_1_10: -6268223128143870384
+      OrbitalBlade_1_11: -1429329476017317986
+      OrbitalBlade_1_12: -6089158059684796191
+      OrbitalBlade_1_13: -7972256061481243009
+      OrbitalBlade_1_14: -2829138749278957155
+      OrbitalBlade_1_15: -6161633573471941401
+      OrbitalBlade_1_16: 3122996334788838294
+      OrbitalBlade_1_17: -6840356841785811175
+      OrbitalBlade_1_18: -1256252850068424058
+      OrbitalBlade_1_19: -1172674826495833244
+      OrbitalBlade_1_2: 2213047286044354030
+      OrbitalBlade_1_20: -5129729284843265519
+      OrbitalBlade_1_21: -6023389608073146568
+      OrbitalBlade_1_22: -5594846184714700372
+      OrbitalBlade_1_23: -5913940141042379285
+      OrbitalBlade_1_24: 2649879095047023335
+      OrbitalBlade_1_3: 8807369875936359514
+      OrbitalBlade_1_4: 570380670393393633
+      OrbitalBlade_1_5: 7114732486115769847
+      OrbitalBlade_1_6: 8406391931162149742
+      OrbitalBlade_1_7: -8122006030197727387
+      OrbitalBlade_1_8: 3505486332444297772
+      OrbitalBlade_1_9: -8384850132115904127
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

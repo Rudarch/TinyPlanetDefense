@@ -8,26 +8,16 @@ public class RicochetUpgrade : Upgrade
     [SerializeField] float extraRange = 0.1f;
     public float ricochetDamageMultiplier = 0.7f;
 
-    [Header("Values")]
-    public int ricochetCount;
-    public float ricochetRange;
-    protected override void ApplyUpgradeInternal()
-    {
-        ricochetCount = extraRicochets * currentLevel;
-        ricochetRange = extraRange * currentLevel;
-    }
     public override string GetUpgradeEffectText()
     {
-        return $"+{extraRicochets}, {GetExtraRicochets} in total, in {GetExtraRange} ricochet range";
+        return $"+{extraRicochets}({extraRicochets * NextLevel} total) in {extraRange * NextLevel} range";
     }
 
     protected override void InitializeInternal()
     {
         Upgrades.Inst.Ricochet = this;
-        ricochetCount = 0;
-        ricochetRange = 0;
     }
 
-    float GetExtraRicochets => ricochetCount + extraRicochets;
-    float GetExtraRange => ricochetRange + extraRange;
+    public int RicochetCount { get => extraRicochets * currentLevel; }
+    public float RicochetRange { get => extraRange * currentLevel; }
 }

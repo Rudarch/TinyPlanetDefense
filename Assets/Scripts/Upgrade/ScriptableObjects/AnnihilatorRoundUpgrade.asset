@@ -9,24 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b21acaec575a0440abc3cc73545ff63, type: 3}
-  m_Name: PlasmaHaloUpgrade
+  m_Script: {fileID: 11500000, guid: 61fa2eb66e7558244a42295fffae24b3, type: 3}
+  m_Name: AnnihilatorRoundUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Plasma Halo
+  upgradeName: Anihilator Round
   description: 
-  icon: {fileID: -1159479704, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  icon: {fileID: -1924310181, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
-  baseEnergyDrain: 2
+  currentLevel: 2
+  baseEnergyDrain: 3
   energyDrainPerLevel: 1
-  energyDrainAmount: 0
+  energyDrainAmount: 5
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 1
-  effectVFX: {fileID: 4120323009963743839, guid: 3e73ea5855422f74da48ca19bdb1d204, type: 3}
-  baseDamagePerSecond: 0.2
-  baseRadius: 1.5
-  radiusIncreasePerLevel: 0.2
-  tickInterval: 1
+  annihilatorPrefab: {fileID: 7974607456177255295, guid: 84d203e33b238484f8a042fb7a3b9d63, type: 3}
+  fireInterval: 6
+  baseDamageMultiplier: 1
+  damagePerLevelPercent: 0.5

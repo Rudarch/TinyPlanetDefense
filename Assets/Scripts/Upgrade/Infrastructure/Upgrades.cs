@@ -34,6 +34,8 @@ public class Upgrades : MonoBehaviour
     [HideInInspector] public OrbitalStrikeUpgrade OrbitalStrike;
     [HideInInspector] public OverchargedCapacitorsUpgrade OverchargedCapacitors;
     [HideInInspector] public AdaptiveFluxRegulatorUpgrade AdaptiveFluxRegulator;
+    [HideInInspector] public OrbitalBladesUpgrade OrbitalBlades;
+    [HideInInspector] public AnnihilatorRoundUpgrade AnihilatorRound;
 
     void Awake()
     {

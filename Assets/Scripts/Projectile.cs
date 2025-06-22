@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
             damage *= Upgrades.Inst.OverchargedShot.damageMultiplier;
         }
 
-        pierceCount = Upgrades.Inst.PiercingAmmo.IsActivated ? Upgrades.Inst.PiercingAmmo.pierceCount : 0;
+        pierceCount = Upgrades.Inst.PiercingAmmo.IsActivated ? Upgrades.Inst.PiercingAmmo.PierceCount : 0;
 
         CheckImmediateOverlap();
         Destroy(gameObject, lifetime);
@@ -124,7 +124,7 @@ public class Projectile : MonoBehaviour
             Upgrades.Inst.ThermiteRounds.SpawnBurnZone(enemy.transform.position, damage);
         }
 
-        if (Upgrades.Inst.Ricochet.IsActivated && ricochetsDone < Upgrades.Inst.Ricochet.ricochetCount)
+        if (Upgrades.Inst.Ricochet.IsActivated && ricochetsDone < Upgrades.Inst.Ricochet.RicochetCount)
         {
             ricochetsDone++;
             damage *= Upgrades.Inst.Ricochet.ricochetDamageMultiplier;
@@ -149,7 +149,7 @@ public class Projectile : MonoBehaviour
         enemiesHit++;
         if (enemiesHit > pierceCount)
         {
-            if (Upgrades.Inst.ExplosiveRounds.IsActivated && Upgrades.Inst.ExplosiveRounds.explosionRadius > 0f)
+            if (Upgrades.Inst.ExplosiveRounds.IsActivated && Upgrades.Inst.ExplosiveRounds.ExplosionRadius > 0f)
                 Explode();
 
             isDestroyed = true;
@@ -159,13 +159,13 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, Upgrades.Inst.ExplosiveRounds.explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, Upgrades.Inst.ExplosiveRounds.ExplosionRadius);
         foreach (var hit in hits)
         {
             var enemy = hit.GetComponent<Enemy>();
             if (enemy != null && enemy != directHitEnemy)
             {
-                float aoeDamage = damage * Upgrades.Inst.ExplosiveRounds.splashDamageMultiplier;
+                float aoeDamage = damage * Upgrades.Inst.ExplosiveRounds.SplashDamageMultiplier;
                 enemy.TakeDamage(aoeDamage);
             }
         }
@@ -175,7 +175,7 @@ public class Projectile : MonoBehaviour
             GameObject effect = Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
             var shock = effect.GetComponent<WaveEffect>();
             if (shock != null)
-                shock.maxRadius = Upgrades.Inst.ExplosiveRounds.explosionRadius * 2f;
+                shock.maxRadius = Upgrades.Inst.ExplosiveRounds.ExplosionRadius * 2f;
         }
 
         Upgrades.Inst.ExplosiveRounds.ApplyKnockbackToEnemies(transform.position);
@@ -183,7 +183,7 @@ public class Projectile : MonoBehaviour
 
     private Enemy FindNextEnemy(Vector3 fromPosition)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, Upgrades.Inst.Ricochet.ricochetRange);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, Upgrades.Inst.Ricochet.RicochetRange);
         float minDist = float.MaxValue;
         Enemy closest = null;
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Overheat protocol
   description: 
-  icon: {fileID: -790303996, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  icon: {fileID: 611872675, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 1
   currentLevel: 1
   baseEnergyDrain: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 0
   activationDuration: 0
+  activationStyle: 0
   energyThreshold: 0.25
   damageMultiplier: 2

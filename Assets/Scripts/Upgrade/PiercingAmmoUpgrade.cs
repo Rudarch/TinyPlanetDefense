@@ -5,11 +5,8 @@ public class PiercingAmmoUpgrade : Upgrade
 {
     [SerializeField] int extraPiercePerLevel = 1;
 
-    public int pierceCount;
-    protected override void ApplyUpgradeInternal()
-    {
-        pierceCount = extraPiercePerLevel * currentLevel;
-    }
+    public int PierceCount { get => extraPiercePerLevel * currentLevel; }
+
 
     public override string GetUpgradeEffectText()
     {
@@ -19,6 +16,5 @@ public class PiercingAmmoUpgrade : Upgrade
     protected override void InitializeInternal()
     {
         Upgrades.Inst.PiercingAmmo = this;
-        pierceCount = 0;
     }
 }

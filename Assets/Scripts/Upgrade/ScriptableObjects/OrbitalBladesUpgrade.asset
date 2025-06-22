@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b21acaec575a0440abc3cc73545ff63, type: 3}
-  m_Name: PlasmaHaloUpgrade
+  m_Script: {fileID: 11500000, guid: ed04580d8e909694ea23a501a457c7d3, type: 3}
+  m_Name: OrbitalBladesUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Plasma Halo
+  upgradeName: 
   description: 
-  icon: {fileID: -1159479704, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 3
-  currentLevel: 0
-  baseEnergyDrain: 2
+  icon: {fileID: 384417829, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  maxLevel: 1
+  currentLevel: 1
+  baseEnergyDrain: 4
   energyDrainPerLevel: 1
   energyDrainAmount: 0
   baseActivationEnergyCost: 0
@@ -25,8 +25,8 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 1
-  effectVFX: {fileID: 4120323009963743839, guid: 3e73ea5855422f74da48ca19bdb1d204, type: 3}
-  baseDamagePerSecond: 0.2
-  baseRadius: 1.5
-  radiusIncreasePerLevel: 0.2
-  tickInterval: 1
+  bladePrefab: {fileID: 5054478731933181564, guid: 89fa476d2358b534c9e69249683ae953, type: 3}
+  baseBladeCount: 1
+  bladesPerLevel: 1
+  baseRotationSpeed: 60
+  rotationSpeedPerLevel: 15

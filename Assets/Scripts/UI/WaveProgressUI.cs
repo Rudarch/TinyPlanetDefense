@@ -32,11 +32,19 @@ public class WaveProgressUI : MonoBehaviour
         waveLabels.Clear();
         waveIcons.Clear();
 
+        float itemWidth = 0f;
+        float spacing = 0f;
+
+        HorizontalLayoutGroup layoutGroup = waveScrollContent.GetComponent<HorizontalLayoutGroup>();
+        if (layoutGroup != null)
+            spacing = layoutGroup.spacing;
+
         for (int i = 0; i < totalWaves; i++)
         {
             GameObject go = Instantiate(waveNumberPrefab, waveScrollContent);
             var label = go.GetComponentInChildren<TextMeshProUGUI>();
             var icon = go.GetComponentInChildren<Image>();
+            RectTransform itemRect = go.GetComponent<RectTransform>();
 
             if (label != null && icon != null)
             {
@@ -48,7 +56,13 @@ public class WaveProgressUI : MonoBehaviour
                 waveLabels.Add(label);
                 waveIcons.Add(icon);
             }
+
+            if (itemRect != null && itemWidth == 0f)
+                itemWidth = itemRect.sizeDelta.x;
         }
+
+        float totalWidth = ((itemWidth / 2 * totalWaves) + (spacing / 2 * (totalWaves - 1) ) );
+        waveScrollContent.sizeDelta = new Vector2(totalWidth, waveScrollContent.sizeDelta.y);
 
         Canvas.ForceUpdateCanvases();
         LayoutRebuilder.ForceRebuildLayoutImmediate(waveScrollContent);

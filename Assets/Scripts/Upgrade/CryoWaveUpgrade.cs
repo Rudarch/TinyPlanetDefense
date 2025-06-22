@@ -11,23 +11,10 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
     [SerializeField] float radius = 2f;
     [SerializeField] float waveInterval = 10f;
 
-    [Header("Values")]
-    public float slowAmount = 0f;
-
-    protected override void ApplyUpgradeInternal()
-    {
-        base.ApplyUpgradeInternal();
-        slowAmount = baseSlowAmount + (slowAmountPerLevel * currentLevel);
-    }
-    protected override void ResetInternal()
-    {
-        base.ResetInternal();
-        slowAmount = 0f;
-    }
+    public float SlowAmount { get => baseSlowAmount + (slowAmountPerLevel * currentLevel); }
 
     protected override void InitializeInternal()
     {
-        base.InitializeInternal();
         Upgrades.Inst.CryoWave = this;
     }
 
@@ -49,7 +36,7 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
                 var slow = enemy.GetComponent<EnemySlow>();
                 if (slow != null)
                 {
-                    slow.ApplySlow(Upgrades.Inst.CryoWave.slowAmount, slowDuration);
+                    slow.ApplySlow(Upgrades.Inst.CryoWave.SlowAmount, slowDuration);
                 }
             }
         }

@@ -4,20 +4,16 @@ using UnityEngine;
 public class IncreaseRotationSpeedUpgrade : Upgrade
 {
     public float speedBoostPerLevel = 15f;
-    public float rotationBoost;
-    protected override void ApplyUpgradeInternal() 
-    {
-        rotationBoost = speedBoostPerLevel * currentLevel;
-    }
+
+    public float RotationBoost { get => speedBoostPerLevel * currentLevel; }
 
     public override string GetUpgradeEffectText()
     {
-        return $"+{speedBoostPerLevel}°, {rotationBoost + speedBoostPerLevel}° in total";
+        return $"+{speedBoostPerLevel}°, {RotationBoost + speedBoostPerLevel}° in total";
     }
 
     protected override void InitializeInternal()
     {
         Upgrades.Inst.IncreaseRotationSpeed = this;
-        rotationBoost = 0;
     }
 }

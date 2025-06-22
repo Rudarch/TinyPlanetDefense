@@ -5,14 +5,10 @@ public class OverchargedShotUpgrade : Upgrade
 {
     [SerializeField] float baseInterval = 3f;
     [SerializeField] float intervalReductionPerLevel = 1f;
-    public float interval = 5f;
     public float damageMultiplier = 3f;
     public float scaleMultiplier = 1.5f;
 
-    protected override void ApplyUpgradeInternal()
-    {
-        interval = baseInterval - intervalReductionPerLevel * currentLevel;
-    }
+    public float Interval { get => baseInterval - intervalReductionPerLevel * currentLevel; }
 
     public override string GetUpgradeEffectText()
     {
@@ -22,6 +18,5 @@ public class OverchargedShotUpgrade : Upgrade
     protected override void InitializeInternal()
     {
         Upgrades.Inst.OverchargedShot = this;
-        interval = baseInterval;
     }
 }

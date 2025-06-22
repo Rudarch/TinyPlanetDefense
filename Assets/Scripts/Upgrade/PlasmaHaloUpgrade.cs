@@ -10,27 +10,13 @@ public class PlasmaHaloUpgrade : PlanetEffectUpgrade
     [SerializeField] float radiusIncreasePerLevel = 1f;
     [SerializeField] float tickInterval = 0.2f;
 
-    [Header("Values")]
-    public float damagePerSecond = 1f;
-    public float radius = 1f;
+    public float DamagePerSecond { get => baseDamagePerSecond * currentLevel; }
+    public float Radius { get => baseRadius + (radiusIncreasePerLevel * currentLevel); }
 
     protected override void InitializeInternal()
     {
         base.InitializeInternal();
         Upgrades.Inst.PlasmaHalo = this;
-    }
-
-    protected override void ApplyUpgradeInternal()
-    {
-        base.ApplyUpgradeInternal();
-        damagePerSecond = damagePerSecond + (baseDamagePerSecond * currentLevel);
-        radius = baseRadius + (radiusIncreasePerLevel * currentLevel);
-    }
-
-    protected override void ResetInternal()
-    {
-        radius = 0f;
-        damagePerSecond = 0f;
     }
 
     public override string GetUpgradeEffectText()
@@ -44,15 +30,15 @@ public class PlasmaHaloUpgrade : PlanetEffectUpgrade
 
         while (IsActivated)
         {
-            TriggerWaveEffectVFX(Upgrades.Inst.PlasmaHalo.radius);
+            TriggerWaveEffectVFX(Upgrades.Inst.PlasmaHalo.Radius);
 
             yield return wait;
 
-            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.PlasmaHalo.radius);
+            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.PlasmaHalo.Radius);
 
             foreach (var enemy in enemies)
             {
-                enemy.TakeDamage(damagePerSecond * tickInterval);
+                enemy.TakeDamage(DamagePerSecond * tickInterval);
             }
         }
     }

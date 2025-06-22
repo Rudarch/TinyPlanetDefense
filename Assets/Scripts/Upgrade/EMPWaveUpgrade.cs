@@ -12,24 +12,11 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
     [SerializeField] float radius = 2f;
     [SerializeField] float waveInterval = 10f;
 
-    [Header("Values")]
-    public float stunTime = 0f;
+    public float StunTime { get => baseStunTime + (effectStunTimePerLevel * currentLevel); }
+
     protected override void InitializeInternal()
     {
-        base.InitializeInternal();
         Upgrades.Inst.EmpWave = this;
-    }
-
-    protected override void ApplyUpgradeInternal()
-    {
-        base.ApplyUpgradeInternal();
-        stunTime = baseStunTime + (effectStunTimePerLevel * currentLevel);
-    }
-
-    protected override void ResetInternal()
-    {
-        base.ResetInternal();
-        stunTime = 0;
     }
 
     public override string GetUpgradeEffectText()
@@ -48,7 +35,7 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
             foreach (var enemy in enemies)
             {
                 var stunEffect = enemy.GetComponent<EMPStunEffect>();
-                stunEffect?.ApplyStun(Upgrades.Inst.EmpWave.stunTime);
+                stunEffect?.ApplyStun(Upgrades.Inst.EmpWave.StunTime);
             }
 
             yield return new WaitForSeconds(waveInterval);

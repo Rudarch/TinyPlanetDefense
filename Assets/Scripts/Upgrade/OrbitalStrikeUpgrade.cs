@@ -14,7 +14,6 @@ public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
 
     protected override void InitializeInternal()
     {
-        base.InitializeInternal();
         Upgrades.Inst.OrbitalStrike = this;
     }
 

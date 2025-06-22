@@ -95,7 +95,7 @@ public abstract class Upgrade : ScriptableObject
 
     protected virtual void InitializeInternal() { }
 
-    public void TickUpgrade(float deltaTime)
+    public virtual void TickUpgrade(float deltaTime)
     {
         if (activationStyle == ActivationStyle.Timed && IsActivated)
         {

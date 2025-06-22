@@ -10,29 +10,19 @@ public class AntigravityPulseUpgrade : PlanetEffectUpgrade
     [SerializeField] float pushBackRadius = 2f;
     [SerializeField] float waveInterval = 10f;
 
-    [Header("Values")]
-    public float pushBackValue = 0f;
-
     protected override void InitializeInternal()
     {
-        base.InitializeInternal();
         Upgrades.Inst.AntigravityPulse = this;
     }
 
-    protected override void ApplyUpgradeInternal()
+    public float GetPushBackValue()
     {
-        base.ApplyUpgradeInternal();
-        pushBackValue = basePushBackValue + (pushBackValuePerLevel * currentLevel);
-    }
-
-    protected override void ResetInternal()
-    {
-        pushBackValue = 0f;
+        return basePushBackValue + (pushBackValuePerLevel * currentLevel);
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"Pushes enemies for {pushBackValue + (pushBackValuePerLevel * NextLevel)} force every {waveInterval} sec.";
+        return $"Pushes enemies for {basePushBackValue + (pushBackValuePerLevel * NextLevel)} force every {waveInterval} sec.";
     }
 
     protected override IEnumerator Trigger()
@@ -47,7 +37,7 @@ public class AntigravityPulseUpgrade : PlanetEffectUpgrade
             foreach (var enemy in enemies)
             {
                 Vector2 dir = (enemy.transform.position - Planet.transform.position).normalized;
-                enemy.ApplyKnockback(dir * Upgrades.Inst.AntigravityPulse.pushBackValue);
+                enemy.ApplyKnockback(dir * GetPushBackValue());
             }
         }
     }

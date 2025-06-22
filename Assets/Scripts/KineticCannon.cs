@@ -114,7 +114,7 @@ public class KineticCannon : WeaponSystem
             if (Upgrades.Inst.OverchargedShot.IsActivated && Time.time >= nextOverchargeTime)
             {
                 projectile.ApplyOvercharge(Upgrades.Inst.OverchargedShot.scaleMultiplier);
-                nextOverchargeTime = Time.time + Upgrades.Inst.OverchargedShot.interval;
+                nextOverchargeTime = Time.time + Upgrades.Inst.OverchargedShot.Interval;
             }
         }
     }

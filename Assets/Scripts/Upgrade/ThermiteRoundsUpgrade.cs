@@ -17,20 +17,9 @@ public class ThermiteRoundsUpgrade : Upgrade
     [Header("Values")]
     public float enemyBurnDuration = 2f;
     public float burnZoneDuration = 3f;
-    public float burnZoneRadius = .3f;
-    public float thermiteDPSPercent = 0.1f;
 
-    protected override void ApplyUpgradeInternal() 
-    {
-        thermiteDPSPercent = baseThermiteDPSPercent + thermiteDPSPercentPerLevel * currentLevel;
-        burnZoneRadius = baseBurnZoneRadius + burnZoneRadiusPercentPerLevel * currentLevel;
-    }
-
-    protected override void ResetInternal()
-    {
-        thermiteDPSPercent = 0f;
-        burnZoneRadius = 0f;
-    }
+    public float BurnZoneRadius { get => baseBurnZoneRadius + burnZoneRadiusPercentPerLevel * currentLevel; }
+    public float ThermiteDPSPercent { get => baseThermiteDPSPercent + thermiteDPSPercentPerLevel * currentLevel; }
 
     protected override void InitializeInternal()
     {
@@ -46,8 +35,8 @@ public class ThermiteRoundsUpgrade : Upgrade
             if (burn != null)
             {
                 burn.duration = burnZoneDuration;
-                burn.radius = burnZoneRadius;
-                burn.burnDPS = damage * thermiteDPSPercent;
+                burn.radius = BurnZoneRadius;
+                burn.burnDPS = damage * ThermiteDPSPercent;
                 burn.burnDuration = enemyBurnDuration;
             }
         }
@@ -55,6 +44,6 @@ public class ThermiteRoundsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Burns target and leaves a burning zone that damages other enemies.";
+        return $"Burns target and leaves a burning zone({baseBurnZoneRadius + burnZoneRadiusPercentPerLevel * NextLevel}) that damages({baseThermiteDPSPercent + thermiteDPSPercentPerLevel * NextLevel}%/s) other enemies.";
     }
 }

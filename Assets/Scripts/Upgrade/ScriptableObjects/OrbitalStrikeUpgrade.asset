@@ -16,19 +16,18 @@ MonoBehaviour:
   description: 
   icon: {fileID: 668217827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 3
-  baseEnergyDrain: 2
-  energyDrainPerLevel: 1
-  energyDrainAmount: 5
+  currentLevel: 1
+  baseEnergyDrain: 3
+  energyDrainPerLevel: 1.5
+  energyDrainAmount: 4.5
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 1
   effectVFX: {fileID: 5271979767319652204, guid: 520d37921f987d147b8ff70280578f0a, type: 3}
-  beamYOffset: 4.725
   baseStrikes: 0
   strikeDelay: 0.2
   waveInterval: 4
-  damage: 25
+  damage: 10
   impactSound: {fileID: 8300000, guid: 820d2145ac42892449c27fb525ac5bf0, type: 3}

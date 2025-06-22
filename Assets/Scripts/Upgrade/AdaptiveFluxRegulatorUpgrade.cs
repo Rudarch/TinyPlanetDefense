@@ -12,14 +12,9 @@ public class AdaptiveFluxRegulatorUpgrade : Upgrade
     {
         get
         {
-            if (IsActivated) return bonusEnergyRegen;
+            if (IsActivated) return energyRegenLevel * currentLevel;
             else return 0;
         }
-    }
-
-    protected override void ApplyUpgradeInternal()
-    {
-        bonusEnergyRegen = energyRegenLevel * currentLevel;
     }
 
     public override string GetUpgradeEffectText()

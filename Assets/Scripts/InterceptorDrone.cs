@@ -10,6 +10,7 @@ public class InterceptorDrone : MonoBehaviour
     public float reloadTime = 5f;
     public float fireCooldown = 0.3f;
     public GameObject projectilePrefab;
+    public GameObject thrusterFX;
 
     private enum State { Idle, Seeking, Attacking, Returning }
     private State state = State.Idle;
@@ -28,6 +29,7 @@ public class InterceptorDrone : MonoBehaviour
             Debug.Log("Planet not found.");
 
         state = State.Seeking;
+        SetThruster(true);
     }
 
     void Update()
@@ -35,20 +37,24 @@ public class InterceptorDrone : MonoBehaviour
         switch (state)
         {
             case State.Seeking:
+                SetThruster(true);
                 SeekTarget();
                 break;
 
             case State.Attacking:
+                SetThruster(false);
                 AttackTarget();
                 break;
 
             case State.Returning:
+                SetThruster(true);
                 ReturnToPlanet();
                 break;
         }
 
         RotateTowardsTarget();
     }
+
 
     void SeekTarget()
     {
@@ -163,6 +169,11 @@ public class InterceptorDrone : MonoBehaviour
         }
 
         return closest;
+    }
+    void SetThruster(bool active)
+    {
+        if (thrusterFX != null)
+            thrusterFX.SetActive(active);
     }
 
     bool IsTargetValid(Enemy enemy)
