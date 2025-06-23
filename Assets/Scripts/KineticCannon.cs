@@ -63,6 +63,8 @@ public class KineticCannon : WeaponSystem
         isFiring = true;
 
         float cooldownMult = Upgrades.Inst.ReduceCooldown.CooldownReductionMultiplier;
+        if (Upgrades.Inst.TwinBarrel.IsActivated)
+            cooldownMult *= Upgrades.Inst.TwinBarrel.FireSpeedMultiplier;
         float finalCooldown = baseCooldown * cooldownMult;
 
         if (Upgrades.Inst.TwinBarrel.IsActivated)
@@ -101,6 +103,13 @@ public class KineticCannon : WeaponSystem
     {
         if (muzzle == null) return;
 
+        Vector2 finalDirection = dir;
+        if (Upgrades.Inst.TwinBarrel.IsActivated)
+        {
+            float spreadAngle = Random.Range(-22.5f, 22.5f); // 45° total cone
+            finalDirection = Quaternion.Euler(0, 0, spreadAngle) * dir;
+        }
+
         GameObject proj = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
         var projectile = proj.GetComponent<Projectile>();
 
@@ -109,7 +118,7 @@ public class KineticCannon : WeaponSystem
 
         if (projectile != null)
         {
-            projectile.SetDirection(dir);
+            projectile.SetDirection(finalDirection);
 
             if (Upgrades.Inst.OverchargedShot.IsActivated && Time.time >= nextOverchargeTime)
             {

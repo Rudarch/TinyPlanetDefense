@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed04580d8e909694ea23a501a457c7d3, type: 3}
   m_Name: OrbitalBladesUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
+  upgradeName: Orbital Blades
   description: 
   icon: {fileID: 384417829, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 3
   baseEnergyDrain: 4
   energyDrainPerLevel: 1
-  energyDrainAmount: 0
+  energyDrainAmount: 7
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
@@ -28,6 +28,7 @@ MonoBehaviour:
   bladePrefab: {fileID: 5054478731933181564, guid: 89fa476d2358b534c9e69249683ae953, type: 3}
   baseBladeCount: 1
   bladesPerLevel: 1
-  baseRotationSpeed: 60
+  baseRotationSpeed: 15
   rotationSpeedPerLevel: 15
   orbitRadius: 2
+  damage: 2

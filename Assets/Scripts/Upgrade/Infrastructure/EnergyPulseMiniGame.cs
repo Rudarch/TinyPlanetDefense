@@ -11,7 +11,7 @@ public class EnergyPulseMiniGame : MonoBehaviour
     public Image leftPulseIcon;
     public Image rightPulseIcon;
     public Image bonusFillBar;
-    public TextMeshProUGUI bonusText; 
+    //public TextMeshProUGUI bonusText; 
     
     [Header("Colors")]
     public Color highlightColor = Color.magenta;

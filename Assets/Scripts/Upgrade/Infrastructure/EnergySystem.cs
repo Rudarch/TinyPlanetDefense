@@ -14,7 +14,8 @@ public class EnergySystem : MonoBehaviour
     public static Action<float, float> OnEnergyChanged;
 
     public Image energyFillImage;
-    public TextMeshProUGUI energyText;
+    public TextMeshProUGUI energyDeltaText;
+    public TextMeshProUGUI currentEnergyText;
 
     public static EnergySystem Inst { get; private set; }
     public float MaxEnergy { get => baseMaxEnergy + Upgrades.Inst.OverchargedCapacitors.BonusMaxEnergy; }
@@ -45,8 +46,11 @@ public class EnergySystem : MonoBehaviour
         if (energyFillImage != null)
             energyFillImage.fillAmount = currentEnergy / MaxEnergy;
 
-        if (energyText != null)
-            energyText.text = $"{(energyDelta >= 0 ? "+" : "")}{energyDelta:F1}";
+        if (energyDeltaText != null)
+            energyDeltaText.text = $"{(energyDelta >= 0 ? "+" : "")}{energyDelta:F1}";
+
+        if (currentEnergyText != null)
+            currentEnergyText.text = $"{currentEnergy:F0}";
 
         Upgrades.Inst.TickTimedUpgrades(Time.deltaTime);
 

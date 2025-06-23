@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f0c8a8bd3d13a43a83ccc9abef01c9, type: 3}
   m_Name: OrbitalStrikeUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: 
+  upgradeName: Orbital Strike
   description: 
   icon: {fileID: 668217827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
+  currentLevel: 0
   baseEnergyDrain: 3
   energyDrainPerLevel: 1.5
-  energyDrainAmount: 4.5
+  energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0

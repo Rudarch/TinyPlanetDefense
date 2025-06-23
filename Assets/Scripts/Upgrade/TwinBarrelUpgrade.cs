@@ -3,8 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TwinBarrelUpgrade", menuName = "Upgrades/TwinBarrel")]
 public class TwinBarrelUpgrade : Upgrade
 {
+    [SerializeField] float fireSpeedMultiplier = 0.66f;
     protected GameObject planet;
     protected KineticCannon cannon;
+
+    public float FireSpeedMultiplier { get { return fireSpeedMultiplier; } }
 
     protected void Awake()
     {
@@ -19,8 +22,9 @@ public class TwinBarrelUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"More firepower - more fun! For {activationDuration} seconds.";
+        return $"Fires from both muzzles with rapid but imprecise shots for {activationDuration} seconds.";
     }
+
 
     protected override void InitializeInternal()
     {
