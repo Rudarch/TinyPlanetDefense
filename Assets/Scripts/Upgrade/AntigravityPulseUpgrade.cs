@@ -22,7 +22,7 @@ public class AntigravityPulseUpgrade : PlanetEffectUpgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Pushes enemies for {basePushBackValue + (pushBackValuePerLevel * NextLevel)} force every {waveInterval} sec.";
+        return $"Pushes enemies for {basePushBackValue + (pushBackValuePerLevel * NextLevel)} in {pushBackRadius} radius.";
     }
 
     protected override IEnumerator Trigger()

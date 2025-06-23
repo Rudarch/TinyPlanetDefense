@@ -16,10 +16,10 @@ MonoBehaviour:
   description: 
   icon: {fileID: 384417829, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 3
+  currentLevel: 2
   baseEnergyDrain: 4
   energyDrainPerLevel: 1
-  energyDrainAmount: 7
+  energyDrainAmount: 6
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
@@ -30,5 +30,6 @@ MonoBehaviour:
   bladesPerLevel: 1
   baseRotationSpeed: 15
   rotationSpeedPerLevel: 15
+  damageInterval: 0.5
   orbitRadius: 2
   damage: 2

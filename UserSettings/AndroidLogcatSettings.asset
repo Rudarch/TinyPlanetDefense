@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "R5CT622AQJK",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 19077,
+        "processId": 21022,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -162,6 +162,12 @@
             "deviceId": "R5CT622AQJK",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 19077,
+            "exited": false
+        },
+        {
+            "deviceId": "R5CT622AQJK",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21022,
             "exited": false
         }
     ],

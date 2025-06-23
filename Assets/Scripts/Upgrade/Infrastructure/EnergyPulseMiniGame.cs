@@ -11,8 +11,8 @@ public class EnergyPulseMiniGame : MonoBehaviour
     public Image leftPulseIcon;
     public Image rightPulseIcon;
     public Image bonusFillBar;
-    //public TextMeshProUGUI bonusText; 
-    
+    public TextMeshProUGUI bonusText;
+
     [Header("Colors")]
     public Color highlightColor = Color.magenta;
     public Color defaultColor = Color.white;
@@ -23,24 +23,31 @@ public class EnergyPulseMiniGame : MonoBehaviour
     public float fillLerpSpeed = 5f;
     public float penaltyFlashDuration = 0.2f;
 
-    private float targetFillAmount = 0f;
-    private Coroutine flashRoutine;
-
     [Header("Pulse Effect")]
     public float pulseScale = 1.2f;
     public float pulseDuration = 0.15f;
 
-    private Coroutine pulseRoutine;
+    [Header("Heat System")]
+    public float energyGainPerSuccess = 8f;
+    public float heatIncreasePerPress = 0.15f;
+    public float heatDecayRate = 0.05f;
+    public float overheatCooldownThreshold = 0.7f;
 
-    [Header("Gameplay Settings")]
-    public float bonusDuration = 10f; // how long bonus lasts
-    public float bonusIncreasePerSuccess = 0.1f; // 10% per correct press
-    public float decayRate = 0.05f; // per second
-    public float regenMultiplier = 1.3f; // 30% increased regen
+    [Header("Feedback UI")]
+    public TextMeshProUGUI feedbackLabel;
+    public CanvasGroup feedbackCanvas;
+    public float feedbackDuration = 1.2f;
+    public Color energyGainColor = Color.white;
+    public Color overheatColor = Color.red;
+    public Color wrongPressColor = Color.yellow;
 
-    private float bonusFillAmount = 0f;
+    private float currentHeat = 0f;
     private bool isLeftCorrect;
     private bool isActive = false;
+    private bool isOverheated = false;
+    private Coroutine flashRoutine;
+    private Coroutine pulseRoutine;
+    private Coroutine feedbackRoutine;
 
     void Start()
     {
@@ -48,95 +55,102 @@ public class EnergyPulseMiniGame : MonoBehaviour
         rightButton.onClick.AddListener(() => PressedButton(false));
 
         SetNewTarget();
-
         bonusFillBar.color = fillNormalColor;
         bonusFillBar.fillAmount = 0f;
-        targetFillAmount = 0f;
     }
+
     void Update()
     {
-        // Decay logic
-        if (bonusFillAmount > 0f)
+        if (currentHeat > 0f)
         {
-            bonusFillAmount -= decayRate * Time.deltaTime;
-            bonusFillAmount = Mathf.Max(bonusFillAmount, 0f);
+            currentHeat -= heatDecayRate * Time.deltaTime;
+            currentHeat = Mathf.Clamp01(currentHeat);
         }
 
-        // Apply lerped fill
-        targetFillAmount = bonusFillAmount;
-        bonusFillBar.fillAmount = Mathf.Lerp(bonusFillBar.fillAmount, targetFillAmount, Time.deltaTime * fillLerpSpeed);
+        bonusFillBar.fillAmount = Mathf.Lerp(bonusFillBar.fillAmount, currentHeat, Time.deltaTime * fillLerpSpeed);
 
-        // Update regen state
-        if (bonusFillAmount <= 0f)
-            EnergySystem.Inst.SetRegenMultiplier(1f);
+        if (!isOverheated && !isActive)
+            ActivateMiniGame();
 
-        // Auto-activate if bar is low
-        if (!isActive && bonusFillAmount < 0.5f)
+        if (isOverheated && currentHeat <= overheatCooldownThreshold)
         {
+            isOverheated = false;
             ActivateMiniGame();
         }
-
-        // Auto-deactivate if bar is full
-        if (isActive && bonusFillAmount >= 1f)
-        {
-            DeactivateMiniGame();
-        }
     }
-
-
 
     public void ActivateMiniGame()
     {
         isActive = true;
         SetNewTarget();
-        leftButton.interactable = isActive;
-        rightButton.interactable = isActive;
+        leftButton.interactable = true;
+        rightButton.interactable = true;
+        leftPulseIcon.color = isLeftCorrect ? highlightColor : defaultColor;
+        rightPulseIcon.color = isLeftCorrect ? defaultColor : highlightColor;
     }
 
     public void DeactivateMiniGame()
     {
         isActive = false;
-        leftPulseIcon.color = Color.white;
-        rightPulseIcon.color = Color.white;
-        EnergySystem.Inst.SetRegenMultiplier(1f); // reset regen boost
-        leftButton.interactable = isActive;
-        rightButton.interactable = isActive;
+        leftPulseIcon.color = Color.gray;
+        rightPulseIcon.color = Color.gray;
+        leftButton.interactable = false;
+        rightButton.interactable = false;
     }
 
     void SetNewTarget()
     {
         isLeftCorrect = Random.value > 0.5f;
-        leftPulseIcon.color = isLeftCorrect ? highlightColor : defaultColor;
-        rightPulseIcon.color = isLeftCorrect ? defaultColor : highlightColor;
+        if (!isOverheated)
+        {
+            leftPulseIcon.color = isLeftCorrect ? highlightColor : defaultColor;
+            rightPulseIcon.color = isLeftCorrect ? defaultColor : highlightColor;
+        }
     }
 
     void PressedButton(bool left)
     {
-        if (!isActive) return;
+        if (!isActive || isOverheated) return;
 
         if (left == isLeftCorrect)
         {
-            bonusFillAmount += bonusIncreasePerSuccess;
-            bonusFillAmount = Mathf.Clamp01(bonusFillAmount);
-            targetFillAmount = bonusFillAmount;
+            EnergySystem.Inst.Restore(energyGainPerSuccess);
+            currentHeat += heatIncreasePerPress;
+            currentHeat = Mathf.Clamp01(currentHeat);
 
-            if (bonusFillAmount > 0f)
-                EnergySystem.Inst.SetRegenMultiplier(regenMultiplier);
+            if (feedbackRoutine != null) StopCoroutine(feedbackRoutine);
+            feedbackRoutine = StartCoroutine(ShowFeedback($"+{energyGainPerSuccess:F0} Energy", energyGainColor));
+
+            if (currentHeat >= 1f)
+            {
+                isOverheated = true;
+                DeactivateMiniGame();
+                if (feedbackRoutine != null) StopCoroutine(feedbackRoutine);
+                feedbackRoutine = StartCoroutine(ShowFeedback("OVERHEATED!", overheatColor));
+            }
 
             if (pulseRoutine != null) StopCoroutine(pulseRoutine);
             pulseRoutine = StartCoroutine(PlayPulse());
         }
         else
         {
-            bonusFillAmount -= bonusIncreasePerSuccess;
-            bonusFillAmount = Mathf.Clamp01(bonusFillAmount);
-            targetFillAmount = bonusFillAmount;
+            currentHeat += heatIncreasePerPress;
+            currentHeat = Mathf.Clamp01(currentHeat);
+
+            string[] missMessages = { "Oops!", "Miss!", "Wrong!", "Try Again!" };
+            string msg = missMessages[Random.Range(0, missMessages.Length)];
+            feedbackRoutine = StartCoroutine(ShowFeedback(msg, wrongPressColor));
+
+            if (currentHeat >= 1f)
+            {
+                isOverheated = true;
+                DeactivateMiniGame();
+                if (feedbackRoutine != null) StopCoroutine(feedbackRoutine);
+                feedbackRoutine = StartCoroutine(ShowFeedback("OVERHEATED!", overheatColor));
+            }
 
             if (flashRoutine != null) StopCoroutine(flashRoutine);
             flashRoutine = StartCoroutine(FlashPenaltyColor());
-
-            if (bonusFillAmount <= 0f)
-                EnergySystem.Inst.SetRegenMultiplier(1f);
         }
 
         SetNewTarget();
@@ -151,15 +165,14 @@ public class EnergyPulseMiniGame : MonoBehaviour
 
     IEnumerator PlayPulse()
     {
-        RectTransform rt = bonusFillBar.rectTransform;
-        Vector3 originalScale = rt.localScale;
+        Vector3 originalScale = bonusFillBar.rectTransform.localScale;
         Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * pulseScale, originalScale.z);
 
         float timer = 0f;
         while (timer < pulseDuration)
         {
             float t = timer / pulseDuration;
-            rt.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            bonusFillBar.rectTransform.localScale = Vector3.Lerp(originalScale, targetScale, t);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
@@ -168,13 +181,29 @@ public class EnergyPulseMiniGame : MonoBehaviour
         while (timer < pulseDuration)
         {
             float t = timer / pulseDuration;
-            rt.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            bonusFillBar.rectTransform.localScale = Vector3.Lerp(targetScale, originalScale, t);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        rt.localScale = originalScale;
+        bonusFillBar.rectTransform.localScale = originalScale;
     }
 
+    IEnumerator ShowFeedback(string message, Color color)
+    {
+        feedbackLabel.text = message;
+        feedbackLabel.color = color;
+        feedbackCanvas.alpha = 1f;
 
+        float t = 0f;
+        while (t < feedbackDuration)
+        {
+            t += Time.deltaTime;
+            feedbackCanvas.alpha = Mathf.Lerp(1f, 0f, t / feedbackDuration);
+            yield return null;
+        }
+
+        feedbackLabel.text = "";
+        feedbackCanvas.alpha = 0f;
+    }
 }

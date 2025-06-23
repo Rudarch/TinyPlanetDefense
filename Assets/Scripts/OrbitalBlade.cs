@@ -6,8 +6,6 @@ public class OrbitalBlade : MonoBehaviour
     public float rotationsPerSecond = 1f;
     public Transform visual;
 
-    public float damageInterval = 0.2f;
-
     private Dictionary<Enemy, float> cooldowns = new();
     private List<Enemy> toAddCooldowns = new();
 
@@ -43,7 +41,7 @@ public class OrbitalBlade : MonoBehaviour
         {
             foreach (var enemy in toAddCooldowns)
                 if (enemy != null)
-                    cooldowns[enemy] = damageInterval;
+                    cooldowns[enemy] = Upgrades.Inst.OrbitalBlades.damageInterval;
             toAddCooldowns.Clear();
         }
     }

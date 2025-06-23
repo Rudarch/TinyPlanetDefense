@@ -132,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GamePanel_1 (1)_0
+      name: GamePanel_1 (1)_pulse_button_glow
       rect:
         serializedVersion: 2
-        x: 336
-        y: 713
-        width: 139
-        height: 143
+        x: 334
+        y: 712
+        width: 145
+        height: 145
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,6 +285,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GamePanel_1_0_pulse_sign
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 864
+        width: 110
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5587229da7d476742b9c6ef5b379c34e
+      internalID: -1516904894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -300,10 +322,12 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       GamePanel_1 (1)_1_FillBar: 5763552064465129887
+      GamePanel_1 (1)_pulse_button_glow: -7671673109216329897
       GamePanel_1_0_Circle_Slim_fill: 107198824
       GamePanel_1_0_Circle_fill: 1726420382
       GamePanel_1_0_energyEfficiency: 1513691651
       GamePanel_1_0_fill_white: -393643963
+      GamePanel_1_0_pulse_sign: -1516904894
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
