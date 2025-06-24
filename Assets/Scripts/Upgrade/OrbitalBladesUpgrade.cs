@@ -45,8 +45,8 @@ public class OrbitalBladesUpgrade : Upgrade
         controller?.Deactivate();
     }
 
-    public int GetTotalBlades() => baseBladeCount + currentLevel * bladesPerLevel;
-    public float GetRotationSpeed() => baseRotationSpeed + currentLevel * rotationSpeedPerLevel;
+    public int GetTotalBlades() => baseBladeCount + CurrentLevel * bladesPerLevel;
+    public float GetRotationSpeed() => baseRotationSpeed + CurrentLevel * rotationSpeedPerLevel;
 
     public override string GetUpgradeEffectText()
     {

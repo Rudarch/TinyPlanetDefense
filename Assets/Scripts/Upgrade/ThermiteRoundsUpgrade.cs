@@ -18,8 +18,8 @@ public class ThermiteRoundsUpgrade : Upgrade
     public float enemyBurnDuration = 2f;
     public float burnZoneDuration = 3f;
 
-    public float BurnZoneRadius { get => baseBurnZoneRadius + burnZoneRadiusPercentPerLevel * currentLevel; }
-    public float ThermiteDPSPercent { get => baseThermiteDPSPercent + thermiteDPSPercentPerLevel * currentLevel; }
+    public float BurnZoneRadius { get => baseBurnZoneRadius + burnZoneRadiusPercentPerLevel * CurrentLevel; }
+    public float ThermiteDPSPercent { get => baseThermiteDPSPercent + thermiteDPSPercentPerLevel * CurrentLevel; }
 
     protected override void InitializeInternal()
     {

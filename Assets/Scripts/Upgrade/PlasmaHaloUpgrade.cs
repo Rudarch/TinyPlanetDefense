@@ -10,8 +10,8 @@ public class PlasmaHaloUpgrade : PlanetEffectUpgrade
     [SerializeField] float radiusIncreasePerLevel = 1f;
     [SerializeField] float tickInterval = 0.2f;
 
-    public float DamagePerSecond { get => baseDamagePerSecond * currentLevel; }
-    public float Radius { get => baseRadius + (radiusIncreasePerLevel * currentLevel); }
+    public float DamagePerSecond { get => baseDamagePerSecond * CurrentLevel; }
+    public float Radius { get => baseRadius + (radiusIncreasePerLevel * CurrentLevel); }
 
     protected override void InitializeInternal()
     {

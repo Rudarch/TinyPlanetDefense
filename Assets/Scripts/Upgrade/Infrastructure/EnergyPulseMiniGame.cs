@@ -41,6 +41,7 @@ public class EnergyPulseMiniGame : MonoBehaviour
     public Color overheatColor = Color.red;
     public Color wrongPressColor = Color.yellow;
 
+    private Vector3 bonusFillBarOriginalScale;
     private float currentHeat = 0f;
     private bool isLeftCorrect;
     private bool isActive = false;
@@ -53,6 +54,7 @@ public class EnergyPulseMiniGame : MonoBehaviour
     {
         leftButton.onClick.AddListener(() => PressedButton(true));
         rightButton.onClick.AddListener(() => PressedButton(false));
+        bonusFillBarOriginalScale = bonusFillBar.rectTransform.localScale;
 
         SetNewTarget();
         bonusFillBar.color = fillNormalColor;
@@ -165,14 +167,13 @@ public class EnergyPulseMiniGame : MonoBehaviour
 
     IEnumerator PlayPulse()
     {
-        Vector3 originalScale = bonusFillBar.rectTransform.localScale;
-        Vector3 targetScale = new Vector3(originalScale.x, originalScale.y * pulseScale, originalScale.z);
+        Vector3 targetScale = new Vector3(bonusFillBarOriginalScale.x, bonusFillBarOriginalScale.y * pulseScale, bonusFillBarOriginalScale.z);
 
         float timer = 0f;
         while (timer < pulseDuration)
         {
             float t = timer / pulseDuration;
-            bonusFillBar.rectTransform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            bonusFillBar.rectTransform.localScale = Vector3.Lerp(bonusFillBarOriginalScale, targetScale, t);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
@@ -181,12 +182,12 @@ public class EnergyPulseMiniGame : MonoBehaviour
         while (timer < pulseDuration)
         {
             float t = timer / pulseDuration;
-            bonusFillBar.rectTransform.localScale = Vector3.Lerp(targetScale, originalScale, t);
+            bonusFillBar.rectTransform.localScale = Vector3.Lerp(targetScale, bonusFillBarOriginalScale, t);
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        bonusFillBar.rectTransform.localScale = originalScale;
+        bonusFillBar.rectTransform.localScale = bonusFillBarOriginalScale;
     }
 
     IEnumerator ShowFeedback(string message, Color color)

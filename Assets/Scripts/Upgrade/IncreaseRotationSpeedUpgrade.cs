@@ -5,7 +5,7 @@ public class IncreaseRotationSpeedUpgrade : Upgrade
 {
     public float speedBoostPerLevel = 15f;
 
-    public float RotationBoost { get => speedBoostPerLevel * currentLevel; }
+    public float RotationBoost { get => speedBoostPerLevel * CurrentLevel; }
 
     public override string GetUpgradeEffectText()
     {

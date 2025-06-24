@@ -18,7 +18,7 @@ public class HeavyShellsUpgrade : Upgrade
 
     protected override void ApplyUpgradeInternal()
     {
-        bonusDamage = bonusDamagePerLevel * currentLevel;
+        bonusDamage = bonusDamagePerLevel * CurrentLevel;
     }
 
     public override string GetUpgradeEffectText()

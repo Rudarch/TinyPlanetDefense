@@ -12,7 +12,7 @@ public class AdaptiveFluxRegulatorUpgrade : Upgrade
     {
         get
         {
-            if (IsActivated) return energyRegenLevel * currentLevel;
+            if (IsActivated) return energyRegenLevel * CurrentLevel;
             else return 0;
         }
     }

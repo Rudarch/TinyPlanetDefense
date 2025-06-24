@@ -8,7 +8,7 @@ public class ExtraShotUpgrade : Upgrade
     [SerializeField] float chancePerLevel = 0.05f;
     public float extraShotInterval = 0.1f;
 
-    public float TotalChance { get => baseChance + (currentLevel * chancePerLevel); }
+    public float TotalChance { get => baseChance + (CurrentLevel * chancePerLevel); }
 
     public override string GetUpgradeEffectText()
     {

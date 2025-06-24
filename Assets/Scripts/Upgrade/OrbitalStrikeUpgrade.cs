@@ -19,7 +19,7 @@ public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"• Fires {baseStrikes + currentLevel} orbital beam(s) every {waveInterval:F1} sec.";
+        return $"• Fires {baseStrikes + CurrentLevel} orbital beam(s) every {waveInterval:F1} sec.";
     }
 
     protected override IEnumerator Trigger()
@@ -31,7 +31,7 @@ public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
             var enemies = EnemyManager.Inst.GetAllEnemies();
             if (enemies.Count == 0) continue;
 
-            int count = baseStrikes + currentLevel;
+            int count = baseStrikes + CurrentLevel;
             for (int i = 0; i < count; i++)
             {
                 var target = enemies[Random.Range(0, enemies.Count)];

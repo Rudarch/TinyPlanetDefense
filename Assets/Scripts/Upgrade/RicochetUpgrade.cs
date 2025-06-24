@@ -18,6 +18,6 @@ public class RicochetUpgrade : Upgrade
         Upgrades.Inst.Ricochet = this;
     }
 
-    public int RicochetCount { get => extraRicochets * currentLevel; }
-    public float RicochetRange { get => extraRange * currentLevel; }
+    public int RicochetCount { get => extraRicochets * CurrentLevel; }
+    public float RicochetRange { get => extraRange * CurrentLevel; }
 }

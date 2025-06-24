@@ -12,7 +12,7 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
     [SerializeField] float radius = 2f;
     [SerializeField] float waveInterval = 10f;
 
-    public float StunTime { get => baseStunTime + (effectStunTimePerLevel * currentLevel); }
+    public float StunTime { get => baseStunTime + (effectStunTimePerLevel * CurrentLevel); }
 
     protected override void InitializeInternal()
     {

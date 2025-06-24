@@ -18,7 +18,9 @@ public class UpgradePopup : MonoBehaviour
             Destroy(child.gameObject);
 
         List<Upgrade> available = new();
-        available = Upgrades.Inst.AllUpgrades.Where(upg => !upg.IsMaxedOut).ToList();
+        available = Upgrades.Inst.AllUpgrades
+            .Where(upg => !upg.IsMaxedOut && upg.ArePrerequisitesMet())
+            .ToList();
 
         if (available.Count == 0)
         {

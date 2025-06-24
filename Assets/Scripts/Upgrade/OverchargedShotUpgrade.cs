@@ -8,7 +8,7 @@ public class OverchargedShotUpgrade : Upgrade
     public float damageMultiplier = 3f;
     public float scaleMultiplier = 1.5f;
 
-    public float Interval { get => baseInterval - intervalReductionPerLevel * currentLevel; }
+    public float Interval { get => baseInterval - intervalReductionPerLevel * CurrentLevel; }
 
     public override string GetUpgradeEffectText()
     {

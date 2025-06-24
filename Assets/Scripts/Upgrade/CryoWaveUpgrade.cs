@@ -11,7 +11,7 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
     [SerializeField] float radius = 2f;
     [SerializeField] float waveInterval = 10f;
 
-    public float SlowAmount { get => baseSlowAmount + (slowAmountPerLevel * currentLevel); }
+    public float SlowAmount { get => baseSlowAmount + (slowAmountPerLevel * CurrentLevel); }
 
     protected override void InitializeInternal()
     {

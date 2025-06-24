@@ -17,7 +17,7 @@ public class AntigravityPulseUpgrade : PlanetEffectUpgrade
 
     public float GetPushBackValue()
     {
-        return basePushBackValue + (pushBackValuePerLevel * currentLevel);
+        return basePushBackValue + (pushBackValuePerLevel * CurrentLevel);
     }
 
     public override string GetUpgradeEffectText()

@@ -22,8 +22,8 @@ public class ExplosiveRoundsUpgrade : Upgrade
 
     float GetExplosionRadius => baseExplosionRadius + radiusPerLevel * NextLevel;
 
-    public float SplashDamageMultiplier { get => baseSplashDamageMultiplier + splashDamageMultiplierPerLevel * currentLevel; }
-    public float ExplosionRadius { get => baseExplosionRadius + radiusPerLevel * currentLevel; }
+    public float SplashDamageMultiplier { get => baseSplashDamageMultiplier + splashDamageMultiplierPerLevel * CurrentLevel; }
+    public float ExplosionRadius { get => baseExplosionRadius + radiusPerLevel * CurrentLevel; }
     public float KnockbackForce { get => knockbackForce; }
 
     public void ApplyKnockbackToEnemies(Vector3 origin)

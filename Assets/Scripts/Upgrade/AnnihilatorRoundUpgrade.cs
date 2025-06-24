@@ -44,7 +44,7 @@ public class AnnihilatorRoundUpgrade : Upgrade
         timer -= deltaTime;
         if (timer <= 0f)
         {
-            int shotCount = currentLevel; // base 1 + level bonus
+            int shotCount = CurrentLevel; // base 1 + level bonus
             if (planet.TryGetComponent(out MonoBehaviour mono))
             {
                 mono.StartCoroutine(FireMultipleRounds(shotCount));
@@ -72,6 +72,6 @@ public class AnnihilatorRoundUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Fires {1 + currentLevel} rounds every {fireInterval:F1}s (delay {spawnDelay:F1}s)";
+        return $"Fires {1 + CurrentLevel} rounds every {fireInterval:F1}s (delay {spawnDelay:F1}s)";
     }
 }

@@ -5,7 +5,7 @@ public class PiercingAmmoUpgrade : Upgrade
 {
     [SerializeField] int extraPiercePerLevel = 1;
 
-    public int PierceCount { get => extraPiercePerLevel * currentLevel; }
+    public int PierceCount { get => extraPiercePerLevel * CurrentLevel; }
 
 
     public override string GetUpgradeEffectText()

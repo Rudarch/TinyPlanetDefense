@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +10,8 @@ public abstract class Upgrade : ScriptableObject
     [TextArea] public string description;
     public Sprite icon;
     public int maxLevel = 1;
-    public int currentLevel = 0;
+    [SerializeField] private int currentLevel = 0;
+    [SerializeField] private List<UpgradePrerequisite> prerequisites = new();
 
     [Header("Energy drain")]
     [SerializeField] protected float baseEnergyDrain = 0f;
@@ -28,12 +30,15 @@ public abstract class Upgrade : ScriptableObject
 
     public bool IsActivated { get; private set; }
     public bool IsReadyForActivation => EnergySystem.Inst.HasEnough(activationEnergyAmount) && !IsActivated;
-    public bool IsMaxedOut => currentLevel >= maxLevel;
+    public bool IsMaxedOut => CurrentLevel >= maxLevel;
 
     public Action<bool> OnActivationChanged;
     public Action<float, float> OnActivationTimerChanged;
 
-    public int NextLevel => currentLevel + 1;
+    public int NextLevel => CurrentLevel + 1;
+
+    public int CurrentLevel { get => currentLevel; }
+
     public virtual void Initialize()
     {
         ResetUpgrade();
@@ -50,12 +55,22 @@ public abstract class Upgrade : ScriptableObject
 
         currentLevel++;
 
-        energyDrainAmount = baseEnergyDrain + (energyDrainPerLevel * currentLevel);
-        activationEnergyAmount = baseActivationEnergyCost + (activationEnergyCostPerLevel * currentLevel);
+        energyDrainAmount = baseEnergyDrain + (energyDrainPerLevel * CurrentLevel);
+        activationEnergyAmount = baseActivationEnergyCost + (activationEnergyCostPerLevel * CurrentLevel);
 
         ApplyUpgradeInternal();
 
-        Debug.Log($"Applied upgrade: (Level {currentLevel}/{maxLevel})");
+        Debug.Log($"Applied upgrade: (Level {CurrentLevel}/{maxLevel})");
+    }
+
+    public virtual bool ArePrerequisitesMet()
+    {
+        foreach (var prereq in prerequisites)
+        {
+            if (prereq.requiredUpgrade == null || prereq.requiredUpgrade.CurrentLevel < prereq.minimumLevel)
+                return false;
+        }
+        return true;
     }
 
     protected void ResetUpgrade()

@@ -10,7 +10,7 @@ public class OverchargedCapacitorsUpgrade : Upgrade
     {
         get
         {
-            if (IsActivated) return maxEnergyPerLevel * currentLevel;
+            if (IsActivated) return maxEnergyPerLevel * CurrentLevel;
             else return 0;
         }
     }
