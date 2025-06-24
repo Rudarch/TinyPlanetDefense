@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb5bf0ed0233f5c4aa73a9ef68df54d2, type: 3}
-  m_Name: HeavyShellsUpgrade
+  m_Script: {fileID: 11500000, guid: d74e606f8eebc8d409f22223fcb9f948, type: 3}
+  m_Name: MoltenCollapseUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Heavy Shells
-  description: Each shot deals more damage
-  icon: {fileID: -1862853827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 99
-  currentLevel: 2
+  upgradeName: Molten Collapse
+  description: 
+  icon: {fileID: 255326982, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  maxLevel: 1
+  currentLevel: 1
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
@@ -25,4 +25,6 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 0
-  bonusDamagePerLevel: 1
+  explosionPrefab: {fileID: 6281773370717664868, guid: 766a198a18934224e84d088827a357e0, type: 3}
+  explosionRadius: 0.5
+  explosionDamage: 1

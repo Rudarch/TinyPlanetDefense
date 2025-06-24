@@ -36,6 +36,7 @@ public class Upgrades : MonoBehaviour
     [HideInInspector] public AdaptiveFluxRegulatorUpgrade AdaptiveFluxRegulator;
     [HideInInspector] public OrbitalBladesUpgrade OrbitalBlades;
     [HideInInspector] public AnnihilatorRoundUpgrade AnihilatorRound;
+    [HideInInspector] public MoltenCollapseUpgrade MoltenCollapse;
 
     void Awake()
     {

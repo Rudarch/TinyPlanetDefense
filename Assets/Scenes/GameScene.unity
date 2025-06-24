@@ -1260,59 +1260,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2507614399642345446, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2507614399642345446, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2507614399642345446, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3670055895154206806, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Name
-      value: PulseButtonRightGlow
-      objectReference: {fileID: 0}
     - target: {fileID: 3878731995315823550, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
       propertyPath: m_Name
       value: PulseButtonRight
       objectReference: {fileID: 0}
-    - target: {fileID: 8015653254268335968, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8015653254268335968, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8015653254268335968, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8155357043047915941, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Name
-      value: PulseButtonRightIcon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8782915486252175116, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Colors.m_NormalColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8782915486252175116, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Colors.m_NormalColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8782915486252175116, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Colors.m_NormalColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: 0}
-    m_RemovedGameObjects:
-    - {fileID: 3670055895154206806, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
@@ -2286,7 +2239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5737902610290573324, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: xpReward
-      value: 500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 7385818457621821237, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3282,7 +3235,7 @@ GameObject:
   - component: {fileID: 1222454125}
   - component: {fileID: 1222454124}
   m_Layer: 5
-  m_Name: EnergyRegenBonusBar
+  m_Name: HeatFillBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3332,7 +3285,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -3896,6 +3849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AllUpgrades:
   - {fileID: 11400000, guid: b9654a437721afc489d211ae215b7820, type: 2}
+  - {fileID: 11400000, guid: 7e074d6e9e3a6a844b686397dc6da379, type: 2}
   - {fileID: 11400000, guid: 89e60c39ba5479a449f4cd382fec3565, type: 2}
   - {fileID: 11400000, guid: cb119603d06a7d541b02a6069bffa0db, type: 2}
   - {fileID: 11400000, guid: ba13e06763b29054896801b333d0b06f, type: 2}
@@ -3904,6 +3858,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca87beb52e569184ab6a43acb5d87d60, type: 2}
   - {fileID: 11400000, guid: 1d085529f83ce0149a8f36b6bbe03111, type: 2}
   - {fileID: 11400000, guid: 30a5a919740f812489e9e27e3b1657d3, type: 2}
+  - {fileID: 11400000, guid: 83369258b51aadd438c5d505094f6ed9, type: 2}
+  - {fileID: 11400000, guid: e88f3db0651ff984ca79706c60883da5, type: 2}
+  - {fileID: 11400000, guid: 1bc7f4bd89faaa243b7b0183e29f2906, type: 2}
   - {fileID: 11400000, guid: f9e23a58bba57f14d927a76eeab8ece8, type: 2}
   - {fileID: 11400000, guid: 30300667043cb014083aef45b803e7c3, type: 2}
   - {fileID: 11400000, guid: 0152bbf142b9af641b25c64274175feb, type: 2}
@@ -3914,9 +3871,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
   - {fileID: 11400000, guid: ac137e9c8c609b74f9749910260df50a, type: 2}
   - {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
-  - {fileID: 11400000, guid: 1bc7f4bd89faaa243b7b0183e29f2906, type: 2}
-  - {fileID: 11400000, guid: e88f3db0651ff984ca79706c60883da5, type: 2}
-  - {fileID: 11400000, guid: 7e074d6e9e3a6a844b686397dc6da379, type: 2}
   HeavyShells: {fileID: 0}
   LifeSiphon: {fileID: 0}
   ExplosiveRounds: {fileID: 0}
@@ -3939,6 +3893,7 @@ MonoBehaviour:
   AdaptiveFluxRegulator: {fileID: 0}
   OrbitalBlades: {fileID: 0}
   AnihilatorRound: {fileID: 0}
+  MoltenCollapse: {fileID: 0}
 --- !u!114 &1536275466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3951,7 +3906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc706304ad22dbb48a150214e30d08ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMaxEnergy: 100
+  baseMaxEnergy: 200
   currentEnergy: 100
   baseRegenPerSecond: 3
   regenPerLevel: 0.4
@@ -5515,21 +5470,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3670055895154206806, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Name
-      value: PulseButtonLeftGlow
-      objectReference: {fileID: 0}
     - target: {fileID: 3878731995315823550, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
       propertyPath: m_Name
       value: PulseButtonLeft
       objectReference: {fileID: 0}
-    - target: {fileID: 8155357043047915941, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
-      propertyPath: m_Name
-      value: PulseButtonLeftIcon
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 3670055895154206806, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02e1bc214dca6744788eb26a3faa1251, type: 3}

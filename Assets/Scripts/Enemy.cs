@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     private HealthBar healthBar;
     private Rigidbody2D rb;
     private Coroutine dashRoutine;
+    private bool isDying = false;
 
     void Awake()
     {
@@ -135,6 +136,9 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        if (isDying) return;
+        isDying = true;
+
         GameObject gameController = GameObject.FindWithTag("GameController");
         if (gameController != null)
         {
@@ -146,6 +150,12 @@ public class Enemy : MonoBehaviour
         }
 
         OnDeath?.Invoke();
+
+        var burn = GetComponent<BurningEffect>();
+        if (burn != null && burn.IsActive() && Upgrades.Inst.MoltenCollapse?.IsActivated == true)
+        {
+            Upgrades.Inst.MoltenCollapse.TriggerExplosion(transform.position);
+        }
 
         if (deathExplosionPrefab != null)
         {
