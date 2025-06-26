@@ -5,8 +5,6 @@ public class OrbitalWingSystem : MonoBehaviour
 {
     public GameObject interceptorPrefab;
     public Transform planet;
-    public float launchDelay = 0.5f;
-    public float spawnOffset = 0.5f;
     public int interceptorCount = 0;
 
     private int activeInterceptors = 0;
@@ -53,7 +51,7 @@ public class OrbitalWingSystem : MonoBehaviour
                     Debug.Log("Planet collider is missing, using default radius 1f.");
                 }
 
-                Vector3 spawnPosition = planet.position + (Vector3)(randomDir * (planetRadius + spawnOffset));
+                Vector3 spawnPosition = planet.position + (Vector3)(randomDir * (planetRadius + Upgrades.Inst.OrbitalWing.spawnOffset));
 
                 GameObject drone = Instantiate(interceptorPrefab, spawnPosition, Quaternion.identity);
                 var behavior = drone.GetComponent<InterceptorDrone>();
@@ -66,7 +64,7 @@ public class OrbitalWingSystem : MonoBehaviour
                 }
                 else Debug.Log("InterceptorDrone component is missing on prefab.");
 
-                yield return new WaitForSeconds(launchDelay);
+                yield return new WaitForSeconds(Upgrades.Inst.OrbitalWing.launchDelay);
             }
             else
             {

@@ -10,7 +10,7 @@ public class UpgradeButtonPanel : MonoBehaviour
     public GameObject rowPrefab;
 
     private readonly List<RectTransform> rows = new();
-    private readonly Dictionary<Upgrade, UpgradeUIButton> upgradeToButton = new();
+    private readonly Dictionary<Upgrade, AbilityButton> upgradeToButton = new();
 
     public static UpgradeButtonPanel Inst { get; private set; }
 
@@ -31,7 +31,7 @@ public class UpgradeButtonPanel : MonoBehaviour
 
         RectTransform targetRow = GetOrCreateRowForNextButton();
         GameObject buttonGO = Instantiate(upgradeButtonPrefab, targetRow);
-        var buttonUI = buttonGO.GetComponent<UpgradeUIButton>();
+        var buttonUI = buttonGO.GetComponent<AbilityButton>();
         if (buttonUI != null)
         {
             buttonUI.Initialize(upgrade, Upgrades.Inst.ToggleUpgrade);
@@ -65,7 +65,7 @@ public class UpgradeButtonPanel : MonoBehaviour
         rows.Clear();
     }
 
-    public UpgradeUIButton GetButtonForUpgrade(Upgrade upgrade)
+    public AbilityButton GetButtonForUpgrade(Upgrade upgrade)
     {
         upgradeToButton.TryGetValue(upgrade, out var button);
         return button;

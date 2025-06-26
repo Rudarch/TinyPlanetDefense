@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -96.750015}
-  m_SizeDelta: {x: 0, y: -110.70003}
+  m_AnchoredPosition: {x: 0, y: -56.078}
+  m_SizeDelta: {x: 0, y: -260.5601}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8817065054472219464
 CanvasRenderer:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.841461, y: 18.92273, z: 5.7408447, w: 102.18323}
+  m_margin: {x: 9.841461, y: 2.8625488, z: 5.7408447, w: -2.208023}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6781183465530918781}
   - component: {fileID: 6342496403394202887}
   m_Layer: 5
-  m_Name: UpgradeSelectionButton
+  m_Name: RegularUpgradeSelectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,8 +523,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -352}
-  m_SizeDelta: {x: 0, y: -56}
+  m_AnchoredPosition: {x: 0, y: -183.53528}
+  m_SizeDelta: {x: 0, y: -436.6382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8283957617457589299
 CanvasRenderer:
@@ -563,8 +563,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294891776
-  m_fontColor: {r: 0, g: 0.8509804, b: 0.99607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -589,7 +589,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 32
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -4.408184, y: 0.13598634, z: -5.585632, w: 374.76373}
+  m_margin: {x: -4.408184, y: 64.3763, z: -5.585632, w: 65.032005}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

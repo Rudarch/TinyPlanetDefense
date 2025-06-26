@@ -93,7 +93,7 @@ public class CannonController : MonoBehaviour
     {
         Vector3 direction = (targetPosition - rotatingPart.position).normalized;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-        float angle = Mathf.MoveTowardsAngle(rotatingPart.eulerAngles.z, targetAngle, (baseRotationSpeed + Upgrades.Inst.IncreaseRotationSpeed.RotationBoost) * Time.deltaTime);
+        float angle = Mathf.MoveTowardsAngle(rotatingPart.eulerAngles.z, targetAngle, (baseRotationSpeed + Upgrades.Inst.CannonMastery.BonusRotationSpeed) * Time.deltaTime);
         rotatingPart.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 

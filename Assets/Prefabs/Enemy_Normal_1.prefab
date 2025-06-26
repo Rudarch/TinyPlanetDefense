@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
-  health: 10
+  health: 15
   damage: 1
   dashDistance: 0.1
   dashInterval: 1

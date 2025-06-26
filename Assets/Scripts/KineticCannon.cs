@@ -62,7 +62,7 @@ public class KineticCannon : WeaponSystem
     {
         isFiring = true;
 
-        float cooldownMult = Upgrades.Inst.ReduceCooldown.CooldownReductionMultiplier;
+        float cooldownMult = Upgrades.Inst.CannonMastery.ReloadSpeedMultiplier;
         if (Upgrades.Inst.TwinBarrel.IsActivated)
             cooldownMult *= Upgrades.Inst.TwinBarrel.FireSpeedMultiplier;
         float finalCooldown = baseCooldown * cooldownMult;
@@ -88,7 +88,7 @@ public class KineticCannon : WeaponSystem
         int extraShots = Upgrades.Inst.ExtraShot.GetExtraShotCount();
         for (int i = 0; i < extraShots; i++)
         {
-            float delay = Upgrades.Inst.ExtraShot.extraShotInterval * Upgrades.Inst.ReduceCooldown.CooldownReductionMultiplier;
+            float delay = Upgrades.Inst.ExtraShot.extraShotInterval * Upgrades.Inst.CannonMastery.ReloadSpeedMultiplier;
             StartCoroutine(DelayedExtraShot(muzzle, direction, delay));
         }
     }

@@ -16,13 +16,14 @@ MonoBehaviour:
   description: Adds second barrel
   icon: {fileID: 440372079, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 1
-  currentLevel: 1
-  baseEnergyDrain: 0
+  currentLevel: 0
+  prerequisites: []
+  baseEnergyDrain: 6
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 80
+  baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 80
+  activationEnergyAmount: 0
   activationDuration: 12
-  activationStyle: 2
+  activationStyle: 1
   fireSpeedMultiplier: 0.5

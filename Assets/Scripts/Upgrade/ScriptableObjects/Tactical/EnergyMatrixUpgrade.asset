@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f18f2723e92aa14ab8f51ce504d477e, type: 3}
-  m_Name: TurboLoaderUpgrade
+  m_Script: {fileID: 11500000, guid: 3eb08c9ec603e3a4685aae7461d768ed, type: 3}
+  m_Name: EnergyMatrixUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Turbo Loader
-  description: Shortens the reload cooldown
-  icon: {fileID: -5579780383750340384, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 10
+  upgradeName: ENERGY MATRIX
+  description: 
+  icon: {fileID: 1841340840, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  maxLevel: 99
   currentLevel: 2
+  prerequisites: []
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 0
   activationDuration: 0
-  cooldownReductionPercent: 0.07
-  baseCooldownReductionMultiplier: 1
-  cooldownReductionMultiplier: 0.80999994
+  activationStyle: 0
+  bonusRegen: 1.5
+  bonusCapacity: 15

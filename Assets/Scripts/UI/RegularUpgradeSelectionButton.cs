@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UpgradeOptionUI : MonoBehaviour
+public class RegularUpgradeSelectionButton : MonoBehaviour
 {
     public Image icon;
     public TMP_Text nameText;
@@ -12,6 +12,7 @@ public class UpgradeOptionUI : MonoBehaviour
 
     private Upgrade upgrade;
     private UpgradePopup popup;
+
 
     public void Setup(Upgrade upgrade, UpgradePopup popup)
     {
@@ -25,10 +26,10 @@ public class UpgradeOptionUI : MonoBehaviour
         switch (upgrade.activationStyle)
         {
             case ActivationStyle.Timed:
-                energyCostText.text = $"-{upgrade.GetEnergyActivationCostForNextLevel()} energy on activation";
+                energyCostText.text = $"{upgrade.GetEnergyActivationCostForNextLevel()} energy";
                 break;
             case ActivationStyle.Toggle:
-                energyCostText.text = $"-{upgrade.GetEnergyDrainForNextLevel()} energy per second";
+                energyCostText.text = $"-{upgrade.GetEnergyDrainForNextLevel()} energy/s";
                 break;
             default:
                 energyCostText.text = $"Passive";
@@ -43,15 +44,15 @@ public class UpgradeOptionUI : MonoBehaviour
     {
         upgrade.ApplyUpgrade();
 
-        if (upgrade.activationStyle != ActivationStyle.Passive)
-        {
-            UpgradeButtonPanel.Inst.AddUpgradeButton(upgrade);
-        }
-        else
+        if (upgrade.activationStyle == ActivationStyle.Passive)
         {
             upgrade.Activate();
         }
-        
-        popup.Hide();
+        else
+        {
+            UpgradeButtonPanel.Inst.AddUpgradeButton(upgrade);
+        }
+
+        popup.OnUpgradeChosen();
     }
 }

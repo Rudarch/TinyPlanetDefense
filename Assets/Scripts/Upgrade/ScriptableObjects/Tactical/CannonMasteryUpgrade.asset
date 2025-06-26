@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90245cedcd33e0d43a660d0b58d7bfe4, type: 3}
-  m_Name: AdaptiveFluxRegulatorUpgrade
+  m_Script: {fileID: 11500000, guid: 9877476065a37d24a955a07d3e78709d, type: 3}
+  m_Name: CannonMasteryUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Adaptive Flux Regulator
+  upgradeName: CANNON MASTERY
   description: 
-  icon: {fileID: 1841340840, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 5
-  currentLevel: 1
+  icon: {fileID: 8849771527035542264, guid: 8fc1fba28ae459c45a74c2ffd45c6306, type: 3}
+  maxLevel: 99
+  currentLevel: 3
+  prerequisites: []
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
@@ -25,4 +26,5 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 0
-  energyRegenLevel: 2
+  bonusRotationSpeed: 15
+  reloadSpeedPercent: 7

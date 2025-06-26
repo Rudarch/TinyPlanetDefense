@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb5bf0ed0233f5c4aa73a9ef68df54d2, type: 3}
-  m_Name: HeavyShellsUpgrade
+  m_Script: {fileID: 11500000, guid: 83c9faade49841a469492e786fa10fb4, type: 3}
+  m_Name: HighCaliberUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Heavy Shells
-  description: Each shot deals more damage
-  icon: {fileID: -1862853827, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
+  upgradeName: HIGH CALIBER
+  description: 
+  icon: {fileID: 4597268606058038524, guid: 8fc1fba28ae459c45a74c2ffd45c6306, type: 3}
   maxLevel: 99
-  currentLevel: 2
+  currentLevel: 4
+  prerequisites: []
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
@@ -25,4 +26,4 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 0
-  bonusDamagePerLevel: 1
+  bonusDamage: 2

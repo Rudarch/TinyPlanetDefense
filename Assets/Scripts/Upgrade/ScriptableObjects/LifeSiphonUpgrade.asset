@@ -17,13 +17,14 @@ MonoBehaviour:
   icon: {fileID: 550099490, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 2
   currentLevel: 0
-  baseEnergyDrain: 0
+  prerequisites: []
+  baseEnergyDrain: 5
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 20
-  activationEnergyCostPerLevel: 10
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 2
-  activationDuration: 10
+  activationDuration: 0
+  activationStyle: 1
   healFraction: 0.01
   lifeSiphonFraction: 0.01

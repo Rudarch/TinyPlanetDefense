@@ -8,17 +8,19 @@ public class ExperienceSystem : MonoBehaviour
     public int currentLevel = 1;
     public int baseXPToLevel = 5;
     public float levelMultiplier = 1.5f;
+    public UpgradePopup upgradePopup;
+
     public UnityEvent OnLevelUp;
     public UnityEvent<float, float> OnXPChanged;
-    public UpgradePopup upgradePopup;
-    public GameObject cannonGameObject;
 
     private int pendingLevelUps = 0;
     private bool isChoosingUpgrade = false;
     private int xpToNextLevel;
+    private AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         xpToNextLevel = GetXPRequirementForLevel(currentLevel);
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
     }
@@ -27,7 +29,6 @@ public class ExperienceSystem : MonoBehaviour
     {
         currentXP += amount;
 
-        // Queue all level-ups that can happen with this XP
         while (currentXP >= xpToNextLevel)
         {
             currentXP -= xpToNextLevel;
@@ -49,9 +50,14 @@ public class ExperienceSystem : MonoBehaviour
         if (isChoosingUpgrade || pendingLevelUps <= 0 || upgradePopup == null)
             return;
 
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+
         isChoosingUpgrade = true;
         Time.timeScale = 0f; // Pause game
-        upgradePopup.Show();
+        upgradePopup.ShowTacticalChoices();
     }
 
     public void OnUpgradeSelected()
@@ -60,7 +66,7 @@ public class ExperienceSystem : MonoBehaviour
 
         if (pendingLevelUps > 0)
         {
-            upgradePopup.Show();
+            upgradePopup.ShowTacticalChoices();
         }
         else
         {

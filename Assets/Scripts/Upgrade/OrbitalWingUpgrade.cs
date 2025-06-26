@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "OrbitalWingUpgrade", menuName = "Upgrades/OrbitalWing")]
 public class OrbitalWingUpgrade : Upgrade
 {
+    [SerializeField] int interceptorsPerLevel = 1;
+    public float launchDelay = 0.5f;
+    public float spawnOffset = 0.5f;
     protected override void ApplyUpgradeInternal()
     {
         GameObject planet = GameObject.FindWithTag("Planet");
@@ -11,7 +14,10 @@ public class OrbitalWingUpgrade : Upgrade
             var system = planet.GetComponent<OrbitalWingSystem>();
             if (system != null)
             {
-                system.AddInterceptor();
+                for (int i = 0; i < interceptorsPerLevel; i++)
+                {
+                    system.AddInterceptor();
+                }
             }
             else Debug.Log("OrbitalWingSystem is missing on the Planet.");
         }
@@ -20,7 +26,8 @@ public class OrbitalWingUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"+1 drone. {NextLevel} in total.";
+        var sOrNotS = interceptorsPerLevel == 1 ? string.Empty : "'s";
+        return $"+{interceptorsPerLevel} drone{sOrNotS}({NextLevel * interceptorsPerLevel}total).";
     }
 
     protected override void InitializeInternal()

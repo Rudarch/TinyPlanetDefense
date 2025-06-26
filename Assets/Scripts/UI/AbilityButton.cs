@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UpgradeUIButton : MonoBehaviour
+public class AbilityButton : MonoBehaviour
 {
     [Header("UI References")]
     public UnityEngine.UI.Button button;

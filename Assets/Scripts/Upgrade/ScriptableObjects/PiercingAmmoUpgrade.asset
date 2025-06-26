@@ -17,13 +17,13 @@ MonoBehaviour:
   icon: {fileID: -1193393901, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
   currentLevel: 0
-  baseEnergyDrain: 0
+  prerequisites: []
+  baseEnergyDrain: 3
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 40
-  activationEnergyCostPerLevel: 10
+  baseActivationEnergyCost: 0
+  activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationDuration: 10
-  activationStyle: 2
+  activationDuration: 0
+  activationStyle: 1
   extraPiercePerLevel: 1
-  pierceCount: 0

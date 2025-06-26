@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: EMPWaveUpgrade
   m_EditorClassIdentifier: 
   upgradeName: EMP Wave
-  description: "The lanet emits a\u0442 EMP wave that stuns enemies"
+  description: The Planet emits an EMP wave that stuns enemies
   icon: {fileID: -2672912283772737747, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
+  prerequisites: []
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 30
+  baseActivationEnergyCost: 50
   activationEnergyCostPerLevel: 10
-  activationEnergyAmount: 0
+  activationEnergyAmount: 60
   activationDuration: 0.25
   activationStyle: 2
   effectVFX: {fileID: 6955652225482351914, guid: a4e88c89d280f32418951221c91e4e04, type: 3}
@@ -30,4 +31,3 @@ MonoBehaviour:
   effectStunTimePerLevel: 1
   radius: 2
   waveInterval: 0.1
-  stunTime: 0

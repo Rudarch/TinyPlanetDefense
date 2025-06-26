@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         damage = Random.Range(minDamage, maxDamage);
-        damage += Upgrades.Inst.HeavyShells.BonusDamage;
+        damage += Upgrades.Inst.HighCaliber.BonusDamage;
         damage *= Upgrades.Inst.OverheatProtocol.OverheatDamageMultiplier;
 
         if (isOvercharged)

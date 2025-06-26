@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7550a9f11174734a8b38bd22e71bd95, type: 3}
   m_Name: AntigravityPulseUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Anti gravity pulse
+  upgradeName: Anti Gravity Pulse
   description: The planet emits an anti-gravity pulse
   icon: {fileID: -289038649, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
-  maxLevel: 3
+  maxLevel: 1
   currentLevel: 0
+  prerequisites: []
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 40
-  activationEnergyCostPerLevel: 40
+  baseActivationEnergyCost: 80
+  activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationDuration: 2
+  activationDuration: 0.61
   activationStyle: 2
   effectVFX: {fileID: 5807174540880351334, guid: 5d51c3a7c08b02a40a9227beca70540a, type: 3}
-  basePushBackValue: 2
-  pushBackValuePerLevel: 2
+  basePushBackValue: 0
+  pushBackValuePerLevel: 1
   pushBackRadius: 2.5
-  waveInterval: 1
+  waveInterval: 0.3

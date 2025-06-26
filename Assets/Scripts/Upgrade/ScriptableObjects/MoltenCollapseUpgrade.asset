@@ -16,7 +16,12 @@ MonoBehaviour:
   description: 
   icon: {fileID: 255326982, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 1
-  currentLevel: 1
+  currentLevel: 0
+  prerequisites:
+  - requiredUpgrade: {fileID: 11400000, guid: ca637a41ba3199341a9c1716098b674f, type: 2}
+    minimumLevel: 1
+  - requiredUpgrade: {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
+    minimumLevel: 1
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
@@ -27,4 +32,4 @@ MonoBehaviour:
   activationStyle: 0
   explosionPrefab: {fileID: 6281773370717664868, guid: 766a198a18934224e84d088827a357e0, type: 3}
   explosionRadius: 0.5
-  explosionDamage: 1
+  explosionDamage: 3

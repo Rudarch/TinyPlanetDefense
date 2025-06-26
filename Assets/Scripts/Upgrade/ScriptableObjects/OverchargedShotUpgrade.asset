@@ -16,17 +16,17 @@ MonoBehaviour:
   description: Shoots overcharged rounds
   icon: {fileID: 682258454, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 2
-  baseEnergyDrain: 1
-  energyDrainPerLevel: 0.5
-  energyDrainAmount: 2
+  currentLevel: 0
+  prerequisites: []
+  baseEnergyDrain: 3
+  energyDrainPerLevel: 0
+  energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 1
-  baseInterval: 6
-  intervalReductionPerLevel: 1
-  interval: 4
-  damageMultiplier: 3
-  scaleMultiplier: 1.5
+  baseInterval: 8
+  intervalReductionPerLevel: 2
+  damageMultiplier: 5
+  scaleMultiplier: 2

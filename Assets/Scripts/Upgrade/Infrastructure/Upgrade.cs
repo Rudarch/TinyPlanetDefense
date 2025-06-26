@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public enum ActivationStyle { Passive, Toggle, Timed }
 public abstract class Upgrade : ScriptableObject

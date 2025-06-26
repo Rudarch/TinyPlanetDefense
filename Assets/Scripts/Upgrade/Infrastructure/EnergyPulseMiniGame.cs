@@ -41,6 +41,9 @@ public class EnergyPulseMiniGame : MonoBehaviour
     public Color overheatColor = Color.red;
     public Color wrongPressColor = Color.yellow;
 
+    [Header("Bonus energy")]
+    public float timeSinceLastCorrectPressThreshhold = 1f;
+
     private Vector3 bonusFillBarOriginalScale;
     private float currentHeat = 0f;
     private bool isLeftCorrect;
@@ -49,6 +52,8 @@ public class EnergyPulseMiniGame : MonoBehaviour
     private Coroutine flashRoutine;
     private Coroutine pulseRoutine;
     private Coroutine feedbackRoutine;
+    private int correctStreak = 0; 
+    private float timeSinceLastCorrectPress = 0f;
 
     void Start()
     {
@@ -56,6 +61,7 @@ public class EnergyPulseMiniGame : MonoBehaviour
         rightButton.onClick.AddListener(() => PressedButton(false));
         bonusFillBarOriginalScale = bonusFillBar.rectTransform.localScale;
 
+        isLeftCorrect = Random.value > 0.5f;
         SetNewTarget();
         bonusFillBar.color = fillNormalColor;
         bonusFillBar.fillAmount = 0f;
@@ -67,6 +73,16 @@ public class EnergyPulseMiniGame : MonoBehaviour
         {
             currentHeat -= heatDecayRate * Time.deltaTime;
             currentHeat = Mathf.Clamp01(currentHeat);
+        }
+
+        if (!isOverheated && isActive)
+        {
+            timeSinceLastCorrectPress += Time.deltaTime;
+            if (timeSinceLastCorrectPress > timeSinceLastCorrectPressThreshhold)
+            {
+                correctStreak = 0;
+                timeSinceLastCorrectPress = 0f;
+            }
         }
 
         bonusFillBar.fillAmount = Mathf.Lerp(bonusFillBar.fillAmount, currentHeat, Time.deltaTime * fillLerpSpeed);
@@ -84,6 +100,8 @@ public class EnergyPulseMiniGame : MonoBehaviour
     public void ActivateMiniGame()
     {
         isActive = true;
+
+        isLeftCorrect = Random.value > 0.5f;
         SetNewTarget();
         leftButton.interactable = true;
         rightButton.interactable = true;
@@ -102,7 +120,8 @@ public class EnergyPulseMiniGame : MonoBehaviour
 
     void SetNewTarget()
     {
-        isLeftCorrect = Random.value > 0.5f;
+        isLeftCorrect = !isLeftCorrect;
+
         if (!isOverheated)
         {
             leftPulseIcon.color = isLeftCorrect ? highlightColor : defaultColor;
@@ -116,18 +135,23 @@ public class EnergyPulseMiniGame : MonoBehaviour
 
         if (left == isLeftCorrect)
         {
-            EnergySystem.Inst.Restore(energyGainPerSuccess);
+            timeSinceLastCorrectPress = 0f;
+
+            float bonusEnergy = energyGainPerSuccess + correctStreak;
+            EnergySystem.Inst.Restore(bonusEnergy);
+            correctStreak++;
+
             currentHeat += heatIncreasePerPress;
             currentHeat = Mathf.Clamp01(currentHeat);
 
             if (feedbackRoutine != null) StopCoroutine(feedbackRoutine);
-            feedbackRoutine = StartCoroutine(ShowFeedback($"+{energyGainPerSuccess:F0} Energy", energyGainColor));
+            feedbackRoutine = StartCoroutine(ShowFeedback($"+{bonusEnergy:F0} Energy", energyGainColor));
 
             if (currentHeat >= 1f)
             {
                 isOverheated = true;
+                correctStreak = 0;
                 DeactivateMiniGame();
-                if (feedbackRoutine != null) StopCoroutine(feedbackRoutine);
                 feedbackRoutine = StartCoroutine(ShowFeedback("OVERHEATED!", overheatColor));
             }
 
@@ -136,6 +160,8 @@ public class EnergyPulseMiniGame : MonoBehaviour
         }
         else
         {
+            correctStreak = 0;
+
             currentHeat += heatIncreasePerPress;
             currentHeat = Mathf.Clamp01(currentHeat);
 

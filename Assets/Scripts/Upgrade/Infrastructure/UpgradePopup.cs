@@ -1,57 +1,111 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradePopup : MonoBehaviour
 {
-    public GameObject optionPrefab;
-    public Transform optionParent;
-    public GameObject popupRoot;
+    public static UpgradePopup Inst { get; private set; }
+
+    [Header("Panels")]
+    public GameObject RegularUpgradeSelectionPanel;
+    public GameObject TacticalUpgradeSelectionPanel;
+
+    [Header("Layout Roots")]
+    public Transform regularUpgradeGridParent;
+    public Transform tacticalUpgradeGridParent;
+
+    [Header("Prefabs & Icons")]
+    public GameObject regularUpgradeOptionPrefab;
+    public GameObject tacticalOptionPrefab;
+
+    public Sprite tacticalIcon;
 
     public ExperienceSystem xpSystem;
 
-    public void Show()
+    void Awake()
     {
-        popupRoot.SetActive(true);
+        if (Inst != null && Inst != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Inst = this;
+    }
 
-        foreach (Transform child in optionParent)
+    public void ShowTacticalChoices()
+    {
+        Time.timeScale = 0f;
+
+        RegularUpgradeSelectionPanel.SetActive(false);
+        TacticalUpgradeSelectionPanel.SetActive(true);
+
+        foreach (Transform child in tacticalUpgradeGridParent)
             Destroy(child.gameObject);
 
-        List<Upgrade> available = new();
-        available = Upgrades.Inst.AllUpgrades
-            .Where(upg => !upg.IsMaxedOut && upg.ArePrerequisitesMet())
-            .ToList();
+        SpawnTacticalChoice(Upgrades.Inst.CannonMastery, Upgrades.Inst.CannonMastery.icon, new Color(0.3f, 0.6f, 1f));
+        SpawnTacticalChoice(Upgrades.Inst.HighCaliber, Upgrades.Inst.HighCaliber.icon, new Color(1f, 0.4f, 0.3f));
+        SpawnTacticalChoice(Upgrades.Inst.EnergyMatrix, Upgrades.Inst.EnergyMatrix.icon, new Color(0.4f, 1f, 0.8f));
 
-        if (available.Count == 0)
+        SpawnSpecialAction(
+            "TACTICAL PROTOCOLS",
+            "Choose 1 of 3 Random Ability Upgrades",
+            tacticalIcon,
+            new Color(0.8f, 0.6f, 1f),
+            ShowRandomAbilityOptions
+        );
+    }
+
+    private void SpawnTacticalChoice(Upgrade upgrade, Sprite icon, Color color)
+    {
+        var go = Instantiate(tacticalOptionPrefab, tacticalUpgradeGridParent);
+        var ui = go.GetComponent<TacticalUpgradeSelectionButton>();
+        ui.Setup(upgrade, this, color);
+    }
+
+    private void SpawnSpecialAction(string title, string desc, Sprite icon, Color color, UnityEngine.Events.UnityAction action)
+    {
+        var go = Instantiate(tacticalOptionPrefab, tacticalUpgradeGridParent);
+        var ui = go.GetComponent<TacticalUpgradeSelectionButton>();
+        ui.SetupAsSpecialAction(title, desc, icon, color, action);
+    }
+
+    public void ShowRandomAbilityOptions()
+    {
+        RegularUpgradeSelectionPanel.SetActive(true);
+        TacticalUpgradeSelectionPanel.SetActive(false);
+
+        foreach (Transform child in regularUpgradeGridParent)
+            Destroy(child.gameObject);
+
+        List<Upgrade> pool = Upgrades.Inst.RegualarUpgrades
+            .FindAll(u => !u.IsMaxedOut && u.ArePrerequisitesMet());
+
+        if (pool.Count == 0)
         {
-            popupRoot.SetActive(false);
-            FindFirstObjectByType<ExperienceSystem>()?.OnUpgradeSelected();
+            OnUpgradeChosen();
             return;
         }
 
         List<Upgrade> selected = new();
-        while (selected.Count < Mathf.Min(3, available.Count))
+        while (selected.Count < Mathf.Min(3, pool.Count))
         {
-            Upgrade random = available[Random.Range(0, available.Count)];
-            if (!selected.Contains(random))
-                selected.Add(random);
+            var candidate = pool[Random.Range(0, pool.Count)];
+            if (!selected.Contains(candidate))
+                selected.Add(candidate);
         }
 
         foreach (var upgrade in selected)
         {
-            var ui = Instantiate(optionPrefab, optionParent);
-            var upgradeOptionUI = ui.GetComponent<UpgradeOptionUI>();
-            upgradeOptionUI.Setup(upgrade, this);
+            var go = Instantiate(regularUpgradeOptionPrefab, regularUpgradeGridParent);
+            var ui = go.GetComponent<RegularUpgradeSelectionButton>();
+            ui.Setup(upgrade, this);
         }
     }
 
-    public void Hide()
+    public void OnUpgradeChosen()
     {
-        popupRoot.SetActive(false);
-
-        if (xpSystem != null)
-        {
-            xpSystem.OnUpgradeSelected();
-        }
+        RegularUpgradeSelectionPanel.SetActive(false);
+        TacticalUpgradeSelectionPanel.SetActive(false);
+        xpSystem?.OnUpgradeSelected();
     }
 }

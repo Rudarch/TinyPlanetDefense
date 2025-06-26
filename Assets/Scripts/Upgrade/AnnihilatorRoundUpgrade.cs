@@ -42,7 +42,7 @@ public class AnnihilatorRoundUpgrade : Upgrade
         if (!IsActivated || planet == null) return;
 
         timer -= deltaTime;
-        if (timer <= 0f)
+        if (timer < 0f)
         {
             int shotCount = CurrentLevel; // base 1 + level bonus
             if (planet.TryGetComponent(out MonoBehaviour mono))
@@ -72,6 +72,6 @@ public class AnnihilatorRoundUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Fires {1 + CurrentLevel} rounds every {fireInterval:F1}s (delay {spawnDelay:F1}s)";
+        return $"Fires {1 + CurrentLevel} anihilation rounds every {fireInterval:F1}s (delay {spawnDelay:F1}s)";
     }
 }
