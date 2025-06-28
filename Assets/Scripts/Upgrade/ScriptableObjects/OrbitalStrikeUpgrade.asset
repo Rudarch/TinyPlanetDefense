@@ -27,8 +27,8 @@ MonoBehaviour:
   activationDuration: 1
   activationStyle: 2
   effectVFX: {fileID: 5271979767319652204, guid: 520d37921f987d147b8ff70280578f0a, type: 3}
-  baseStrikes: 0
+  baseStrikes: 1
   strikeDelay: 0.2
   waveInterval: 0.1
-  damage: 15
+  damage: 20
   impactSound: {fileID: 8300000, guid: 820d2145ac42892449c27fb525ac5bf0, type: 3}

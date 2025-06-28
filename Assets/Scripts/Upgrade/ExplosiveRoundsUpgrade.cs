@@ -5,10 +5,10 @@ public class ExplosiveRoundsUpgrade : Upgrade
 {
     [Header("Configuration")]
     [SerializeField] private float baseExplosionRadius = 0.2f;
-    [SerializeField] public float radiusPerLevel = 0.1f;
-    [SerializeField] private float baseSplashDamageMultiplier = 0.2f;
-    [SerializeField] public float splashDamageMultiplierPerLevel = 0.1f;
     [SerializeField] private float knockbackForce = 0.2f;
+    [SerializeField] private float baseSplashDamageMultiplier = 0.2f;
+    [SerializeField] public float radiusPerLevel = 0.1f;
+    [SerializeField] public float splashDamageMultiplierPerLevel = 0.1f;
 
     protected override void InitializeInternal()
     {
@@ -17,7 +17,7 @@ public class ExplosiveRoundsUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Explodes in {GetExplosionRadius:F2} radius, {SplashDamageMultiplier * 100f:F0}% splash, knockback nearby enemies.";
+        return $"Explodes in {GetExplosionRadius:F2} radius, {baseSplashDamageMultiplier + splashDamageMultiplierPerLevel * NextLevel * 100f:F0}% splash, knockbacks nearby enemies.";
     }
 
     float GetExplosionRadius => baseExplosionRadius + radiusPerLevel * NextLevel;
@@ -35,13 +35,8 @@ public class ExplosiveRoundsUpgrade : Upgrade
             if (enemy != null)
             {
                 Vector2 direction = (enemy.transform.position - origin).normalized;
-                float distance = Vector2.Distance(enemy.transform.position, origin);
-                float distanceFactor = Mathf.Clamp01(1f - (distance / ExplosionRadius));
-
-                float scaledForce = KnockbackForce * distanceFactor;
-                enemy.ApplyKnockback(direction * scaledForce);
+                enemy.ApplyKnockback(direction * KnockbackForce);
             }
         }
     }
-
 }

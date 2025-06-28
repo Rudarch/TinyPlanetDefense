@@ -11,4 +11,9 @@ public abstract class WeaponSystem : MonoBehaviour
         Vector2 dir = (worldPos - transform.position).normalized;
         TryFireWithDirection(dir);
     }
+
+    public virtual void DisableTemporarily(float disableDuration)
+    {
+
+    }
 }

@@ -26,9 +26,9 @@ public class EnemySpawner : MonoBehaviour
     public List<BoxCollider2D> spawnZones = new(); // Each zone is a BoxCollider2D
     public Transform enemyParent;
     public Transform planetCenter;
-    public WaveProgressUI waveUI;
     public float extraDelayBetweenWaves = 3f;
 
+    private WaveProgressUI waveUI;
     private int enemiesAlive = 0;
     private int currentWave = 0;
 
@@ -40,7 +40,8 @@ public class EnemySpawner : MonoBehaviour
             if (planet != null) planetCenter = planet.transform;
         }
 
-        waveUI.Initialize(waves.Count);
+        waveUI = FindAnyObjectByType<WaveProgressUI>();
+        waveUI?.Initialize(waves.Count);
         StartCoroutine(SpawnWaveRoutine());
     }
 
@@ -51,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
         while (currentWave < waves.Count)
         {
             Wave wave = waves[currentWave];
-            waveUI.SetWave(currentWave);
+            waveUI?.SetWave(currentWave);
 
             List<Coroutine> spawnCoroutines = new();
             foreach (var group in wave.enemyGroups)
@@ -84,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy(group.enemyPrefab, group.spawnZoneIndex);
             enemiesAlive++;
-            waveUI.SetEnemiesRemaining(enemiesAlive);
+            waveUI?.SetEnemiesRemaining(enemiesAlive);
             yield return new WaitForSeconds(interval);
         }
     }
@@ -116,6 +117,6 @@ public class EnemySpawner : MonoBehaviour
     private void HandleEnemyDeath()
     {
         enemiesAlive--;
-        waveUI.SetEnemiesRemaining(enemiesAlive);
+        waveUI?.SetEnemiesRemaining(enemiesAlive);
     }
 }

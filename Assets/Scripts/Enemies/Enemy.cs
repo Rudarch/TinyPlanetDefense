@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,8 +11,6 @@ public class Enemy : MonoBehaviour
     public float damage = 1f;
 
     [Header("Dash Movement")]
-    public float dashDistance = 1.5f;
-    public float dashInterval = 1.0f;
     public float moveSpeed = 1f;
 
     [Header("References")]
@@ -21,14 +20,17 @@ public class Enemy : MonoBehaviour
     [Header("VFX")]
     public GameObject thrusterFX;
     public GameObject deathExplosionPrefab;
+    public GameObject audioPrefab;
+    public AudioClip deathAudioClip;
 
     [SerializeField] private int xpReward = 1;
 
     private float maxHealth;
     private HealthBar healthBar;
     private Rigidbody2D rb;
-    private Coroutine dashRoutine;
     private bool isDying = false;
+    private List<EnemyAbilityBase> abilities = new();
+    private EnemyMovementBase movement;
 
     void Awake()
     {
@@ -38,6 +40,13 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         maxHealth = health;
+
+        abilities = new(GetComponents<EnemyAbilityBase>());
+        foreach (var ab in abilities)
+            ab.Initialize(this);
+
+        movement = GetComponent<EnemyMovementBase>();
+        movement?.Initialize(this);
 
         if (planetTarget == null)
         {
@@ -52,8 +61,13 @@ public class Enemy : MonoBehaviour
             healthBar.SetHealth(health, maxHealth);
             healthBar.gameObject.SetActive(false);
         }
+    }
+    void Update()
+    {
+        foreach (var ab in abilities)
+            ab.OnUpdate();
 
-        dashRoutine = StartCoroutine(DashTowardPlanet());
+        movement?.TickMovement(); // Optional, if movement uses frame-based logic
     }
 
     public void ApplyKnockback(Vector2 force)
@@ -75,52 +89,12 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
     }
 
-    IEnumerator DashTowardPlanet()
-    {
-        while (true)
-        {
-            if (isStunned)
-            {
-                yield return null;
-                continue;
-            }
-
-            float interval = dashInterval;
-            yield return new WaitForSeconds(interval);
-
-            if (planetTarget == null) yield break;
-
-            Vector3 dir = (planetTarget.position - transform.position).normalized;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-
-            float effectiveDashDistance = dashDistance * moveSpeed;
-            Vector3 targetPos = transform.position + dir * effectiveDashDistance;
-
-            if (thrusterFX != null) thrusterFX.SetActive(true);
-
-            float dashDuration = 0.2f;
-            float timer = 0f;
-            Vector3 start = transform.position;
-
-            while (timer < dashDuration)
-            {
-                if (isStunned)
-                    break;
-
-                timer += Time.deltaTime;
-                float t = timer / dashDuration;
-                transform.position = Vector3.Lerp(start, targetPos, t);
-                yield return null;
-            }
-
-            if (thrusterFX != null) thrusterFX.SetActive(false);
-        }
-    }
-
     public void TakeDamage(float amount)
     {
         health -= amount;
+
+        foreach (var ab in abilities)
+            ab.OnDamaged(amount);
 
         if (healthBar != null)
         {
@@ -139,6 +113,9 @@ public class Enemy : MonoBehaviour
         if (isDying) return;
         isDying = true;
 
+        foreach (var ab in abilities)
+            ab.OnDeath();
+
         GameObject gameController = GameObject.FindWithTag("GameController");
         if (gameController != null)
         {
@@ -149,17 +126,10 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        OnDeath?.Invoke();
-
         var burn = GetComponent<BurningEffect>();
         if (burn != null && burn.IsActive() && Upgrades.Inst.MoltenCollapse?.IsActivated == true)
         {
             Upgrades.Inst.MoltenCollapse.TriggerExplosion(transform.position);
-        }
-
-        if (deathExplosionPrefab != null)
-        {
-            Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
         }
 
         if (Upgrades.Inst.LifeSiphon.IsActivated)
@@ -176,7 +146,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        Destroy(gameObject);
+        DestroyObject();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -186,9 +156,34 @@ public class Enemy : MonoBehaviour
             GameObject.FindWithTag("Planet").GetComponent<Planet>().TakeDamage(damage);
             Debug.Log($"Enemy dealt {damage} damage to the planet.");
 
-            OnDeath?.Invoke();
-            Destroy(gameObject);
+
+            DestroyObject();
         }
+    }
+
+    private void DestroyObject()
+    {
+        OnDeath?.Invoke();
+
+        if (deathAudioClip != null && audioPrefab != null)
+        {
+            GameObject audioObj = Instantiate(audioPrefab, transform.position, Quaternion.identity);
+            AudioSource source = audioObj.GetComponent<AudioSource>();
+            source.clip = deathAudioClip;
+            source.volume = .3f;
+            source.pitch = Random.Range(0.8f, 1.2f);
+            source.Play();
+            Destroy(audioObj, deathAudioClip.length);
+        }
+
+        if (deathExplosionPrefab != null)
+        {
+            var explosion = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
+            explosion.transform.SetParent(null);
+            Destroy(explosion, 0.5f);
+        }
+
+        Destroy(gameObject);
     }
 
     public void SetStunned(bool stunned)

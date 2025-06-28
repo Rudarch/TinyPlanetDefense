@@ -25,14 +25,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2284834949120169746}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.99049306, w: 0.13756269}
-  m_LocalPosition: {x: 0.07403681, y: 0.011737458, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9679595, w: 0.25110623}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8457674769486664378}
   m_Father: {fileID: 8611095868110961764}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 164.186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 150.914}
 --- !u!212 &1171492249225261283
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9074220515743290635, guid: ad5484fc3d86d7a42a9001152ab65d31, type: 3}
+  m_Sprite: {fileID: -379919729414753127, guid: d06f0cb6fd76d4f439b6d886649d2a3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.05, y: 2.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -742,7 +742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8457674769486664378
 Transform:
   m_ObjectHideFlags: 0
@@ -751,13 +751,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8494555794564922000}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.0997192, w: 0.9950157}
-  m_LocalPosition: {x: -0.666, y: 1.399, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.23990647, w: 0.970796}
+  m_LocalPosition: {x: -0.714, y: 0.493, z: 0}
   m_LocalScale: {x: 0.1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3101689248511412089}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.446}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 27.762}
 --- !u!212 &2740224847030595319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -824,9 +824,11 @@ GameObject:
   - component: {fileID: 8611095868110961764}
   - component: {fileID: 9119406299960264056}
   - component: {fileID: 9112627927622203431}
-  - component: {fileID: 5737902610290573324}
   - component: {fileID: 4652173292674739430}
   - component: {fileID: 8827065812746665399}
+  - component: {fileID: 3532196674438443973}
+  - component: {fileID: 5868254667361335574}
+  - component: {fileID: 1613724081351872508}
   m_Layer: 6
   m_Name: Enemy_Normal_1
   m_TagString: Enemy
@@ -924,28 +926,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5737902610290573324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124620233068310814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4bfa199fe3b2d4cbe5597bc57c16e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isStunned: 0
-  health: 15
-  damage: 1
-  dashDistance: 0.1
-  dashInterval: 1
-  moveSpeed: 1
-  planetTarget: {fileID: 0}
-  thrusterFX: {fileID: 8494555794564922000}
-  deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
-  xpReward: 5
 --- !u!114 &4652173292674739430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,3 +950,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afa94ffd1d7b9c4fbfdd52afbfda547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3532196674438443973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b52e3ffe9b2bcf45aa1f947cbbbee7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStunned: 0
+  health: 13
+  damage: 3
+  moveSpeed: 1
+  planetTarget: {fileID: 0}
+  thrusterFX: {fileID: 8494555794564922000}
+  deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
+  audioPrefab: {fileID: 8763544008104451575, guid: 460529501f46c9e4089a88f48ed9bb5d, type: 3}
+  deathAudioClip: {fileID: 8300000, guid: 62ec4786729185e44931766a2b6d1958, type: 3}
+  xpReward: 1
+--- !u!114 &5868254667361335574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82550923ad5658b4890023531de4102d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 0.2
+  dashInterval: 1
+--- !u!114 &1613724081351872508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9b1281ee6bd5742bd4a98616aba925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.3
+  damage: 5
+  explosionVFX: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
+  explosionHFX: {fileID: 21300000, guid: db99bf87a50832348b0d7cc7b106eebf, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}

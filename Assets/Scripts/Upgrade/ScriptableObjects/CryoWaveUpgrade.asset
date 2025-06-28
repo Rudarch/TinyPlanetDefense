@@ -16,10 +16,11 @@ MonoBehaviour:
   description: The planet emits a cold wave that slows enemies
   icon: {fileID: 3552558349183966338, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 3
-  baseEnergyDrain: 1
-  energyDrainPerLevel: 0.5
-  energyDrainAmount: 2.5
+  currentLevel: 0
+  prerequisites: []
+  baseEnergyDrain: 3
+  energyDrainPerLevel: 0
+  energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
@@ -28,7 +29,6 @@ MonoBehaviour:
   effectVFX: {fileID: 3300220418731288602, guid: 11ea02431d20ae04aa5409f4ea650eab, type: 3}
   slowDuration: 1.5
   baseSlowAmount: 0.1
-  slowAmountPerLevel: 0.1
-  radius: 2
+  slowAmountPerLevel: 0.2
+  radius: 3
   waveInterval: 1
-  slowAmount: 8

@@ -16,11 +16,11 @@ MonoBehaviour:
   description: Sets enemies on fire
   icon: {fileID: 4433317290345902414, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
   prerequisites: []
   baseEnergyDrain: 3
   energyDrainPerLevel: 0
-  energyDrainAmount: 0
+  energyDrainAmount: 3
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
   activationStyle: 1
   burnZonePrefab: {fileID: 5662877110636264449, guid: e5542b3180af67a4e8b784a417a91357, type: 3}
   baseThermiteDPSPercent: 0
-  thermiteDPSPercentPerLevel: 0.15
+  thermiteDPSPercentPerLevel: 0.1
   baseBurnZoneRadius: 0.1
   burnZoneRadiusPercentPerLevel: 0.1
   enemyBurnDuration: 2

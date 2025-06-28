@@ -16,12 +16,16 @@ MonoBehaviour:
   description: Adds an autonomous attack drone
   icon: {fileID: -4576195762108713507, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 10
-  currentLevel: 1
-  baseEnergyDrain: 1
-  energyDrainPerLevel: 0.5
-  energyDrainAmount: 1.5
+  currentLevel: 0
+  prerequisites: []
+  baseEnergyDrain: 3
+  energyDrainPerLevel: 0
+  energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 0
-  activationStyle: 1
   activationDuration: 0
+  activationStyle: 1
+  interceptorsPerLevel: 2
+  launchDelay: 0.5
+  spawnOffset: 0.5

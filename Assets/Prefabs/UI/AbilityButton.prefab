@@ -291,7 +291,7 @@ MonoBehaviour:
   icon: {fileID: 8270130816825263860}
   glowEffect: {fileID: 1828428533583833574}
   toggleOnIconColor: {r: 1, g: 1, b: 1, a: 1}
-  toggleOnGlowColor: {r: 0, g: 0.8256936, b: 1, a: 1}
+  toggleOnGlowColor: {r: 1, g: 0.47450984, b: 0, a: 1}
   disabledToggleIconColor: {r: 0.37897465, g: 0.3808782, b: 0.381132, a: 0.6745098}
   disabledToggleGlowColor: {r: 0.3803922, g: 0.3803922, b: 0.3803922, a: 0.6666667}
   timedOnIconColor: {r: 1, g: 1, b: 1, a: 1}

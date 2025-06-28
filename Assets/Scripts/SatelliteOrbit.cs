@@ -8,6 +8,11 @@ public class SatelliteOrbit : MonoBehaviour
 
     private float angle;
 
+    private void Start()
+    {
+        orbitRadius = Vector3.Distance(this.transform.position, center.position);
+    }
+
     void Update()
     {
         if (center == null) return;

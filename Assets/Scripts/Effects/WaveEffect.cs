@@ -3,6 +3,7 @@ using UnityEngine;
 public class WaveEffect : MonoBehaviour
 {
     public float fadeDuration = 0.4f;
+    public Sprite waveImage;
     [HideInInspector] public Color effectColor = Color.white;
     [HideInInspector] public float maxRadius = 5f;
 
@@ -19,7 +20,10 @@ public class WaveEffect : MonoBehaviour
 
         if (sr != null)
             effectColor = sr.color;
-
+        if (sr != null && waveImage != null)
+        {
+            sr.sprite = waveImage;
+        }
         expandSpeed = maxRadius / fadeDuration;
     }
 

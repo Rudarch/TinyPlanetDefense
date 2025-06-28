@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ExperienceSystem : MonoBehaviour
 {
@@ -9,14 +10,26 @@ public class ExperienceSystem : MonoBehaviour
     public int baseXPToLevel = 5;
     public float levelMultiplier = 1.5f;
     public UpgradePopup upgradePopup;
+    public GameObject levelUpButton;
 
     public UnityEvent OnLevelUp;
+    public UnityEvent<int> OnPendingLevelUpChanged;
     public UnityEvent<float, float> OnXPChanged;
 
     private int pendingLevelUps = 0;
     private bool isChoosingUpgrade = false;
     private int xpToNextLevel;
     private AudioSource audioSource;
+
+    public int PendingLevelUps
+    {
+        get => pendingLevelUps;
+        set
+        {
+            pendingLevelUps = value;
+            OnPendingLevelUpChanged.Invoke(pendingLevelUps);
+        }
+    }
 
     void Start()
     {
@@ -33,48 +46,53 @@ public class ExperienceSystem : MonoBehaviour
         {
             currentXP -= xpToNextLevel;
             currentLevel++;
-            pendingLevelUps++;
+            PendingLevelUps++;
 
             OnLevelUp?.Invoke();
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+
+            levelUpButton?.SetActive(true);
 
             xpToNextLevel = GetXPRequirementForLevel(currentLevel);
         }
 
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
-
-        TryShowUpgradePopup();
     }
 
     private void TryShowUpgradePopup()
     {
-        if (isChoosingUpgrade || pendingLevelUps <= 0 || upgradePopup == null)
+        if (isChoosingUpgrade || PendingLevelUps <= 0 || upgradePopup == null)
             return;
-
-        if (audioSource != null)
-        {
-            audioSource.Play();
-        }
 
         isChoosingUpgrade = true;
         Time.timeScale = 0f; // Pause game
+
         upgradePopup.ShowTacticalChoices();
     }
 
     public void OnUpgradeSelected()
     {
-        pendingLevelUps--;
-
-        if (pendingLevelUps > 0)
+        PendingLevelUps--;
+            isChoosingUpgrade = false;
+        if (PendingLevelUps > 0)
         {
-            upgradePopup.ShowTacticalChoices();
+            TryShowUpgradePopup();
         }
         else
         {
-            isChoosingUpgrade = false;
+            levelUpButton.SetActive(false);
             Time.timeScale = 1f;
         }
     }
 
+    public void OnLevelUpButtonPressed()
+    {
+        TryShowUpgradePopup();
+    }
 
     private int GetXPRequirementForLevel(int level)
     {

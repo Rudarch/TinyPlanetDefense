@@ -27,5 +27,5 @@ MonoBehaviour:
   activationDuration: 0
   activationStyle: 1
   baseChance: 0
-  chancePerLevel: 35
+  chancePerLevel: 0.35
   extraShotInterval: 0.1

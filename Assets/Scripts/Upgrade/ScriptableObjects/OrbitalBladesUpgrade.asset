@@ -32,5 +32,5 @@ MonoBehaviour:
   baseRotationSpeed: 60
   rotationSpeedPerLevel: 30
   damageInterval: 2
-  orbitRadius: 2
+  orbitRadius: 1.5
   damage: 2

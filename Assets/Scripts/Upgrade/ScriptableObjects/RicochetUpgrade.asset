@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Bullets ricochet to more targets
   icon: {fileID: -1266927123, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
+  currentLevel: 2
   prerequisites: []
   baseEnergyDrain: 3
   energyDrainPerLevel: 0
@@ -27,5 +27,5 @@ MonoBehaviour:
   activationDuration: 0
   activationStyle: 1
   extraRicochets: 1
-  extraRange: 0.2
-  ricochetDamageMultiplier: 0.7
+  extraRange: 0.3
+  ricochetDamageMultiplier: 0.5
