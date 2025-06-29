@@ -498,9 +498,31 @@ MonoBehaviour:
   waves:
   - enemyGroups:
     - enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      count: 50
-      spawnDuration: 25
+      count: 25
+      spawnDuration: 2
       spawnZoneIndex: 1
+    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
+      count: 1
+      spawnDuration: 2
+      spawnZoneIndex: 1
+    waitForEnemiesToDie: 1
+  - enemyGroups:
+    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
+      count: 5
+      spawnDuration: 5
+      spawnZoneIndex: 1
+    - enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      count: 5
+      spawnDuration: 5
+      spawnZoneIndex: 1
+    - enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+      count: 5
+      spawnDuration: 5
+      spawnZoneIndex: 3
+    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
+      count: 5
+      spawnDuration: 5
+      spawnZoneIndex: 3
     waitForEnemiesToDie: 0
   spawnZones:
   - {fileID: 1555189623}
@@ -4010,7 +4032,7 @@ MonoBehaviour:
   baseMaxEnergy: 100
   currentEnergy: 100
   baseRegenPerSecond: 2
-  regenPerLevel: 0.5
+  regenPerLevel: 0.1
   energyFillImage: {fileID: 257797572}
   energyDeltaText: {fileID: 2130381914}
   currentEnergyText: {fileID: 868788378}
@@ -4869,7 +4891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotatingPart: {fileID: 1920778747}
   weaponSystem: {fileID: 1920778749}
-  allowedDeviationAngle: 5
+  allowedDeviationAngle: 4
   baseRotationSpeed: 90
   planetTransform: {fileID: 2895315123865355977}
 --- !u!1 &1914083663
@@ -5054,7 +5076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
-  baseCooldown: 0.7
+  baseCooldown: 2
   twinBarrelDelay: 0.15
   muzzleCenter: {fileID: 4131335431094804155}
   muzzleLeft: {fileID: 1116838083}

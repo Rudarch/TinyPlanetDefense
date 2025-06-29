@@ -2,21 +2,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class Projectile : MonoBehaviour
+public class Projectile : BaseProjectile
 {
     [Header("Damage Settings")]
     public float minDamage = 8f;
     public float maxDamage = 12f;
     [HideInInspector] public float damage;
 
-    public float speed = 10f;
-    public float lifetime = 5f; 
     public GameObject ricochetLinePrefab;
     public GameObject explosionEffectPrefab;
     public GameObject impactFlashPrefab;
     public AudioClip hitSound;
 
-    private Vector2 direction;
     private AudioSource audioSource;
     private List<Enemy> hitEnemies = new();
     private Enemy directHitEnemy = null;
@@ -27,9 +24,9 @@ public class Projectile : MonoBehaviour
     private bool isOvercharged = false;
     private bool isDestroyed = false;
 
-
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         audioSource = GetComponent<AudioSource>();
         damage = Random.Range(minDamage, maxDamage);
         damage += Upgrades.Inst.HighCaliber.BonusDamage;
@@ -43,12 +40,7 @@ public class Projectile : MonoBehaviour
         pierceCount = Upgrades.Inst.PiercingAmmo.IsActivated ? Upgrades.Inst.PiercingAmmo.PierceCount : 0;
 
         CheckImmediateOverlap();
-        Destroy(gameObject, lifetime);
-    }
 
-    void Update()
-    {
-        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
     void LateUpdate()
@@ -56,23 +48,10 @@ public class Projectile : MonoBehaviour
         ResetFrame();
     }
 
-    public void SetDirection(Vector2 dir)
-    {
-        direction = dir.normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-    }
-
     public void ApplyOvercharge(float scaleMultiplier)
     {
         isOvercharged = true;
         transform.localScale *= scaleMultiplier;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (isDestroyed) return;
-        OnHit(other);
     }
 
     public void CheckImmediateOverlap()
@@ -104,10 +83,20 @@ public class Projectile : MonoBehaviour
         HandleHit(enemy);
     }
 
-    private void HandleHit(Enemy enemy)
+    protected override void HandleHit(Collider2D other)
     {
         if (isDestroyed) return;
+        if (hasHitThisFrame) return;
+        hasHitThisFrame = true;
 
+        var enemy = other.GetComponent<Enemy>();
+        if (enemy == null || hitEnemies.Contains(enemy)) return;
+
+        HandleHit(enemy); // your full effect stack
+    }
+
+    private void HandleHit(Enemy enemy)
+    {
         if (directHitEnemy == null)
             directHitEnemy = enemy;
 

@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   icon: {fileID: 1841340840, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 99
-  currentLevel: 2
+  currentLevel: 0
   prerequisites: []
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 0
-  bonusRegen: 1.5
+  bonusRegen: 1
   bonusCapacity: 15

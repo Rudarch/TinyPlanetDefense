@@ -4,6 +4,7 @@ public class LaunchProjectile : EnemyAbilityBase
 {
     public GameObject projectilePrefab;
     public float cooldown = 3f;
+    public float attackRange = 2f;
     private float timer = 0f;
 
     public override void OnUpdate()
@@ -11,11 +12,14 @@ public class LaunchProjectile : EnemyAbilityBase
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            if (projectilePrefab != null && enemy.planetTarget)
+            var distanceToTarget = Vector3.Distance(transform.position, enemy.planetTarget.position);
+            if (projectilePrefab != null && enemy.planetTarget && distanceToTarget <= attackRange)
             {
                 GameObject proj = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
                 Vector2 dir = (enemy.planetTarget.position - enemy.transform.position).normalized;
-                proj.GetComponent<Rigidbody2D>().linearVelocity = dir * 5f;
+                //proj.GetComponent<Rigidbody2D>().linearVelocity = dir * 5f;
+                var enemyProjecctile = proj.GetComponent<EnemyProjectile>();
+                enemyProjecctile.SetDirection(dir);
             }
             timer = cooldown;
         }
