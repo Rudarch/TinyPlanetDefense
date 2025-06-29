@@ -9,11 +9,14 @@ public class LaunchProjectile : EnemyAbilityBase
 
     public override void OnUpdate()
     {
+        var distanceToTarget = Vector3.Distance(transform.position, enemy.planetTarget.position);
+        if (distanceToTarget <= attackRange) enemy.shouldMove = false;
+        else enemy.shouldMove = true;
+
         timer -= Time.deltaTime;
-        if (timer <= 0f)
+        if (timer <= 0f && distanceToTarget <= attackRange)
         {
-            var distanceToTarget = Vector3.Distance(transform.position, enemy.planetTarget.position);
-            if (projectilePrefab != null && enemy.planetTarget && distanceToTarget <= attackRange)
+            if (projectilePrefab != null && enemy.planetTarget)
             {
                 GameObject proj = Instantiate(projectilePrefab, enemy.transform.position, Quaternion.identity);
                 Vector2 dir = (enemy.planetTarget.position - enemy.transform.position).normalized;

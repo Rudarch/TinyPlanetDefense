@@ -1,0 +1,273 @@
+fileFormatVersion: 2
+guid: 65edce5b98ecfc74e9ca50320865ba5b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7722652372793058285
+    second: Enemy_demonic_effects_1_0
+  - first:
+      213: 796264527649699111
+    second: Enemy_demonic_effects_1_1
+  - first:
+      213: 6107584188867832960
+    second: Enemy_demonic_effects_1_2
+  - first:
+      213: -837814078595939147
+    second: Enemy_demonic_effects_1_3
+  - first:
+      213: -3524946170571530553
+    second: Enemy_demonic_effects_1_4
+  - first:
+      213: 3559207624687381495
+    second: Enemy_demonic_effects_1_5
+  - first:
+      213: -2700947897439090984
+    second: Enemy_demonic_effects_1_6
+  - first:
+      213: -6686900680490681324
+    second: Enemy_demonic_effects_1_7
+  - first:
+      213: -2805820796861115091
+    second: Enemy_demonic_effects_1_8
+  - first:
+      213: 4767804620371537991
+    second: Enemy_demonic_effects_1_9
+  - first:
+      213: -9183976848838695442
+    second: Enemy_demonic_effects_1_10
+  - first:
+      213: 1098212275958557702
+    second: Enemy_demonic_effects_1_11
+  - first:
+      213: -1293962226510621935
+    second: Enemy_demonic_effects_1_12
+  - first:
+      213: -7991951318900822951
+    second: Enemy_demonic_effects_1_13
+  - first:
+      213: 1625190020197832006
+    second: Enemy_demonic_effects_1_14
+  - first:
+      213: -4340205916986299022
+    second: Enemy_demonic_effects_1_15
+  - first:
+      213: 5834464763492845542
+    second: Enemy_demonic_effects_1_16
+  - first:
+      213: -1629556879542395102
+    second: Enemy_demonic_effects_1_17
+  - first:
+      213: 1323216139426083936
+    second: Enemy_demonic_effects_1_18
+  - first:
+      213: 1841061091927833608
+    second: Enemy_demonic_effects_1_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy_demonic_effects_1_leftThunder
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 638
+        width: 290
+        height: 520
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 725fdcd7e56ec0b00800000000000000
+      internalID: 796264527649699111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_demonic_effects_1_circle
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 73
+        width: 804
+        height: 784
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08c624dd57f72c450800000000000000
+      internalID: 6107584188867832960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_demonic_effects_1_rightThunder
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 43
+        width: 319
+        height: 513
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 645d66676b5dd8610800000000000000
+      internalID: 1625190020197832006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 84d56f9971c53824d9c4efcf894dcf8a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Enemy_demonic_effects_1_0: 265598512
+      Enemy_demonic_effects_1_circle: 6107584188867832960
+      Enemy_demonic_effects_1_leftThunder: 796264527649699111
+      Enemy_demonic_effects_1_rightThunder: 1625190020197832006
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

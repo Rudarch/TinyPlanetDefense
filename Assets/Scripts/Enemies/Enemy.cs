@@ -10,8 +10,9 @@ public class Enemy : MonoBehaviour
     public float health = 5f;
     public float damage = 1f;
 
-    [Header("Dash Movement")]
+    [Header("Movement")]
     public float moveSpeed = 1f;
+    public bool shouldMove = true;
 
     [Header("References")]
     public Transform planetTarget;
@@ -67,7 +68,8 @@ public class Enemy : MonoBehaviour
         foreach (var ab in abilities)
             ab.OnUpdate();
 
-        movement?.TickMovement(); // Optional, if movement uses frame-based logic
+        if (shouldMove)
+            movement?.TickMovement();
     }
 
     public void ApplyKnockback(Vector2 force)

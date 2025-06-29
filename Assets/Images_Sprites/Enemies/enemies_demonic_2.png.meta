@@ -785,7 +785,33 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enemies_demonic_2_0: -379919729414753127
+      enemies_demonic_2_1: -1896648248842408488
+      enemies_demonic_2_10: -3585171503257926555
+      enemies_demonic_2_11: -2132232869781619983
+      enemies_demonic_2_12: 216364358189627690
+      enemies_demonic_2_13: -8644829356588658571
+      enemies_demonic_2_14: -2583608989826998436
+      enemies_demonic_2_15: -2886996762435315052
+      enemies_demonic_2_16: 7952850094083345911
+      enemies_demonic_2_17: -1884194474319153240
+      enemies_demonic_2_18: 1300255278163780030
+      enemies_demonic_2_19: 741007674050026758
+      enemies_demonic_2_2: -8388918917552082462
+      enemies_demonic_2_20: 8242587447271831632
+      enemies_demonic_2_21: -3898856186793433800
+      enemies_demonic_2_22: -1268347745071165420
+      enemies_demonic_2_23: 403092779218041941
+      enemies_demonic_2_24: -8359017285232254747
+      enemies_demonic_2_25: 8528899089421876344
+      enemies_demonic_2_3: -470332109685415458
+      enemies_demonic_2_4: -7305261023030352135
+      enemies_demonic_2_5: 8915758906318677208
+      enemies_demonic_2_6: 8847715013887573133
+      enemies_demonic_2_7: -3770646253111375253
+      enemies_demonic_2_8: -4670943028409129472
+      enemies_demonic_2_9: -9192491375856010104
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

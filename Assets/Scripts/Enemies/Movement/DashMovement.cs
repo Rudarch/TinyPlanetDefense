@@ -21,7 +21,7 @@ public class DashMovement : EnemyMovementBase
     {
         while (true)
         {
-            if (enemy.IsStunned())
+            if (enemy.IsStunned() || !enemy.shouldMove)
             {
                 yield return null;
                 continue;
