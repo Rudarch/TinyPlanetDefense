@@ -965,6 +965,7 @@ MonoBehaviour:
   health: 5
   damage: 3
   moveSpeed: 1
+  shouldMove: 1
   planetTarget: {fileID: 0}
   thrusterFX: {fileID: 8494555794564922000}
   deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
@@ -983,5 +984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82550923ad5658b4890023531de4102d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashDistance: 0.2
+  dashDistance: 0.5
   dashInterval: 0.5
+  minPositiveDeviation: 45
+  maxPositiveDeviation: 90
+  minNegativeDeviation: 0
+  maxNegativeDeviation: 0

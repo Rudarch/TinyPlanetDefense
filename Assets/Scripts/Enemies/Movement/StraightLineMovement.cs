@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SimpleApproachMovement : EnemyMovementBase
+public class StraightLineMovement : EnemyMovementBase
 {
     public override void TickMovement()
     {

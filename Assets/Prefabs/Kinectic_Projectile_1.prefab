@@ -209,11 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eba54d5083134144b97823a329744d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  lifetime: 7
   minDamage: 8
   maxDamage: 15
   damage: 4
-  speed: 0.8
-  lifetime: 5
   ricochetLinePrefab: {fileID: 1408851793309974807, guid: dfb982c2c600937498e8617649b6975f, type: 3}
   explosionEffectPrefab: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
   impactFlashPrefab: {fileID: 0}

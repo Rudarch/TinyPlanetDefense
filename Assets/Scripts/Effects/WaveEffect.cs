@@ -20,6 +20,7 @@ public class WaveEffect : MonoBehaviour
 
         if (sr != null)
             effectColor = sr.color;
+
         if (sr != null && waveImage != null)
         {
             sr.sprite = waveImage;

@@ -5,6 +5,13 @@ public class DashMovement : EnemyMovementBase
 {
     public float dashDistance = 1.5f;
     public float dashInterval = 1.0f;
+
+    [Header("Deviation (degrees)")]
+    public float minPositiveDeviation = 0f;
+    public float maxPositiveDeviation = 0f;
+    public float minNegativeDeviation = 0f;
+    public float maxNegativeDeviation = 0f;
+
     private Coroutine dashRoutine;
 
     public override void Initialize(Enemy owner)
@@ -31,8 +38,16 @@ public class DashMovement : EnemyMovementBase
             yield return new WaitForSeconds(interval);
 
             if (enemy.planetTarget == null) yield break;
+            // Base direction toward planet
+            Vector3 baseDir = (enemy.planetTarget.position - transform.position).normalized;
 
-            Vector3 dir = (enemy.planetTarget.position - transform.position).normalized;
+            // Choose random deviation
+            float deviation = Random.value < 0.5f
+                ? Random.Range(minNegativeDeviation, maxNegativeDeviation)
+                : Random.Range(minPositiveDeviation, maxPositiveDeviation);
+
+            // Apply deviation to direction
+            Vector3 dir = Quaternion.Euler(0, 0, deviation) * baseDir;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
 

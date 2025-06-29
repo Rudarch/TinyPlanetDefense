@@ -827,8 +827,8 @@ GameObject:
   - component: {fileID: 4652173292674739430}
   - component: {fileID: 8827065812746665399}
   - component: {fileID: 3532196674438443973}
-  - component: {fileID: 5868254667361335574}
   - component: {fileID: 5412317271194712294}
+  - component: {fileID: 2111834432725253881}
   m_Layer: 6
   m_Name: Tormentor_Drone
   m_TagString: Enemy
@@ -966,26 +966,13 @@ MonoBehaviour:
   health: 25
   damage: 3
   moveSpeed: 1
+  shouldMove: 1
   planetTarget: {fileID: 0}
   thrusterFX: {fileID: 8494555794564922000}
   deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
   audioPrefab: {fileID: 8763544008104451575, guid: 460529501f46c9e4089a88f48ed9bb5d, type: 3}
   deathAudioClip: {fileID: 8300000, guid: 62ec4786729185e44931766a2b6d1958, type: 3}
-  xpReward: 3
---- !u!114 &5868254667361335574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124620233068310814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82550923ad5658b4890023531de4102d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDistance: 0.1
-  dashInterval: 0.2
+  xpReward: 10
 --- !u!114 &5412317271194712294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,3 +988,15 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7974607456177255295, guid: 63f073cdd0712ec42a5781ec9f7c6dca, type: 3}
   cooldown: 3
   attackRange: 2
+--- !u!114 &2111834432725253881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10cd620b645fed141a9d4cd68df13378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
