@@ -44,7 +44,7 @@ public class AnnihilatorRound : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            enemy.TakeDamage(damage);
+            enemy.UpdateHealth(damage);
             TriggerDestruction();
         }
     }

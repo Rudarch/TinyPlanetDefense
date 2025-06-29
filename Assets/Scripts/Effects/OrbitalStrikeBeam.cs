@@ -34,7 +34,7 @@ public class OrbitalStrikeBeam : MonoBehaviour
 
         if (target != null)
         {
-            target.TakeDamage(damage);
+            target.UpdateHealth(damage);
 
             if (lr != null)
             {

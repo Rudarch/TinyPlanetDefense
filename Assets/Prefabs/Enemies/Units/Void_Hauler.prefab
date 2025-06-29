@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: -8079562907128777200}
   - component: {fileID: -308142186462570606}
   m_Layer: 6
-  m_Name: Void_Hauler_Tank
+  m_Name: Void_Hauler
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -40,7 +40,7 @@ public class MoltenCollapseUpgrade : Upgrade
             if (enemy != null)
             {
                 // Optional: prevent double-dipping with a tag or flag here
-                enemy.TakeDamage(damage);
+                enemy.UpdateHealth(damage);
             }
         }
     }

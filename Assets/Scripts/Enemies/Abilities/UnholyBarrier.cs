@@ -39,7 +39,7 @@ public class UnholyBarrier : EnemyAbilityBase
         if (isActive && amount > 0f)
         {
             float reduced = amount * absorbPercent;
-            enemy.TakeDamage(-reduced); // absorb portion of damage
+            enemy.UpdateHealth(-reduced); // absorb portion of damage
         }
     }
 

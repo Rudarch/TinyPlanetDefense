@@ -963,6 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  maxHealth: 0
   health: 25
   damage: 3
   moveSpeed: 0.13
@@ -988,8 +989,8 @@ MonoBehaviour:
   radius: 0.3
   damage: 7
   explosionVFX: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
-  explosionHFX: {fileID: 21300000, guid: db99bf87a50832348b0d7cc7b106eebf, type: 3}
-  color: {r: 1, g: 0.23837279, b: 0, a: 1}
+  waveImage: {fileID: -1012193756, guid: 745fd1432eced8844813229982686e0b, type: 3}
+  color: {r: 1, g: 0.2392157, b: 0, a: 1}
 --- !u!114 &3090945136780174236
 MonoBehaviour:
   m_ObjectHideFlags: 0

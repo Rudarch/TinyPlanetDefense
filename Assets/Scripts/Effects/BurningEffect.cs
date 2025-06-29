@@ -44,7 +44,7 @@ public class BurningEffect : MonoBehaviour
         if (tickTimer >= tickInterval)
         {
             tickTimer = 0f;
-            enemy.TakeDamage(currentDPS * tickInterval);
+            enemy.UpdateHealth(currentDPS * tickInterval);
         }
 
         if (remainingTime <= 0f)

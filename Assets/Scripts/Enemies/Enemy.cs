@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public bool isStunned = false;
 
     [Header("Stats")]
+    public float maxHealth;
     public float health = 5f;
     public float damage = 1f;
 
@@ -26,7 +27,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int xpReward = 1;
 
-    private float maxHealth;
     private HealthBar healthBar;
     private Rigidbody2D rb;
     private bool isDying = false;
@@ -91,12 +91,13 @@ public class Enemy : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
     }
 
-    public void TakeDamage(float amount)
+    public void UpdateHealth(float amount)
     {
         health -= amount;
+        if (health > maxHealth) health = maxHealth;
 
         foreach (var ab in abilities)
-            ab.OnDamaged(amount);
+            if (amount > 0) ab.OnDamaged(amount);
 
         if (healthBar != null)
         {

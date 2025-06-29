@@ -164,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 215
-        y: 229
+        y: 230
         width: 200
         height: 200
       alignment: 0
@@ -247,6 +247,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: WaveEffects_1_0
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 216
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa5e18a4e6b6b4418165f2872336895
+      internalID: 1248858612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaveEffects_1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 481
+        width: 220
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a4f48e870fa30a49a9c4e33ff9dd289
+      internalID: -1012193756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -266,6 +310,8 @@ TextureImporter:
       WaveEffect_EMP_1: -3047848612078287061
       WaveEffect_Explosion_1: 1461451802548378912
       WaveEffect_Plasma_1: -6847080383904492472
+      WaveEffects_1_0: 1248858612
+      WaveEffects_1_1: -1012193756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

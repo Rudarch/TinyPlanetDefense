@@ -434,6 +434,18 @@ MonoBehaviour:
       count: 3
       spawnDuration: 1
       spawnZoneIndex: 4
+    - enemyPrefab: {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
+      count: 2
+      spawnDuration: 1
+      spawnZoneIndex: 3
+    - enemyPrefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
+      count: 4
+      spawnDuration: 1
+      spawnZoneIndex: 3
+    - enemyPrefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
+      count: 4
+      spawnDuration: 1
+      spawnZoneIndex: 4
     waitForEnemiesToDie: 1
   - enemyGroups:
     - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
@@ -455,6 +467,10 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
       count: 3
       spawnDuration: 1
+      spawnZoneIndex: 1
+    - enemyPrefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
+      count: 3
+      spawnDuration: 3
       spawnZoneIndex: 1
     waitForEnemiesToDie: 0
   spawnZones:

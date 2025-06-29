@@ -5,7 +5,7 @@ public class ExplodeOnDeath : EnemyAbilityBase
     public float radius = 2f;
     public float damage = 5f;
     public GameObject explosionVFX;
-    public Sprite explosionHFX;
+    public Sprite waveImage;
     public Color color;
 
     public override void OnDeath()
@@ -14,12 +14,7 @@ public class ExplodeOnDeath : EnemyAbilityBase
         {
             var explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
             var we = explosion.GetComponent<WaveEffect>();
-            if (we != null) 
-            {
-                we.waveImage = explosionHFX;
-                we.maxRadius = radius;
-                we.effectColor = color;
-            }
+            we.UpdateVisuals(waveImage, color, radius);
         }
         var hits = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (var hit in hits)

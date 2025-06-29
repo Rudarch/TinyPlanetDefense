@@ -11,7 +11,7 @@ public class HealNearbyOnDeath : EnemyAbilityBase
         {
             if (hit.TryGetComponent(out Enemy ally) && ally != enemy)
             {
-                ally.TakeDamage(-healAmount); // heals
+                ally.UpdateHealth(-healAmount); // heals
             }
         }
     }

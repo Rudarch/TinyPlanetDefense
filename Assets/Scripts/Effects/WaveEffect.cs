@@ -11,6 +11,25 @@ public class WaveEffect : MonoBehaviour
     private float timer = 0f;
     private float expandSpeed;
 
+    public void UpdateVisuals(Sprite waveImageReplacement, Color color, float radius, float fadeDuration)
+    {
+        if (waveImageReplacement != null)
+        {
+            UpdateVisuals(waveImageReplacement, color, radius);
+            this.fadeDuration = fadeDuration;
+        }
+    }
+
+    public void UpdateVisuals(Sprite waveImageReplacement, Color color, float radius)
+    {
+        if (waveImageReplacement != null)
+        {
+            waveImage = waveImageReplacement;
+            maxRadius = radius;
+            effectColor = color;
+        }
+    }
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -19,7 +38,7 @@ public class WaveEffect : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
 
         if (sr != null)
-            effectColor = sr.color;
+            sr.color = effectColor;
 
         if (sr != null && waveImage != null)
         {
@@ -38,7 +57,7 @@ public class WaveEffect : MonoBehaviour
 
         float alpha = Mathf.Lerp(0.5f, 0f, timer / fadeDuration);
         if (sr != null)
-            sr.color = new Color(effectColor.r, effectColor.g, effectColor.b, alpha);
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
 
         if (timer > fadeDuration)
             Destroy(gameObject);

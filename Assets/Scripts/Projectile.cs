@@ -101,7 +101,7 @@ public class Projectile : BaseProjectile
             directHitEnemy = enemy;
 
         hitEnemies.Add(enemy);
-        enemy.TakeDamage(damage);
+        enemy.UpdateHealth(damage);
         if (hitSound != null && audioSource != null)
         {
             audioSource.pitch = Random.Range(0.95f, 1.05f);
@@ -155,7 +155,7 @@ public class Projectile : BaseProjectile
             if (enemy != null && enemy != directHitEnemy)
             {
                 float aoeDamage = damage * Upgrades.Inst.ExplosiveRounds.SplashDamageMultiplier;
-                enemy.TakeDamage(aoeDamage);
+                enemy.UpdateHealth(aoeDamage);
             }
         }
 

@@ -38,7 +38,7 @@ public class PlasmaHaloUpgrade : PlanetEffectUpgrade
 
             foreach (var enemy in enemies)
             {
-                enemy.TakeDamage(DamagePerSecond * tickInterval);
+                enemy.UpdateHealth(DamagePerSecond * tickInterval);
             }
         }
     }

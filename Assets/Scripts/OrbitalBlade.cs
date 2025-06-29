@@ -54,7 +54,7 @@ public class OrbitalBlade : MonoBehaviour
         {
             if (!cooldowns.ContainsKey(enemy))
             {
-                enemy.TakeDamage(Upgrades.Inst.OrbitalBlades.Damage);
+                enemy.UpdateHealth(Upgrades.Inst.OrbitalBlades.Damage);
                 toAddCooldowns.Add(enemy);
             }
         }
