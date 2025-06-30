@@ -912,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  baseHealth: 0
   maxHealth: 0
   health: 5
   damage: 3
@@ -961,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9b1281ee6bd5742bd4a98616aba925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.3
+  radius: 0.5
   damage: 3
   explosionVFX: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
   waveImage: {fileID: -1012193756, guid: 745fd1432eced8844813229982686e0b, type: 3}
@@ -1145,11 +1146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3851997264246565920, guid: e28b0d378ba89e94e88cf38179a747b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.811
+      value: -0.718
       objectReference: {fileID: 0}
     - target: {fileID: 3851997264246565920, guid: e28b0d378ba89e94e88cf38179a747b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.766
+      value: 0.865
       objectReference: {fileID: 0}
     - target: {fileID: 3851997264246565920, guid: e28b0d378ba89e94e88cf38179a747b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1185,7 +1186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5135488937036144478, guid: e28b0d378ba89e94e88cf38179a747b9, type: 3}
       propertyPath: maxAlpha
-      value: 0.5
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5135488937036144478, guid: e28b0d378ba89e94e88cf38179a747b9, type: 3}
       propertyPath: maxShakeIntensity

@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         // Called automatically when the scene loads
+        //WaveEvents.OnWaveStarted = null;
         StartGame();
     }
 

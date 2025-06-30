@@ -10,12 +10,13 @@ public class WaveManager : MonoBehaviour
     public PlayerPerformanceTracker performanceTracker;
     public bool useAdaptiveWaves = false;
 
+    [SerializeField] private float hpScalingPerWave = 0.1f; // 10%
+
     private int currentWave = 0;
     private bool isSpawning = false;
 
     public void StartLevel()
     {
-        currentWave = 0;
         StartNextWave();
     }
 
@@ -23,20 +24,19 @@ public class WaveManager : MonoBehaviour
     {
         if (isSpawning) return;
 
-        WaveEvents.OnWaveStarted?.Invoke(currentWave);
+        currentWave++;
 
         if (useAdaptiveWaves)
         {
             WaveData wave = waveGenerator.GenerateWave(performanceTracker, currentWave, spawnZones.Length);
             levelWaves.Add(wave);
-            currentWave++;
+            WaveEvents.OnWaveStarted?.Invoke(currentWave);
             StartCoroutine(RunWave(wave));
         }
         else
         {
             if (currentWave >= levelWaves.Count) return;
             StartCoroutine(RunWave(levelWaves[currentWave]));
-            currentWave++;
         }
     }
 
@@ -84,6 +84,9 @@ public class WaveManager : MonoBehaviour
         var enemy = go.GetComponent<Enemy>();
         if (enemy != null)
         {
+            float hpMultiplier = Mathf.Pow(1f + hpScalingPerWave, currentWave);
+            enemy.ApplyHealthScaling(hpMultiplier);
+
             ApplyModifier(enemy, modifier);
         }
     }

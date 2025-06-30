@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     public bool isStunned = false;
 
     [Header("Stats")]
+    [HideInInspector] public float baseHealth;
     public float maxHealth;
     public float health = 5f;
     public float damage = 1f;
+    float healthMultiplier = 1f;
 
     [Header("Movement")]
     public float moveSpeed = 1f;
@@ -41,7 +43,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        health *= healthMultiplier;
         maxHealth = health;
+        baseHealth = health;
         moveSpeed = maxMovementSpeed;
 
         abilities = new(GetComponents<EnemyAbilityBase>());
@@ -73,6 +77,12 @@ public class Enemy : MonoBehaviour
         if (shouldMove)
             movement?.TickMovement();
     }
+
+    public void ApplyHealthScaling(float multiplier)
+    {
+        healthMultiplier = multiplier;
+    }
+
 
     public void ApplyKnockback(Vector2 force)
     {

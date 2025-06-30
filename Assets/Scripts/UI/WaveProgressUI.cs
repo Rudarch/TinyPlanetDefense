@@ -52,7 +52,7 @@ public class WaveProgressUI : MonoBehaviour
 
     public void SetWave(int waveIndex)
     {
-        currentWave = waveIndex;
+        currentWave = waveIndex  - 1;
 
         if (waveIndex > displayOffset + 3)
         {
@@ -137,11 +137,12 @@ public class WaveProgressUI : MonoBehaviour
     {
         WaveEvents.OnWaveStarted -= SetWave;
     }
+
     public void SetEnemiesRemaining(int count)
     {
-        if (count <= 0)
-        {
-            SetWave(currentWave + 1);
-        }
+        //if (count <= 0)
+        //{
+        //    SetWave(currentWave + 1);
+        //}
     }
 }
