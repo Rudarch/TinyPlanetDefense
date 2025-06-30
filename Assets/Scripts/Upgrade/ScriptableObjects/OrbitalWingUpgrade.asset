@@ -26,6 +26,6 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 1
-  interceptorsPerLevel: 2
+  interceptorsPerLevel: 1
   launchDelay: 0.5
   spawnOffset: 0.5

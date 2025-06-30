@@ -106,7 +106,7 @@ public class KineticCannon : WeaponSystem
         Vector2 finalDirection = dir;
         if (Upgrades.Inst.TwinBarrel.IsActivated)
         {
-            float spreadAngle = Random.Range(-22.5f, 22.5f); // 45° total cone
+            float spreadAngle = Random.Range(-Upgrades.Inst.TwinBarrel.SpreadAngle, Upgrades.Inst.TwinBarrel.SpreadAngle); // 45° total cone
             finalDirection = Quaternion.Euler(0, 0, spreadAngle) * dir;
         }
 

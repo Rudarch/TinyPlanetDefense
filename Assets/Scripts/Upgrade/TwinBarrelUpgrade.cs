@@ -4,10 +4,13 @@ using UnityEngine;
 public class TwinBarrelUpgrade : Upgrade
 {
     [SerializeField] float fireSpeedMultiplier = 0.66f;
+    [SerializeField] float spreadAngle = 0f;
     protected GameObject planet;
     protected KineticCannon cannon;
 
-    public float FireSpeedMultiplier { get { return fireSpeedMultiplier; } }
+    public float FireSpeedMultiplier { get => fireSpeedMultiplier; }
+
+    public float SpreadAngle { get => spreadAngle; }
 
     protected void Awake()
     {

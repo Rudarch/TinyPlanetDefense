@@ -21,7 +21,7 @@ MonoBehaviour:
   baseEnergyDrain: 0
   energyDrainPerLevel: 0
   energyDrainAmount: 0
-  baseActivationEnergyCost: 50
+  baseActivationEnergyCost: 80
   activationEnergyCostPerLevel: 0
   activationEnergyAmount: 50
   activationDuration: 15
@@ -32,5 +32,5 @@ MonoBehaviour:
   baseRotationSpeed: 60
   rotationSpeedPerLevel: 30
   damageInterval: 2
-  orbitRadius: 1.5
+  orbitRadius: 2
   damage: 2

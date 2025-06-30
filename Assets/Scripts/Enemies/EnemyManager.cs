@@ -7,14 +7,13 @@ public class EnemyManager : MonoBehaviour
 
     private readonly List<Enemy> activeEnemies = new();
 
+    private PlayerPerformanceTracker performanceTracker;
+
     void Awake()
     {
-        if (Inst != null && Inst != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (Inst != null && Inst != this) { Destroy(gameObject); return; }
         Inst = this;
+        performanceTracker = FindAnyObjectByType<PlayerPerformanceTracker>();
     }
 
     public void RegisterEnemy(Enemy enemy)
@@ -30,6 +29,11 @@ public class EnemyManager : MonoBehaviour
         if (activeEnemies.Contains(enemy))
         {
             activeEnemies.Remove(enemy);
+
+            if (performanceTracker != null)
+            {
+                performanceTracker.NotifyEnemyKilled();
+            }
         }
     }
 

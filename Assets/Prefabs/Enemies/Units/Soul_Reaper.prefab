@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 3532196674438443973}
   - component: {fileID: -8079562907128777200}
   - component: {fileID: 4898620271744736696}
+  - component: {fileID: 3149547534331483945}
   m_Layer: 6
   m_Name: Soul_Reaper
   m_TagString: Enemy
@@ -762,6 +763,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3101689248511412089}
+  - {fileID: 2152899866753918318}
   - {fileID: 3031271815529474196}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -799,7 +801,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.20505154, y: -0.048912346}
+  m_Offset: {x: -0.055009454, y: -0.048912346}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -809,7 +811,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2168736, y: 1.0224689}
+  m_Size: {x: 0.91678935, y: 1.0224689}
   m_EdgeRadius: 0
 --- !u!50 &9112627927622203431
 Rigidbody2D:
@@ -878,13 +880,14 @@ MonoBehaviour:
   maxHealth: 0
   health: 25
   damage: 1
-  moveSpeed: 0.09
+  moveSpeed: 0
+  maxMovementSpeed: 0.09
   shouldMove: 1
   planetTarget: {fileID: 0}
-  thrusterFX: {fileID: 0}
+  thrusterFX: {fileID: 2116032241973071172}
   deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
   audioPrefab: {fileID: 8763544008104451575, guid: 460529501f46c9e4089a88f48ed9bb5d, type: 3}
-  deathAudioClip: {fileID: 8300000, guid: 62ec4786729185e44931766a2b6d1958, type: 3}
+  deathAudioClip: {fileID: 8300000, guid: 69d3d3e5073dc7b42a58f583789b153f, type: 3}
   xpReward: 3
 --- !u!114 &-8079562907128777200
 MonoBehaviour:
@@ -910,10 +913,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4da57ea628a1b44803d9bee6fe91f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount: 1
+  healAmount: 25
   radius: 1
-  cooldown: 2
+  cooldown: 5
   fadeDuration: 2
   healVFX: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
   waveImage: {fileID: 1248858612, guid: 745fd1432eced8844813229982686e0b, type: 3}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
+--- !u!114 &3149547534331483945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3c49f2b28df35439eb7c58241a9427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 3
+  role: 0
+  synergyWith: 0100000004000000
+  groupMinCount: 1
+  requiresMix: 1
+--- !u!1001 &3068869999380517624
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8611095868110961764}
+    m_Modifications:
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.465
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0015421022
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -2.8107628e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 2.697646e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.823
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020440261493120956, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+      propertyPath: m_Name
+      value: ThrusterFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+--- !u!1 &2116032241973071172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4020440261493120956, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+  m_PrefabInstance: {fileID: 3068869999380517624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2152899866753918318 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3996507083195791254, guid: 857cb9bb20f9f23428629ae5c4c093fd, type: 3}
+  m_PrefabInstance: {fileID: 3068869999380517624}
+  m_PrefabAsset: {fileID: 0}

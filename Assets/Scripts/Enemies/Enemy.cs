@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 1f;
+    public float maxMovementSpeed;
     public bool shouldMove = true;
 
     [Header("References")]
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         maxHealth = health;
+        moveSpeed = maxMovementSpeed;
 
         abilities = new(GetComponents<EnemyAbilityBase>());
         foreach (var ab in abilities)

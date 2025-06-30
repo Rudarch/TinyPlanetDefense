@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -21,79 +20,95 @@ public class WaveProgressUI : MonoBehaviour
     private int currentWave = 0;
     private Coroutine scrollRoutine;
 
+    private int displayOffset = 0;
+    private const int maxVisible = 5;
+    private const int bufferSize = 7;
+
     public float slideSpeed = 8f;
 
-    public void Initialize(int totalWaves)
+    void Start()
     {
-        foreach (Transform child in waveScrollContent)
-            Destroy(child.gameObject);
-
-        waveItems.Clear();
-        waveLabels.Clear();
-        waveIcons.Clear();
-
-        float itemWidth = 0f;
-        float spacing = 0f;
-
-        HorizontalLayoutGroup layoutGroup = waveScrollContent.GetComponent<HorizontalLayoutGroup>();
-        if (layoutGroup != null)
-            spacing = layoutGroup.spacing;
-
-        for (int i = 0; i < totalWaves; i++)
+        for (int i = 0; i < bufferSize; i++)
         {
             GameObject go = Instantiate(waveNumberPrefab, waveScrollContent);
             var label = go.GetComponentInChildren<TextMeshProUGUI>();
             var icon = go.GetComponentInChildren<Image>();
-            RectTransform itemRect = go.GetComponent<RectTransform>();
 
-            if (label != null && icon != null)
-            {
-                label.text = (i + 1).ToString();
-                label.color = pendingColor;
-                icon.color = pendingColor;
+            int waveNumber = i + 1;
 
-                waveItems.Add(go);
-                waveLabels.Add(label);
-                waveIcons.Add(icon);
-            }
+            label.text = waveNumber.ToString();
+            label.color = pendingColor;
+            icon.color = pendingColor;
 
-            if (itemRect != null && itemWidth == 0f)
-                itemWidth = itemRect.sizeDelta.x;
+            waveItems.Add(go);
+            waveLabels.Add(label);
+            waveIcons.Add(icon);
         }
 
-        float totalWidth = ((itemWidth / 2 * totalWaves) + (spacing / 2 * (totalWaves - 1) ) );
-        waveScrollContent.sizeDelta = new Vector2(totalWidth, waveScrollContent.sizeDelta.y);
-
+        SetWave(0);
         Canvas.ForceUpdateCanvases();
         LayoutRebuilder.ForceRebuildLayoutImmediate(waveScrollContent);
-        SetWave(0);
     }
 
     public void SetWave(int waveIndex)
     {
-        if (waveIndex >= waveLabels.Count)
-            return;
-
         currentWave = waveIndex;
+
+        if (waveIndex > displayOffset + 3)
+        {
+            RemoveLeftMostWave();
+            AddNewWaveAtEnd(waveIndex + 3);
+            displayOffset++;
+        }
 
         for (int i = 0; i < waveLabels.Count; i++)
         {
-            Color c = i < currentWave ? completedColor :
-                      i == currentWave ? activeColor : pendingColor;
+            int waveNum = displayOffset + i;
+            Color c = waveNum < currentWave ? completedColor :
+                      waveNum == currentWave ? activeColor : pendingColor;
 
             waveLabels[i].color = c;
             waveIcons[i].color = c;
+
+            waveItems[i].transform.localScale = (waveNum == currentWave)
+                ? Vector3.one * 1.5f
+                : Vector3.one;
         }
 
         if (scrollRoutine != null) StopCoroutine(scrollRoutine);
-        scrollRoutine = StartCoroutine(SmoothScrollToIndex(currentWave));
+        scrollRoutine = StartCoroutine(SmoothScrollToCenter(currentWave - displayOffset));
     }
 
-    IEnumerator SmoothScrollToIndex(int index)
+    void RemoveLeftMostWave()
+    {
+        Destroy(waveItems[0]);
+        waveItems.RemoveAt(0);
+        waveLabels.RemoveAt(0);
+        waveIcons.RemoveAt(0);
+    }
+
+    void AddNewWaveAtEnd(int waveNumber)
+    {
+        GameObject go = Instantiate(waveNumberPrefab, waveScrollContent);
+        var label = go.GetComponentInChildren<TextMeshProUGUI>();
+        var icon = go.GetComponentInChildren<Image>();
+
+        label.text = (waveNumber + 1).ToString();
+        label.color = pendingColor;
+        icon.color = pendingColor;
+
+        waveItems.Add(go);
+        waveLabels.Add(label);
+        waveIcons.Add(icon);
+    }
+
+    IEnumerator SmoothScrollToCenter(int localIndex)
     {
         yield return new WaitForEndOfFrame();
 
-        RectTransform item = waveItems[index].GetComponent<RectTransform>();
+        if (waveItems.Count == 0 || localIndex >= waveItems.Count) yield break;
+
+        RectTransform item = waveItems[localIndex].GetComponent<RectTransform>();
         Vector2 itemPos = (Vector2)scrollRect.transform.InverseTransformPoint(item.position);
         Vector2 centerPos = (Vector2)scrollRect.transform.InverseTransformPoint(scrollRect.viewport.position);
 
@@ -113,10 +128,18 @@ public class WaveProgressUI : MonoBehaviour
 
         waveScrollContent.anchoredPosition = target;
     }
+    void OnEnable()
+    {
+        WaveEvents.OnWaveStarted += SetWave;
+    }
 
+    void OnDisable()
+    {
+        WaveEvents.OnWaveStarted -= SetWave;
+    }
     public void SetEnemiesRemaining(int count)
     {
-        if (count <= 0 && currentWave + 1 < waveLabels.Count)
+        if (count <= 0)
         {
             SetWave(currentWave + 1);
         }

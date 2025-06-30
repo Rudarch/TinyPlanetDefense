@@ -372,8 +372,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 150644103}
-  - component: {fileID: 150644104}
   - component: {fileID: 150644105}
+  - component: {fileID: 150644108}
+  - component: {fileID: 150644107}
+  - component: {fileID: 150644106}
+  - component: {fileID: 150644109}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -396,91 +399,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &150644104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150644100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7434704bf35b34594b17d0a747d4eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - enemyGroups:
-    - enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      count: 25
-      spawnDuration: 2
-      spawnZoneIndex: 1
-    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
-      count: 1
-      spawnDuration: 2
-      spawnZoneIndex: 1
-    - enemyPrefab: {fileID: 9124620233068310814, guid: eeb9080f69d9e0a45a748f085c83edb6, type: 3}
-      count: 1
-      spawnDuration: 2
-      spawnZoneIndex: 1
-    - enemyPrefab: {fileID: 9124620233068310814, guid: eeb9080f69d9e0a45a748f085c83edb6, type: 3}
-      count: 1
-      spawnDuration: 2
-      spawnZoneIndex: 2
-    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
-      count: 1
-      spawnDuration: 2
-      spawnZoneIndex: 2
-    - enemyPrefab: {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
-      count: 3
-      spawnDuration: 1
-      spawnZoneIndex: 4
-    - enemyPrefab: {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
-      count: 2
-      spawnDuration: 1
-      spawnZoneIndex: 3
-    - enemyPrefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
-      count: 4
-      spawnDuration: 1
-      spawnZoneIndex: 3
-    - enemyPrefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
-      count: 4
-      spawnDuration: 1
-      spawnZoneIndex: 4
-    waitForEnemiesToDie: 1
-  - enemyGroups:
-    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
-      count: 5
-      spawnDuration: 5
-      spawnZoneIndex: 1
-    - enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      count: 5
-      spawnDuration: 5
-      spawnZoneIndex: 1
-    - enemyPrefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-      count: 5
-      spawnDuration: 5
-      spawnZoneIndex: 3
-    - enemyPrefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
-      count: 5
-      spawnDuration: 5
-      spawnZoneIndex: 3
-    - enemyPrefab: {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
-      count: 3
-      spawnDuration: 1
-      spawnZoneIndex: 1
-    - enemyPrefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
-      count: 3
-      spawnDuration: 3
-      spawnZoneIndex: 1
-    waitForEnemiesToDie: 0
-  spawnZones:
-  - {fileID: 1555189623}
-  - {fileID: 1396916443}
-  - {fileID: 67161815}
-  - {fileID: 1914083665}
-  enemyParent: {fileID: 150644103}
-  planetCenter: {fileID: 6671393143994966655}
-  extraDelayBetweenWaves: 3
 --- !u!114 &150644105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +418,72 @@ MonoBehaviour:
   activeColor: {r: 1, g: 0.6862745, b: 0, a: 1}
   completedColor: {r: 0.38541117, g: 0.72259635, b: 0.78867924, a: 1}
   slideSpeed: 6
+--- !u!114 &150644106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150644100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496471543d607c14daabdca7649c2b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTypes:
+  - {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
+  - {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+  - {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
+  - {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
+  - {fileID: 9124620233068310814, guid: eeb9080f69d9e0a45a748f085c83edb6, type: 3}
+  baseBudget: 10
+  budgetGrowth: 2.5
+--- !u!114 &150644107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150644100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811319888d819fb4d86bef78775c5863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackingDuration: 30
+--- !u!114 &150644108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150644100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9fb2c61cb3f2524496a05017c5ff188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelWaves: []
+  spawnZones:
+  - {fileID: 1555189622}
+  - {fileID: 1396916442}
+  - {fileID: 67161814}
+  - {fileID: 1914083664}
+  waveGenerator: {fileID: 150644106}
+  performanceTracker: {fileID: 150644107}
+  useAdaptiveWaves: 1
+--- !u!114 &150644109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150644100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6164bce8b10056346b3ba49d4c6b0967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &174562194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3786,16 +3770,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1536275461}
+  - component: {fileID: 1536275473}
+  - component: {fileID: 1536275474}
   - component: {fileID: 1536275463}
   - component: {fileID: 1536275466}
   - component: {fileID: 1536275472}
   - component: {fileID: 1536275465}
   - component: {fileID: 1536275471}
-  - component: {fileID: 1536275467}
   - component: {fileID: 1536275469}
   - component: {fileID: 1536275468}
   - component: {fileID: 1536275470}
-  - component: {fileID: 1536275473}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -3913,18 +3897,6 @@ MonoBehaviour:
   energyFillImage: {fileID: 257797572}
   energyDeltaText: {fileID: 2130381914}
   currentEnergyText: {fileID: 868788378}
---- !u!114 &1536275467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1536275458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6164bce8b10056346b3ba49d4c6b0967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1536275468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3953,7 +3925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentXP: 0
   currentLevel: 1
-  baseXPToLevel: 20
+  baseXPToLevel: 15
   levelMultiplier: 1.3
   upgradePopup: {fileID: 1536275463}
   levelUpButton: {fileID: 1537494993}
@@ -4162,6 +4134,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1536275474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536275458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f5a8d4e7964fb42899800f3fadbf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveManager: {fileID: 150644108}
+  tracker: {fileID: 150644107}
+  planet: {fileID: 6089606871271464104}
 --- !u!1 &1537494993
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,7 +4426,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1671328109}
   - component: {fileID: 1671328110}
-  - component: {fileID: 1671328111}
   - component: {fileID: 1671328112}
   m_Layer: 5
   m_Name: WaveScrollContent
@@ -4493,20 +4479,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1671328111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671328108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 0
 --- !u!114 &1671328112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,7 +4925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
-  baseCooldown: 0.2
+  baseCooldown: 0.75
   twinBarrelDelay: 0.15
   muzzleCenter: {fileID: 4131335431094804155}
   muzzleLeft: {fileID: 1116838083}
@@ -4970,10 +4942,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fd4d3d1c3e406f24db034b17fc66d637, type: 3}
-  m_Resource: {fileID: 8300000, guid: fd4d3d1c3e406f24db034b17fc66d637, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1befbee2ca3fb9c4c89ee2bba1e455e8, type: 3}
+  m_Resource: {fileID: 8300000, guid: 1befbee2ca3fb9c4c89ee2bba1e455e8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

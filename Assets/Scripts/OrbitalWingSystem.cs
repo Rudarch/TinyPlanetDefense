@@ -54,7 +54,7 @@ public class OrbitalWingSystem : MonoBehaviour
                 Vector3 spawnPosition = planet.position + (Vector3)(randomDir * (planetRadius + Upgrades.Inst.OrbitalWing.spawnOffset));
 
                 GameObject drone = Instantiate(interceptorPrefab, spawnPosition, Quaternion.identity);
-                var behavior = drone.GetComponent<InterceptorDrone>();
+                var behavior = drone.GetComponent<OrbitalWingAttackDrone>();
 
                 if (behavior != null)
                 {
@@ -73,14 +73,14 @@ public class OrbitalWingSystem : MonoBehaviour
         }
     }
 
-    IEnumerator TrackInterceptorLifecycle(InterceptorDrone drone)
+    IEnumerator TrackInterceptorLifecycle(OrbitalWingAttackDrone drone)
     {
         while (drone != null)
         {
             yield return null;
         }
 
-        float reload = interceptorPrefab.GetComponent<InterceptorDrone>()?.reloadTime ?? 5f;
+        float reload = interceptorPrefab.GetComponent<OrbitalWingAttackDrone>()?.reloadTime ?? 5f;
         yield return new WaitForSeconds(reload);
         activeInterceptors--;
     }

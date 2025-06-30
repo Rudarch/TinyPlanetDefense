@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class InterceptorDrone : MonoBehaviour
+public class OrbitalWingAttackDrone : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float rotationSpeed = 720f;
@@ -83,8 +83,12 @@ public class InterceptorDrone : MonoBehaviour
     {
         if (currentTarget == null || !IsTargetValid(currentTarget))
         {
-            state = State.Returning;
-            return;
+            currentTarget = FindNearestEnemy();
+            if (currentTarget == null)
+            {
+                state = State.Returning;
+                return;
+            }
         }
 
         Vector3 dir = (currentTarget.transform.position - transform.position).normalized;
@@ -102,13 +106,14 @@ public class InterceptorDrone : MonoBehaviour
             fireTimer = fireCooldown;
             Shoot(dir);
             shotsRemaining--;
-        }
 
-        if (shotsRemaining <= 0)
-        {
-            state = State.Returning;
+            if (shotsRemaining <= 0)
+            {
+                state = State.Returning;
+            }
         }
     }
+
 
     void ReturnToPlanet()
     {
