@@ -18,7 +18,7 @@ public class EnemySlow : MonoBehaviour
         sr = GetComponentInChildren<SpriteRenderer>();
         originalColor = sr.color;
         statusIcons = GetComponentInChildren<EnemyStatusIcons>();
-        originalSpeed = enemy.moveSpeed;
+        originalSpeed = enemy.maxMovementSpeed;
     }
 
     public void ApplySlow(float amount, float duration)

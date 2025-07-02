@@ -4,8 +4,8 @@ public class WaveEffect : MonoBehaviour
 {
     public float fadeDuration = 0.4f;
     public Sprite waveImage;
-    [HideInInspector] public Color effectColor = Color.white;
-    [HideInInspector] public float maxRadius = 5f;
+    public Color effectColor = Color.white;
+    public float maxRadius = 5f;
 
     private SpriteRenderer sr;
     private float timer = 0f;
@@ -60,6 +60,8 @@ public class WaveEffect : MonoBehaviour
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
 
         if (timer > fadeDuration)
+        {
             Destroy(gameObject);
+        }
     }
 }

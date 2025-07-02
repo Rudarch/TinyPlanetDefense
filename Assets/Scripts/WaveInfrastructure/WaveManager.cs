@@ -65,7 +65,7 @@ public class WaveManager : MonoBehaviour
             yield return new WaitUntil(() => EnemyManager.Inst != null && EnemyManager.Inst.GetAllEnemies().Count == 0);
         }
 
-        yield return new WaitForSeconds(1f); // pacing buffer
+        yield return new WaitForSeconds(3f);
 
         StartNextWave();
     }
@@ -121,5 +121,7 @@ public class WaveManager : MonoBehaviour
                 enemy.gameObject.AddComponent<ExplodeOnDeath>();
                 break;
         }
+
+        enemy.ApplyModifier(modifier);
     }
 }

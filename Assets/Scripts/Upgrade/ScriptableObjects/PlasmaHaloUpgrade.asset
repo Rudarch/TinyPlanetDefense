@@ -27,7 +27,7 @@ MonoBehaviour:
   activationDuration: 0
   activationStyle: 1
   effectVFX: {fileID: 4120323009963743839, guid: 3e73ea5855422f74da48ca19bdb1d204, type: 3}
-  baseDamagePerSecond: 0.3
-  baseRadius: 1.2
-  radiusIncreasePerLevel: 0.3
-  tickInterval: 1
+  baseDamagePerSecond: 0.5
+  baseRadius: 1.5
+  radiusIncreasePerLevel: 0.5
+  tickInterval: 0.5

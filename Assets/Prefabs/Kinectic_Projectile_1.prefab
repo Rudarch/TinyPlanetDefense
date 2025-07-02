@@ -209,9 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eba54d5083134144b97823a329744d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 2.5
   lifetime: 7
-  minDamage: 8
+  minDamage: 10
   maxDamage: 15
   damage: 4
   ricochetLinePrefab: {fileID: 1408851793309974807, guid: dfb982c2c600937498e8617649b6975f, type: 3}

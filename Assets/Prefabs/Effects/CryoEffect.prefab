@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: -6392461071993255140, guid: 745fd1432eced8844813229982686e0b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.63529414}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,5 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 2.5
-  effectColor: {r: 1, g: 1, b: 1, a: 0.6666667}
+  waveImage: {fileID: 0}
+  effectColor: {r: 1, g: 1, b: 1, a: 0.78431374}
   maxRadius: 5

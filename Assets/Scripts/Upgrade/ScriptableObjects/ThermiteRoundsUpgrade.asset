@@ -27,9 +27,9 @@ MonoBehaviour:
   activationDuration: 0
   activationStyle: 1
   burnZonePrefab: {fileID: 5662877110636264449, guid: e5542b3180af67a4e8b784a417a91357, type: 3}
-  baseThermiteDPSPercent: 0
+  baseThermiteDPSPercent: 0.1
   thermiteDPSPercentPerLevel: 0.1
-  baseBurnZoneRadius: 0.1
+  baseBurnZoneRadius: 0.15
   burnZoneRadiusPercentPerLevel: 0.1
-  enemyBurnDuration: 2
+  enemyBurnDuration: 3
   burnZoneDuration: 5

@@ -27,8 +27,8 @@ MonoBehaviour:
   activationDuration: 0
   activationStyle: 1
   effectVFX: {fileID: 3300220418731288602, guid: 11ea02431d20ae04aa5409f4ea650eab, type: 3}
-  slowDuration: 1.5
-  baseSlowAmount: 0.1
-  slowAmountPerLevel: 0.2
+  slowDuration: 2
+  baseSlowAmount: 0
+  slowAmountPerLevel: 0.1
   radius: 3
-  waveInterval: 1
+  waveInterval: 2

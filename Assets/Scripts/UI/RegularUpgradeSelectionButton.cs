@@ -20,7 +20,7 @@ public class RegularUpgradeSelectionButton : MonoBehaviour
         this.popup = popup;
 
         icon.sprite = upgrade.icon;
-        nameText.text = $"{upgrade.upgradeName}\n<size=80%><color=grey>{upgrade.NextLevel}/{upgrade.maxLevel}</color></size>";
+        nameText.text = $"{upgrade.upgradeName}\n<size=80%><color=grey>{upgrade.CurrentLevel}/{upgrade.maxLevel}</color></size>";
         descriptionText.text = $"{upgrade.description}\n<size=80%><color=yellow>{upgrade.GetUpgradeEffectText()}</color></size>";
 
         switch (upgrade.activationStyle)

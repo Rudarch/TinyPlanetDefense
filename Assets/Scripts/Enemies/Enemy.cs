@@ -25,13 +25,16 @@ public class Enemy : MonoBehaviour
     [Header("VFX")]
     public GameObject thrusterFX;
     public GameObject deathExplosionPrefab;
+    public GameObject deathExplosionWavePrefab;
     public GameObject audioPrefab;
     public AudioClip deathAudioClip;
 
     [SerializeField] private int xpReward = 1;
 
+    private EnemyModifierType modifierType;
     private HealthBar healthBar;
     private Rigidbody2D rb;
+    private EnemyModifierIcons modifierIconManager;
     private bool isDying = false;
     private List<EnemyAbilityBase> abilities = new();
     private EnemyMovementBase movement;
@@ -39,6 +42,8 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        modifierIconManager = GetComponentInChildren<EnemyModifierIcons>();
     }
 
     void Start()
@@ -82,6 +87,14 @@ public class Enemy : MonoBehaviour
         healthMultiplier = multiplier;
     }
 
+    public void ApplyModifier(EnemyModifierType modifier)
+    {
+        this.modifierType = modifier;
+        if (modifierIconManager != null)
+        {
+            modifierIconManager.SetModifierIcon(modifier);
+        }
+    }
 
     public void ApplyKnockback(Vector2 force)
     {
@@ -136,7 +149,23 @@ public class Enemy : MonoBehaviour
             var xpSystem = gameController.GetComponent<ExperienceSystem>();
             if (xpSystem != null)
             {
-                xpSystem.AddXP(xpReward);
+                float xpBonus = 1f;
+
+                switch (modifierType)
+                {
+                    case EnemyModifierType.Elite:
+                        xpBonus = 2f;
+                        break;
+                    case EnemyModifierType.Armored:
+                    case EnemyModifierType.Fast:
+                    case EnemyModifierType.Regenerating:
+                    case EnemyModifierType.Exploding:
+                        xpBonus = 1.3f;
+                        break;
+                }
+
+                int totalXP = Mathf.RoundToInt(xpReward * xpBonus);
+                xpSystem.AddXP(totalXP);
             }
         }
 
@@ -194,7 +223,19 @@ public class Enemy : MonoBehaviour
         {
             var explosion = Instantiate(deathExplosionPrefab, transform.position, Quaternion.identity);
             explosion.transform.SetParent(null);
+            explosion.transform.localScale = transform.localScale;
             Destroy(explosion, 0.5f);
+        }
+
+        if (deathExplosionWavePrefab != null)
+        {
+            var explosionWave = Instantiate(deathExplosionWavePrefab, transform.position, Quaternion.identity);
+            var wave = explosionWave.GetComponent<WaveEffect>();
+            if (wave != null)
+            {
+                wave.maxRadius = transform.localScale.magnitude;
+            }
+            explosionWave.transform.SetParent(null);
         }
 
         Destroy(gameObject);

@@ -252,6 +252,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357373717}
   m_CullTransparentMesh: 1
+--- !u!1 &483707568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483707570}
+  - component: {fileID: 483707569}
+  m_Layer: 0
+  m_Name: GlobalMusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &483707569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483707568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09b583a2db50ca409e598000308cdc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuMusic: {fileID: 8300000, guid: 3ba1ee38d5440034e95d0ae0564d3fe7, type: 3}
+  gameMusic: {fileID: 8300000, guid: 8a7be8b06bdf8694eb20c31b0a75614a, type: 3}
+  bossMusic: {fileID: 8300000, guid: 8618b90d62a9c9147a4aa083e8f52942, type: 3}
+  fadeDuration: 1
+  volume: 0.1
+--- !u!4 &483707570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483707568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &677270692
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,3 +959,4 @@ SceneRoots:
   - {fileID: 677270693}
   - {fileID: 1142052734}
   - {fileID: 2045261173}
+  - {fileID: 483707570}

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class EnemyStatusIcons : MonoBehaviour
 {
     [System.Serializable]
-    public class IconEntry
+    public class StatusIconEntry
     {
         public string statusName;
         public GameObject iconObject;
     }
 
-    public List<IconEntry> icons = new List<IconEntry>();
+    public List<StatusIconEntry> icons = new List<StatusIconEntry>();
 
     private Dictionary<string, GameObject> iconMap;
 

@@ -17,4 +17,5 @@ public class EnemyMetadata : MonoBehaviour
     public EnemyRole[] synergyWith;
     public int groupMinCount = 1; // for swarm effectiveness
     public bool requiresMix = false; // e.g. support, ranged
+    public int maxGroupSize = 100;
 }
