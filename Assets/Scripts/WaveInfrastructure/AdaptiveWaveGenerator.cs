@@ -7,15 +7,18 @@ public class AdaptiveWaveGenerator : MonoBehaviour
     public float baseBudget = 10f;
     public float budgetGrowth = 2f;
     //public int maxGroupSize = 5;
+    [Range(0, 1)] public float chanceToWaitForClearBeforeNext = 0.5f;
 
+    [SerializeField] private float currentDifficulty = 0f;
     public WaveData GenerateWave(PlayerPerformanceTracker tracker, int waveNumber, int maxSpawnZones)
     {
         float budget = baseBudget + waveNumber * budgetGrowth;
-        budget *= Mathf.Clamp01(tracker.DifficultyScore / 100f + 1f);
+        currentDifficulty = Mathf.Clamp01(tracker.DifficultyScore / 100f + 1f);
+        budget *= currentDifficulty;
 
         var wave = ScriptableObject.CreateInstance<WaveData>();
         wave.spawns = new List<WaveSpawnInfo>();
-
+        wave.waitForClearBeforeNext = Random.Range(0f, 1f) <= chanceToWaitForClearBeforeNext;
         int zonesToUse = Random.Range(1, maxSpawnZones + 1);
         List<int> chosenZones = new();
         for (int i = 0; i < zonesToUse; i++)
@@ -45,7 +48,13 @@ public class AdaptiveWaveGenerator : MonoBehaviour
             int count = Mathf.FloorToInt(budget / cost);
             if (count < 1) continue;
 
-            count = Mathf.Clamp(count, 1, waveNumber);
+            var countLimit = 5;
+            if (waveNumber > countLimit)
+            {
+                countLimit = waveNumber;
+            }
+
+            count = Mathf.Clamp(count, 1, countLimit);
 
             // Role synergy logic
             if (meta.requiresMix)

@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Stats")]
     [HideInInspector] public float baseHealth;
-    public float maxHealth;
+    [HideInInspector] public float maxHealth;
     public float health = 5f;
     public float damage = 1f;
     float healthMultiplier = 1f;
@@ -45,7 +45,6 @@ public class Enemy : MonoBehaviour
     {
         health *= healthMultiplier;
         maxHealth = health;
-        baseHealth = health;
         moveSpeed = maxMovementSpeed;
 
         abilities = new(GetComponents<EnemyAbilityBase>());

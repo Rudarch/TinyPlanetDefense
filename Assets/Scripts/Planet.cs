@@ -6,6 +6,8 @@ public class Planet : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
 
+
+    public GameObject damageNumberPrefab;
     public GameObject healEffectPrefab;
     public AudioClip healSound;
 
@@ -25,6 +27,12 @@ public class Planet : MonoBehaviour
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         OnPlanetHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        if (damageNumberPrefab != null)
+        {
+            GameObject dmg = Instantiate(damageNumberPrefab, transform.position, Quaternion.identity);
+            dmg.GetComponent<DamageNumber>().SetDamage(amount, Color.red);
+        }
 
         if (currentHealth <= 0f)
         {

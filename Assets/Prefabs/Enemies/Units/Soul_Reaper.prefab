@@ -739,9 +739,9 @@ GameObject:
   - component: {fileID: 4652173292674739430}
   - component: {fileID: 8827065812746665399}
   - component: {fileID: 3532196674438443973}
+  - component: {fileID: 3149547534331483945}
   - component: {fileID: -8079562907128777200}
   - component: {fileID: 4898620271744736696}
-  - component: {fileID: 3149547534331483945}
   m_Layer: 6
   m_Name: Soul_Reaper
   m_TagString: Enemy
@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9124620233068310814}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.1}
   m_ConstrainProportionsScale: 0
@@ -766,7 +766,7 @@ Transform:
   - {fileID: 2152899866753918318}
   - {fileID: 3031271815529474196}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &9119406299960264056
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -877,11 +877,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  baseHealth: 0
   maxHealth: 0
   health: 25
   damage: 1
   moveSpeed: 0
-  maxMovementSpeed: 0.09
+  maxMovementSpeed: 0.08
   shouldMove: 1
   planetTarget: {fileID: 0}
   thrusterFX: {fileID: 2116032241973071172}
@@ -889,37 +890,6 @@ MonoBehaviour:
   audioPrefab: {fileID: 8763544008104451575, guid: 460529501f46c9e4089a88f48ed9bb5d, type: 3}
   deathAudioClip: {fileID: 8300000, guid: 69d3d3e5073dc7b42a58f583789b153f, type: 3}
   xpReward: 3
---- !u!114 &-8079562907128777200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124620233068310814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10cd620b645fed141a9d4cd68df13378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4898620271744736696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124620233068310814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a4da57ea628a1b44803d9bee6fe91f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healAmount: 25
-  radius: 1
-  cooldown: 5
-  fadeDuration: 2
-  healVFX: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
-  waveImage: {fileID: 1248858612, guid: 745fd1432eced8844813229982686e0b, type: 3}
-  color: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
 --- !u!114 &3149547534331483945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,9 +904,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 3
   role: 0
-  synergyWith: 0100000004000000
+  synergyWith: 01000000040000000000000002000000
   groupMinCount: 1
   requiresMix: 1
+--- !u!114 &-8079562907128777200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10cd620b645fed141a9d4cd68df13378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableWiggle: 1
+  wiggleFrequency: 6
+  wiggleAmplitude: 0.0005
+--- !u!114 &4898620271744736696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4da57ea628a1b44803d9bee6fe91f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healAmount: 1
+  radius: 1
+  cooldown: 0.5
+  fadeDuration: 0.5
+  healVFX: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
+  waveImage: {fileID: 1248858612, guid: 745fd1432eced8844813229982686e0b, type: 3}
+  color: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
 --- !u!1001 &3068869999380517624
 PrefabInstance:
   m_ObjectHideFlags: 0

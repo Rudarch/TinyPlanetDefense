@@ -18,6 +18,12 @@ public class UpgradePopup : MonoBehaviour
     public GameObject regularUpgradeOptionPrefab;
     public GameObject tacticalOptionPrefab;
 
+    [Header("Colors")]
+    public Color cannonMasteryColor = new Color(0.3f, 0.6f, 1f);
+    public Color highCaliberColor = new Color(1f, 0.4f, 0.3f);
+    public Color energyMatrixColor = new Color(0.4f, 1f, 0.8f);
+    public Color tacticalProtocolsColor = new Color(0.8f, 0.6f, 1f);
+
     public Sprite tacticalIcon;
 
     public ExperienceSystem xpSystem;
@@ -42,15 +48,15 @@ public class UpgradePopup : MonoBehaviour
         foreach (Transform child in tacticalUpgradeGridParent)
             Destroy(child.gameObject);
 
-        SpawnTacticalChoice(Upgrades.Inst.CannonMastery, Upgrades.Inst.CannonMastery.icon, new Color(0.3f, 0.6f, 1f));
-        SpawnTacticalChoice(Upgrades.Inst.HighCaliber, Upgrades.Inst.HighCaliber.icon, new Color(1f, 0.4f, 0.3f));
-        SpawnTacticalChoice(Upgrades.Inst.EnergyMatrix, Upgrades.Inst.EnergyMatrix.icon, new Color(0.4f, 1f, 0.8f));
+        SpawnTacticalChoice(Upgrades.Inst.CannonMastery, Upgrades.Inst.CannonMastery.icon, cannonMasteryColor);
+        SpawnTacticalChoice(Upgrades.Inst.HighCaliber, Upgrades.Inst.HighCaliber.icon, highCaliberColor);
+        SpawnTacticalChoice(Upgrades.Inst.EnergyMatrix, Upgrades.Inst.EnergyMatrix.icon, energyMatrixColor);
 
         SpawnSpecialAction(
             "TACTICAL PROTOCOLS",
             "Choose 1 of 3 Random Ability Upgrades",
             tacticalIcon,
-            new Color(0.8f, 0.6f, 1f),
+            tacticalProtocolsColor,
             ShowRandomAbilityOptions
         );
     }
@@ -59,7 +65,7 @@ public class UpgradePopup : MonoBehaviour
     {
         var go = Instantiate(tacticalOptionPrefab, tacticalUpgradeGridParent);
         var ui = go.GetComponent<TacticalUpgradeSelectionButton>();
-        ui.Setup(upgrade, this, color);
+        ui.Setup(upgrade, color);
     }
 
     private void SpawnSpecialAction(string title, string desc, Sprite icon, Color color, UnityEngine.Events.UnityAction action)

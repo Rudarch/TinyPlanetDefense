@@ -32,7 +32,7 @@ public class EnemyManager : MonoBehaviour
 
             if (performanceTracker != null)
             {
-                performanceTracker.NotifyEnemyKilled();
+                performanceTracker.NotifyEnemyKilled(enemy.gameObject);
             }
         }
     }

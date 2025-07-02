@@ -739,8 +739,8 @@ GameObject:
   - component: {fileID: 4652173292674739430}
   - component: {fileID: 8827065812746665399}
   - component: {fileID: 3532196674438443973}
-  - component: {fileID: 5868254667361335574}
   - component: {fileID: -8639317544482905997}
+  - component: {fileID: 5868254667361335574}
   m_Layer: 6
   m_Name: Imp_Skimmer
   m_TagString: Enemy
@@ -876,6 +876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  baseHealth: 0
   maxHealth: 0
   health: 5
   damage: 3
@@ -887,25 +888,7 @@ MonoBehaviour:
   deathExplosionPrefab: {fileID: 3450621782849825042, guid: aa1c97b1ad1a6c546a3881662b7c5748, type: 3}
   audioPrefab: {fileID: 8763544008104451575, guid: 460529501f46c9e4089a88f48ed9bb5d, type: 3}
   deathAudioClip: {fileID: 8300000, guid: 69d3d3e5073dc7b42a58f583789b153f, type: 3}
-  xpReward: 1
---- !u!114 &5868254667361335574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124620233068310814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82550923ad5658b4890023531de4102d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDistance: 1
-  dashInterval: 1
-  minPositiveDeviation: 15
-  maxPositiveDeviation: 90
-  minNegativeDeviation: 0
-  maxNegativeDeviation: 0
+  xpReward: 2
 --- !u!114 &-8639317544482905997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,11 +901,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3c49f2b28df35439eb7c58241a9427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
+  cost: 2
   role: 0
-  synergyWith: 
-  groupMinCount: 6
+  synergyWith: 0200000004000000
+  groupMinCount: 3
   requiresMix: 0
+--- !u!114 &5868254667361335574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124620233068310814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82550923ad5658b4890023531de4102d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableWiggle: 1
+  wiggleFrequency: 6
+  wiggleAmplitude: 0.0005
+  dashDistance: 1
+  dashInterval: 1
+  minPositiveDeviation: 15
+  maxPositiveDeviation: 90
+  minNegativeDeviation: 0
+  maxNegativeDeviation: 0
 --- !u!1001 &901765062753022952
 PrefabInstance:
   m_ObjectHideFlags: 0

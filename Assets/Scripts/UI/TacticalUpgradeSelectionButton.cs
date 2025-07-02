@@ -12,12 +12,10 @@ public class TacticalUpgradeSelectionButton : MonoBehaviour
     [SerializeField] private Button selectButton;
 
     private Upgrade upgrade;
-    private UpgradePopup popup;
 
-    public void Setup(Upgrade upgrade, UpgradePopup popup, Color color)
+    public void Setup(Upgrade upgrade, Color color)
     {
         this.upgrade = upgrade;
-        this.popup = popup;
 
         iconImage.sprite = upgrade.icon;
         iconImage.color = color;

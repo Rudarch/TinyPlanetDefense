@@ -19,7 +19,7 @@ public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"• Fires {baseStrikes + CurrentLevel} orbital beam(s) every {waveInterval:F1} sec.";
+        return $"• Fires {baseStrikes + NextLevel} orbital beam(s) every {waveInterval:F1} sec dealing {damage} damage.";
     }
 
     protected override IEnumerator Trigger()

@@ -21,7 +21,7 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Stuns in {radius} radius for {baseStunTime + (effectStunTimePerLevel * NextLevel)} sec.";
+        return $"{baseStunTime + (effectStunTimePerLevel * NextLevel)} seconds stuns in {radius} radius";
     }
 
 

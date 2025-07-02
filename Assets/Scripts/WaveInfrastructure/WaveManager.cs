@@ -25,6 +25,7 @@ public class WaveManager : MonoBehaviour
         if (isSpawning) return;
 
         currentWave++;
+        performanceTracker?.SetCurrentWave(currentWave);
 
         if (useAdaptiveWaves)
         {

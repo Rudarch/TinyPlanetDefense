@@ -13,6 +13,7 @@ public class Projectile : BaseProjectile
     public GameObject explosionEffectPrefab;
     public GameObject impactFlashPrefab;
     public AudioClip hitSound;
+    public AudioClip pierceSFX;
 
     private AudioSource audioSource;
     private List<Enemy> hitEnemies = new();
@@ -134,6 +135,16 @@ public class Projectile : BaseProjectile
             }
         }
 
+        if (Upgrades.Inst.PiercingAmmo.IsActivated && enemiesHit < pierceCount)
+        {
+            damage *= Upgrades.Inst.PiercingAmmo.PierceDamageMultiplier;
+
+            if (audioSource != null && pierceSFX != null)
+            {
+                audioSource.pitch = 1f + (0.1f * pierceCount);
+                audioSource.PlayOneShot(pierceSFX);
+            }
+        }
 
         enemiesHit++;
         if (enemiesHit > pierceCount)

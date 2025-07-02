@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eba54d5083134144b97823a329744d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 2
   lifetime: 7
   minDamage: 8
   maxDamage: 15
@@ -218,6 +218,7 @@ MonoBehaviour:
   explosionEffectPrefab: {fileID: 898617381875453659, guid: f0b96b1c4240de44b891a3f5c9a80e30, type: 3}
   impactFlashPrefab: {fileID: 0}
   hitSound: {fileID: 8300000, guid: 8ad0c9cdecf5f9849a2c8e225e443f71, type: 3}
+  pierceSFX: {fileID: 8300000, guid: 054a849eb7d0cc84894efd1221be6a51, type: 3}
 --- !u!1 &8204084467353614868
 GameObject:
   m_ObjectHideFlags: 0

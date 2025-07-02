@@ -20,7 +20,7 @@ public class CryoWaveUpgrade : PlanetEffectUpgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"{Mathf.Round(baseSlowAmount + (slowAmountPerLevel * NextLevel) * 100)}% slow every {waveInterval} sec.";
+        return $"{Mathf.Round(baseSlowAmount + (slowAmountPerLevel * NextLevel) * 100)}% slow every {waveInterval} sec in {radius} radius.";
     }
     protected override IEnumerator Trigger()
     {
