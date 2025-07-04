@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ActivationStyle { Passive, Toggle, Timed }
+public enum ActivationStyle { Passive, Timed, Trigger }
 public abstract class Upgrade : ScriptableObject
 {
     public string upgradeName;
@@ -12,23 +12,20 @@ public abstract class Upgrade : ScriptableObject
     [SerializeField] private int currentLevel = 0;
     [SerializeField] private List<UpgradePrerequisite> prerequisites = new();
 
-    [Header("Energy drain")]
-    [SerializeField] protected float baseEnergyDrain = 0f;
-    [SerializeField] protected float energyDrainPerLevel = 0f;
-    public float energyDrainAmount = 0f;
+    [Header("Cooldown Settings")]
+    public float cooldownDuration = 0f;
+    private float cooldownRemaining = 0f;
 
-    [Header("Energy activation")]
-    [SerializeField] protected float baseActivationEnergyCost = 0f;
-    [SerializeField] protected float activationEnergyCostPerLevel = 0f;
-    public float activationEnergyAmount = 0f;
-    public float activationDuration = 0f;
-    private float activationTimer = 0f;
+    public float CooldownRemaining => cooldownRemaining;
+    public float CooldownDuration => cooldownDuration;
 
     [Header("Activation")]
     public ActivationStyle activationStyle = ActivationStyle.Passive;
+    public float activationDuration = 0f;
+    private float activationTimer = 0f;
 
     public bool IsActivated { get; private set; }
-    public bool IsReadyForActivation => EnergySystem.Inst.HasEnough(activationEnergyAmount) && !IsActivated;
+    public bool IsReadyForActivation => !IsActivated && cooldownRemaining <= 0f;
     public bool IsMaxedOut => CurrentLevel >= maxLevel;
 
     public Action<bool> OnActivationChanged;
@@ -38,9 +35,13 @@ public abstract class Upgrade : ScriptableObject
 
     public int CurrentLevel { get => currentLevel; }
 
-    public virtual void Initialize()
+    public void ResetUpgrade()
     {
-        ResetUpgrade();
+        IsActivated = false;
+        currentLevel = 0;
+        activationTimer = 0;
+        OnActivationChanged = null;
+        ResetInternal();
         InitializeInternal();
     }
 
@@ -53,9 +54,6 @@ public abstract class Upgrade : ScriptableObject
         }
 
         currentLevel++;
-
-        energyDrainAmount = baseEnergyDrain + (energyDrainPerLevel * CurrentLevel);
-        activationEnergyAmount = baseActivationEnergyCost + (activationEnergyCostPerLevel * CurrentLevel);
 
         ApplyUpgradeInternal();
 
@@ -72,47 +70,21 @@ public abstract class Upgrade : ScriptableObject
         return true;
     }
 
-    protected void ResetUpgrade()
-    {
-        IsActivated = false;
-        currentLevel = 0;
-        energyDrainAmount = 0;
-        activationEnergyAmount = 0;
-        activationTimer = 0;
-        OnActivationChanged = null;
-        ResetInternal();
-    }
 
-    protected virtual void ResetInternal()
-    {
-
-    }
-
-    public virtual string GetUpgradeEffectText()
-    {
-        return string.Empty;
-    }
-
-    public virtual float GetEnergyDrainForNextLevel()
-    {
-        return baseEnergyDrain + (energyDrainPerLevel * NextLevel);
-    }
-
-    public virtual float GetEnergyActivationCostForNextLevel()
-    {
-        return baseActivationEnergyCost + (activationEnergyCostPerLevel * NextLevel);
-    }
-
-    protected virtual void ApplyUpgradeInternal() { }
-
-    protected virtual void InitializeInternal() { }
-
+    public virtual string GetUpgradeEffectText() => string.Empty;
     public virtual void TickUpgrade(float deltaTime)
     {
+        if (cooldownRemaining > 0f)
+        {
+            cooldownRemaining -= deltaTime;
+            if (cooldownRemaining < 0f) cooldownRemaining = 0f;
+            OnActivationTimerChanged?.Invoke(cooldownDuration, cooldownRemaining);
+        }
+
         if (activationStyle == ActivationStyle.Timed && IsActivated)
         {
             activationTimer -= deltaTime;
-            OnActivationTimerChanged.Invoke(activationDuration, activationTimer);
+            OnActivationTimerChanged?.Invoke(activationDuration, activationTimer);
             if (activationTimer <= 0f)
             {
                 Deactivate();
@@ -122,21 +94,31 @@ public abstract class Upgrade : ScriptableObject
 
     public virtual void Activate()
     {
-        if (activationStyle == ActivationStyle.Timed && IsReadyForActivation)
+        if (!IsReadyForActivation) return;
+
+
+        if (activationStyle == ActivationStyle.Timed)
         {
-            EnergySystem.Inst.Consume(activationEnergyAmount);
             activationTimer = activationDuration;
         }
 
         IsActivated = true;
         OnActivationChanged?.Invoke(IsActivated);
-        Debug.Log($"{upgradeName} Activated.");
+        ActivateInternal();
+        cooldownRemaining = cooldownDuration;
     }
 
     public virtual void Deactivate()
     {
         IsActivated = false;
         OnActivationChanged?.Invoke(IsActivated);
-        Debug.Log($"{upgradeName} Deactivated.");
+        DeactivateInternal();
     }
+
+
+    protected virtual void ResetInternal() { }
+    protected virtual void ActivateInternal() { }
+    protected virtual void InitializeInternal() { }
+    protected virtual void DeactivateInternal() { }
+    protected virtual void ApplyUpgradeInternal() { }
 }

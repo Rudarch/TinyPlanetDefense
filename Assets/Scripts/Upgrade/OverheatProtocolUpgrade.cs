@@ -8,7 +8,7 @@ public class OverheatProtocolUpgrade : Upgrade
 
     public bool IsOverheating { get; private set; } = false;
 
-    public override void Initialize()
+    protected override void InitializeInternal()
     {
         EnergySystem.OnEnergyChanged += HandleEnergyChanged;
         Upgrades.Inst.OverheatProtocol = this;

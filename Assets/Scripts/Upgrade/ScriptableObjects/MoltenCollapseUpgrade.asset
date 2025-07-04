@@ -22,14 +22,9 @@ MonoBehaviour:
     minimumLevel: 1
   - requiredUpgrade: {fileID: 11400000, guid: 90f3c0a2e3ddbbf4f9452fba40ee2bac, type: 2}
     minimumLevel: 1
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 0
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  cooldownDuration: 0
   activationStyle: 0
+  activationDuration: 0
   explosionPrefab: {fileID: 6281773370717664868, guid: 766a198a18934224e84d088827a357e0, type: 3}
   explosionRadius: 0.5
   explosionDamage: 10

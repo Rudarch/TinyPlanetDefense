@@ -34,7 +34,7 @@ public class EnergySystem : MonoBehaviour
 
     void Update()
     {
-        float totalDrain = Upgrades.Inst.GetTotalActiveDrain();
+        float totalDrain = 0;
         var energyDelta = (EnergyRegen - totalDrain);
         float deltaTimeEnergy = energyDelta * Time.deltaTime;
 
@@ -51,11 +51,6 @@ public class EnergySystem : MonoBehaviour
 
         if (currentEnergyText != null)
             currentEnergyText.text = $"{currentEnergy:F0}";
-
-        Upgrades.Inst.TickTimedUpgrades(Time.deltaTime);
-
-        if (currentEnergy <= 0f)
-            Upgrades.Inst.ForceDeactivateAll();
     }
 
     public bool HasEnough(float amount) => currentEnergy >= amount;

@@ -35,15 +35,13 @@ public class TwinBarrelUpgrade : Upgrade
     }
 
 
-    public override void Activate()
+    protected override void ActivateInternal()
     {
-        base.Activate();
         cannon?.EnableTwinMuzzles();
     }
 
-    public override void Deactivate()
+    protected override void DeactivateInternal()
     {
-        base.Deactivate();
         cannon?.EnableSingleMuzzle();
     }
 }

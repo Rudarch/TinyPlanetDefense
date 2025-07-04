@@ -19,16 +19,13 @@ public abstract class PlanetEffectUpgrade : Upgrade
         }
     }
 
-
-    public override void Activate()
+    protected override void ActivateInternal()
     {
-        base.Activate();
         PlanetUpgradeHandler.Inst.RegisterEffect(this.GetType().Name, Trigger);
     }
 
-    public override void Deactivate()
+    protected override void DeactivateInternal()
     {
-        base.Deactivate();
         PlanetUpgradeHandler.Inst.UnregisterEffect(this.GetType().Name);
     }
 

@@ -7,7 +7,7 @@ public class RegularUpgradeSelectionButton : MonoBehaviour
     public Image icon;
     public TMP_Text nameText;
     public TMP_Text descriptionText;
-    public TMP_Text energyCostText;
+    public TMP_Text cooldownText;
     public Button selectButton;
 
     private Upgrade upgrade;
@@ -26,13 +26,13 @@ public class RegularUpgradeSelectionButton : MonoBehaviour
         switch (upgrade.activationStyle)
         {
             case ActivationStyle.Timed:
-                energyCostText.text = $"{upgrade.GetEnergyActivationCostForNextLevel()} energy";
+                cooldownText.text = $"{upgrade.CooldownDuration} sec cd";
                 break;
-            case ActivationStyle.Toggle:
-                energyCostText.text = $"-{upgrade.GetEnergyDrainForNextLevel()} energy/s";
+            case ActivationStyle.Trigger:
+                cooldownText.text = $"Activation";
                 break;
             default:
-                energyCostText.text = $"Passive";
+                cooldownText.text = $"Passive";
                 break;
         }
         selectButton.onClick.RemoveAllListeners();

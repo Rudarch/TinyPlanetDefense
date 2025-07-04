@@ -23,9 +23,8 @@ public class OrbitalBladesUpgrade : Upgrade
         Upgrades.Inst.OrbitalBlades = this;
     }
 
-    public override void Activate()
+    protected override void ActivateInternal()
     {
-        base.Activate();
         if (controller == null)
         {
             var planet = GameObject.FindWithTag("Planet");
@@ -40,9 +39,8 @@ public class OrbitalBladesUpgrade : Upgrade
         }
     }
 
-    public override void Deactivate()
+    protected override void DeactivateInternal()
     {
-        base.Deactivate();
         controller?.Deactivate();
     }
 

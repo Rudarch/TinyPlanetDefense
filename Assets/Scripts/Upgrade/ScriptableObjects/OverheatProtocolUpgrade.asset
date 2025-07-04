@@ -17,18 +17,9 @@ MonoBehaviour:
   icon: {fileID: 511877306, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 1
   currentLevel: 1
-  prerequisites:
-  - requiredUpgrade: {fileID: 11400000, guid: 4c32bdd451d1f0340929e604ba21ac58, type: 2}
-    minimumLevel: 1
-  - requiredUpgrade: {fileID: 11400000, guid: 0152bbf142b9af641b25c64274175feb, type: 2}
-    minimumLevel: 1
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 0
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  prerequisites: []
+  cooldownDuration: 0
   activationStyle: 0
+  activationDuration: 0
   energyThreshold: 0.25
   damageMultiplier: 2

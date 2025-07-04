@@ -18,14 +18,9 @@ MonoBehaviour:
   maxLevel: 3
   currentLevel: 1
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 0
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 60
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 60
-  activationDuration: 1
+  cooldownDuration: 15
   activationStyle: 2
+  activationDuration: 0
   effectVFX: {fileID: 5271979767319652204, guid: 520d37921f987d147b8ff70280578f0a, type: 3}
   baseStrikes: 0
   strikeDelay: 0.2

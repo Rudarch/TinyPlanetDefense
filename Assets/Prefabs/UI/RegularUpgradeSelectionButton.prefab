@@ -412,7 +412,7 @@ MonoBehaviour:
   icon: {fileID: 1791483832298708459}
   nameText: {fileID: 7852709279721790658}
   descriptionText: {fileID: 3834952968424341359}
-  energyCostText: {fileID: 1020735501284713781}
+  cooldownText: {fileID: 1020735501284713781}
   selectButton: {fileID: 6781183465530918781}
 --- !u!1 &1985653325137151231
 GameObject:
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 8283957617457589299}
   - component: {fileID: 1020735501284713781}
   m_Layer: 5
-  m_Name: 'EnergyCostText (TMP) '
+  m_Name: 'CooldownText (TMP) '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

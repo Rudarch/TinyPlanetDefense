@@ -60,31 +60,10 @@ public class AbilityButton : MonoBehaviour
             });
         }
 
-        if (upgrade.activationStyle == ActivationStyle.Timed)
-        {
-            EnergySystem.OnEnergyChanged += HandleEnergyChanged;
-        }
-
         upgrade.OnActivationChanged += UpdateVisual;
         upgrade.OnActivationTimerChanged += UpdateGlow;
         UpdateVisual(upgrade.IsActivated);
         UpdateGlow(1, 1);
-    }
-
-    void HandleEnergyChanged(float currentEnergy, float maxEnergy)
-    {
-        if (upgrade.IsActivated) return;
-
-        if (currentEnergy >= upgrade.activationEnergyAmount)
-        {
-            icon.color = enoughEnergyForActivationIconColor;
-            glowEffect.color = enoughEnergyForActivationGlowColor;
-        }
-        else
-        {
-            icon.color = notEnoughEnergyForActivationIconColor;
-            glowEffect.color = notEnoughEnergyForActivationGlowColor;
-        }
     }
 
     public void UpdateGlow(float max, float value)
@@ -96,30 +75,14 @@ public class AbilityButton : MonoBehaviour
     {
         if (isActive)
         {
-            if (upgrade.activationStyle == ActivationStyle.Toggle)
-            {
-                UpdateGlow(1, 1);
-                icon.color = toggleOnIconColor;
-                glowEffect.color = toggleOnGlowColor;
-                coloroutine?.StartColorTransition();
-            }
-            else
-            {
-                icon.color = timedOnIconColor;
-                glowEffect.color = timedOnGlowColor;
-            }
+            icon.color = timedOnIconColor;
+            glowEffect.color = timedOnGlowColor;
         }
         else
         {
-            if (upgrade.activationStyle == ActivationStyle.Toggle)
-            {
-                coloroutine?.StopColorTransition();
-            }
-
             icon.color = disabledToggleIconColor;
             UpdateGlow(1, 1);
             glowEffect.color = disabledToggleGlowColor;
-
         }
     }
 }

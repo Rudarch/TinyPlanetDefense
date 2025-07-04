@@ -51,59 +51,48 @@ public class Upgrades : MonoBehaviour
 
         foreach (var upgrade in RegualarUpgrades)
         {
-            upgrade.Initialize();
+            upgrade.ResetUpgrade();
         }
 
         foreach (var upgrade in TacticalUpgrades)
         {
-            upgrade.Initialize();
+            upgrade.ResetUpgrade();
         }
 
-        Debug.Log($"{RegualarUpgrades.Count} upgrades were initialized.");
+        Debug.Log($"Regualar={RegualarUpgrades.Count} and Tactical={TacticalUpgrades.Count} upgrades were reset.");
     }
 
-    public void ToggleUpgrade(Upgrade upgrade)
+    void Update()
+    {
+        Upgrades.Inst.TickUpgrades(Time.deltaTime);
+    }
+
+    public void ActivateUpgrade(Upgrade upgrade)
     {
         if (upgrade == null)
         {
-            Debug.LogWarning("ToggleUpgrade called with null upgrade.");
+            Debug.LogWarning("ActivateUpgrade called with null upgrade.");
             return;
         }
 
         if (upgrade.IsActivated)
         {
-            if (upgrade.activationStyle != ActivationStyle.Timed)
-                upgrade.Deactivate();
+            return;
         }
-        else if (upgrade.activationStyle == ActivationStyle.Timed)
+        else if (upgrade.activationStyle == ActivationStyle.Passive)
         {
-            if (upgrade.IsReadyForActivation && EnergySystem.Inst.HasEnough(upgrade.activationEnergyAmount))
+            upgrade.Activate();
+        }
+        else
+        {
+            if (upgrade.IsReadyForActivation)
             {
                 upgrade.Activate();
             }
         }
-        else 
-        {
-            upgrade.Activate();
-        }
     }
 
-    public float GetTotalActiveDrain()
-    {
-        return RegualarUpgrades
-            .Where(upg => upg.activationStyle == ActivationStyle.Toggle && upg.IsActivated)
-            .Sum(upg => upg.energyDrainAmount);
-    }
-
-    public void ForceDeactivateAll()
-    {
-        foreach (var upgrade in RegualarUpgrades.Where(upgrade => upgrade.activationStyle == ActivationStyle.Toggle && upgrade.IsActivated))
-        {
-            upgrade.Deactivate();
-        }
-    }
-
-    public void TickTimedUpgrades(float deltaTime)
+    private void TickUpgrades(float deltaTime)
     {
         foreach (var upgrade in RegualarUpgrades)
         {

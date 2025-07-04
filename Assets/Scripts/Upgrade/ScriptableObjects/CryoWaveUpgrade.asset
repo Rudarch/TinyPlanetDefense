@@ -18,17 +18,12 @@ MonoBehaviour:
   maxLevel: 3
   currentLevel: 0
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 1.5
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  cooldownDuration: 25
   activationStyle: 1
+  activationDuration: 10
   effectVFX: {fileID: 3300220418731288602, guid: 11ea02431d20ae04aa5409f4ea650eab, type: 3}
   slowDuration: 2
   baseSlowAmount: 0
-  slowAmountPerLevel: 0.1
+  slowAmountPerLevel: 0.2
   radius: 3
   waveInterval: 2

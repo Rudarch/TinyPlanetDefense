@@ -18,15 +18,10 @@ MonoBehaviour:
   maxLevel: 3
   currentLevel: 0
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  cooldownDuration: 20
   activationStyle: 1
-  baseInterval: 8
-  intervalReductionPerLevel: 2
-  damageMultiplier: 5
-  scaleMultiplier: 2
+  activationDuration: 10
+  baseInterval: 4
+  intervalReductionPerLevel: 1
+  damageMultiplier: 3
+  scaleMultiplier: 1.5

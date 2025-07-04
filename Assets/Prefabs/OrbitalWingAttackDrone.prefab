@@ -51,9 +51,9 @@ MonoBehaviour:
   moveSpeed: 0.3
   rotationSpeed: 180
   interceptorRange: 1
-  shotsPerMission: 3
-  reloadTime: 3
-  fireCooldown: 1
+  shotsPerMission: 5
+  reloadTime: 1
+  fireCooldown: 0.75
   projectilePrefab: {fileID: 7974607456177255295, guid: 386877ac7d5583d47b352442afc04d39, type: 3}
   thrusterFX: {fileID: 2521994329223789291}
 --- !u!50 &8837947128523197071

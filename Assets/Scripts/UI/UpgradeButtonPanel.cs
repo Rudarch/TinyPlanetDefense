@@ -34,7 +34,7 @@ public class UpgradeButtonPanel : MonoBehaviour
         var buttonUI = buttonGO.GetComponent<AbilityButton>();
         if (buttonUI != null)
         {
-            buttonUI.Initialize(upgrade, Upgrades.Inst.ToggleUpgrade);
+            buttonUI.Initialize(upgrade, Upgrades.Inst.ActivateUpgrade);
             upgradeToButton[upgrade] = buttonUI;
         }
     }

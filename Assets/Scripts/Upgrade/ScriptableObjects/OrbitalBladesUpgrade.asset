@@ -16,21 +16,17 @@ MonoBehaviour:
   description: 
   icon: {fileID: 384417829, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 1
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 0
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 60
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 5
-  activationStyle: 2
+  cooldownDuration: 30
+  activationStyle: 1
+  activationDuration: 15
   bladePrefab: {fileID: 5054478731933181564, guid: 89fa476d2358b534c9e69249683ae953, type: 3}
   baseBladeCount: 1
   bladesPerLevel: 1
-  baseRotationSpeed: 60
+  baseRotationSpeed: 90
   rotationSpeedPerLevel: 30
   damageInterval: 2
-  orbitRadius: 2
-  damage: 20
+  radiusGrowthSpeed: 0.3
+  orbitRadius: 12
+  damage: 15

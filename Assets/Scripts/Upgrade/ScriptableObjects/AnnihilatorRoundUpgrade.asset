@@ -16,18 +16,12 @@ MonoBehaviour:
   description: 
   icon: {fileID: -1924310181, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 2
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
-  activationStyle: 1
+  cooldownDuration: 15
+  activationStyle: 2
+  activationDuration: 1
   annihilatorPrefab: {fileID: 7974607456177255295, guid: 84d203e33b238484f8a042fb7a3b9d63, type: 3}
-  fireInterval: 8
   damage: 100
   spawnRadius: 0.2
   spawnDelay: 0.2

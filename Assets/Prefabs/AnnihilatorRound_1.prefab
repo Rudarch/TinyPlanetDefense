@@ -5044,7 +5044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  rotateSpeed: 180
+  rotateSpeed: 240
   lifetime: 10
   damage: 50
   targetSearchRadius: 10

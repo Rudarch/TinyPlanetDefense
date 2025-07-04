@@ -20,13 +20,8 @@ MonoBehaviour:
   prerequisites:
   - requiredUpgrade: {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
     minimumLevel: 2
-  baseEnergyDrain: 4
-  energyDrainPerLevel: 0
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  cooldownDuration: 50
   activationStyle: 1
-  fireSpeedMultiplier: 1
+  activationDuration: 7
+  fireSpeedMultiplier: 0.9
   spreadAngle: 5

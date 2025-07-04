@@ -18,13 +18,8 @@ MonoBehaviour:
   maxLevel: 1
   currentLevel: 0
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 2
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
+  cooldownDuration: 0
+  activationStyle: 0
   activationDuration: 0
-  activationStyle: 1
   healFraction: 0.01
   lifeSiphonFraction: 0.01

@@ -18,14 +18,9 @@ MonoBehaviour:
   maxLevel: 3
   currentLevel: 0
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  cooldownDuration: 28
   activationStyle: 1
+  activationDuration: 8
   burnZonePrefab: {fileID: 5662877110636264449, guid: e5542b3180af67a4e8b784a417a91357, type: 3}
   baseThermiteDPSPercent: 0.1
   thermiteDPSPercentPerLevel: 0.1

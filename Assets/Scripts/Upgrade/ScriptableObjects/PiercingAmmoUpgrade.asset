@@ -16,15 +16,10 @@ MonoBehaviour:
   description: The projectiles pierce enemies
   icon: {fileID: -1193393901, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 0
+  currentLevel: 2
   prerequisites: []
-  baseEnergyDrain: 0
-  energyDrainPerLevel: 1
-  energyDrainAmount: 0
-  baseActivationEnergyCost: 0
-  activationEnergyCostPerLevel: 0
-  activationEnergyAmount: 0
-  activationDuration: 0
+  cooldownDuration: 20
   activationStyle: 1
+  activationDuration: 10
   extraPiercePerLevel: 1
   pierceDamageMultiplier: 1.1
