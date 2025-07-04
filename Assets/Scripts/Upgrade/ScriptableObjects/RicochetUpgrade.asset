@@ -18,8 +18,8 @@ MonoBehaviour:
   maxLevel: 3
   currentLevel: 0
   prerequisites: []
-  baseEnergyDrain: 3
-  energyDrainPerLevel: 0
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
   energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
@@ -28,4 +28,6 @@ MonoBehaviour:
   activationStyle: 1
   extraRicochets: 1
   extraRange: 0.5
-  ricochetDamageMultiplier: 0.5
+  baseRicochetMultiplier: 0.7
+  damageGrowthFactor: 1.1
+  ricochetDamageMultiplier: 0.7

@@ -18,8 +18,8 @@ MonoBehaviour:
   maxLevel: 3
   currentLevel: 0
   prerequisites: []
-  baseEnergyDrain: 3
-  energyDrainPerLevel: 0
+  baseEnergyDrain: 0
+  energyDrainPerLevel: 1
   energyDrainAmount: 0
   baseActivationEnergyCost: 0
   activationEnergyCostPerLevel: 0
@@ -27,3 +27,4 @@ MonoBehaviour:
   activationDuration: 0
   activationStyle: 1
   extraPiercePerLevel: 1
+  pierceDamageMultiplier: 1.1

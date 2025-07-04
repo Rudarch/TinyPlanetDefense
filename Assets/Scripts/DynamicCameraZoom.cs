@@ -5,7 +5,7 @@ public class DynamicCameraZoom : MonoBehaviour
     public float defaultSize = 5f;
     public float zoomOutMargin = 1f;
     public float zoomSpeed = 2f;
-
+    public Transform planet;
     private Camera cam;
 
     void Start()
@@ -22,7 +22,7 @@ public class DynamicCameraZoom : MonoBehaviour
             return;
         }
 
-        Bounds bounds = new Bounds(transform.position, Vector3.zero);
+        Bounds bounds = new Bounds(planet.position, Vector3.zero);
         foreach (Enemy e in enemies)
         {
             if (e != null && e.gameObject.activeInHierarchy)

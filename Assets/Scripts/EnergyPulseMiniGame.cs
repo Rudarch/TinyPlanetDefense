@@ -137,7 +137,7 @@ public class EnergyPulseMiniGame : MonoBehaviour
         {
             timeSinceLastCorrectPress = 0f;
 
-            float bonusEnergy = energyGainPerSuccess + correctStreak;
+            float bonusEnergy = energyGainPerSuccess + correctStreak + Upgrades.Inst.EnergyMatrix.BonusPulseTap;
             EnergySystem.Inst.Restore(bonusEnergy);
             correctStreak++;
 

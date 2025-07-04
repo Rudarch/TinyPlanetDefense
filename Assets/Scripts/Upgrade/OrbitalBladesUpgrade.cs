@@ -10,6 +10,7 @@ public class OrbitalBladesUpgrade : Upgrade
     public float baseRotationSpeed = 60f;
     public float rotationSpeedPerLevel = 15f;
     public float damageInterval = 1f;
+    public float radiusGrowthSpeed = 1f;
     [SerializeField] private float orbitRadius = 2f;
     [SerializeField] private float damage = 2f;
     public float OrbitRadius => orbitRadius;

@@ -97,8 +97,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.000881657, y: 0.04465716}
-  m_Size: {x: 0.047207028, y: 0.05320599}
+  m_Offset: {x: 0.0065048933, y: 0.03758388}
+  m_Size: {x: 0.10685769, y: 0.109748736}
   m_Direction: 0
 --- !u!82 &2547260387813971645
 AudioSource:
@@ -212,6 +212,7 @@ MonoBehaviour:
   speed: 0.3
   lifetime: 12
   damage: 2
+  impactVFX: {fileID: 3590180448129316357, guid: c426e3be841715b4aa223a0425a64606, type: 3}
 --- !u!1 &8204084467353614868
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,13 +238,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8204084467353614868}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.9329478, w: -0.3600118}
-  m_LocalPosition: {x: -0.007, y: -0.0018, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071931, w: -0.70702046}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7442623370896955172}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 222.202}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 269.986}
 --- !u!212 &3357198010843429231
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ SpriteRenderer:
   m_SortingLayerID: -27085959
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1529457761735457229, guid: 843b5ad1558ad6d43a4a1461fc174cae, type: 3}
+  m_Sprite: {fileID: 1660334671, guid: bb49c8762df62cd48a60b21a6f392d90, type: 3}
   m_Color: {r: 1, g: 0.6859593, b: 0.12549019, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,0 +1,589 @@
+fileFormatVersion: 2
+guid: 88a34450181226145be45710df63dd05
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7404352533811044721
+    second: FirePortal_1_0
+  - first:
+      213: -2641814874056682399
+    second: FirePortal_1_1
+  - first:
+      213: 4600188039497818614
+    second: FirePortal_1_2
+  - first:
+      213: 284408915730885450
+    second: FirePortal_1_3
+  - first:
+      213: -5518206953516597167
+    second: FirePortal_1_4
+  - first:
+      213: 6277175022335905561
+    second: FirePortal_1_5
+  - first:
+      213: -668519473578910948
+    second: FirePortal_1_6
+  - first:
+      213: -8070952291715735855
+    second: FirePortal_1_7
+  - first:
+      213: -2596034473452883393
+    second: FirePortal_1_8
+  - first:
+      213: -6487164465924881490
+    second: FirePortal_1_9
+  - first:
+      213: 8018597399722130257
+    second: FirePortal_1_10
+  - first:
+      213: -4065354494563344211
+    second: FirePortal_1_11
+  - first:
+      213: -1480284723784345044
+    second: FirePortal_1_12
+  - first:
+      213: 5464447878619765047
+    second: FirePortal_1_13
+  - first:
+      213: -551384343956143663
+    second: FirePortal_1_14
+  - first:
+      213: -1021578133420304529
+    second: FirePortal_1_15
+  - first:
+      213: -8699073446463421353
+    second: FirePortal_1_16
+  - first:
+      213: 7999737704379427963
+    second: FirePortal_1_17
+  - first:
+      213: -4589693232956711222
+    second: FirePortal_1_18
+  - first:
+      213: -3655027281312140704
+    second: FirePortal_1_19
+  - first:
+      213: -666670590107630305
+    second: FirePortal_1_20
+  - first:
+      213: 2314711873077530869
+    second: FirePortal_1_21
+  - first:
+      213: 4705331942096092738
+    second: FirePortal_1_22
+  - first:
+      213: -7629164492834553140
+    second: FirePortal_1_23
+  - first:
+      213: 4611046490236741550
+    second: FirePortal_1_24
+  - first:
+      213: -8218390459084897467
+    second: FirePortal_1_25
+  - first:
+      213: 5031720640508305959
+    second: FirePortal_1_26
+  - first:
+      213: -5678148785105694312
+    second: FirePortal_1_27
+  - first:
+      213: -8876896583344197400
+    second: FirePortal_1_28
+  - first:
+      213: -1742942104063023692
+    second: FirePortal_1_29
+  - first:
+      213: -3741002934166532321
+    second: FirePortal_1_30
+  - first:
+      213: -1650157696989725973
+    second: FirePortal_1_31
+  - first:
+      213: 6423601689398676200
+    second: FirePortal_1_32
+  - first:
+      213: 3804779213603608277
+    second: FirePortal_1_33
+  - first:
+      213: 8780264344704273376
+    second: FirePortal_1_34
+  - first:
+      213: 8325168668165901043
+    second: FirePortal_1_35
+  - first:
+      213: 6206408239946545664
+    second: FirePortal_1_36
+  - first:
+      213: -510345871020247300
+    second: FirePortal_1_37
+  - first:
+      213: -5980286238335558349
+    second: FirePortal_1_38
+  - first:
+      213: -1622816974001563088
+    second: FirePortal_1_39
+  - first:
+      213: 306748024086611981
+    second: FirePortal_1_40
+  - first:
+      213: 4521167780052613032
+    second: FirePortal_1_41
+  - first:
+      213: 4878487016937506889
+    second: FirePortal_1_42
+  - first:
+      213: -8653900058352900333
+    second: FirePortal_1_43
+  - first:
+      213: 4531633980036441306
+    second: FirePortal_1_44
+  - first:
+      213: 58912585356171873
+    second: FirePortal_1_45
+  - first:
+      213: -5597052276351611436
+    second: FirePortal_1_46
+  - first:
+      213: 6833118219288400216
+    second: FirePortal_1_47
+  - first:
+      213: -5370617056333361048
+    second: FirePortal_1_48
+  - first:
+      213: 8272480719573224484
+    second: FirePortal_1_49
+  - first:
+      213: -5667045471606523178
+    second: FirePortal_1_50
+  - first:
+      213: -7602471861518714677
+    second: FirePortal_1_51
+  - first:
+      213: 9104454769818648005
+    second: FirePortal_1_52
+  - first:
+      213: -3558808302017609438
+    second: FirePortal_1_53
+  - first:
+      213: -6352808343459647276
+    second: FirePortal_1_54
+  - first:
+      213: 4551370897674940230
+    second: FirePortal_1_55
+  - first:
+      213: 8677152580330702097
+    second: FirePortal_1_56
+  - first:
+      213: 8709734115543942368
+    second: FirePortal_1_57
+  - first:
+      213: -8673263266159223809
+    second: FirePortal_1_58
+  - first:
+      213: -5500629195832618827
+    second: FirePortal_1_59
+  - first:
+      213: -3598266414479439608
+    second: FirePortal_1_60
+  - first:
+      213: -1827052812627741388
+    second: FirePortal_1_61
+  - first:
+      213: -2079162386136561410
+    second: FirePortal_1_62
+  - first:
+      213: -457469592637214226
+    second: FirePortal_1_63
+  - first:
+      213: 3984654156586271242
+    second: FirePortal_1_64
+  - first:
+      213: -1255392982017136429
+    second: FirePortal_1_65
+  - first:
+      213: 5898612109817181731
+    second: FirePortal_1_66
+  - first:
+      213: -4730428577105730036
+    second: FirePortal_1_67
+  - first:
+      213: -2558521362393778771
+    second: FirePortal_1_68
+  - first:
+      213: -2045985930103010477
+    second: FirePortal_1_69
+  - first:
+      213: -2300637215600203254
+    second: FirePortal_1_70
+  - first:
+      213: -2095218166009066533
+    second: FirePortal_1_71
+  - first:
+      213: -5206780685835725532
+    second: FirePortal_1_72
+  - first:
+      213: -2283579323412029472
+    second: FirePortal_1_73
+  - first:
+      213: -6847827073068074400
+    second: FirePortal_1_74
+  - first:
+      213: -4954671587976754524
+    second: FirePortal_1_75
+  - first:
+      213: 9116476435707197466
+    second: FirePortal_1_76
+  - first:
+      213: -1180433993555381859
+    second: FirePortal_1_77
+  - first:
+      213: 2377729582521046972
+    second: FirePortal_1_78
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FirePortal_1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1023
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1712299466b81c660800000000000000
+      internalID: 7404352533811044721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_1
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1023
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16412857e53665bd0800000000000000
+      internalID: -2641814874056682399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_2
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 1023
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f1a44a26a627df30800000000000000
+      internalID: 4600188039497818614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4be719e66c62f300800000000000000
+      internalID: 284408915730885450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_4
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 512
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1508d8233046b63b0800000000000000
+      internalID: -5518206953516597167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_5
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 512
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91f4947cc610d1750800000000000000
+      internalID: 6277175022335905561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1bd5eba411f8b6f0800000000000000
+      internalID: -668519473578910948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_7
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de982507a73eff80800000000000000
+      internalID: -8070952291715735855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FirePortal_1_8
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 1
+        width: 341
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f323c29966809fbd0800000000000000
+      internalID: -2596034473452883393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2579e9eca500edd4e999327a083fb4c7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":341.0,"y":511.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      FirePortal_1_0: 7404352533811044721
+      FirePortal_1_1: -2641814874056682399
+      FirePortal_1_2: 4600188039497818614
+      FirePortal_1_3: 284408915730885450
+      FirePortal_1_4: -5518206953516597167
+      FirePortal_1_5: 6277175022335905561
+      FirePortal_1_6: -668519473578910948
+      FirePortal_1_7: -8070952291715735855
+      FirePortal_1_8: -2596034473452883393
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -26,4 +26,4 @@ MonoBehaviour:
   activationEnergyAmount: 0
   activationDuration: 0
   activationStyle: 0
-  bonusDamage: 2
+  bonusDamage: 1

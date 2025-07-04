@@ -5,6 +5,7 @@ public class EnergyMatrixUpgrade : Upgrade
 {
     [SerializeField] private float bonusRegen = 1.5f;
     [SerializeField] private float bonusCapacity = 15f;
+    [SerializeField] private float bonusPulseTap = 1f;
 
     protected override void InitializeInternal()
     {
@@ -29,8 +30,17 @@ public class EnergyMatrixUpgrade : Upgrade
         }
     }
 
+    public float BonusPulseTap
+    {
+        get
+        {
+            if (IsActivated) return bonusPulseTap * CurrentLevel;
+            else return 0;
+        }
+    }
+
     public override string GetUpgradeEffectText()
     {
-        return $"+{bonusRegen * NextLevel:F1}/s Regen, +{bonusCapacity * NextLevel:F0} Max Energy";
+        return $"+{bonusRegen * NextLevel:F1}/s Regen, +{bonusCapacity * NextLevel:F0} Max Energy, +{bonusPulseTap * NextLevel:F0} Pulse tap";
     }
 }

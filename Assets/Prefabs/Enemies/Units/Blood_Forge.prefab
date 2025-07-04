@@ -356,7 +356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 70.4}
+  m_AnchoredPosition: {x: 0, y: 118.4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &383536154278859644
@@ -556,7 +556,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_TargetDisplay: 0
 --- !u!114 &5467635850341346401
 MonoBehaviour:
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3c49f2b28df35439eb7c58241a9427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 20
+  cost: 25
   role: 1
   synergyWith: 0100000000000000020000000300000004000000
   groupMinCount: 1
@@ -972,9 +972,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52aa2020de3f2442a79ab1c97585762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
-  spawnInterval: 5
-  maxSpanws: 5
+  enemyPrefabs:
+  - prefab: {fileID: 9124620233068310814, guid: 283fe39b9270731438bd3c3f3d0f1f88, type: 3}
+    relativeChance: 3
+  - prefab: {fileID: 9124620233068310814, guid: e2e3b737499c95241a2a49014b7f79e4, type: 3}
+    relativeChance: 5
+  - prefab: {fileID: 9124620233068310814, guid: 25b4ba992f0fe344b9044fb478d3eb77, type: 3}
+    relativeChance: 2
+  - prefab: {fileID: 9124620233068310814, guid: c9139703b1e6f87459333af99bbba3cc, type: 3}
+    relativeChance: 3
+  - prefab: {fileID: 9124620233068310814, guid: eeb9080f69d9e0a45a748f085c83edb6, type: 3}
+    relativeChance: 1
+  spawnInterval: 3
+  maxSpawns: 20
   spawnPointOverride: {fileID: 0}
 --- !u!1001 &952133868080850077
 PrefabInstance:
@@ -1340,7 +1350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2621751244031726148, guid: 901c814c5a030f54fa42d955943abf5d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 124.4
+      value: -73.8
       objectReference: {fileID: 0}
     - target: {fileID: 2621751244031726148, guid: 901c814c5a030f54fa42d955943abf5d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

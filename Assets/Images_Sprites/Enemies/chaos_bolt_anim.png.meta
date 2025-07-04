@@ -1,22 +1,145 @@
 fileFormatVersion: 2
-guid: 745fd1432eced8844813229982686e0b
+guid: bb49c8762df62cd48a60b21a6f392d90
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3052900415771533959
-    second: WaveEffects_1_0
+      213: 7557769422228051100
+    second: chaos_bolt_anim_0
   - first:
-      213: -3047848612078287061
-    second: WaveEffects_1_1
+      213: -7076796199097194223
+    second: chaos_bolt_anim_1
   - first:
-      213: -6847080383904492472
-    second: WaveEffects_1_2
+      213: 8097769906311375482
+    second: chaos_bolt_anim_2
   - first:
-      213: 1461451802548378912
-    second: WaveEffects_1_3
+      213: -5249016121070392765
+    second: chaos_bolt_anim_3
   - first:
-      213: -6392461071993255140
-    second: WaveEffects_1_4
+      213: 5702423026249505227
+    second: chaos_bolt_anim_4
+  - first:
+      213: 4438487220605315443
+    second: chaos_bolt_anim_5
+  - first:
+      213: -7658600814438704618
+    second: chaos_bolt_anim_6
+  - first:
+      213: -8195396425644038128
+    second: chaos_bolt_anim_7
+  - first:
+      213: -6171436523812559079
+    second: chaos_bolt_anim_8
+  - first:
+      213: -6071530371468313715
+    second: chaos_bolt_anim_9
+  - first:
+      213: -5235045447259926113
+    second: chaos_bolt_anim_10
+  - first:
+      213: 88690946956816742
+    second: chaos_bolt_anim_11
+  - first:
+      213: 6726832604049324012
+    second: chaos_bolt_anim_12
+  - first:
+      213: 7157197543662360280
+    second: chaos_bolt_anim_13
+  - first:
+      213: 7261485825687027711
+    second: chaos_bolt_anim_14
+  - first:
+      213: 6501362954890434676
+    second: chaos_bolt_anim_15
+  - first:
+      213: 1699067418228993283
+    second: chaos_bolt_anim_16
+  - first:
+      213: 8994326115529079918
+    second: chaos_bolt_anim_17
+  - first:
+      213: 7354599646657523534
+    second: chaos_bolt_anim_18
+  - first:
+      213: -962889553825885693
+    second: chaos_bolt_anim_19
+  - first:
+      213: 6520751289521577644
+    second: chaos_bolt_anim_20
+  - first:
+      213: -2206115542993834915
+    second: chaos_bolt_anim_21
+  - first:
+      213: -6843845940426046874
+    second: chaos_bolt_anim_22
+  - first:
+      213: -5019196391304348445
+    second: chaos_bolt_anim_23
+  - first:
+      213: 3649138789871159222
+    second: chaos_bolt_anim_24
+  - first:
+      213: 2537778087730190425
+    second: chaos_bolt_anim_25
+  - first:
+      213: 6966598034890916745
+    second: chaos_bolt_anim_26
+  - first:
+      213: 7771196740322605042
+    second: chaos_bolt_anim_27
+  - first:
+      213: -8303127059826330443
+    second: chaos_bolt_anim_28
+  - first:
+      213: -3034670428273414535
+    second: chaos_bolt_anim_29
+  - first:
+      213: -6017795063422989712
+    second: chaos_bolt_anim_30
+  - first:
+      213: -3437058146367775254
+    second: chaos_bolt_anim_31
+  - first:
+      213: 3453530760502653725
+    second: chaos_bolt_anim_32
+  - first:
+      213: 3149783028519933625
+    second: chaos_bolt_anim_33
+  - first:
+      213: -2430714756810109916
+    second: chaos_bolt_anim_34
+  - first:
+      213: -3832910707347817335
+    second: chaos_bolt_anim_35
+  - first:
+      213: 2589271052439142710
+    second: chaos_bolt_anim_36
+  - first:
+      213: 7328171542699900540
+    second: chaos_bolt_anim_37
+  - first:
+      213: 4278323455671999626
+    second: chaos_bolt_anim_38
+  - first:
+      213: 2690546363443885491
+    second: chaos_bolt_anim_39
+  - first:
+      213: 8213114994556874816
+    second: chaos_bolt_anim_40
+  - first:
+      213: -573808473764479229
+    second: chaos_bolt_anim_41
+  - first:
+      213: -8523550186385120165
+    second: chaos_bolt_anim_42
+  - first:
+      213: -133913051123839186
+    second: chaos_bolt_anim_43
+  - first:
+      213: 2574949470126946600
+    second: chaos_bolt_anim_44
+  - first:
+      213: 3738700713639043780
+    second: chaos_bolt_anim_45
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -63,7 +186,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +207,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -138,123 +261,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WaveEffect_AntiGravity_1
+      name: chaos_bolt_anim_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 236
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 97d9b4f2f3be1a5d0800000000000000
-      internalID: -3052900415771533959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveEffect_EMP_1
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 230
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b2708e3e5ddd3b5d0800000000000000
-      internalID: -3047848612078287061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveEffect_Plasma_1
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 12
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 844d3d01ba84af0a0800000000000000
-      internalID: -6847080383904492472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveEffect_Explosion_1
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 17
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02d104bdbae184410800000000000000
-      internalID: 1461451802548378912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveEffect_Cryo_1
-      rect:
-        serializedVersion: 2
-        x: 440
-        y: 12
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1b4453168a6947a0800000000000000
-      internalID: -6392461071993255140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaveEffects_1_0
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 216
-        width: 220
-        height: 220
+        x: 512
+        y: 516
+        width: 512
+        height: 508
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +276,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afa5e18a4e6b6b4418165f2872336895
-      internalID: 1248858612
+      spriteID: 9df3571d4ef1803468c27f44439582e8
+      internalID: -2088527013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveEffects_1_1
+      name: chaos_bolt_anim_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 516
+        width: 512
+        height: 508
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d91095317d657546b9bd9628e58e935
+      internalID: 1903587650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaos_bolt_anim_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 481
-        width: 220
-        height: 210
+        y: 8
+        width: 512
+        height: 508
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,20 +320,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a4f48e870fa30a49a9c4e33ff9dd289
-      internalID: -1012193756
+      spriteID: a1a221270a2cae94c831745300ca6518
+      internalID: -1846303986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaveEffects_1_2
+      name: chaos_bolt_anim_4
       rect:
         serializedVersion: 2
-        x: 228
-        y: 467
-        width: 200
-        height: 200
+        x: 512
+        y: 8
+        width: 512
+        height: 508
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c272f8bceafe8649bbd1286eccf3d7c
+      internalID: 465276867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaos_bolt_anim_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 8
+        width: 512
+        height: 508
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 023f2324808d5124ba803ae8ba4ee93e
+      internalID: 2052245228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chaos_bolt_anim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 517
+        width: 511
+        height: 507
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -307,8 +386,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2016058b231feb34cb703d79076179c8
-      internalID: -650451628
+      spriteID: 1a86c87add6d45145b8e9df3b48bd7c5
+      internalID: 1660334671
       vertices: []
       indices: 
       edges: []
@@ -317,7 +396,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a77d05cf1d99e8f408a9aa66ea91ce6f
+    spriteID: 84a45bdaf1e5e244599a2e19dddc26c3
     internalID: 0
     vertices: []
     indices: 
@@ -325,16 +404,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":512.0,"y":508.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WaveEffect_AntiGravity_1: -3052900415771533959
-      WaveEffect_Cryo_1: -6392461071993255140
-      WaveEffect_EMP_1: -3047848612078287061
-      WaveEffect_Explosion_1: 1461451802548378912
-      WaveEffect_Plasma_1: -6847080383904492472
-      WaveEffects_1_0: 1248858612
-      WaveEffects_1_1: -1012193756
-      WaveEffects_1_2: -650451628
+      chaos_bolt_anim_0: 1660334671
+      chaos_bolt_anim_1: -2088527013
+      chaos_bolt_anim_2: 1903587650
+      chaos_bolt_anim_3: -1846303986
+      chaos_bolt_anim_4: 465276867
+      chaos_bolt_anim_5: 2052245228
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

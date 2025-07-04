@@ -32,4 +32,4 @@ MonoBehaviour:
   activationStyle: 0
   explosionPrefab: {fileID: 6281773370717664868, guid: 766a198a18934224e84d088827a357e0, type: 3}
   explosionRadius: 0.5
-  explosionDamage: 3
+  explosionDamage: 10

@@ -24,29 +24,26 @@ public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
 
     protected override IEnumerator Trigger()
     {
-        while (IsActivated)
+        yield return new WaitForSeconds(waveInterval);
+
+        var enemies = EnemyManager.Inst.GetAllEnemies();
+        if (enemies.Count == 0) yield return null;
+
+        int count = baseStrikes + CurrentLevel;
+        for (int i = 0; i < count; i++)
         {
-            yield return new WaitForSeconds(waveInterval);
-
-            var enemies = EnemyManager.Inst.GetAllEnemies();
-            if (enemies.Count == 0) continue;
-
-            int count = baseStrikes + CurrentLevel;
-            for (int i = 0; i < count; i++)
+            var target = enemies[Random.Range(0, enemies.Count)];
+            if (target != null)
             {
-                var target = enemies[Random.Range(0, enemies.Count)];
-                if (target != null)
-                {
-                    GameObject beam = Instantiate(effectVFX, target.transform.position, Quaternion.identity);
-                    var beamComp = beam.GetComponent<OrbitalStrikeBeam>();
-                    beamComp?.Strike(target, damage);
+                GameObject beam = Instantiate(effectVFX, target.transform.position, Quaternion.identity);
+                var beamComp = beam.GetComponent<OrbitalStrikeBeam>();
+                beamComp?.Strike(target, damage);
 
-                    if (impactSound != null)
-                        AudioSource.PlayClipAtPoint(impactSound, target.transform.position);
-                }
-
-                yield return new WaitForSeconds(strikeDelay);
+                if (impactSound != null)
+                    AudioSource.PlayClipAtPoint(impactSound, target.transform.position);
             }
+
+            yield return new WaitForSeconds(strikeDelay);
         }
     }
 

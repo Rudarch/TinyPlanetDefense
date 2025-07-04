@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AdaptiveWaveGenerator : MonoBehaviour
@@ -19,19 +20,9 @@ public class AdaptiveWaveGenerator : MonoBehaviour
         var wave = ScriptableObject.CreateInstance<WaveData>();
         wave.spawns = new List<WaveSpawnInfo>();
 
-        int zonesToUse = Random.Range(1, maxSpawnZones + 1);
-        List<int> chosenZones = new();
-        for (int i = 0; i < zonesToUse; i++)
-        {
-            int zone;
-            do { zone = Random.Range(0, maxSpawnZones); }
-            while (chosenZones.Contains(zone));
-            chosenZones.Add(zone);
-        }
+        int zoneIndex = Random.Range(0, maxSpawnZones);
 
         HashSet<EnemyRole> spawnedRoles = new();
-        Dictionary<int, EnemyRole> lastRoleInZone = new();
-
         int iterationLimit = 100;
         int iterations = 0;
 
@@ -39,7 +30,9 @@ public class AdaptiveWaveGenerator : MonoBehaviour
         {
             iterations++;
 
-            var enemy = GetRandomEnemyByCost();
+            var enemy = GetRandomAfordableEnemy(budget);
+            if (enemy == null) break;
+
             var meta = enemy.GetComponent<EnemyMetadata>();
             if (meta == null) continue;
 
@@ -50,14 +43,9 @@ public class AdaptiveWaveGenerator : MonoBehaviour
 
             count = Mathf.Min(count, maxGroup);
 
-            // Strict support logic: skip if no synergy role already spawned
             if (meta.requiresMix)
             {
-                bool synergyOK = false;
-                foreach (var needed in meta.synergyWith)
-                {
-                    if (spawnedRoles.Contains(needed)) { synergyOK = true; break; }
-                }
+                bool synergyOK = meta.synergyWith.Any(needed => spawnedRoles.Contains(needed));
                 if (!synergyOK) continue;
             }
 
@@ -67,41 +55,64 @@ public class AdaptiveWaveGenerator : MonoBehaviour
             if (iterations > 5 && Random.value < 0.2f)
                 continue;
 
-            // Prefer placing different unit types in different zones
-            int zoneIndex = chosenZones[Random.Range(0, chosenZones.Count)];
-            if (lastRoleInZone.TryGetValue(zoneIndex, out var prevRole))
+            // Swarm override: let Swarms spawn in random zones
+            List<int> swarmZones = null;
+            if (meta.role == EnemyRole.Swarm)
             {
-                if (prevRole == meta.role && Random.value < 0.75f) // 75% chance to skip repeating role in same zone
-                    continue;
+                int swarmZoneCount = Mathf.Min(Random.Range(1, 3), maxSpawnZones); // 1–2 zones
+                swarmZones = new();
+                while (swarmZones.Count < swarmZoneCount)
+                {
+                    int z = Random.Range(0, maxSpawnZones);
+                    if (!swarmZones.Contains(z)) swarmZones.Add(z);
+                }
             }
 
-            var info = new WaveSpawnInfo
-            {
-                enemyPrefab = enemy,
-                count = count,
-                duration = Mathf.Max(1f, count * 0.4f),
-                spawnZoneIndex = zoneIndex,
-                modifier = DetermineModifier(waveNumber)
-            };
+            int baseCount = meta.role == EnemyRole.Swarm && swarmZones != null ? count / swarmZones.Count : count;
+            baseCount = Mathf.Max(1, baseCount); // ensure at least 1 per group
 
-            wave.spawns.Add(info);
+            var modifier = DetermineModifier(waveNumber);
+            if (meta.role == EnemyRole.Swarm && swarmZones != null)
+            {
+                foreach (var swarmZone in swarmZones)
+                {
+                    wave.spawns.Add(new WaveSpawnInfo
+                    {
+                        enemyPrefab = enemy,
+                        count = baseCount,
+                        duration = Mathf.Max(1f, baseCount * 0.4f),
+                        spawnZoneIndex = swarmZone,
+                        modifier = modifier
+                    });
+                }
+            }
+            else
+            {
+                wave.spawns.Add(new WaveSpawnInfo
+                {
+                    enemyPrefab = enemy,
+                    count = count,
+                    duration = Mathf.Max(1f, count * 0.4f),
+                    spawnZoneIndex = zoneIndex,
+                    modifier = modifier
+                });
+            }
+
             spawnedRoles.Add(meta.role);
-            lastRoleInZone[zoneIndex] = meta.role;
             budget -= cost * count;
 
-            // Additional groups if budget remains
+            // Additional group spawning if budget remains
             while (budget >= cost)
             {
                 int nextCount = Mathf.Min(Mathf.FloorToInt(budget / cost), maxGroup);
-                var extraInfo = new WaveSpawnInfo
+                wave.spawns.Add(new WaveSpawnInfo
                 {
                     enemyPrefab = enemy,
                     count = nextCount,
                     duration = Mathf.Max(1f, nextCount * 0.4f),
-                    spawnZoneIndex = chosenZones[Random.Range(0, chosenZones.Count)],
+                    spawnZoneIndex = zoneIndex,
                     modifier = DetermineModifier(waveNumber)
-                };
-                wave.spawns.Add(extraInfo);
+                });
                 budget -= cost * nextCount;
             }
         }
@@ -112,9 +123,11 @@ public class AdaptiveWaveGenerator : MonoBehaviour
 
     private EnemyModifierType DetermineModifier(int waveNumber)
     {
-        float eliteChance = waveNumber % eliteWaveInterval == 0 ? 0.5f : 0.1f;
-        float fastChance = 0.1f;
-        float armorChance = 0.15f;
+        float eliteChance = waveNumber % eliteWaveInterval == 0 ? 0.5f : 0.05f;
+        float armorChance = 0.05f;
+        float fastChance = 0.05f;
+        float explodingChance = 0.05f;
+        float regeneratingChance = 0.05f;
 
         float roll = Random.value;
 
@@ -124,29 +137,18 @@ public class AdaptiveWaveGenerator : MonoBehaviour
         if (roll < eliteChance) return EnemyModifierType.Elite;
         if (roll < eliteChance + armorChance) return EnemyModifierType.Armored;
         if (roll < eliteChance + armorChance + fastChance) return EnemyModifierType.Fast;
+        if (roll < eliteChance + armorChance + fastChance + explodingChance) return EnemyModifierType.Exploding;
+        if (roll < eliteChance + armorChance + fastChance + explodingChance + regeneratingChance) return EnemyModifierType.Regenerating;
 
         return EnemyModifierType.None;
     }
 
-    private GameObject GetRandomEnemyByCost()
+    private GameObject GetRandomAfordableEnemy(float budget)
     {
-        float maxCost = 0f;
-        foreach (var e in enemyTypes)
-        {
-            float cost = GetCost(e);
-            if (cost > maxCost) maxCost = cost;
-        }
+        var enemiesByCost = enemyTypes.Where(enemy => GetCost(enemy) <= budget).ToList();
+        if (enemiesByCost.Count == 0) return null;
 
-        List<GameObject> weightedList = new();
-        foreach (var e in enemyTypes)
-        {
-            float cost = GetCost(e);
-            int weight = Mathf.RoundToInt(maxCost - cost + 1);
-            for (int i = 0; i < weight; i++)
-                weightedList.Add(e);
-        }
-
-        return weightedList[Random.Range(0, weightedList.Count)];
+        return enemiesByCost[Random.Range(0, enemiesByCost.Count)];
     }
 
     private float GetCost(GameObject enemy)

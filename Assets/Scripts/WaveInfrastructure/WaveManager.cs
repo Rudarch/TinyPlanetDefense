@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public GameObject spawnEffectPrefab;
     public List<WaveData> levelWaves;
     public Transform[] spawnZones;
     public AdaptiveWaveGenerator waveGenerator;
@@ -80,6 +81,21 @@ public class WaveManager : MonoBehaviour
 
         var box = spawnZones[index].GetComponent<BoxCollider2D>();
         Vector2 pos = RandomPointInBounds(box.bounds);
+
+        // Spawn visual effect first
+        if (spawnEffectPrefab != null)
+        {
+            GameObject fx = Instantiate(spawnEffectPrefab, pos, Quaternion.identity);
+            if (prefab != null)
+            {
+                Vector3 enemyScale = prefab.transform.localScale;
+                fx.transform.localScale = enemyScale;
+            }
+
+            Destroy(fx, 1.5f); // or however long the animation lasts
+        }
+
+        // Then spawn the actual enemy
         GameObject go = Instantiate(prefab, pos, Quaternion.identity);
 
         var enemy = go.GetComponent<Enemy>();
@@ -91,6 +107,7 @@ public class WaveManager : MonoBehaviour
             ApplyModifier(enemy, modifier);
         }
     }
+
 
     Vector2 RandomPointInBounds(Bounds bounds)
     {

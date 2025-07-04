@@ -10,6 +10,7 @@ public class OrbitalBladeController : MonoBehaviour
     private List<Coroutine> bladeCoroutines = new();
     private OrbitalBladesUpgrade config;
     private float[] bladeAngles;
+    private float[] bladeRadii;
     private bool isActive = false;
     private HashSet<Transform> readyBlades = new();
 
@@ -25,29 +26,35 @@ public class OrbitalBladeController : MonoBehaviour
     public void Activate()
     {
         ClearBlades();
+        Debug.Log($"{this.GetType().Name} {nameof(Activate)} method called");
 
         int count = config.GetTotalBlades();
         float angleStep = 360f / count;
         bladeAngles = new float[count];
+        bladeRadii = new float[count];
 
         for (int i = 0; i < count; i++)
         {
             float angle = i * angleStep;
             bladeAngles[i] = angle;
+            bladeRadii[i] = 0f;
 
-            Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * 0.2f;
-            GameObject blade = Instantiate(config.bladePrefab, orbitCenter.position + offset, Quaternion.identity, bladesRoot);
-            blade.transform.localScale = Vector3.zero;
+            GameObject blade = Instantiate(
+                config.bladePrefab,
+                orbitCenter.position,               // Start at the center
+                Quaternion.identity,
+                bladesRoot
+            );
 
-            readyBlades.Clear(); // clear before reuse
-            Coroutine routine = StartCoroutine(SpiralMove(blade.transform, angle, 0f, Upgrades.Inst.OrbitalBlades.OrbitRadius, spawnDuration, true));
-            bladeCoroutines.Add(routine);
+            blade.transform.localScale = Vector3.one;
 
             blades.Add(blade);
+            readyBlades.Add(blade.transform);      // Mark as active immediately
         }
 
         isActive = true;
     }
+
 
     public void Deactivate()
     {
@@ -56,17 +63,9 @@ public class OrbitalBladeController : MonoBehaviour
 
         isActive = false;
 
-        for (int i = 0; i < blades.Count; i++)
-        {
-            if (blades[i] != null)
-            {
-                Coroutine routine = StartCoroutine(SpiralMove(blades[i].transform, bladeAngles[i], Upgrades.Inst.OrbitalBlades.OrbitRadius, 0f, despawnDuration, false));
-                bladeCoroutines.Add(routine);
-            }
-        }
-
-        StartCoroutine(CleanupAfterDespawn(despawnDuration));
+        ClearBlades(); // boom
     }
+
 
     void Update()
     {
@@ -78,38 +77,44 @@ public class OrbitalBladeController : MonoBehaviour
         {
             if (blades[i] == null || !readyBlades.Contains(blades[i].transform)) continue;
 
-            bladeAngles[i] += speed * Time.deltaTime;
-            float rad = bladeAngles[i] * Mathf.Deg2Rad;
-            Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad)) * Upgrades.Inst.OrbitalBlades.OrbitRadius;
+            bladeAngles[i] += config.GetRotationSpeed() * Time.deltaTime;
 
+            float currentRadius = bladeRadii[i];
+            float targetRadius = Upgrades.Inst.OrbitalBlades.OrbitRadius;
+
+            if (currentRadius < targetRadius)
+            {
+                currentRadius += Upgrades.Inst.OrbitalBlades.radiusGrowthSpeed * Time.deltaTime;
+                if (currentRadius > targetRadius) currentRadius = targetRadius;
+                bladeRadii[i] = currentRadius;
+            }
+
+            float rad = bladeAngles[i] * Mathf.Deg2Rad;
+            Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad)) * currentRadius;
             blades[i].transform.position = orbitCenter.position + offset;
             blades[i].transform.rotation = Quaternion.Euler(0f, 0f, bladeAngles[i] - 90f);
         }
     }
 
-    IEnumerator SpiralMove(Transform blade, float startAngle, float startRadius, float endRadius, float duration, bool scaleUp)
+    IEnumerator SpiralMove(Transform blade, float startAngle, float startRadius, float endRadius, float duration)
     {
         float timer = 0f;
 
         if (blade == null)
             yield break;
 
-        Vector3 startScale = scaleUp ? Vector3.zero : blade.localScale;
-        Vector3 endScale = scaleUp ? Vector3.one : Vector3.zero;
-
         while (timer < duration)
         {
             if (blade == null) yield break;
 
             float t = timer / duration;
-            float angle = startAngle + 360f * t;
+            float angle = startAngle;
             float radius = Mathf.Lerp(startRadius, endRadius, t);
             float rad = angle * Mathf.Deg2Rad;
 
             Vector3 offset = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
 
             blade.position = orbitCenter.position + offset;
-            blade.localScale = Vector3.Lerp(startScale, endScale, t);
             blade.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
 
             timer += Time.deltaTime;
@@ -121,26 +126,9 @@ public class OrbitalBladeController : MonoBehaviour
         // Final positioning
         float finalRad = (startAngle + 360f) * Mathf.Deg2Rad;
         blade.position = orbitCenter.position + new Vector3(Mathf.Cos(finalRad), Mathf.Sin(finalRad)) * endRadius;
-        blade.localScale = endScale;
         blade.rotation = Quaternion.Euler(0f, 0f, startAngle + 360f - 90f);
 
-        if (scaleUp)
-        {
-            readyBlades.Add(blade);
-        }
-        else
-        {
-            Destroy(blade.gameObject);
-        }
-    }
-
-
-
-    IEnumerator CleanupAfterDespawn(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        blades.Clear();
-        bladeCoroutines.Clear();
+        readyBlades.Add(blade);
     }
 
     void ClearBlades()
