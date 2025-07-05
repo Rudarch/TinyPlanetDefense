@@ -59,4 +59,10 @@ public class EnemyManager : MonoBehaviour
     {
         return new List<Enemy>(activeEnemies);
     }
+
+    public Enemy GetRandomEnemy()
+    {
+        if (activeEnemies.Count == 0) return null;
+        return activeEnemies[Random.Range(0, activeEnemies.Count)];
+    }
 }

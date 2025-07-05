@@ -27,18 +27,18 @@ public class AntigravityPulseUpgrade : PlanetEffectUpgrade
 
     protected override IEnumerator Trigger()
     {
-        while (IsActivated)
+
+        TriggerWaveEffectVFX(Upgrades.Inst.AntigravityPulse.pushBackRadius);
+
+        yield return new WaitForSeconds(waveInterval);
+
+        var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.AntigravityPulse.pushBackRadius);
+        foreach (var enemy in enemies)
         {
-            TriggerWaveEffectVFX(Upgrades.Inst.AntigravityPulse.pushBackRadius);
-
-            yield return new WaitForSeconds(waveInterval);
-
-            var enemies = EnemyManager.Inst.GetEnemiesInRange(Planet.transform.position, Upgrades.Inst.AntigravityPulse.pushBackRadius);
-            foreach (var enemy in enemies)
-            {
-                Vector2 dir = (enemy.transform.position - Planet.transform.position).normalized;
-                enemy.ApplyKnockback(dir * GetPushBackValue());
-            }
+            Vector2 dir = (enemy.transform.position - Planet.transform.position).normalized;
+            enemy.ApplyKnockback(dir * GetPushBackValue());
         }
+
+        Deactivate();
     }
 }

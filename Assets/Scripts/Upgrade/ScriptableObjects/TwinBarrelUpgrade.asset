@@ -16,12 +16,12 @@ MonoBehaviour:
   description: Adds second barrel
   icon: {fileID: 95418185, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 1
-  currentLevel: 0
+  currentLevel: 1
   prerequisites:
   - requiredUpgrade: {fileID: 11400000, guid: bec73976b731f3c458d02323931a4377, type: 2}
     minimumLevel: 2
   cooldownDuration: 50
   activationStyle: 1
   activationDuration: 7
-  fireSpeedMultiplier: 0.9
+  fireSpeedMultiplier: 1
   spreadAngle: 5

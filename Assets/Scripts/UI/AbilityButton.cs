@@ -8,19 +8,11 @@ public class AbilityButton : MonoBehaviour
     public UnityEngine.UI.Image icon;
     public UnityEngine.UI.Image glowEffect;
 
-    [Header("Toggle Colours")]
-    public Color toggleOnIconColor;
-    public Color toggleOnGlowColor;
-    public Color disabledToggleIconColor;
-    public Color disabledToggleGlowColor;
-
-    [Header("Timed Colours")]
-    public Color timedOnIconColor;
-    public Color timedOnGlowColor;
-    public Color enoughEnergyForActivationIconColor;
-    public Color enoughEnergyForActivationGlowColor;
-    public Color notEnoughEnergyForActivationIconColor;
-    public Color notEnoughEnergyForActivationGlowColor;
+    [Header("Colours")]
+    public Color activatedIconColor;
+    public Color activatedGlowColor;
+    public Color readyColor;
+    public Color onCooldownColor;
 
     public ColorLerpCoroutine coloroutine;
     public AudioClip clickSound;
@@ -60,29 +52,40 @@ public class AbilityButton : MonoBehaviour
             });
         }
 
-        upgrade.OnActivationChanged += UpdateVisual;
-        upgrade.OnActivationTimerChanged += UpdateGlow;
-        UpdateVisual(upgrade.IsActivated);
-        UpdateGlow(1, 1);
+        upgrade.OnUpgradeChanged += UpdateVisual;
+        upgrade.OnActivationTimerChanged += UpdateVisualsOnActivationTimeChanged;
+        UpdateVisual();
+        UpdateVisualsOnActivationTimeChanged(1, 0);
     }
 
-    public void UpdateGlow(float max, float value)
+    public void UpdateVisualsOnActivationTimeChanged(float max, float value)
     {
         glowEffect.fillAmount = value / max;
     }
 
-    public void UpdateVisual(bool isActive)
+    public void UpdateVisual()
     {
-        if (isActive)
+        if (BoundUpgrade.IsActivated)
         {
-            icon.color = timedOnIconColor;
-            glowEffect.color = timedOnGlowColor;
+            icon.color = activatedIconColor;
+            glowEffect.color = activatedGlowColor;
+        }
+        else if (BoundUpgrade.IsReadyForActivation)
+        {
+            icon.color = readyColor;
+            glowEffect.color = readyColor;
+
+            UpdateVisualsOnActivationTimeChanged(1, 1);
+            coloroutine?.StartColorTransition();
+            return;
         }
         else
         {
-            icon.color = disabledToggleIconColor;
-            UpdateGlow(1, 1);
-            glowEffect.color = disabledToggleGlowColor;
+            icon.color = onCooldownColor;
+            glowEffect.color = onCooldownColor;
+            UpdateVisualsOnActivationTimeChanged(1, 1);
         }
+
+        coloroutine?.StopColorTransition();
     }
 }

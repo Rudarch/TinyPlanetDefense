@@ -3,36 +3,42 @@ using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "OrbitalStrikeUpgrade", menuName = "Upgrades/OrbitalStrike")]
-public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
+public class OrbitalStrikeUpgrade : Upgrade
 {
     [SerializeField] private int baseStrikes = 1;
     [SerializeField] private float strikeDelay = 0.2f;
-    [SerializeField] private float waveInterval = 4f;
     [SerializeField] private float damage = 50f;
-
+    [SerializeField] protected GameObject effectVFX;
     public AudioClip impactSound;
+
+    private Transform planet;
 
     protected override void InitializeInternal()
     {
         Upgrades.Inst.OrbitalStrike = this;
+        planet = GameObject.FindWithTag("Planet")?.transform;
     }
 
     public override string GetUpgradeEffectText()
     {
-        return $"• Fires {baseStrikes + NextLevel} orbital beam(s) every {waveInterval:F1} sec dealing {damage} damage.";
+        return $"Fires {baseStrikes + NextLevel} orbital beam(s) every {strikeDelay:F1} sec dealing {damage} damage.";
     }
 
-    protected override IEnumerator Trigger()
+    protected override void ActivateInternal()
     {
-        yield return new WaitForSeconds(waveInterval);
+        int shotCount = CurrentLevel;
+        if (planet.TryGetComponent(out MonoBehaviour mono))
+        {
+            mono.StartCoroutine(Trigger());
+        }
+    }
 
-        var enemies = EnemyManager.Inst.GetAllEnemies();
-        if (enemies.Count == 0) yield return null;
-
+    private IEnumerator Trigger()
+    {
         int count = baseStrikes + CurrentLevel;
         for (int i = 0; i < count; i++)
         {
-            var target = enemies[Random.Range(0, enemies.Count)];
+            var target = EnemyManager.Inst. GetRandomEnemy();
             if (target != null)
             {
                 GameObject beam = Instantiate(effectVFX, target.transform.position, Quaternion.identity);
@@ -45,6 +51,8 @@ public class OrbitalStrikeUpgrade : PlanetEffectUpgrade
 
             yield return new WaitForSeconds(strikeDelay);
         }
+
+        Deactivate();
     }
 
 }

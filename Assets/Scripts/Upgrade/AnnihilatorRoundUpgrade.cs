@@ -49,6 +49,6 @@ public class AnnihilatorRoundUpgrade : Upgrade
 
     public override string GetUpgradeEffectText()
     {
-        return $"Fires {NextLevel} anihilation rounds.";
+        return $"Fires {NextLevel} anihilation rounds dealing {damage} damage.";
     }
 }

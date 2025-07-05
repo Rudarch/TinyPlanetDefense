@@ -290,16 +290,10 @@ MonoBehaviour:
   background: {fileID: 6120872483413564263}
   icon: {fileID: 8270130816825263860}
   glowEffect: {fileID: 1828428533583833574}
-  toggleOnIconColor: {r: 1, g: 1, b: 1, a: 1}
-  toggleOnGlowColor: {r: 1, g: 0.47450984, b: 0, a: 1}
-  disabledToggleIconColor: {r: 0.37897465, g: 0.3808782, b: 0.381132, a: 0.6745098}
-  disabledToggleGlowColor: {r: 0.3803922, g: 0.3803922, b: 0.3803922, a: 0.6666667}
-  timedOnIconColor: {r: 1, g: 1, b: 1, a: 1}
-  timedOnGlowColor: {r: 1, g: 0.47552526, b: 0, a: 1}
-  enoughEnergyForActivationIconColor: {r: 0.89433956, g: 0.89433956, b: 0.89433956, a: 1}
-  enoughEnergyForActivationGlowColor: {r: 0, g: 0, b: 0, a: 0}
-  notEnoughEnergyForActivationIconColor: {r: 0.5773585, g: 0.5773585, b: 0.5773585, a: 0.42745098}
-  notEnoughEnergyForActivationGlowColor: {r: 0, g: 0, b: 0, a: 0}
+  activatedIconColor: {r: 1, g: 1, b: 1, a: 1}
+  activatedGlowColor: {r: 0.1254902, g: 0.64705884, b: 0.9450981, a: 1}
+  readyColor: {r: 1, g: 1, b: 1, a: 1}
+  onCooldownColor: {r: 0.4943396, g: 0.4943396, b: 0.4943396, a: 1}
   coloroutine: {fileID: 2992928412917917805}
   clickSound: {fileID: 8300000, guid: b3fd5a4c1868eb448b77410abe5d2130, type: 3}
 --- !u!114 &2992928412917917805

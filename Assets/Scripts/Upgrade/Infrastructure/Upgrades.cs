@@ -51,12 +51,12 @@ public class Upgrades : MonoBehaviour
 
         foreach (var upgrade in RegualarUpgrades)
         {
-            upgrade.ResetUpgrade();
+            upgrade.InitializeUpgrade();
         }
 
         foreach (var upgrade in TacticalUpgrades)
         {
-            upgrade.ResetUpgrade();
+            upgrade.InitializeUpgrade();
         }
 
         Debug.Log($"Regualar={RegualarUpgrades.Count} and Tactical={TacticalUpgrades.Count} upgrades were reset.");

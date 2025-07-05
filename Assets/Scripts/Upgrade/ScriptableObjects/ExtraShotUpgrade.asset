@@ -16,11 +16,11 @@ MonoBehaviour:
   description: Shoots an additional round
   icon: {fileID: 5514012819739748338, guid: 0771cacbfa442dc4482f0bd0b86a0be6, type: 3}
   maxLevel: 3
-  currentLevel: 1
+  currentLevel: 2
   prerequisites: []
   cooldownDuration: 20
   activationStyle: 1
   activationDuration: 10
-  baseChance: 10
+  baseChance: 0.1
   chancePerLevel: 0.35
   extraShotInterval: 0.1

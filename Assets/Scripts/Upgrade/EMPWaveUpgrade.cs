@@ -36,5 +36,7 @@ public class EMPWaveUpgrade : PlanetEffectUpgrade
         }
 
         yield return new WaitForSeconds(0);
+
+        Deactivate();
     }
 }

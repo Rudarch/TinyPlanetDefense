@@ -28,20 +28,21 @@ public abstract class Upgrade : ScriptableObject
     public bool IsReadyForActivation => !IsActivated && cooldownRemaining <= 0f;
     public bool IsMaxedOut => CurrentLevel >= maxLevel;
 
-    public Action<bool> OnActivationChanged;
+    public Action OnUpgradeChanged;
     public Action<float, float> OnActivationTimerChanged;
 
     public int NextLevel => CurrentLevel + 1;
 
     public int CurrentLevel { get => currentLevel; }
 
-    public void ResetUpgrade()
+    public void InitializeUpgrade()
     {
         IsActivated = false;
+        OnUpgradeChanged = null;
         currentLevel = 0;
         activationTimer = 0;
-        OnActivationChanged = null;
         ResetInternal();
+
         InitializeInternal();
     }
 
@@ -70,14 +71,18 @@ public abstract class Upgrade : ScriptableObject
         return true;
     }
 
-
     public virtual string GetUpgradeEffectText() => string.Empty;
+
     public virtual void TickUpgrade(float deltaTime)
     {
         if (cooldownRemaining > 0f)
         {
             cooldownRemaining -= deltaTime;
-            if (cooldownRemaining < 0f) cooldownRemaining = 0f;
+            if (cooldownRemaining < 0f)
+            {
+                OnUpgradeChanged?.Invoke();
+                cooldownRemaining = 0f;
+            }
             OnActivationTimerChanged?.Invoke(cooldownDuration, cooldownRemaining);
         }
 
@@ -103,7 +108,7 @@ public abstract class Upgrade : ScriptableObject
         }
 
         IsActivated = true;
-        OnActivationChanged?.Invoke(IsActivated);
+        OnUpgradeChanged?.Invoke();
         ActivateInternal();
         cooldownRemaining = cooldownDuration;
     }
@@ -111,7 +116,7 @@ public abstract class Upgrade : ScriptableObject
     public virtual void Deactivate()
     {
         IsActivated = false;
-        OnActivationChanged?.Invoke(IsActivated);
+        OnUpgradeChanged?.Invoke();
         DeactivateInternal();
     }
 
